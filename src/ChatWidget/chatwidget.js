@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import $ from 'jquery';
 import 'bootstrap/dist/css/bootstrap.css';
 import './chatwidget.css';
@@ -359,7 +360,7 @@ $(document).on("mouseover", "#stars li", function (e) {
     return (
       <div>
           <div className="chat_btn_container position-fixed">
-              <button className="btn btn-primary border-25 border-0">XYZ Virtual Assistant <span className="badge badge-pill badge-danger unreadCount">1</span></button>
+              <button className="btn btn-primary border-25 border-0">{this.props.botName} <span className="badge badge-pill badge-danger unreadCount">1</span></button>
           </div>
           <div className="chat_box_container position-relative">
               <div className="col-md-12 p-0 h-100">
@@ -382,7 +383,7 @@ $(document).on("mouseover", "#stars li", function (e) {
                       <div className="panel-body">
                           <ul className="chat">
                             {chat}
-                            <li class="loading" style={{display: this.state.loading ? "block" : "none" }}loading>
+                            <li className="loading" style={{display: this.state.loading ? "block" : "none" }}>
                               <div className="d-flex justify-content-start">
                                 <div className="chat-body bubble clearfix flex-column">
                                   <img src="assets/tenor.gif"/>
@@ -423,4 +424,17 @@ $(document).on("mouseover", "#stars li", function (e) {
     );
   }
 }
+
+ChatWidget.propTypes = {
+  botName: PropTypes.string,
+  botIcon: PropTypes.string,
+  botUrl: PropTypes.string
+};
+
+ChatWidget.defaultProps = {
+  botName: 'CogniAssist',
+  botIcon: '',
+  botUrl: ''
+};
+
 export default ChatWidget;
