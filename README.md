@@ -1,12 +1,15 @@
 # CogniAssist Chat Widget
 
-A simple webchat widget to connect with a CogniAssist chatbot platform.
+A simple widget to connect with CogniAssist chatbot platform.
 
 ## Features
 
 - Text Messages
 - Quick Replies
-- Images and Videos
+- Banner Text and Image
+- Images,Audios and Videos
+- Datepicker
+- File Upload
 - Easy to import in a script tag or as a React Component
 - Persistent sessions
 - Typing indications
