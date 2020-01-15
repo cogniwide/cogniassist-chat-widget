@@ -30,6 +30,7 @@ class ChatBubble extends Component {
                     </p>
                 </div>
             </div>
+            <span className="timeStamp">1:35 AM</span>
         </li>
         )
     else
@@ -37,8 +38,10 @@ class ChatBubble extends Component {
         <li className='left'>
             <div className="d-flex justify-content-start">
                 <span className="avatar_wrapper mr-2">  
+                {(this.props.avatar) && 
                             <img src={userImg} alt="User Avatar"
                                 className="img-circle avatar"/>
+                }
                 </span>
             <div className="chat-body bubble clearfix flex-column">
                 
@@ -74,19 +77,19 @@ class ChatBubble extends Component {
                 {'star_rating' in this.props.message &&  
                     <div className='rating-stars text-center'>
                         <ul id='stars'>
-                            <li className='star' title='Poor' data-value='1'>
+                            <li className='star' title='Poor' data-value='1' onClick={()=> this.props.parent.sendText("1 Rating")} >
                                 <i className='fa fa-star fa-fw'></i>
                             </li>
-                            <li className='star' title='Fair' data-value='2'>
+                            <li className='star' title='Fair' data-value='2' onClick={()=> this.props.parent.sendText("2 Rating")} >
                                 <i className='fa fa-star fa-fw'></i>
                             </li>
-                            <li className='star' title='Good' data-value='3'>
+                            <li className='star' title='Good' data-value='3' onClick={()=> this.props.parent.sendText("3 Rating")} >
                                 <i className='fa fa-star fa-fw'></i>
                             </li>
-                            <li className='star' title='Excellent' data-value='4'>
+                            <li className='star' title='Excellent' data-value='4' onClick={()=> this.props.parent.sendText("4 Rating")} >
                                 <i className='fa fa-star fa-fw'></i>
                             </li>
-                            <li className='star' title='WOW!!!' data-value='5'>
+                            <li className='star' title='WOW!!!' data-value='5' onClick={()=> this.props.parent.sendText("5 Rating")} >
                                 <i className='fa fa-star fa-fw'></i>
                             </li>
                         </ul>
@@ -114,6 +117,7 @@ class ChatBubble extends Component {
 
             </div>
         </div>
+        <span className="timeStamp">1:35 AM</span>
     </li>
     )
   }

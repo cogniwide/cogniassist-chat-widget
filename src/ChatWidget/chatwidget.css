@@ -184,7 +184,7 @@ top: 0;
 right: 0;
 bottom: 0;
 width: 100%;
-margin-top: 45px;
+margin-top: 100px;
 margin-bottom: 45px;
 overflow-y: auto;
 -webkit-overflow-scrolling: touch;
@@ -510,4 +510,12 @@ audio {
 span.unreadCount{
   top: -20px !important;
   right: -20px;
+}
+.banner img {
+  width: 100%;
+  height: 100px;
+  max-width: 100%;
+}
+.banner {
+  margin-top: 45px;
 }

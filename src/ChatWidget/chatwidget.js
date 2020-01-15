@@ -101,6 +101,29 @@ class ChatWidget extends Component {
           "text": "Upload Your ID",
           "upload": true
         }
+      ],
+      [
+        {
+          "text": "Sample Image",
+          "image": 'http://placekitten.com/640/360'
+        }
+      ],
+      [
+        {
+          "text": "Sample Audio",
+          "audio": 'https://geekanddummy.com/wp-content/uploads/2014/01/Killer-Choir.mp3'
+        }
+      ],
+      [
+        {
+          "text": "Feedback",
+          "star_rating": true
+        }
+      ],
+      [
+        {
+          "text": "Thanks for your feedbacks",
+        }
       ]
       ]
 
@@ -345,8 +368,17 @@ $(document).on("mouseover", "#stars li", function (e) {
 
 
   render() {
-    const chat=this.state.conversation.map((e, index)=>
-     <ChatBubble parent={this} message={e}  index={index}  key={index} user={e.user}/>
+    var aiIndex = 0;
+    const chat=this.state.conversation.map((e, index)=>{
+        if(e.user==='human'){
+          aiIndex = 0;
+        }else{
+          aiIndex++;
+        }
+        return (
+          <ChatBubble parent={this} message={e}  index={index}  key={index} user={e.user} avatar={aiIndex==1}/>
+        );
+      }
     );
 
     const restartStyle={
@@ -379,6 +411,9 @@ $(document).on("mouseover", "#stars li", function (e) {
                                   </svg>
                               </button>
                           </div>
+                      </div>
+                      <div className="banner">
+                        <img src="assets/banner.png" alt="Chatbot Banner" />
                       </div>
                       <div className="panel-body">
                           <ul className="chat">

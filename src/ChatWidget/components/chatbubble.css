@@ -30,3 +30,16 @@
   margin-right: 10px;
   vertical-align: bottom;
  }
+
+.right span.timeStamp {
+  position: absolute;
+  right: 0;
+}
+li.star:before {
+  content: '★ ';
+  font-size: 30px;
+  color: #d3d3d3;
+}
+li.star.hover:before, li.star.selected:before  {
+  color: #ffc107;
+}
