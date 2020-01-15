@@ -5,6 +5,8 @@ import './chatwidget.css';
 import updateArrow from './assets/update-arrow.png'
 
 import ChatBubble from './components/chatbubble';
+import datepicker from 'js-datepicker';
+import 'js-datepicker/dist/datepicker.min.css';
 
 
 class ChatWidget extends Component {
@@ -14,7 +16,8 @@ class ChatWidget extends Component {
       sender_id: this.createOrRetriveSenderId(),
       userMessage: '',
       conversation: [],
-      quick_replies:[]
+      quick_replies:[],
+      loading: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -64,6 +67,38 @@ class ChatWidget extends Component {
         },
         {
             "text": " How can i help you ?",
+        }
+      ],
+      [
+        {
+          "text": "What is Your Name?",
+        }
+      ],
+      [
+        {
+          "text": "Do you select to gender ?",
+          "buttons": [
+            {
+              "title": "Male",
+              "payload": "Male"
+            },
+            {
+              "title": "Female",
+              "payload": "Female"
+            }
+          ]
+        }
+      ],
+      [
+        {
+          "text": "Date of birth",
+          "datepicker": true
+        }
+      ],
+      [
+        {
+          "text": "Upload Your ID",
+          "upload": true
         }
       ]
       ]
@@ -198,9 +233,22 @@ $(document).on("mouseover", "#stars li", function (e) {
       
     });
 
+    datepicker('.datepickerIcon', {
+      position: 'tr',
+      onSelect: (instance, date) => {
+        let dateVal = this.getFormattedDate(date);
+        $('.chat_box_container .panel-footer #textInput').val($('.chat_box_container .panel-footer #textInput').val()+dateVal).trigger('change');
+      }
+    })
     this.sendRequest("/default/welcome")
   }
 
+  getFormattedDate(date){
+    let year = date.getFullYear();
+    let month = (1 + date.getMonth()).toString().padStart(2, '0');
+    let day = date.getDate().toString().padStart(2, '0');
+    return month + '/' + day + '/' + year;
+  }
               
    scrollToBottom() {
     $(".panel-body").stop().animate({ scrollTop: $(".panel-body")[0].scrollHeight}, 1000);
@@ -311,7 +359,7 @@ $(document).on("mouseover", "#stars li", function (e) {
     return (
       <div>
           <div className="chat_btn_container position-fixed">
-              <button className="btn btn-primary border-25 border-0">XYZ Virtual Assistant</button>
+              <button className="btn btn-primary border-25 border-0">XYZ Virtual Assistant <span className="badge badge-pill badge-danger unreadCount">1</span></button>
           </div>
           <div className="chat_box_container position-relative">
               <div className="col-md-12 p-0 h-100">
@@ -334,6 +382,13 @@ $(document).on("mouseover", "#stars li", function (e) {
                       <div className="panel-body">
                           <ul className="chat">
                             {chat}
+                            <li class="loading" style={{display: this.state.loading ? "block" : "none" }}loading>
+                              <div className="d-flex justify-content-start">
+                                <div className="chat-body bubble clearfix flex-column">
+                                  <img src="assets/tenor.gif"/>
+                                </div>
+                              </div>
+                            </li>
                           </ul>
                       </div>
                       <div className="panel-footer position-fixed">
@@ -358,6 +413,7 @@ $(document).on("mouseover", "#stars li", function (e) {
                                   ></textarea>
                               <pre className="send-button text-white"></pre>
                               <pre className="mic-btn text-white"></pre>
+                              <pre className="cal-btn text-white datepickerIcon"></pre>
                           </div>
                       </div>
                   </div>

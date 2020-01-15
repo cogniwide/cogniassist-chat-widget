@@ -1,9 +1,24 @@
 import React, { Component } from 'react';
 import './chatbubble.css';
 import userImg from '../assets/user.png'
+import Calendar from 'react-calendar';
 
 class ChatBubble extends Component {
 
+    state = {
+        date: new Date(),
+        loading: true,
+        showLoader: false
+      }
+    onChange = date => {
+        this.setState({ date });
+    } 
+    getFormattedDate(date){
+        let year = date.getFullYear();
+        let month = (1 + date.getMonth()).toString().padStart(2, '0');
+        let day = date.getDate().toString().padStart(2, '0');
+        return month + '/' + day + '/' + year;
+      }
   render() {    
     if (this.props.user==='human')
         return (
@@ -76,6 +91,25 @@ class ChatBubble extends Component {
                             </li>
                         </ul>
                     </div>
+                }
+                {('datepicker' in this.props.message) &&  
+                    <span className="mt-2 d-flex flex-column">
+                        <Calendar
+                            onChange={this.onChange}
+                            onClickDay={()=>{this.props.parent.sendText(this.getFormattedDate(this.state.date));}}
+                            value={this.state.date}
+                        />
+                    </span>
+                }
+                {('upload' in this.props.message) &&  
+                    <span className="mt-2 d-flex flex-column">
+                        <div className="attachment">
+                            <div className="upload-btn-wrapper">
+                                <button className="upload_btn"><img class="upload-icon" src="assets/upload.svg" alt="Kiwi standing on oval" />Upload a file</button>
+                                <input type="file" name="myfile" onChange={()=>{this.props.parent.sendText("File Uploaded Successfully");}} />
+                            </div>
+                        </div>
+                    </span>
                 }
 
             </div>

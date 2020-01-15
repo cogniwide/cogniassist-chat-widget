@@ -1,0 +1,32 @@
+.react-calendar {
+   width: 250px !important;
+}
+/* Attachment */
+.upload-btn-wrapper {
+   position: relative;
+   overflow: hidden;
+   display: inline-block;
+ }
+ 
+ .upload_btn {
+  border: 1px solid #131212;
+  color: #000;
+  background-color: white;
+  padding: 5px 15px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+ }
+ 
+ .upload-btn-wrapper input[type=file] {
+   font-size: 100px;
+   position: absolute;
+   left: 0;
+   top: 0;
+   opacity: 0;
+ }
+ .upload-icon{
+  width: 20px;
+  margin-right: 10px;
+  vertical-align: bottom;
+ }
