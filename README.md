@@ -21,7 +21,7 @@ A simple widget to connect with CogniAssist chatbot platform.
 
 In your `<body/>`:
 ```javascript
-<script src=" https://cogniwide.github.io/cogniassist-chat-widget/lib/cogniassist-latest.js"></script>
+<script src="https://cogniwide.github.io/cogniassist-chat-widget/lib/cogniassist-latest.js"></script>
 <script>
   CogniAssistWidget.default.init({
     selector: "#cogniassist",
