@@ -23,10 +23,9 @@ In your `<body/>`:
 ```javascript
 <script src="https://cogniwide.com/assets/cogniassist-latest.js"></script>
 <script>
-  CogniAssistWidget.mount({
-    botName: 'cogniassist',
-    botIcon: '',
-    botUrl: ''
+  CogniAssistWidget.default.init({
+    selector: "#cogniassist",
+    botName: 'cogniassist'
   });
 </script>
 ```

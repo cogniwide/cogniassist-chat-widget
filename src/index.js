@@ -1,48 +1,29 @@
  
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { forwardRef } from 'react';
+import PropTypes from 'prop-types';
 import ChatWidget from './ChatWidget/chatwidget';
 
-export default class CogniAssistWidget {
-  static el;
+const CogniAssistWidget = forwardRef((props, ref) => {
+  return (
+      <ChatWidget
+        ref={ref}
+        botName={props.botName}
+        botIcon={props.botIcon}
+        botURL={props.botURL}
+      />
+  );
+});
 
-  static mount({ parentElement = null, ...props } = {}) {
-    const component = <ChatWidget {...props} />;
+CogniAssistWidget.propTypes = {
+    botName: PropTypes.string,
+    botIcon: PropTypes.string,
+    botURL: PropTypes.string
+  };
 
-    function doRender() {
-      if (CogniAssistWidget.el) {
-        throw new Error('CogniAssistWidget is already mounted, unmount first');
-      }
-      const el = document.createElement('div');
-      el.setAttribute('class', 'cogniassistWidget');
+CogniAssistWidget.defaultProps = {
+    botName: 'CogniAssist',
+    botIcon: 'icon.png',
+    botURL: 'hello'
+  };
 
-      if (parentElement) {
-        document.querySelector(parentElement).appendChild(el);
-      } else {
-        document.body.appendChild(el);
-      }
-      ReactDOM.render(
-        component,
-        el,
-      );
-      CogniAssistWidget.el = el;
-    }
-    if (document.readyState === 'complete') {
-      doRender();
-    } else {
-      window.addEventListener('load', () => {
-        doRender();
-      });
-    }
-  }
-
-  static unmount() {
-    if (!CogniAssistWidget.el) {
-      throw new Error('CogniAssistWidget is not mounted, mount first');
-    }
-    ReactDOM.unmountComponentAtNode(CogniAssistWidget.el);
-    CogniAssistWidget.el.parentNode.removeChild(CogniAssistWidget.el);
-    CogniAssistWidget.el = null;
-  }
-}
-window.CogniAssistWidget = CogniAssistWidget
+export default CogniAssistWidget;

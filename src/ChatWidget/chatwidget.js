@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import $ from 'jquery';
 import 'bootstrap/dist/css/bootstrap.css';
 import './chatwidget.css';
@@ -11,8 +10,8 @@ import 'js-datepicker/dist/datepicker.min.css';
 
 
 class ChatWidget extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state={
       sender_id: this.createOrRetriveSenderId(),
       userMessage: '',
@@ -460,16 +459,5 @@ $(document).on("mouseover", "#stars li", function (e) {
   }
 }
 
-ChatWidget.propTypes = {
-  botName: PropTypes.string,
-  botIcon: PropTypes.string,
-  botUrl: PropTypes.string
-};
-
-ChatWidget.defaultProps = {
-  botName: 'CogniAssist',
-  botIcon: '',
-  botUrl: ''
-};
 
 export default ChatWidget;
