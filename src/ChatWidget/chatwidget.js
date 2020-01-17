@@ -398,6 +398,7 @@ $(document).on("mouseover", "#stars li", function (e) {
     const closeBtnStyle={
       width: '20px'
     }
+    const bannerStyle = {backgroundImage: "url("+this.props.bannerURL+")"}
     return (
       <div>
           <div className="chat_btn_container position-fixed">
@@ -421,22 +422,20 @@ $(document).on("mouseover", "#stars li", function (e) {
                               </button>
                           </div>
                       </div>
-                      {(this.props.bannerURL !=null) &&
-                      <div className="banner">
-                        <img src={this.props.bannerURL} alt="Chatbot Banner" />
-                      </div>
-                      }
                       <div className="panel-body">
-                          <ul className="chat">
-                            {chat}
-                            <li className="loading" style={{display: this.state.loading ? "block" : "none" }}>
-                              <div className="d-flex justify-content-start">
-                                <div className="chat-body bubble clearfix flex-column">
-                                  <img src="https://cogniwide.github.io/cogniassist-chat-widget/public/assets/tenor.gif"/>
+                        <div className="banner" style={bannerStyle}>
+                          {this.props.bannerText}
+                        </div>
+                            <ul className="chat">
+                              {chat}
+                              <li className="loading" style={{display: this.state.loading ? "block" : "none" }}>
+                                <div className="d-flex justify-content-start">
+                                  <div className="chat-body bubble clearfix flex-column">
+                                    <img src="https://cogniwide.github.io/cogniassist-chat-widget/public/assets/tenor.gif"/>
+                                  </div>
                                 </div>
-                              </div>
-                            </li>
-                          </ul>
+                              </li>
+                            </ul>
                       </div>
                       <div className="panel-footer position-fixed">
                           <div className="suggestion_box bg-white">

@@ -107,7 +107,7 @@ class ChatBubble extends Component {
                     <span className="mt-2 d-flex flex-column">
                         <div className="attachment">
                             <div className="upload-btn-wrapper">
-                                <button className="upload_btn"><img className="upload-icon" src="assets/upload.svg" alt="Kiwi standing on oval" />Upload a file</button>
+                                <button className="upload_btn"><img className="upload-icon" src="https://cogniwide.github.io/cogniassist-chat-widget/public/assets/upload.svg" alt="Upload file" />Upload a file</button>
                                 <input type="file" name="myfile" onChange={()=>{this.props.parent.sendText("File Uploaded Successfully");}} />
                             </div>
                         </div>

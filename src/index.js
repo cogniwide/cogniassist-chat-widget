@@ -11,6 +11,8 @@ const CogniAssistWidget = forwardRef((props, ref) => {
         botName={props.botName}
         botIcon={props.botIcon}
         botURL={props.botURL}
+        bannerURL={props.bannerURL}
+        bannerText={props.bannerText}
       />
   );
 });
@@ -20,7 +22,8 @@ CogniAssistWidget.propTypes = {
     botName: PropTypes.string,
     botIcon: PropTypes.string,
     botURL: PropTypes.string,
-    bannerURL: PropTypes.string
+    bannerURL: PropTypes.string,
+    bannerText:PropTypes.string
   };
 
 CogniAssistWidget.defaultProps = {
@@ -28,7 +31,8 @@ CogniAssistWidget.defaultProps = {
     botName: 'CogniAssist',
     botIcon: 'https://cogniwide.github.io/cogniassist-chat-widget/public/assets/user.png',
     botURL: 'http://localhost:8080/webhooks/rest/webhook/',
-    bannerURL: null
+    bannerURL: null,
+    bannerText:""
   };
 
 export default CogniAssistWidget;
