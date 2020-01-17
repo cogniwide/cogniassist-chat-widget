@@ -29,7 +29,7 @@ In your `<body/>`:
     botName: 'CogniAssist',
     botIcon: 'https://cogniwide.github.io/cogniassist-chat-widget/public/assets/user.png',
     botURL: 'http://localhost:8080/webhooks/rest/webhook/',
-    bannelURL: null
+    bannerURL: null
   });
 </script>
 ```

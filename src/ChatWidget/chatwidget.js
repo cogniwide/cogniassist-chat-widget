@@ -421,9 +421,9 @@ $(document).on("mouseover", "#stars li", function (e) {
                               </button>
                           </div>
                       </div>
-                      {(this.props.bannelURL !=null) &&
+                      {(this.props.bannerURL !=null) &&
                       <div className="banner">
-                        <img src={this.props.bannelURL} alt="Chatbot Banner" />
+                        <img src={this.props.bannerURL} alt="Chatbot Banner" />
                       </div>
                       }
                       <div className="panel-body">

@@ -20,7 +20,7 @@ CogniAssistWidget.propTypes = {
     botName: PropTypes.string,
     botIcon: PropTypes.string,
     botURL: PropTypes.string,
-    bannelURL: PropTypes.string
+    bannerURL: PropTypes.string
   };
 
 CogniAssistWidget.defaultProps = {
@@ -28,7 +28,7 @@ CogniAssistWidget.defaultProps = {
     botName: 'CogniAssist',
     botIcon: 'https://cogniwide.github.io/cogniassist-chat-widget/public/assets/user.png',
     botURL: 'http://localhost:8080/webhooks/rest/webhook/',
-    bannelURL: null
+    bannerURL: null
   };
 
 export default CogniAssistWidget;
