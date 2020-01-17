@@ -9,6 +9,8 @@ const plugin = {
         botName={args.botName}
         botIcon={args.botIcon}
         botURL={args.botURL}
+        bannerURL={args.bannerURL}
+
       />, document.querySelector(args.selector)
     );
   }

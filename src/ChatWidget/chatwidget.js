@@ -128,6 +128,13 @@ class ChatWidget extends Component {
 
 
   }
+  loading(val){
+    this.setState({
+      loading: val
+    });
+  }
+
+
   createOrRetriveSenderId() {
     return "default"
   }
@@ -263,7 +270,7 @@ $(document).on("mouseover", "#stars li", function (e) {
         $('.chat_box_container .panel-footer #textInput').val($('.chat_box_container .panel-footer #textInput').val()+dateVal).trigger('change');
       }
     })
-    this.sendRequest("/default/welcome")
+    this.sendRequest(this.props.initialPayload)
   }
 
   getFormattedDate(date){
@@ -319,20 +326,23 @@ $(document).on("mouseover", "#stars li", function (e) {
       payload["message"]= query;
     }
 
-    let dummyResponse = this.dummyRequest()
-    this.renderResponse(dummyResponse);
+    // let dummyResponse = this.dummyRequest()
+    // this.renderResponse(dummyResponse);
 
-    // fetch('http://localhost:8080/webhooks/rest/webhook', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(payload),
-    // })
-    // .then(response=> response.json())
-    // .then(response=> {
-    //   console.log(response)
-    //   this.renderResponse(response)
+    this.loading(true);
 
-    // });
+    fetch(this.props.botURL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+    .then(response=> response.json())
+    .then(response=> {
+      this.loading(false);
+      console.log(response)
+      this.renderResponse(response)
+
+    });
 
   }
 
@@ -375,7 +385,7 @@ $(document).on("mouseover", "#stars li", function (e) {
           aiIndex++;
         }
         return (
-          <ChatBubble parent={this} message={e}  index={index}  key={index} user={e.user} avatar={aiIndex==1}/>
+          <ChatBubble botIcon={this.props.botIcon} parent={this} message={e}  index={index}  key={index} user={e.user} avatar={aiIndex==1}/>
         );
       }
     );
@@ -397,7 +407,7 @@ $(document).on("mouseover", "#stars li", function (e) {
               <div className="col-md-12 p-0 h-100">
                   <div className="panel panel-primary">
                       <div className="panel-heading d-flex justify-content-between align-items-center px-2 bg-primary">
-                          <span className="text-white font-weight-bold"> XYZ Virtual Assistant</span>
+                          <span className="text-white font-weight-bold"> {this.props.botName}</span>
                           <div className="btn-group pull-right">
                               <a href="#!" className="restart" style={restartStyle}>
                                   <img src={updateArrow} alt="refresh" className="img-responsive" width="15"/>
@@ -411,16 +421,18 @@ $(document).on("mouseover", "#stars li", function (e) {
                               </button>
                           </div>
                       </div>
+                      {(this.props.bannelURL !=null) &&
                       <div className="banner">
-                        <img src="assets/banner.png" alt="Chatbot Banner" />
+                        <img src={this.props.bannelURL} alt="Chatbot Banner" />
                       </div>
+                      }
                       <div className="panel-body">
                           <ul className="chat">
                             {chat}
                             <li className="loading" style={{display: this.state.loading ? "block" : "none" }}>
                               <div className="d-flex justify-content-start">
                                 <div className="chat-body bubble clearfix flex-column">
-                                  <img src="assets/tenor.gif"/>
+                                  <img src="https://cogniwide.github.io/cogniassist-chat-widget/public/assets/tenor.gif"/>
                                 </div>
                               </div>
                             </li>

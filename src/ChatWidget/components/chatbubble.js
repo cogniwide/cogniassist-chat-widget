@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './chatbubble.css';
-import userImg from '../assets/user.png'
 import Calendar from 'react-calendar';
 
 class ChatBubble extends Component {
@@ -39,7 +38,7 @@ class ChatBubble extends Component {
             <div className="d-flex justify-content-start">
                 <span className="avatar_wrapper mr-2">  
                 {(this.props.avatar) && 
-                            <img src={userImg} alt="User Avatar"
+                            <img src={this.props.botIcon} alt="User Avatar"
                                 className="img-circle avatar"/>
                 }
                 </span>
