@@ -5,8 +5,8 @@ module.exports = {
   // entry: ['babel-polyfill', './index.js'],
   entry: './index.js',
   output: {
-    path: path.join(__dirname, '/public'),
-    filename: 'cogniassist-latest.js',
+    path: path.join(__dirname, '/lib'),
+    filename: 'index.js',
     library: 'CogniAssistWidget',
     libraryTarget: 'umd'
   },
@@ -15,7 +15,7 @@ module.exports = {
     host: process.env.HOST, // Defaults to `localhost`
     port: process.env.PORT, // Defaults to 8080
     open: true, // Open the page in browser
-    contentBase: path.resolve(__dirname, '/public')
+    contentBase: path.resolve(__dirname, '/lib')
   },
   resolve: {
     extensions: ['.js', '.jsx']
@@ -45,7 +45,7 @@ module.exports = {
       title: 'Web Chat Widget Test',
       filename: 'index.html',
       inject: false,
-      template: 'public/index.html',
+      template: 'dev/src/index.html',
       showErrors: true
     })
   ]
