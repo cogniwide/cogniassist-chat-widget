@@ -3,6 +3,9 @@ import $ from 'jquery';
 import 'bootstrap/dist/css/bootstrap.css';
 import './chatwidget.css';
 import updateArrow from './assets/update-arrow.png'
+import smileEmoji from './assets/smile.svg'
+import normalEmoji from './assets/normal.svg'
+import worstEmoji from './assets/worst.svg'
 
 import ChatBubble from './components/chatbubble';
 import datepicker from 'js-datepicker';
@@ -122,6 +125,7 @@ class ChatWidget extends Component {
       [
         {
           "text": "Thanks for your feedbacks",
+          "end": true,
         }
       ]
       ]
@@ -178,6 +182,11 @@ class ChatWidget extends Component {
 
     });
 
+    $('.feedback-emoji li').click(function () {
+        $('.chat_box_container').hide(1000).removeClass('chat_box_active');
+        $('.panel-body .banner, .panel-body ul.chat, .panel-footer').delay(2000).show();
+        $('.panel-body .feedback').delay(2000).hide();
+    });
 
   $(".mic-btn").click(()=> 
 	{
@@ -384,6 +393,10 @@ $(document).on("mouseover", "#stars li", function (e) {
         }else{
           aiIndex++;
         }
+        if(e.end){
+          $('.panel-body .banner, .panel-body ul.chat, .panel-footer').hide();
+          $('.panel-body .feedback').show();
+        }
         return (
           <ChatBubble botIcon={this.props.botIcon} parent={this} message={e}  index={index}  key={index} user={e.user} avatar={aiIndex==1}/>
         );
@@ -436,6 +449,14 @@ $(document).on("mouseover", "#stars li", function (e) {
                                 </div>
                               </li>
                             </ul>
+                            <div className="feedback" style={{display: "none" }}>
+                              Feedback
+                              <ul className="feedback-emoji">
+                                <li data-name="worst"><img src={worstEmoji} width="50" /></li>
+                                <li data-name="normal"><img src={normalEmoji} width="50" /></li>
+                                <li data-name="smile"><img src={smileEmoji} width="50" /></li>
+                              </ul>
+                            </div>
                       </div>
                       <div className="panel-footer position-fixed">
                           <div className="suggestion_box bg-white">
