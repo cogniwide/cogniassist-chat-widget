@@ -9,6 +9,7 @@ const CogniAssistWidget = forwardRef((props, ref) => {
         ref={ref}
         initialPayload={props.initialPayload}
         botName={props.botName}
+        botWelcomeMessage={props.botWelcomeMessage}
         botIcon={props.botIcon}
         botURL={props.botURL}
         bannerURL={props.bannerURL}
@@ -20,6 +21,7 @@ const CogniAssistWidget = forwardRef((props, ref) => {
 CogniAssistWidget.propTypes = {
     initialPayload:PropTypes.string,
     botName: PropTypes.string,
+    botWelcomeMessage: PropTypes.string,
     botIcon: PropTypes.string,
     botURL: PropTypes.string,
     bannerURL: PropTypes.string,
@@ -29,6 +31,7 @@ CogniAssistWidget.propTypes = {
 CogniAssistWidget.defaultProps = {
     initialPayload:"/default/welcome",
     botName: 'CogniAssist',
+    botWelcomeMessage: "Hey there, I'm here to assist you with any doubts you migth have.",
     botIcon: 'https://cogniwide.github.io/cogniassist-chat-widget/public/assets/user.png',
     botURL: 'http://localhost:8080/webhooks/rest/webhook/',
     bannerURL: null,

@@ -21,7 +21,9 @@ class ChatWidget extends Component {
       userMessage: '',
       conversation: [],
       quick_replies:[],
-      loading: false
+      loading: false,
+      opened: false,
+      unread:1
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -161,8 +163,12 @@ class ChatWidget extends Component {
 
     });
 
-    $('.chat_btn_container').click(function () {
+    $('.chat_btn_container').click(()=>{
         $(".chat_box_container").show(100).toggleClass('chat_box_active');
+        this.setState((prevState)=>({
+          opened: !prevState.opened,
+          unread: 0
+        }))
     });
 
     $('.see_all').click(function () {
@@ -307,6 +313,15 @@ $(document).on("mouseover", "#stars li", function (e) {
     }
   };
 
+  addMessage(message,user){
+    const msg={
+      text: message,
+      user: user,
+    };
+    this.setState((prevState) => ({
+      conversation: [...prevState.conversation, msg],
+    }));
+  }
 
   sendText(message=null){
     message = (message==null)?this.state.userMessage:message
@@ -418,12 +433,17 @@ $(document).on("mouseover", "#stars li", function (e) {
           <div className="chat_btn_container position-fixed">
           <button className="btn border-25 border-0">
             <img src={chatIcon} width="60" />
-            <span className="badge badge-pill badge-danger unreadCount">1</span>
+            {this.state.unread > 0 &&
+              <span className="badge badge-pill badge-danger unreadCount">1</span>
+            }
           </button>        
         </div>
-        <div class="chat-heading arrow-bottom">
-          <h5> {this.props.botName}</h5>
-       </div>
+        { !this.state.opened &&
+          <div class="chat-heading arrow-bottom">
+          <h5> {this.props.botWelcomeMessage}</h5>
+          </div>
+        }
+
           <div className="chat_box_container position-relative">
               <div className="col-md-12 p-0 h-100">
                   <div className="panel panel-primary">
