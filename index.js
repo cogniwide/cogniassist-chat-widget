@@ -7,6 +7,7 @@ const plugin = {
     ReactDOM.render(
       <CogniAssistWidget
         botName={args.botName}
+        botWelcomeMessage={args.botWelcomeMessage}
         botIcon={args.botIcon}
         botURL={args.botURL}
         bannerURL={args.bannerURL}
