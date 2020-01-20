@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   // entry: ['babel-polyfill', './index.js'],
   entry: './index.js',
+  
   output: {
     path: path.join(__dirname, '/lib'),
     filename: 'index.js',
@@ -11,11 +12,16 @@ module.exports = {
     libraryTarget: 'umd'
   },
   devServer: {
+    hot: true,
+    inline: true,
     stats: 'errors-only',
     host: process.env.HOST, // Defaults to `localhost`
     port: process.env.PORT, // Defaults to 8080
     open: true, // Open the page in browser
-    contentBase: path.resolve(__dirname, '/lib')
+    contentBase: path.resolve(__dirname, '/lib'),
+    watchOptions: {
+      poll: true
+  }
   },
   resolve: {
     extensions: ['.js', '.jsx']

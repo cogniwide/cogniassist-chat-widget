@@ -764,11 +764,12 @@ li.star:before {
     border-bottom-right-radius: 7px;
      position: absolute;
      bottom: 48px;
-    right: 120px;
+     right: 120px;
      background: #fff;
      padding: 10px 20px;
      box-shadow: rgba(43, 45, 56, 0.15) 0px 0px 7px 0px !important;
-     width: 300px;
+     max-width: 300px;
+     margin-left: 5px;
 }
 /*  */
 /* li.left .btn,.btn {
