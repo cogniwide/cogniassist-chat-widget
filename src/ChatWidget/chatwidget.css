@@ -78,7 +78,7 @@ p {
     opacity: 0;
     transform: translateY(5%);
     position: fixed !important;
-    bottom: 75px;
+    bottom: 100px;
     right: 20px;
     max-height: 610px;
     /* min-height: 260px; */
@@ -601,8 +601,8 @@ audio {
 }
 
 span.unreadCount {
-    top: -20px !important;
-    right: -20px;
+    top: -30px !important;
+    right: 15px;
     z-index: -1;
 }
 
@@ -621,7 +621,17 @@ span.unreadCount {
 
 
 /* new style add */
-
+.badge-pill{
+    padding-left: 0;
+    padding-right: 0;
+    border-radius: 50%;
+    border:2px solid #fff;
+}
+.badge{
+    width: 23px;
+    height: 23px;
+    padding: 0.35em 0.4em;
+}
 .btn-group a.restart {
     width: 20px;
     margin-right: 5px;
@@ -738,10 +748,41 @@ li.star {
 li.star:before {
     font-size: 35px !important;
 }
-
-
-/* li.left .btn,
-.btn {
+.chat-heading h5 {    
+    font-size: 16px;
+    font-weight: 400;
+    color: #000;  
+    margin: 0; 
+}
+.chat_btn_container .btn .badge {
+    position: relative;   
+    right: 18px;
+    z-index: 4;
+    top: -23px !important;
+}
+.chat-heading{  
+    border-bottom-right-radius: 7px;
+     position: absolute;
+     bottom: 48px;
+    right: 120px;
+     background: #fff;
+     padding: 10px 20px;
+     box-shadow: rgba(43, 45, 56, 0.15) 0px 0px 7px 0px !important;
+}
+/*  */
+/* li.left .btn,.btn {
     margin-right: 10px;
     font-size: 14px;
 } */
+
+/* .arrow-bottom:after {
+    content: " ";
+    position: absolute;
+    right: 30px;
+    bottom: -15px;
+    border-top: 8px solid #fff;
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+    border-bottom: none;
+    box-shadow: 1px 2px 5px rgba(68,68,68,0.6);
+  } */
