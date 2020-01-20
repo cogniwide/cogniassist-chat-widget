@@ -6,6 +6,7 @@ import updateArrow from './assets/update-arrow.png'
 import smileEmoji from './assets/smile.svg'
 import normalEmoji from './assets/normal.svg'
 import worstEmoji from './assets/worst.svg'
+import chatIcon from './assets/chat-icon.png'
 
 import ChatBubble from './components/chatbubble';
 import datepicker from 'js-datepicker';
@@ -415,8 +416,14 @@ $(document).on("mouseover", "#stars li", function (e) {
     return (
       <div>
           <div className="chat_btn_container position-fixed">
-              <button className="btn btn-primary border-25 border-0">{this.props.botName} <span className="badge badge-pill badge-danger unreadCount">1</span></button>
-          </div>
+          <button className="btn border-25 border-0">
+            <img src={chatIcon} width="60" />
+            <span className="badge badge-pill badge-danger unreadCount">1</span>
+          </button>        
+        </div>
+        <div class="chat-heading arrow-bottom">
+          <h5> {this.props.botName}</h5>
+       </div>
           <div className="chat_box_container position-relative">
               <div className="col-md-12 p-0 h-100">
                   <div className="panel panel-primary">
