@@ -9,13 +9,16 @@
  }
  
  .upload_btn {
-  border: 1px solid #131212;
-  color: #000;
+  border: 1px solid #00bbff;
+  color: #00bbff;;
   background-color: white;
   padding: 5px 15px;
   border-radius: 8px;
   font-size: 15px;
   font-weight: bold;
+  position: relative;
+  /* z-index: 1; */
+  cursor: pointer !important;
  }
  
  .upload-btn-wrapper input[type=file] {

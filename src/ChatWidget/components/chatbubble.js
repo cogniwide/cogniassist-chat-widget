@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './chatbubble.css';
 import Calendar from 'react-calendar';
+import Cloud from '../assets/cloud-upload.png'
 
 class ChatBubble extends Component {
 
@@ -107,7 +108,7 @@ class ChatBubble extends Component {
                     <span className="mt-2 d-flex flex-column">
                         <div className="attachment">
                             <div className="upload-btn-wrapper">
-                                <button className="upload_btn"><img className="upload-icon" src="https://cogniwide.github.io/cogniassist-chat-widget/public/assets/upload.svg" alt="Upload file" />Upload a file</button>
+                                <button className="upload_btn"><img className="upload-icon" src={Cloud} alt="Upload file" />Upload a file</button>
                                 <input type="file" name="myfile" onChange={()=>{this.props.parent.sendText("File Uploaded Successfully");}} />
                             </div>
                         </div>
