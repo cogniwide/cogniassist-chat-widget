@@ -74,7 +74,7 @@ class ChatBubble extends Component {
                     </span>
                 }
             
-                {'star_rating' in this.props.message &&  
+                {'rating' in this.props.message &&  
                     <div className='rating-stars text-center'>
                         <ul id='stars'>
                             <li className='star' title='Poor' data-value='1' onClick={()=> this.props.parent.sendText("1 Rating")} >
