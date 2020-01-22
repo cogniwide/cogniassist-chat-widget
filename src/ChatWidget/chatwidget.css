@@ -208,7 +208,8 @@ li.left .btn:hover::before {
     transition: all 1s ease-in-out;
 }
 
-.panel-body ul {
+
+.panel-body ul.chat {
     max-width: 550px;
     margin: 0px auto 40px auto;
     padding: 20px 15px;
@@ -856,3 +857,9 @@ li.star:before {
     border-bottom: none;
     box-shadow: 1px 2px 5px rgba(68,68,68,0.6);
   } */
+
+
+
+.chat-body ul {
+    padding: 20px 15px;
+}
