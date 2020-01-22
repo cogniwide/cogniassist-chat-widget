@@ -143,7 +143,7 @@ class ChatWidget extends Component {
 
 
   createOrRetriveSenderId() {
-    return this.guid()
+    return "default"
   }
 
   componentDidMount() {
@@ -313,16 +313,6 @@ $(document).on("mouseover", "#stars li", function (e) {
     }
   };
 
-  guid() {
-    function s4() {
-      return Math.floor((1 + Math.random()) * 0x10000)
-        .toString(16)
-        .substring(1);
-    }
-    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-      s4() + '-' + s4() + s4() + s4();
-  }
-
   addMessage(message,user){
     const msg={
       text: message,
@@ -361,23 +351,23 @@ $(document).on("mouseover", "#stars li", function (e) {
       payload["message"]= query;
     }
 
-    // let dummyResponse = this.dummyRequest()
-    // this.renderResponse(dummyResponse);
+    let dummyResponse = this.dummyRequest()
+    this.renderResponse(dummyResponse);
 
-    this.loading(true);
+    // this.loading(true);
 
-    fetch(this.props.botURL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    })
-    .then(response=> response.json())
-    .then(response=> {
-      this.loading(false);
-      console.log(response)
-      this.renderResponse(response)
+    // fetch(this.props.botURL, {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify(payload),
+    // })
+    // .then(response=> response.json())
+    // .then(response=> {
+    //   this.loading(false);
+    //   console.log(response)
+    //   this.renderResponse(response)
 
-    });
+    // });
 
   }
 
@@ -453,7 +443,7 @@ $(document).on("mouseover", "#stars li", function (e) {
           </button>        
         </div>
         { !this.state.opened &&
-          <div class="chat-heading arrow-bottom">
+          <div className="chat-heading arrow-bottom">
           <h5> {this.props.botWelcomeMessage}</h5>
           </div>
         }
@@ -519,11 +509,11 @@ $(document).on("mouseover", "#stars li", function (e) {
                                   className="textInput" 
                                   placeholder="Type an answer"
                                   ></textarea>
-                              <pre className={className}></pre>
+                              <pre className={className}  onClick={()=>{ this.sendText()}}></pre>
                               <pre className="mic-btn text-white"></pre>
                               <pre className="cal-btn text-white datepickerIcon"></pre>
                           </div>
-                           <div class="power-by">
+                           <div className="power-by">
                              <span>Powered by <a href="#">Cogniwide</a></span>
                           </div>
                       </div>
