@@ -467,7 +467,7 @@ $(document).on("mouseover", "#stars li", function (e) {
                           </div>
                       </div>
                       <div className="panel-body">
-                        <div className="banner" style={bannerStyle}>
+                      <div className="banner" style={bannerStyle}>
                           {this.props.bannerText}
                         </div>
                             <ul className="chat">
@@ -488,7 +488,7 @@ $(document).on("mouseover", "#stars li", function (e) {
                                 <li data-name="smile"><img src={smileEmoji} width="50" /></li>
                               </ul>
                             </div>
-                      </div>
+                        </div>
                       <div className="panel-footer position-fixed">
                           <div className="suggestion_box bg-white">
                               <div className="d-flex flex-row quick-replies">
