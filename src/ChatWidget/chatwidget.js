@@ -438,6 +438,10 @@ $(document).on("mouseover", "#stars li", function (e) {
       width: '20px'
     }
     const bannerStyle = {backgroundImage: "url("+this.props.bannerURL+")"}
+    let className = 'send-button text-white';
+    if (this.state.userMessage.length) {
+      className += ' send-active';
+    }
     return (
       <div>
           <div className="chat_btn_container position-fixed">
@@ -515,9 +519,12 @@ $(document).on("mouseover", "#stars li", function (e) {
                                   className="textInput" 
                                   placeholder="Type an answer"
                                   ></textarea>
-                              <pre className="send-button text-white"></pre>
+                              <pre className={className}></pre>
                               <pre className="mic-btn text-white"></pre>
                               <pre className="cal-btn text-white datepickerIcon"></pre>
+                          </div>
+                           <div class="power-by">
+                             <span>Powered by <a href="#">Cogniwide</a></span>
                           </div>
                       </div>
                   </div>

@@ -40,7 +40,11 @@ p {
 .panel-footer .btn:focus {
     color: #00bbff !important;
 }
-
+li.left .btn, .btn{
+    border-radius: 10px !important;
+    font-size: 14px;
+    line-height: 19px !important;
+}
 .left .btn:hover {
     border-color: #00bbff !important;
 }
@@ -180,7 +184,7 @@ li.left .btn::before {
     position: absolute;
     width: 10px;
     height: 10px;
-    background: #ccc;
+    background: #00bbff;
     border-radius: 50%;
     display: block;
     top: 50%;
@@ -198,7 +202,7 @@ li.left .btn:hover::before {
     right: 0;
     bottom: 0;
     width: 100%;
-    margin-bottom: 45px;
+    margin-bottom: 70px;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     transition: all 1s ease-in-out;
@@ -258,24 +262,28 @@ li.left .btn:hover::before {
 pre {
     position: absolute;
     cursor: pointer;
-    width: 50px;
+    width: 35px;
     z-index: 999;
     right: 70px;
     top: 0;
     padding: 15px;
     margin-top: 0px;
     height: 100%;
-    background-image: url('assets/send-button.png');
+    background-image: url('assets/send.png');
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 24px;
-    opacity: 0.25;
+    background-size: 22px;
+    opacity: 0.6;
+}
+ pre.send-active{
+    opacity: 1;
+    background-image: url('assets/active-send.png');
 }
 
 pre.mic-btn {
     position: absolute;
     cursor: pointer;
-    width: 50px;
+    width: 35px;
     z-index: 999;
     right: 40px;
     top: 0;
@@ -285,24 +293,24 @@ pre.mic-btn {
     background-image: url('assets/mic.png');
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 24px;
+    background-size: 22px;
     opacity: 0.6;
 }
 
 pre.cal-btn {
     position: absolute;
     cursor: pointer;
-    width: 50px;
+    width: 35px;
     z-index: 999;
     right: 10px;
     top: 0;
     padding: 15px;
     margin-top: 0px;
     height: 100%;
-    background-image: url('assets/datepicker.svg');
+    background-image: url('assets/calendar.png');
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 24px;
+    background-size: 22px;
     opacity: 0.6;
 }
 
@@ -323,7 +331,7 @@ pre.cal-btn {
     padding-top: 5px;
     font-size: 12px;
     font-weight: 400;
-    color: #17a2b8;
+    color: #808080c9;
 }
 
 .chat li.right {
@@ -339,7 +347,7 @@ pre.cal-btn {
     padding-top: 5px;
     font-size: 12px;
     font-weight: 400;
-    color: #17a2b8;
+    color: #808080c9;
 }
 
 .datetimepicker td,
@@ -630,7 +638,7 @@ span.unreadCount {
 .badge{
     width: 23px;
     height: 23px;
-    padding: 0.35em 0.4em;
+    padding: 5px;
 }
 .btn-group a.restart {
     width: 20px;
@@ -638,10 +646,7 @@ span.unreadCount {
     margin-top: 5px !important;
 }
 
-.react-calendar {
-    width: 270px !important;
-    /* padding: 8px; */
-}
+
 
 .react-calendar__navigation button {
     min-width: 30px !important;
@@ -655,43 +660,94 @@ span.unreadCount {
 .react-calendar__tile--active {
     background: #00bbff !important;
     color: white;
-    border-radius: 8px;
+    border-radius: 50%;
+}
+.btn-outline-info {
+    color: #00bbff;
+    border-color: #00bbff;
 }
 
 .react-calendar__tile {
-    padding: 0.5em 0.5em !important;
+    padding: 9px !important;
 }
 
 .react-calendar {
-    border: 1px solid #00bbff;
+    width: 270px !important;
+    border: 0 !important;
     border-radius: 8px;
     padding-bottom: 10px;
+    box-shadow: 0 5px 40px rgba(0, 0, 0, .16) !important;
 }
 
 .react-calendar__tile:enabled:hover,
 .react-calendar__tile:enabled:focus {
     background-color: #e6e6e6;
-    border-radius: 8px;
+    border-radius: 50%;
 }
-
+.react-calendar__navigation button:enabled:hover, .react-calendar__navigation button:enabled:focus {
+    background-color: transparent;
+}
 audio {
     width: 250px;
     height: 35px;
     margin-top: 5px;
 }
-
-.qs-datepicker .qs-square.qs-day {
-    font-weight: 400 !important;
+.qs-datepicker .qs-controls{
+    padding-top: 8px !important;
+    background: transparent !important;
 }
-
-.qs-datepicker .qs-square.qs-active {
+.qs-square.qs-num{
+    font-size: 14px !important;
+}
+.qs-datepicker .qs-square{
+    padding: 10px !important;
+    height: 2em !important;
+    border-radius: 50%;
+}
+.qs-datepicker .qs-square.qs-day {
+    font-weight: 500 !important;
+    font-size: 15px;
+    padding: 5px;
+    color: #999;
+}
+.qs-datepicker-container{
+    border: 0px !important;
+    border-radius: 8px;
+    box-shadow: 0 5px 40px rgba(0, 0, 0, .16) !important;
+    padding: 3px;
+}
+.qs-datepicker .qs-square.qs-active, .qs-datepicker .qs-square.qs-current  {
     background: #00bbff !important;
+    border: 1px solid #00bbff;
+    border-radius: 50%;
+    padding: 15px !important;
     color: #fff;
+}
+.qs-datepicker .qs-arrow:after {
+    content: "";
+    border: .500em solid rgba(0,0,0,0);
+}
+.qs-datepicker .qs-arrow:hover {
+    background: transparent !important;
+}
+.qs-datepicker .qs-arrow.qs-left:after {
+    border-right-color: #00bbff !important;
+    -webkit-transform: translate(65%,-65%);
+    -ms-transform: translate(65%,-65%);
+    transform: translate(65%,-65%) !important;
+}
+.qs-datepicker .qs-arrow.qs-right:after {
+    border-left-color:  #00bbff !important;
+    -webkit-transform: translate(-65%,-65%);
+    -ms-transform: translate(-65%,-65%);
+    transform: translate(-65%,-65%)!important;
 }
 
 .qs-datepicker .qs-square:not(.qs-empty):not(.qs-disabled):not(.qs-day):not(.qs-active):hover {
-    background: #00bbff !important;
-    color: #fff;
+   background: #e6e6e6 !important;
+   border:1px solid #e6e6e6;
+    border-radius: 50%;
+    padding: 15px;
 }
 
 .panel-heading span {
@@ -770,6 +826,18 @@ li.star:before {
      box-shadow: rgba(43, 45, 56, 0.15) 0px 0px 7px 0px !important;
      max-width: 300px;
      margin-left: 5px;
+}
+.power-by {
+    text-align: center;
+    padding: 10px 0;
+   
+}
+.power-by span{
+    font-size: 13px;
+    color: #000000ab;
+}
+.power-by span a{
+    color: #00b8fc;
 }
 /*  */
 /* li.left .btn,.btn {
