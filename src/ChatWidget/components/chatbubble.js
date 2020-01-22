@@ -47,9 +47,7 @@ class ChatBubble extends Component {
                 
             {('text' in this.props.message) &&
                     <div className="content">
-                        <p>
-                            {this.props.message.text}
-                        </p>
+                        <p dangerouslySetInnerHTML={{ __html:this.props.message.text}}></p>
                     </div>
             }
             
@@ -117,7 +115,10 @@ class ChatBubble extends Component {
 
             </div>
         </div>
-        <span className="timeStamp">1:35 AM</span>
+        {this.props.aiIndex == this.props.last_response_count &&
+             <span className="timeStamp">1:35 AM</span>
+        }
+       
     </li>
     )
   }

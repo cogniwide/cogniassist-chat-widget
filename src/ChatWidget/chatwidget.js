@@ -23,7 +23,8 @@ class ChatWidget extends Component {
       quick_replies:[],
       loading: false,
       opened: false,
-      unread:1
+      unread:1,
+      last_response_count:0
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -153,8 +154,12 @@ class ChatWidget extends Component {
     $('.right').hide();
     $('.panel-footer').show();
     $('.left.initial_show').show(450);
-    $('.close').click(function () {
+
+    $('.close').click( ()=> {
         $('.chat_box_container').hide(1000).removeClass('chat_box_active');
+        this.setState({
+          opened: false
+        })
     });
 
     $('.see_next').click(function () {
@@ -351,34 +356,37 @@ $(document).on("mouseover", "#stars li", function (e) {
       payload["message"]= query;
     }
 
-    let dummyResponse = this.dummyRequest()
-    this.renderResponse(dummyResponse);
+    // let dummyResponse = this.dummyRequest()
+    // this.renderResponse(dummyResponse);
 
-    // this.loading(true);
+    this.loading(true);
 
-    // fetch(this.props.botURL, {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(payload),
-    // })
-    // .then(response=> response.json())
-    // .then(response=> {
-    //   this.loading(false);
-    //   console.log(response)
-    //   this.renderResponse(response)
+    fetch(this.props.botURL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+    .then(response=> response.json())
+    .then(response=> {
+      this.loading(false);
+      console.log(response)
+      this.renderResponse(response)
 
-    // });
+    });
 
   }
 
   renderResponse(responses){
     let messages =[]
     let quick_replies =[]
+    this.setState({
+      last_response_count: responses.length
+    })
     responses.forEach(response=>{
       const msg={
         ...response,
         "user":"ai"
-      };
+      }; 
       if ("quick_replies" in response)
       {
         quick_replies.push(...response["quick_replies"]) 
@@ -414,7 +422,16 @@ $(document).on("mouseover", "#stars li", function (e) {
           $('.panel-body .feedback').show();
         }
         return (
-          <ChatBubble botIcon={this.props.botIcon} parent={this} message={e}  index={index}  key={index} user={e.user} avatar={aiIndex==1}/>
+          <ChatBubble 
+            botIcon={this.props.botIcon} 
+            parent={this} message={e}  
+            index={index} 
+            last_index={this.state.conversation}  
+            key={index} 
+            user={e.user} 
+            last_response_count={this.state.last_response_count} 
+            aiIndex={aiIndex}
+            avatar={aiIndex==1}/>
         );
       }
     );
@@ -442,9 +459,9 @@ $(document).on("mouseover", "#stars li", function (e) {
             }
           </button>        
         </div>
-        { !this.state.opened &&
+        { (this.state.opened == false) &&
           <div className="chat-heading arrow-bottom">
-          <h5> {this.props.botWelcomeMessage}</h5>
+            <h5> {this.props.botWelcomeMessage}</h5>
           </div>
         }
 
