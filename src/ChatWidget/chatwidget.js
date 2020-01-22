@@ -351,23 +351,23 @@ $(document).on("mouseover", "#stars li", function (e) {
       payload["message"]= query;
     }
 
-    // let dummyResponse = this.dummyRequest()
-    // this.renderResponse(dummyResponse);
+    let dummyResponse = this.dummyRequest()
+    this.renderResponse(dummyResponse);
 
-    this.loading(true);
+    // this.loading(true);
 
-    fetch(this.props.botURL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    })
-    .then(response=> response.json())
-    .then(response=> {
-      this.loading(false);
-      console.log(response)
-      this.renderResponse(response)
+    // fetch(this.props.botURL, {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify(payload),
+    // })
+    // .then(response=> response.json())
+    // .then(response=> {
+    //   this.loading(false);
+    //   console.log(response)
+    //   this.renderResponse(response)
 
-    });
+    // });
 
   }
 
