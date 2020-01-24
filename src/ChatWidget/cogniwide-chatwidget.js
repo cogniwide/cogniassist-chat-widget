@@ -24,13 +24,15 @@ class ChatWidget extends Component {
       loading: false,
       opened: false,
       unread:1,
-      last_response_count:0
+      last_response_count:0,
+      showFeedback:false
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.sendText = this.sendText.bind(this);
     this.sendRequest = this.sendRequest.bind(this);
+    this.restartChat = this.restartChat.bind(this)
 
     this.messages=[
       [
@@ -147,6 +149,18 @@ class ChatWidget extends Component {
     return this.guid()
   }
 
+  restartChat(){
+    this.setState({
+      "sender_id":this.createOrRetriveSenderId(),
+      "conversation":[],
+      "quick_replies":[]
+    })
+    this.sendRequest({
+      "sender":this.state.sender_id,
+      "message":this.props.initialPayload
+    })
+  }
+
   guid() {
     function s4() {
       return Math.floor((1 + Math.random()) * 0x10000)
@@ -166,9 +180,8 @@ class ChatWidget extends Component {
     $('.left.initial_show').show(450);
 
     $('.close').click( ()=> {
-        $('.chat_box_container').hide(1000).removeClass('chat_box_active');
         this.setState({
-          opened: false
+          showFeedback: true
         })
     });
 
@@ -204,10 +217,12 @@ class ChatWidget extends Component {
 
     });
 
-    $('.feedback-emoji li').click(function () {
-        $('.chat_box_container').hide(1000).removeClass('chat_box_active');
-        $('.panel-body .banner, .panel-body ul.chat, .panel-footer').delay(2000).show();
-        $('.panel-body .feedback').delay(2000).hide();
+    $(document).on("click", ".feedback-emoji li",  (e)=> {
+      $(".chat_box_container").show(100).toggleClass('chat_box_active');
+        this.setState({
+          opened: false,
+          showFeedback:false
+        })
     });
 
   $(".mic-btn").click(()=> 
@@ -301,7 +316,10 @@ $(document).on("mouseover", "#stars li", function (e) {
         $('.chat_box_container .panel-footer #textInput').val($('.chat_box_container .panel-footer #textInput').val()+dateVal).trigger('change');
       }
     })
-    this.sendRequest(this.props.initialPayload)
+    this.sendRequest({
+      "sender":this.state.sender_id,
+      "message":this.props.initialPayload
+    })
   }
 
   getFormattedDate(date){
@@ -328,6 +346,16 @@ $(document).on("mouseover", "#stars li", function (e) {
     }
   };
 
+  chooseReply(title, payload){
+    this.addMessage(title,"human")
+    let reqJson= {
+      "message":payload,
+      "sender":this.state.sender_id
+    }
+    this.sendRequest(reqJson);
+    this.scrollToBottom();
+  }
+
   addMessage(message,user){
     const msg={
       text: message,
@@ -339,50 +367,39 @@ $(document).on("mouseover", "#stars li", function (e) {
   }
 
   sendText(message=null){
-    message = (message==null)?this.state.userMessage:message
-    const msg={
-      text: message,
-      user: 'human',
-    };
+    message = (message==null)?this.state.userMessage.trim():message;
+    this.addMessage(message,"human");
 
-    this.setState((prevState) => ({
-      conversation: [...prevState.conversation, msg],
-    }));
+    let reqJson = {
+      "message":message,
+      "sender":this.state.sender_id
+    }
     
-    this.sendRequest(message)
+    this.sendRequest(reqJson)
     this.setState({ userMessage: '' });
     this.scrollToBottom()
   }
 
 
-  sendRequest(query=null){
+  sendRequest(payload){
 
-    let payload={
-      sender: this.state.sender_id,
-    }
-    if(query==null){
-      payload["message"]= this.state.userMessage;
-    }else{
-      payload["message"]= query;
-    }
+    // let dummyResponse = this.dummyRequest()
+    // this.renderResponse(dummyResponse);
 
-    let dummyResponse = this.dummyRequest()
-    this.renderResponse(dummyResponse);
+    this.loading(true);
 
-    // this.loading(true);
+    fetch(this.props.botURL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+    .then(response=> response.json())
+    .then(response=> {
+      this.loading(false);
+      console.log(response)
+      this.renderResponse(response)
 
-    // fetch(this.props.botURL, {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(payload),
-    // })
-    // .then(response=> response.json())
-    // .then(response=> {
-    //   this.loading(false);
-    //   console.log(response)
-    //   this.renderResponse(response)
-
-    // });
+    });
 
   }
 
@@ -481,7 +498,7 @@ $(document).on("mouseover", "#stars li", function (e) {
                       <div className="panel-heading d-flex justify-content-between align-items-center px-2 bg-primary">
                           <span className="text-white font-weight-bold"> {this.props.botName}</span>
                           <div className="btn-group pull-right">
-                              <a href="#!" className="restart" style={restartStyle}>
+                              <a href="#!" className="restart" onClick={()=>this.restartChat()} style={restartStyle}>
                                   <img src={updateArrow} alt="refresh" className="img-responsive" width="15"/>
                               </a>
                               <button type="button" className="close" aria-label="Close" style={closeBtnStyle}>
@@ -497,31 +514,39 @@ $(document).on("mouseover", "#stars li", function (e) {
                       <div className="banner" style={bannerStyle}>
                           {this.props.bannerText}
                         </div>
-                            <ul className="chat">
-                              {chat}
-                              <li className="loading" style={{display: this.state.loading ? "block" : "none" }}>
-                                <div className="d-flex justify-content-start">
-                                  <div className="chat-body bubble clearfix flex-column">
-                                    <img src="https://cogniwide.github.io/cogniassist-chat-widget/public/cogniwide-assets/tenor.gif"/>
-                                  </div>
-                                </div>
-                              </li>
-                            </ul>
-                            <div className="feedback" style={{display: "none" }}>
-                              Feedback
-                              <ul className="feedback-emoji">
-                                <li data-name="worst"><img src={worstEmoji} width="50" /></li>
-                                <li data-name="normal"><img src={normalEmoji} width="50" /></li>
-                                <li data-name="smile"><img src={smileEmoji} width="50" /></li>
-                              </ul>
+                        {
+                          this.state.showFeedback == false &&
+                          <ul className="chat">
+                          {chat}
+                          <li className="loading" style={{display: this.state.loading ? "block" : "none" }}>
+                            <div className="d-flex justify-content-start">
+                              <div className="chat-body bubble clearfix flex-column">
+                                <img src="https://cogniwide.github.io/cogniassist-chat-widget/public/assets/tenor.gif"/>
+                              </div>
                             </div>
+                          </li>
+                          </ul>
+                        }
+
+                            {
+                              this.state.showFeedback &&
+                                <div className="feedback">
+                                Feedback
+                                <ul className="feedback-emoji">
+                                  <li data-name="worst"><img src={worstEmoji} width="50" /></li>
+                                  <li data-name="normal"><img src={normalEmoji} width="50" /></li>
+                                  <li data-name="smile"><img src={smileEmoji} width="50" /></li>
+                                </ul>
+                              </div>
+                            }
+
                         </div>
                       <div className="panel-footer position-fixed">
                           <div className="suggestion_box bg-white">
                               <div className="d-flex flex-row quick-replies">
                               {this.state.quick_replies.map((button,index)=> <button type="button" id="quick_reply_btn" key={index}
                                className="btn btn-outline-info text-left mx-2 see_all pl-4 bg-white"
-                               onClick={()=> this.sendText(button.title)}
+                               onClick={()=> this.chooseReply(button.title,button.payload)}
                                data={button}>{button.title}</button>
 )} 
                               </div>

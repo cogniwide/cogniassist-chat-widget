@@ -5,11 +5,19 @@ import Cloud from '../cogniwide-assets/cloud-upload.png'
 
 class ChatBubble extends Component {
 
-    state = {
-        date: new Date(),
-        loading: true,
-        showLoader: false
-      }
+    constructor(props) {
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+
+        this.state = {
+            date: new Date(),
+            loading: true,
+            showLoader: false
+          }
+
+    }
+
+
     onChange = date => {
         this.setState({ date });
     } 
@@ -19,6 +27,11 @@ class ChatBubble extends Component {
         let day = date.getDate().toString().padStart(2, '0');
         return month + '/' + day + '/' + year;
       }
+    handleClick(reply) {
+        const payload = reply.payload;
+        const title = reply.title;
+        this.props.parent.chooseReply(title, payload);
+    }
   render() {    
     if (this.props.user==='human')
         return (
@@ -66,7 +79,7 @@ class ChatBubble extends Component {
                 
                 {('buttons' in this.props.message) &&  
                     <span className="mt-2 d-flex flex-column">
-                        {this.props.message.buttons.map((button,index)=> <button onClick={()=> this.props.parent.sendText(button.title)} type="button" key={index} id="quick_reply_btn"
+                        {this.props.message.buttons.map((button,index)=> <button onClick={()=> this.handleClick(button)} type="button" key={index} id="quick_reply_btn"
                             className="btn btn-outline-info text-left my-2 see_all pl-4 bg-white" data={button.payload}>{button.title}</button>)} 
                             
                     </span>
@@ -75,19 +88,19 @@ class ChatBubble extends Component {
                 {'rating' in this.props.message &&  
                     <div className='rating-stars text-center'>
                         <ul id='stars'>
-                            <li className='star' title='Poor' data-value='1' onClick={()=> this.props.parent.sendText("1 Rating")} >
+                            <li className='star' title='Poor' data-value='1' onClick={()=> this.handleClick({"title":"1 Rating","payload":"1"})} >
                                 <i className='fa fa-star fa-fw'></i>
                             </li>
-                            <li className='star' title='Fair' data-value='2' onClick={()=> this.props.parent.sendText("2 Rating")} >
+                            <li className='star' title='Fair' data-value='2' onClick={()=> this.handleClick({"title":"2 Rating","payload":"2"})} >
                                 <i className='fa fa-star fa-fw'></i>
                             </li>
-                            <li className='star' title='Good' data-value='3' onClick={()=> this.props.parent.sendText("3 Rating")} >
+                            <li className='star' title='Good' data-value='3' onClick={()=> this.handleClick({"title":"3 Rating","payload":"3"})} >
                                 <i className='fa fa-star fa-fw'></i>
                             </li>
-                            <li className='star' title='Excellent' data-value='4' onClick={()=> this.props.parent.sendText("4 Rating")} >
+                            <li className='star' title='Excellent' data-value='4' onClick={()=> this.handleClick({"title":"4 Rating","payload":"4"})} >
                                 <i className='fa fa-star fa-fw'></i>
                             </li>
-                            <li className='star' title='WOW!!!' data-value='5' onClick={()=> this.props.parent.sendText("5 Rating")} >
+                            <li className='star' title='WOW!!!' data-value='5' onClick={()=> this.handleClick({"title":"5 Rating","payload":"5"})} >
                                 <i className='fa fa-star fa-fw'></i>
                             </li>
                         </ul>

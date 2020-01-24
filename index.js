@@ -6,6 +6,7 @@ const plugin = {
   init: (args) => {
     ReactDOM.render(
       <CogniAssistWidget
+        initialPayload={args.initialPayload}
         botName={args.botName}
         botWelcomeMessage={args.botWelcomeMessage}
         botIcon={args.botIcon}
