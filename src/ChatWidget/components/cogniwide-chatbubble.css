@@ -1,14 +1,14 @@
-.react-calendar {
+.cogniwidechat .react-calendar {
    width: 250px !important;
 }
 /* Attachment */
-.upload-btn-wrapper {
+.cogniwidechat .upload-btn-wrapper {
    position: relative;
    overflow: hidden;
    display: inline-block;
  }
  
- .upload_btn {
+ .cogniwidechat .upload_btn {
   border: 1px solid #00bbff;
   color: #00bbff;;
   background-color: white;
@@ -21,28 +21,28 @@
   cursor: pointer !important;
  }
  
- .upload-btn-wrapper input[type=file] {
+ .cogniwidechat .upload-btn-wrapper input[type=file] {
    font-size: 100px;
    position: absolute;
    left: 0;
    top: 0;
    opacity: 0;
  }
- .upload-icon{
+ .cogniwidechat .upload-icon{
   width: 20px;
   margin-right: 10px;
   vertical-align: bottom;
  }
 
-.right span.timeStamp {
+ .cogniwidechat .right span.timeStamp {
   position: absolute;
   right: 0;
 }
-li.star:before {
+.cogniwidechat li.star:before {
   content: '★ ';
   font-size: 30px;
   color: #d3d3d3;
 }
-li.star.hover:before, li.star.selected:before  {
+.cogniwidechat li.star.hover:before, .cogniwidechat li.star.selected:before  {
   color: #ffc107;
 }

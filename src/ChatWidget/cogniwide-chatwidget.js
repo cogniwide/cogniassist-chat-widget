@@ -477,7 +477,7 @@ $(document).on("mouseover", "#stars li", function (e) {
       className += ' send-active';
     }
     return (
-      <div>
+      <div className="cogniwidechat">
           <div className="chat_btn_container position-fixed">
           <button className="btn border-25 border-0">
             <img src={chatIcon} width="60" />
