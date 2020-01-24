@@ -1,7 +1,7 @@
  
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import ChatWidget from './ChatWidget/chatwidget';
+import ChatWidget from './ChatWidget/cogniwide-chatwidget';
 
 const CogniAssistWidget = forwardRef((props, ref) => {
   return (
