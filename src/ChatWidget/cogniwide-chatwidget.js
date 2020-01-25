@@ -383,23 +383,23 @@ $(document).on("mouseover", "#stars li", function (e) {
 
   sendRequest(payload){
 
-    let dummyResponse = this.dummyRequest()
-    this.renderResponse(dummyResponse);
+    // let dummyResponse = this.dummyRequest()
+    // this.renderResponse(dummyResponse);
 
-    // this.loading(true);
+    this.loading(true);
 
-    // fetch(this.props.botURL, {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(payload),
-    // })
-    // .then(response=> response.json())
-    // .then(response=> {
-    //   this.loading(false);
-    //   console.log(response)
-    //   this.renderResponse(response)
+    fetch(this.props.botURL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+    .then(response=> response.json())
+    .then(response=> {
+      this.loading(false);
+      console.log(response)
+      this.renderResponse(response)
 
-    // });
+    });
 
   }
 
@@ -559,7 +559,7 @@ $(document).on("mouseover", "#stars li", function (e) {
                                   onChange={this.handleChange}
                                   id="textInput" 
                                   className="textInput" 
-                                  placeholder="Type an answer"
+                                  placeholder="Type your query"
                                   ></textarea>
                               <pre className={className}  onClick={()=>{ this.sendText()}}></pre>
                               <pre className="mic-btn text-white"></pre>
