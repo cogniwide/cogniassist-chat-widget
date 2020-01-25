@@ -1,19 +1,17 @@
-* {
+.cogniwidechat {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     outline: none;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1;
+    background-color: #fff;
 }
 
 .cogniwidechat button:focus {
     outline: none;
     box-shadow: 0 0 0 0rem rgba(23, 162, 184, .0) !important;
-}
-
-body {
-    font-size: 14px;
-    font-family: 'Roboto', sans-serif;
-    line-height: 1;
 }
 
 .cogniwidechat img {
@@ -206,6 +204,7 @@ body {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     transition: all 1s ease-in-out;
+    background-color: #fff;
 }
 
 
@@ -214,7 +213,7 @@ body {
     margin: 0px auto 40px auto;
     padding: 20px 15px;
     position: relative;
-    top: 40px;
+    /* top: 40px; */
     /* z-index: -1; */
 }
 
@@ -626,7 +625,7 @@ animation-name: fadeInUp;
     padding: 15px;
     text-shadow: 2px 2px 2px #000;
     position: relative;
-    z-index: -1;
+    /* z-index: -1; */
 }
 
 
