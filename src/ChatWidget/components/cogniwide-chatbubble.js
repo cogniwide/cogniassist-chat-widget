@@ -129,7 +129,9 @@ class ChatBubble extends Component {
             </div>
         </div>
         {this.props.aiIndex == this.props.last_response_count &&
-             <span className="timeStamp">1:35 AM</span>
+            <div className="chatstimes">
+               <span className="timeStamp">1:35 AM</span>
+            </div>
         }
        
     </li>

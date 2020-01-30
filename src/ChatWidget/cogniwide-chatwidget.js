@@ -7,6 +7,7 @@ import smileEmoji from './cogniwide-assets/smile.svg'
 import normalEmoji from './cogniwide-assets/normal.svg'
 import worstEmoji from './cogniwide-assets/worst.svg'
 import chatIcon from './cogniwide-assets/chat-icon.png'
+import chatlogo from './cogniwide-assets/chat-headlogo.png'
 
 import ChatBubble from './components/cogniwide-chatbubble';
 import datepicker from 'js-datepicker';
@@ -25,7 +26,8 @@ class ChatWidget extends Component {
       opened: false,
       unread:1,
       last_response_count:0,
-      showFeedback:false
+      showFeedback: false,
+      fullScreeen: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -160,7 +162,11 @@ class ChatWidget extends Component {
       "message":this.props.initialPayload
     })
   }
-
+  fullScreeenChat(){
+    this.setState({
+      "fullScreeen" : !this.state.fullScreeen
+    })
+  }
   guid() {
     function s4() {
       return Math.floor((1 + Math.random()) * 0x10000)
@@ -476,30 +482,40 @@ $(document).on("mouseover", "#stars li", function (e) {
     if (this.state.userMessage.length) {
       className += ' send-active';
     }
+    let parentClass = "cogniwidechat";
+    if (this.state.fullScreeen) {
+      parentClass += ' full-screen';
+    }
     return (
-      <div className="cogniwidechat">
+      <div className={parentClass}>
           <div className="chat_btn_container position-fixed">
           <button className="btn border-25 border-0">
             <img src={chatIcon} width="60" />
             {this.state.unread > 0 &&
               <span className="badge badge-pill badge-danger unreadCount">1</span>
             }
-          </button>        
-        </div>
-        { (this.state.opened == false) &&
+          </button>  
+          { (this.state.opened == false) &&
           <div className="chat-heading arrow-bottom">
             <h5> {this.props.botWelcomeMessage}</h5>
           </div>
         }
+        </div>
+       
 
           <div className="chat_box_container position-relative">
               <div className="col-md-12 p-0 h-100">
                   <div className="panel panel-primary">
                       <div className="panel-heading d-flex justify-content-between align-items-center px-2 bg-primary">
-                          <span className="text-white font-weight-bold"> {this.props.botName}</span>
+                          <span className="text-white font-weight-bold"><img src={chatlogo} width="33"/> {this.props.botName}</span>
                           <div className="btn-group pull-right">
                               <a href="#!" className="restart" onClick={()=>this.restartChat()} style={restartStyle}>
                                   <img src={updateArrow} alt="refresh" className="img-responsive" width="15"/>
+                              </a>
+                              <a href="#!" className="expand" onClick={()=>this.fullScreeenChat()} >
+                                <svg id="Solid" height="16" viewBox="0 0 512 512" width="16" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="m464 488h-416a24 24 0 0 1 -24-24v-416a24 24 0 0 1 24-24h176a24 24 0 0 1 0 48h-152v368h368v-152a24 24 0 0 1 48 0v176a24 24 0 0 1 -24 24zm-40-400h-33.941l-103.03 103.029a24 24 0 0 0 33.942 33.942l103.029-103.03zm64 88v-128a24 24 0 0 0 -24-24h-128a24 24 0 0 0 0 48h104v104a24 24 0 0 0 48 0z" />
+                                </svg>
                               </a>
                               <button type="button" className="close" aria-label="Close" style={closeBtnStyle}>
                                   <svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -512,7 +528,7 @@ $(document).on("mouseover", "#stars li", function (e) {
                       </div>
                       <div className="panel-body">
                       <div className="banner" style={bannerStyle}>
-                          {this.props.bannerText}
+                          <h3>{this.props.bannerText}</h3>
                         </div>
                         {
                           this.state.showFeedback == false &&
