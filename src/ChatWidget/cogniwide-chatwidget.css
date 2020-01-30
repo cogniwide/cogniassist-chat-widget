@@ -38,10 +38,11 @@
 .cogniwidechat .panel-footer .btn:focus {
     color: #00bbff !important;
 }
-.cogniwidechat li.left .btn, .btn{
+.cogniwidechat li.left .btn, .cogniwidechat .btn{
     border-radius: 10px !important;
     font-size: 14px;
     line-height: 19px !important;
+    padding: 6px 15px;
 }
 .cogniwidechat .left .btn:hover {
     border-color: #00bbff !important;
@@ -60,7 +61,7 @@
     fill: #fff;
 }
 .cogniwidechat .expand svg {
-    opacity: 0.80;
+    opacity: 0.50;
 }
 
 .cogniwidechat .expand svg:hover{
@@ -438,29 +439,7 @@
     padding-bottom: 10px;
 }
 
-@media(max-width:1110px) {
-    /* .chat_box_container {
-      max-height: 350px;
-  }
 
-  .panel-body {
-      height: 250px;
-  } */
-}
-
-@media(max-width: 470px) {
-    .cogniwidechat .chat_box_container {
-        width: 100%;
-        right: 0;
-        max-height: 100%;
-        height: 100%;
-        bottom: 0;
-        z-index: 9999999999999;
-    }
-    .cogniwidechat .chat-heading{
-        width: 240px !important;
-    }
-}
 
 .cogniwidechat .suggestion_box::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -549,6 +528,7 @@ animation-name: fadeInUp;
 .cogniwidechat .quick-replies {
     flex-flow: wrap;
     justify-content: flex-end;
+    padding-right: 20px;
 }
 
 .cogniwidechat .quick-replies>* {
@@ -663,6 +643,7 @@ animation-name: fadeInUp;
     width: 20px;
     margin-right: 5px;
     margin-top: 5px !important;
+   
 }
 
 
@@ -683,7 +664,7 @@ animation-name: fadeInUp;
 }
 .cogniwidechat .btn-outline-info {
     color: #00bbff;
-    border-color: #00bbff;
+    border: 1px solid #00bbff;
 }
 
 .cogniwidechat .react-calendar__tile {
@@ -781,7 +762,7 @@ animation-name: fadeInUp;
     padding-left: 0;
     font-size: 20px;
     text-align: center;
-    margin: 100px auto;
+    margin: 10px auto;
 }
 
 .cogniwidechat ul.feedback-emoji {
@@ -906,3 +887,43 @@ animation-name: fadeInUp;
     right: auto;
     left: 40px;
   }
+  @media(max-width:1110px) {
+    /* .chat_box_container {
+      max-height: 350px;
+  }
+
+  .panel-body {
+      height: 250px;
+  } */
+}
+@media(max-width:1366px){
+    .cogniwidechat .feedback {
+        padding-top: 45px;
+    }
+}
+@media(max-width:1024px){
+    .cogniwidechat .feedback {
+        padding-top: 75px;
+    }
+}
+@media(max-width: 470px) {
+    .cogniwidechat .chat_box_container {
+        width: 100%;
+        right: 0;
+        max-height: 100%;
+        height: 100%;
+        bottom: 0;
+        z-index: 9999999999999;
+    }
+    .cogniwidechat .chat-heading{
+        width: 240px !important;
+        right: 85px;
+    }
+   
+    .cogniwidechat .feedback{
+        margin: 80px auto;
+    }
+    .cogniwidechat .chat-heading h5{
+        font-size: 15px;
+    }
+}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap/dist/css/bootstrap.css';
 import './cogniwide-chatwidget.css';
 import updateArrow from './cogniwide-assets/update-arrow.png'
 import smileEmoji from './cogniwide-assets/smile.svg'
@@ -404,6 +404,9 @@ $(document).on("mouseover", "#stars li", function (e) {
     .then(response=> {
       this.loading(false);
       console.log(response)
+      if(response.length==1){
+        response[index]['lastmessage'] = true;
+      }
       this.renderResponse([response[0]])
       if(response.length>1){
         this.loading(true);
@@ -411,6 +414,7 @@ $(document).on("mouseover", "#stars li", function (e) {
           setTimeout(() => {
             if(index==(response.length -1)){
               this.loading(false);
+              response[index]['lastmessage'] = true;
             }
             this.renderResponse([response[index]])
           }, (index * this.state.delay));

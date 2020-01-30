@@ -2,6 +2,8 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import ChatWidget from './ChatWidget/cogniwide-chatwidget';
+import botAvator from './ChatWidget/cogniwide-assets/bot-avator.png'
+import chatbotBanner from './ChatWidget/cogniwide-assets/chatbot-banner.jpg'
 
 const CogniAssistWidget = forwardRef((props, ref) => {
   return (
@@ -32,9 +34,9 @@ CogniAssistWidget.defaultProps = {
     initialPayload:"/default/welcome",
     botName: 'CogniAssist',
     botWelcomeMessage: "Hey there, I'm here to assist you with any doubts you migth have.",
-    botIcon: 'https://cogniwide.github.io/cogniassist-chat-widget/public/assets/user.png',
+    botIcon: botAvator,
     botURL: 'http://localhost:8080/webhooks/rest/webhook/',
-    bannerURL: null,
+    bannerURL: chatbotBanner,
     bannerText:""
   };
 
