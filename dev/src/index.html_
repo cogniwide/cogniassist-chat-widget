@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+
+    <title>Cogniwide</title>
+    <meta name="description" content="ARMOUR YOUR BUSINESS IN THE DIGITAL ERA, YOUR TECHNOLOGY PARTNER IN THE INDUSTRIAL REVOLUTION 4.0">
+    <meta name="keywords" content="cogniwide, 5g, Telecom, Financial Services, Healthcare, Insurance, Retail & Logistics, E-Governance, Consultation Services, Tailor made solutions, Institutionalize Digital Transformation, Digital Transformation, Design Thinking, DevSecOps, Automation, AI for business, Cloud, Blockchain, Enterprise Analytics, Internet of things, Enrich Customer Experience, Lower The Cost Of Operations, New Business Revenue Lines, Improve Employee Productivity, robotic process automation, artificial intelligence">
+
+    <!-- Google / Search Engine Tags -->
+    <meta itemprop="name" content="Cogniwide">
+    <meta itemprop="description" content="ARMOUR YOUR BUSINESS IN THE DIGITAL ERA, YOUR TECHNOLOGY PARTNER IN THE INDUSTRIAL REVOLUTION 4.0">
+    <meta itemprop="keywords" content="cogniwide, 5g, Telecom, Financial Services, Healthcare, Insurance, Retail & Logistics, E-Governance, Consultation Services, Tailor made solutions, Institutionalize Digital Transformation, Digital Transformation, Design Thinking, DevSecOps, Automation, AI for business, Cloud, Blockchain, Enterprise Analytics, Internet of things, Enrich Customer Experience, Lower The Cost Of Operations, New Business Revenue Lines, Improve Employee Productivity, robotic process automation, artificial intelligence">
+    <meta itemprop="image" content="https://cogniwide.com/assets/images/cogniwide-logo.png">
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://cogniwide.com">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Cogniwide">
+    <meta property="og:description" content="ARMOUR YOUR BUSINESS IN THE DIGITAL ERA, YOUR TECHNOLOGY PARTNER IN THE INDUSTRIAL REVOLUTION 4.0">
+    <meta property="og:image" content="https://cogniwide.com/assets/images/cogniwide-logo.png">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cogniwide">
+    <meta name="twitter:description" content="ARMOUR YOUR BUSINESS IN THE DIGITAL ERA, YOUR TECHNOLOGY PARTNER IN THE INDUSTRIAL REVOLUTION 4.0">
+    <meta name="twitter:image" content="https://cogniwide.com/assets/images/cogniwide-logo.png">
+
+    <link rel="icon" type="image/png" href="https://cogniwide.com/assets/images/tab-ico.png">
+    <link rel="stylesheet" href="https://cogniwide.com/assets/tether/tether.min.css">
+    <link rel="stylesheet" href="https://cogniwide.com/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cogniwide.com/assets/bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="https://cogniwide.com/assets/bootstrap/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="https://cogniwide.com/assets/socicon/css/styles.css">
+    <link rel="stylesheet" href="https://cogniwide.com/assets/dropdown/css/style.css">
+    <link rel="stylesheet" href="https://cogniwide.com/assets/theme/css/style.css">
+    <link rel="stylesheet" href="https://cogniwide.com/assets/web/assets/mobirise-icons/mobirise-icons.css">
+    <link rel="stylesheet" href="https://cogniwide.com/assets/cogniwide/css/mbr-additional.css" type="text/css">
+
+</head>
+
+<body>
+    <section class="menu cid-qTkzRZLJNu" once="menu" id="cogMenu">
+        <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm bg-color transparent">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="menu-logo">
+                <div class="navbar-brand">
+                    <span class="navbar-caption-wrap"><a class="navbar-caption display-7" href="index.html">
+                     Cogniwide</a></span>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
+                    <li class="nav-item">
+                        <a class="nav-link link display-4" href="#header2-4" tabindex="0">
+                     Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle display-4" href="javascript:void(0);" id="navbarDropdown" role="button" data-toggle="industries" aria-haspopup="true" aria-expanded="false">
+                     Products
+                  </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="aisuite.html">AI Suite</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle display-4" href="#industries" id="navbarDropdown" role="button" data-toggle="industries" aria-haspopup="true" aria-expanded="false">Industries</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="telecom.html">Telecom</a>
+                            <a class="dropdown-item" href="fintech.html">Financial Services</a>
+                            <a class="dropdown-item" href="healthcare.html">Healthcare</a>
+                            <a class="dropdown-item" href="insurance.html">Insurance</a>
+                            <a class="dropdown-item" href="retaillog.html">Retail & Logistics</a>
+                            <a class="dropdown-item" href="egov.html">E-Governance</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link display-4" href="#cogServices" tabindex="0">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link display-4" href="#techServices" tabindex="0">Technologies</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle display-4" href="#aboutus" id="navbarDropdown" role="button" data-toggle="aboutus" aria-haspopup="true" aria-expanded="false">
+                     About Us
+                  </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#teamMembers">Our Team</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a class="nav-link link display-4" href="#contactus" tabindex="0">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+
+    <section id="header2-4">
+        <div id="carouselExampleCaptions" class="carousel slide cogniwide-carousel" data-ride="carousel" data-interval="18000">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="1" class=""></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="https://cogniwide.com/assets/images/background4.jpg" data-holder-rendered="true">
+                    <div class="carousel-caption text-left top-30">
+                        <h3 class="mbr-section-title mbr-bold pb-1 mbr-fonts-style display-1a bdr-bottom-blue">COGNIWIDE AI
+                     SUITE</h3>
+                        <p class="mbr-text pb-3 mbr-fonts-style display-2">
+                            Transform Your Products And Services using our AI Enterprise Suite in
+                            <a href="#industries" class="text-white">&nbsp;
+                        <span class="industiresList ml-m5"></span>
+                     </a>
+                        </p>
+                        <a href="aisuite.html" type="button" class="btn btn-primary btn-sm m-0">Explore Now</a>
+                    </div>
+
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="https://cogniwide.com/assets/images/banner-bg.jpg" data-holder-rendered="true">
+                    <div class="carousel-caption top-42">
+                        <h3 class="mbr-section-title mbr-bold pb-1 mbr-fonts-style display-1a  bdr-bottom-blue">Armour your
+                     business in the
+                     digital Era</h3>
+                        <p class="align-center mbr-text pb-3 mbr-fonts-style display-5">YOUR TECHNOLOGY PARTNER IN THE INDUSTRIAL REVOLUTION 4.0</p>
+                    </div>
+                </div>
+
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </section>
+
+    <section class="industries py-5" id="industries">
+        <div class="container py-5">
+            <h2 class="mbr-section-title align-center mbr-fonts-style display-2 pb-5 m-0">
+            Industries
+         </h2>
+            <div class="row align-center pb-5">
+                <div class="col-lg-2 col-md-6">
+                    <a class="card-link" href="telecom.html" target="_self">
+                        <div class="card col-12 p-3">
+                            <div class="card-img-top py-4">
+                                <span class="mbr-iconfont mbri-globe-2"></span>
+                            </div>
+                            <div class="card-body p-0 px-0">
+                                <h6 class="indsubtle display-7">Telecom</h6>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-2  col-md-6">
+                    <a class="card-link" href="fintech.html" target="_self">
+                        <div class="card col-12 p-3">
+                            <div class="card-img-top py-4">
+                                <span class="mbr-iconfont mbri-briefcase"></span>
+                            </div>
+                            <div class="card-body p-0 px-0">
+                                <h6 class="indsubtle display-7">Financial Services</h6>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-2  col-md-6">
+                    <a class="card-link" href="healthcare.html" target="_self">
+                        <div class="card col-12 p-3">
+                            <div class="card-img-top py-4">
+                                <span class="mbr-iconfont mbri-hearth"></span>
+                            </div>
+                            <div class="card-body p-0 px-0">
+                                <h6 class="indsubtle display-7">Healthcare</h6>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <a class="card-link" href="insurance.html" target="_self">
+                        <div class="card col-12 p-3">
+                            <div class="card-img-top py-4">
+                                <span class="mbr-iconfont mbri-user"></span>
+                            </div>
+                            <div class="card-body p-0 px-0">
+                                <h6 class="indsubtle display-7">Insurance</h6>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <a class="card-link" href="retaillog.html" target="_self">
+                        <div class="card col-12 p-3">
+                            <div class="card-img-top py-4">
+                                <span class="mbr-iconfont mbri-shopping-bag"></span>
+                            </div>
+                            <div class="card-body p-0 px-0">
+                                <h6 class="indsubtle display-7">Retail & Logistics</h6>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <a class="card-link" href="egov.html" target="_self">
+                        <div class="card col-12 p-3">
+                            <div class="card-img-top py-4">
+                                <span class="mbr-iconfont mbri-sites"></span>
+                            </div>
+                            <div class="card-body p-0 px-0">
+                                <h6 class="indsubtle display-7">E-Governance</h6>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cogServices py-5 bg-blue" id="cogServices">
+        <div class="container">
+            <h2 class="mbr-section-title text-white align-center mbr-fonts-style display-2 py-3 m-0">
+            Our Services
+         </h2>
+            <div class="row align-center pt-5 pb-4">
+                <div class="col-lg-4 col-md-4  d-flex">
+                    <div class="card col-12 p-0 mb-4 shadow-sm bg-white" tabindex="0">
+                        <div class="card-img2">
+                            <img class="card-img-top" src="https://cogniwide.com/assets/images/ourServices-bg-1.jpg" alt="">
+                        </div>
+                        <div class="card-body py-3 px-2">
+                            <h5 class="card-title">Consultation Services</h5>
+                            <p class="card-text">Harness the power of New Gen Technologies to Transform your Business through innovative solutions.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 d-flex">
+                    <div class="card col-12 p-0 mb-4 shadow-sm bg-white" tabindex="0">
+                        <div class="card-img2">
+                            <img class="card-img-top" src="https://cogniwide.com/assets/images/ourServices-bg-2.jpg" alt="">
+                        </div>
+                        <div class="card-body py-3 px-2">
+                            <h5 class="card-title">Tailor made solutions</h5>
+                            <p class="card-text">Choose from a wide range of products from Open Source, Enterprise grade, Gartner Magic Quadrant & Forrester Wave listed that suits you.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 d-flex">
+                    <div class="card col-12 p-0 mb-4 shadow-sm bg-white" tabindex="0">
+                        <div class="card-img2">
+                            <img class="card-img-top" src="https://cogniwide.com/assets/images/ourServices-bg-3.jpg" alt="">
+                        </div>
+                        <div class="card-body px-2 py-3">
+                            <h5 class="card-title">Institutionalize Digital Transformation</h5>
+                            <p class="card-text">With the Digital First approach, we help companies to establish a start up culture within the Corporate to drive the Digital Transformation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ourApproach py-5" id="ourApproach">
+        <div class="container">
+            <h2 class="mbr-section-title align-center mbr-fonts-style display-2 py-3 m-0">
+            Our Approach
+         </h2>
+            <div class="row align-center pt-5 pb-4">
+                <div class="col-lg-6  col-md-6  d-flex">
+                    <div class="card col-12 mb-4 bg-white" tabindex="0">
+                        <img class="card-img-top" src="https://cogniwide.com/assets/images/ourApproach-1.jpg" alt="">
+                        <div class="card-body px-2 py-3">
+                            <h5 class="card-title">Design Thinking</h5>
+                            <p class="card-text"> Human-Centered Design with continuous innovation</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 d-flex">
+                    <div class="card col-12 mb-4 bg-white" tabindex="0">
+                        <img class="card-img-top" src="https://cogniwide.com/assets/images/ourApproach-2.jpg" alt="">
+                        <div class="card-body px-2 py-3">
+                            <h5 class="card-title">DevSecOps</h5>
+                            <p class="card-text">Reengineer IT Using DevSecOps to adopt the Rapid Application Development</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="techServices py-5 bg-blue" id="techServices">
+        <div class="container">
+            <h2 class="mbr-section-title text-white align-center mbr-fonts-style display-2 py-3 m-0">
+            Our Technology Offerings
+         </h2>
+            <div class="row align-center pt-5 pb-4">
+                <div class="col-lg-4 col-md-6 d-flex">
+                    <div class="card col-12 p-0 mb-4 shadow-sm bg-white" tabindex="0">
+                        <div class="card-img2">
+                            <img class="card-img-top" src="https://cogniwide.com/assets/images/background1.jpg" alt="">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Automation</h5>
+                            <p class="card-text">Emulate & integrate human interactions with digital systems to execute a business process using RPA.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex">
+                    <div class="card col-12 p-0 mb-4 shadow-sm bg-white" tabindex="0">
+                        <div class="card-img2">
+                            <img class="card-img-top" src="https://cogniwide.com/assets/images/background2.jpg" alt="">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">AI for business</h5>
+                            <p class="card-text">Pair human and machine intelligence to augment and enhance business operations 360 degree in a practical, scalable, and responsible manner.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex">
+                    <div class="card col-12 p-0 mb-4 shadow-sm bg-white" tabindex="0">
+                        <div class="card-img2">
+                            <img class="card-img-top" src="https://cogniwide.com/assets/images/background3.jpg" alt="">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Cloud</h5>
+                            <p class="card-text">Asses your Cloud readiness journey, convert your monolithic apps to cloud ready apps, build POCs and scale at low risk</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex">
+                    <div class="card col-12 p-0 mb-4 shadow-sm bg-white" tabindex="0">
+                        <div class="card-img2">
+                            <img class="card-img-top" src="https://cogniwide.com/assets/images/background4.jpg" alt="">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Blockchain</h5>
+                            <p class="card-text">Build greater transparency, enhanced security, improved traceability, increased speed of transactions at reduced costs.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex">
+                    <div class="card col-12 p-0 mb-4 shadow-sm bg-white" tabindex="0">
+                        <div class="card-img2">
+                            <img class="card-img-top" src="https://cogniwide.com/assets/images/background5.jpg" alt="">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Enterprise Analytics</h5>
+                            <p class="card-text">Dive deep into your Enterprise Data to bring out actionable insights and scalable solutions.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex">
+                    <div class="card col-12 p-0 mb-4 shadow-sm bg-white" tabindex="0">
+                        <div class="card-img2">
+                            <img class="card-img-top" src="https://cogniwide.com/assets/images/background6.jpg" alt="">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Internet of Things</h5>
+                            <p class="card-text">Enable remote monitoring and control with reduced human interaction by connecting your devices to IOT.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="whitepapers py-5" id="whitepapers">
+        <div class="container">
+            <h2 class="mbr-section-title pb-3 align-center mbr-fonts-style display-2">
+            White Papers
+         </h2>
+
+            <div class="row align-center pt-5 pb-4 text-white">
+                <div class="col-md-3 d-flex">
+                    <div class="card col-12 p-0 mb-4 shadow-sm bg-blue rounded" tabindex="0">
+                        <div class="card-header">AI</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Artificial Intelligence for every Business</h5>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://www.linkedin.com/pulse/ai-every-business-kannadhasan-kasi" target="_blank" class="btn btn-white px-4">Read article</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 d-flex">
+                    <div class="card col-12 p-0 mb-4 shadow-sm bg-blue rounded" tabindex="0">
+                        <div class="card-header">ETHICS</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Ethics in Everything</h5>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://www.linkedin.com/pulse/ethics-everything-kannadhasan-kasi" target="_blank" class="btn btn-white px-4">Read article</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 d-flex">
+                    <div class="card col-12 p-0 mb-4 shadow-sm bg-blue rounded" tabindex="0">
+                        <div class="card-header">PRODUCTS</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Two Factors that influence to build successful products</h5>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://www.linkedin.com/pulse/two-factors-influence-build-successful-products-kannadhasan-kasi" target="_blank" class="btn btn-white px-4">Read article</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 d-flex">
+                    <div class="card col-12 p-0 mb-4 shadow-sm bg-blue rounded" tabindex="0">
+                        <div class="card-header">DIGITAL TRANSFORMATION</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Relooking Digital Transformation at the Grassroot Level</h5>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://www.linkedin.com/pulse/relooking-digital-transformation-grassroot-level-kannadhasan-kasi-1" target="_blank" class="btn btn-white px-4">Read article</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="row text-white text-center">
+           <div class="card bg-primary bg-blue col-md-3 col-xs-12 py-3" style="max-width: 18rem;">
+               <div class="card-header">AI</div>
+               <div class="card-body px-0">
+                  <h5 class="card-title">AI for every Business</h5>
+               </div>
+               <a href="https://www.linkedin.com/pulse/ai-every-business-kannadhasan-kasi" target="_blank"
+                  class="card-footer btn btn-light btn-white">
+                  Read article
+               </a>
+            </div>
+
+            <div class="card bg-primary bg-blue col-md-3 col-xs-12 py-3" style="max-width: 18rem;">
+               <div class="card-header">Ethics</div>
+               <div class="card-body px-0">
+                  <h5 class="card-title">Ethics in Everything</h5>
+               </div>
+               <a href="https://www.linkedin.com/pulse/ethics-everything-kannadhasan-kasi"
+                  class="card-footer btn btn-light btn-white">
+                  Read article
+               </a>
+            </div>
+
+            <div class="card bg-primary bg-blue col-md-3 col-xs-12 py-3" style="max-width: 18rem;">
+               <div class="card-header">Products</div>
+               <div class="card-body px-0">
+                  <h5 class="card-title">Two Factors that influence to build successful products</h5>
+               </div>
+               <a href="https://www.linkedin.com/pulse/two-factors-influence-build-successful-products-kannadhasan-kasi"
+                  class="card-footer btn btn-light btn-white">
+                  Read article
+               </a>
+            </div>
+
+            <div class="card bg-primary bg-blue col-md-3 col-xs-12 py-3" style="max-width: 18rem;">
+               <div class="card-header">Digital Transformation</div>
+               <div class="card-body px-0">
+                  <h5 class="card-title">Relooking Digital Transformation at the Grassroot Level</h5>
+               </div>
+               <a href="https://www.linkedin.com/pulse/relooking-digital-transformation-grassroot-level-kannadhasan-kasi-1"
+                  class="card-footer btn btn-light btn-white">
+                  Read article
+               </a>
+            </div>
+         </div> -->
+        </div>
+    </section>
+
+    <section class="aboutus py-5 bg-blue" id="aboutus">
+        <div class="container">
+            <h2 class="mbr-section-title pb-3 text-white align-center mbr-fonts-style display-2">
+            About Us
+         </h2>
+            <div class="row pt-3 align-center text-white card-no-hover">
+                <div class="col-lg-4 col-md-4 d-flex">
+                    <div class="card p-4">
+                        <div class="card-img-top py-4">
+                            <span class="mbr-iconfont mbri-idea"></span>
+                        </div>
+                        <div class="card-body p-0">
+                            <h5 class="card-title">Vision</h5>
+                            <p class="card-text">Provide Transformative Services to Businesses for a smooth transition in the digital era and to aid glitch free landing into the Industrial Revolution 4.0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 d-flex">
+                    <div class="card p-4">
+                        <div class="card-img-top py-4">
+                            <span class="mbr-iconfont mbri-rocket"></span>
+                        </div>
+                        <div class="card-body p-0">
+                            <h5 class="card-title">Mission</h5>
+                            <p class="card-text">To be a globally trusted Transformative Technology Partner that provides unique Business Solutions, IT Consultancy and Services, creating value to every stakeholder</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 d-flex">
+                    <div class="card p-4">
+                        <div class="card-img-top py-4">
+                            <span class="mbr-iconfont mbri-protect"></span>
+                        </div>
+                        <div class="card-body p-0">
+                            <h5 class="card-title">Values</h5>
+                            <p class="card-text">Integrity . Transparency . Excellence</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="pg-telecom banner-wrap team-members" id="teamMembers">
+        <div class="banner-img bg-team">
+            <div class="banner-text">
+                <div class="jumbotron mb-0 bg-tranparent mbr-white align-center">
+                    <div class="container">
+                        <h3>OUR TEAM</h3>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Kannadhasan Kasi</h5>
+                                        <h6 class="card-subtitle">Vice President - Products & Technology</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Rajasuresh Jayakumar</h5>
+                                        <h6 class="card-subtitle">Head of Engineering</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Ganesh Ramakrishnan</h5>
+                                        <h6 class="card-subtitle">Chief Technology Advisor</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Anand</h5>
+                                        <h6 class="card-subtitle">Vice President - Sales & Marketing</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Raja Murugan</h5>
+                                        <h6 class="card-subtitle">Director - Europe Region</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Anitha Subramani</h5>
+                                        <h6 class="card-subtitle">Director - IT delivery</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <section class="mbr-section contacts1 cid-rsNbR6MJs3 bg-grey" id="contactus">
+        <div class="container">
+            <div class="row">
+                <!--Titles-->
+                <div class="title col-12">
+                    <h2 class="align-left pb-3 mbr-fonts-style display-2 title-blue">
+                  Get in Touch
+               </h2>
+                </div>
+                <!--Left-->
+                <div class="col-12 col-lg-6 col-md-12">
+
+                    <div class="wrapper">
+                        <div class="b b-mail">
+                            <h3 class="mbr-fonts-style display-6">
+                        Mail To : <a href="mailto:reachus@cogniwide.com" target="_top">
+                           reachus@cogniwide.com</a>
+                     </h3>
+
+                        </div>
+
+                        <form class="gform pure-form pure-form-stacked" method="POST" data-page="Home" action="https://script.google.com/macros/s/AKfycby7O14sNf5qiB4Ern09VqkXoqkhRDo12NjJZrCJ5A/exec">
+
+                            <div class="form-elements">
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <input type="text" id="visitorName" class="form-control" name="name" placeholder="Your Name" value="" required>
+                                        <div class="invalid-tooltip">
+                                            Please enter your name
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <input type="tel" pattern="^([\+][0-9]{1,3}([ \.\-])?)?([\(]{1}[0-9]{3}[\)])?([0-9A-Z \.\-]{1,32})((x|ext|extension)?[0-9]{1,4}?)$" id="visitorPhone" class="form-control" name="phone" placeholder="Mobile Number" value="" required>
+                                        <div class="invalid-tooltip">
+                                            Please enter 10 digit mobile number
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <input type="email" id="visitorEmail" class="form-control" name="email" placeholder="Email" required>
+                                        <div class="invalid-tooltip">
+                                            Please enter valid email
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 mb-3">
+                                        <textarea id="visitorMessage" class="form-control" name="message" placeholder="Message" required></textarea>
+                                        <div class="invalid-tooltip">
+                                            Please enter the message
+                                        </div>
+                                    </div>
+                                </div>
+                                <small class="text-muted">Please fill all the above fields</small>
+                                <div class="col-md-12 mb-3 px-0">
+                                    <button class="btn btn-primary btn-sm mx-0" type="submit">Submit</button>
+                                </div>
+                            </div>
+
+                            <div class="thankyou_message">
+                                <h2>Thanks for contacting us! We will get back to you soon!</h2>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--Right-->
+                <div class="col-12 col-lg-6 col-md-12 px-lg-5">
+                    <div class="left-block wrapper">
+                        <div class="b b-adress pb-3">
+
+                            <h4 class="mb-3">Headquarters</h4>
+                            <div class="blk-divider mb-4"></div>
+                            <p class="mbr-text mbr-fonts-style p-0  mb-1 display-7 fntwt-400">
+                                India
+                            </p>
+                            <p class="mbr-text mbr-fonts-style p-0 m-0 display-7">
+                                1st Floor, 17th Cross, 10th Main, Wilson Garden,
+                                <br />Bangalore, Karnataka, India 560030.
+                            </p>
+                        </div>
+
+                        <div class="b b-adress pb-3">
+                            <h4 class="mb-3">Representative offices</h4>
+                            <div class="blk-divider mb-4"></div>
+                            <p class="mbr-text mbr-fonts-style p-0 mb-1 display-7 fntwt-400">
+                                United Kingdom
+                            </p>
+                            <p class="mbr-text mbr-fonts-style p-0 m-0 display-7">
+                                265-269 The Long Lodge Kingston Road, London,
+                                <br />United Kingdom, SW19 3NW.
+                            </p>
+                        </div>
+                        <div class="b b-adress pb-3">
+                            <p class="mbr-text mbr-fonts-style p-0  mb-1 display-7 fntwt-400">
+                                South Africa
+                            </p>
+                            <p class="mbr-text mbr-fonts-style p-0 m-0 display-7">
+                                Waterfall Heights , 162 Jason close,Bekker Rd, Vorna Valley,
+                                <br /> Midrand - 1686.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="cid-rsNcxYo6FZ" id="footer1-l">
+        <div class="container">
+            <div class="footer-lower">
+                <div class="media-container-row mbr-white">
+                    <div class="col-sm-6 copyright">
+                        <p class="mbr-text mbr-fonts-style display-7">
+                            © Copyright 2019 Cogniwide - All Rights Reserved
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="social-list align-right">
+                            <div class="soc-item">
+                                <a href="https://www.linkedin.com/company/cogniwide" target="_blank">
+                                    <span class="socicon-linkedin socicon mbr-iconfont mbr-iconfont-social"></span>
+                                </a>
+                            </div>
+                            <div class="soc-item">
+                                <a href="https://twitter.com/cogniwide" target="_blank">
+                                    <span class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span>
+                                </a>
+                            </div>
+                            <div class="soc-item">
+                                <a href="https://www.facebook.com/cogniwide" target="_blank">
+                                    <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="cogniassist"></div>
+
+    <script src="https://cogniwide.com/assets/web/assets/jquery/jquery.min.js"></script>
+    <script src="https://cogniwide.com/assets/popper/popper.min.js"></script>
+    <script src="https://cogniwide.com/assets/tether/tether.min.js"></script>
+    <script src="https://cogniwide.com/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cogniwide.com/assets/smoothscroll/smooth-scroll.js"></script>
+    <script src="https://cogniwide.com/assets/touchswipe/jquery.touch-swipe.min.js"></script>
+    <script src="https://cogniwide.com/assets/parallax/jarallax.min.js"></script>
+    <script src="https://cogniwide.com/assets/viewportchecker/jquery.viewportchecker.js"></script>
+    <script src="https://cogniwide.com/assets/mbr-popup-btns/mbr-popup-btns.js"></script>
+    <script src="https://cogniwide.com/assets/dropdown/js/script.min.js"></script>
+    <script src="https://cogniwide.com/assets/theme/js/script.js"></script>
+    <script src="https://cogniwide.com/assets/theme/js/formvalidation.js"></script>
+    <script src="https://cogniwide.com/assets/theme/js/navslide.js"></script>
+    <script data-cfasync="false" src="https://cogniwide.com/assets/theme/js/form-submission-handler.js"></script>
+</body>
+<script src="index.js"  type="text/javascript"></script>
+<script>
+  CogniAssistWidget.default.init({
+    selector: "#cogniassist",
+    initialPayload:"/default/welcome",
+    botName: 'CogniAssist',
+    botWelcomeMessage: "Hey there, I'm here to assist you with any doubts you migth have.",
+    botURL:'https://demo.cogniwide.com/cogniassist-backend/webhooks/rest/webhook',
+    // botURL:'http://localhost:8080/webhooks/rest/webhook',
+    // bannerURL:"assets/chatbot-banner.jpg",
+    bannerText:"Cogniwide is a Digital Transformation company that specialises in AI, RPA, Cloud,IOT, Blockchain and Data Analytics."
+  });
+</script>
+</html>
