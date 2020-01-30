@@ -27,7 +27,8 @@ class ChatWidget extends Component {
       unread:1,
       last_response_count:0,
       showFeedback: false,
-      fullScreeen: false
+      fullScreeen: false,
+      delay : 1000,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -403,8 +404,18 @@ $(document).on("mouseover", "#stars li", function (e) {
     .then(response=> {
       this.loading(false);
       console.log(response)
-      this.renderResponse(response)
-
+      this.renderResponse([response[0]])
+      if(response.length>1){
+        this.loading(true);
+        for (let index = 1; index < response.length; index++) {
+          setTimeout(() => {
+            if(index==(response.length -1)){
+              this.loading(false);
+            }
+            this.renderResponse([response[index]])
+          }, (index * this.state.delay));
+        }
+      }
     });
 
   }
