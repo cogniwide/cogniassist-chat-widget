@@ -35,111 +35,7 @@ class ChatWidget extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.sendText = this.sendText.bind(this);
     this.sendRequest = this.sendRequest.bind(this);
-    this.restartChat = this.restartChat.bind(this)
-
-    this.messages=[
-      [
-        {
-            "text": "Welcome to Cogniwide ",
-        },
-        {
-            "text": " How can i help you ?",
-        }
-      ],
-      [
-        {
-            "text": "Cogniwide specialises in AI powered enterprise products.",
-            "buttons": [
-                {
-                    "title": "CogniAssist",
-                    "payload": "CogniAssist"
-                },
-                {
-                    "title": "CogniMLASS",
-                    "payload": "CogniMLASS"
-                }
-            ]
-        }
-      ],
-      [
-        {
-          "text":"Do you want to continue ?",
-          "quick_replies":[{
-            "title": "CogniAssist",
-            "payload": "CogniAssist"
-        },
-        {
-          "title": "CogniMLASS",
-          "payload": "CogniMLASS"
-      }]
-        }
-      ],      [
-        {
-            "text": "Welcome to Cogniwide ",
-        },
-        {
-            "text": " How can i help you ?",
-        }
-      ],
-      [
-        {
-          "text": "What is Your Name?",
-        }
-      ],
-      [
-        {
-          "text": "Do you select to gender ?",
-          "buttons": [
-            {
-              "title": "Male",
-              "payload": "Male"
-            },
-            {
-              "title": "Female",
-              "payload": "Female"
-            }
-          ]
-        }
-      ],
-      [
-        {
-          "text": "Date of birth",
-          "datepicker": true
-        }
-      ],
-      [
-        {
-          "text": "Upload Your ID",
-          "upload": true
-        }
-      ],
-      [
-        {
-          "text": "Sample Image",
-          "image": 'http://placekitten.com/640/360'
-        }
-      ],
-      [
-        {
-          "text": "Sample Audio",
-          "audio": 'https://geekanddummy.com/wp-content/uploads/2014/01/Killer-Choir.mp3'
-        }
-      ],
-      [
-        {
-          "text": "Feedback",
-          "star_rating": true
-        }
-      ],
-      [
-        {
-          "text": "Thanks for your feedbacks",
-          "end": true,
-        }
-      ]
-      ]
-
-
+    this.restartChat = this.restartChat.bind(this);
   }
   loading(val){
     this.setState({
@@ -389,10 +285,6 @@ $(document).on("mouseover", "#stars li", function (e) {
 
 
   sendRequest(payload){
-
-    // let dummyResponse = this.dummyRequest()
-    // this.renderResponse(dummyResponse);
-
     this.loading(true);
 
     fetch(this.props.botURL, {
