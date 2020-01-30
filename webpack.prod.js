@@ -9,7 +9,7 @@ module.exports = {
   entry: './index.js',
   output: {
     path: path.join(__dirname, '/lib'),
-    filename: 'cogniassist-latest.js',
+    filename: 'index.js',
     library: 'CogniAssistWidget',
     libraryTarget: 'umd'
   },
