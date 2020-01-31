@@ -36,7 +36,7 @@ class ChatBubble extends Component {
     if (this.props.user==='human')
         return (
         <li className='right'>
-            <div className="d-flex justify-content-strat flex-row-reverse">
+            <div className="clientchat">
                 <div className="chat-body bubble clearfix flex-column">
                     <p>
                     {this.props.message.text}
@@ -49,7 +49,7 @@ class ChatBubble extends Component {
     else
         return (
         <li className='left'>
-            <div className="d-flex justify-content-start">
+            <div className="adminchatlist">
                 <span className="avatar_wrapper mr-2">  
                 {(this.props.avatar) && 
                             <img src={this.props.botIcon} alt="User Avatar"
@@ -78,7 +78,7 @@ class ChatBubble extends Component {
             }   
                 
                 {('buttons' in this.props.message) &&  
-                    <span className="mt-2 d-flex flex-column">
+                    <span className="mt-2 diplayalign">
                         {this.props.message.buttons.map((button,index)=> <button onClick={()=> this.handleClick(button)} type="button" key={index} id="quick_reply_btn"
                             className="btn btn-outline-info text-left my-2 see_all pl-4 bg-white" data={button.payload}>{button.title}</button>)} 
                             
@@ -107,7 +107,7 @@ class ChatBubble extends Component {
                     </div>
                 }
                 {('datepicker' in this.props.message) &&  
-                    <span className="mt-2 d-flex flex-column">
+                    <span className="mt-2 diplayalign">
                         <Calendar
                             onChange={this.onChange}
                             onClickDay={()=>{this.props.parent.sendText(this.getFormattedDate(this.state.date));}}
@@ -116,7 +116,7 @@ class ChatBubble extends Component {
                     </span>
                 }
                 {('upload' in this.props.message) &&  
-                    <span className="mt-2 d-flex flex-column">
+                    <span className="mt-2 diplayalign">
                         <div className="attachment">
                             <div className="upload-btn-wrapper">
                                 <button className="upload_btn"><img className="upload-icon" src={Cloud} alt="Upload file" />Upload a file</button>

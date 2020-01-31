@@ -378,14 +378,13 @@ $(document).on("mouseover", "#stars li", function (e) {
 
     const restartStyle={
       width: '20px',
-      marginTop:'3px'
-    };
+     };
 
     const closeBtnStyle={
-      width: '20px'
+      width: '21px'
     }
     const bannerStyle = {backgroundImage: "url("+this.props.bannerURL+")"}
-    let className = 'send-button text-white';
+    let className = 'send-button';
     if (this.state.userMessage.length) {
       className += ' send-active';
     }
@@ -395,11 +394,11 @@ $(document).on("mouseover", "#stars li", function (e) {
     }
     return (
       <div className={parentClass}>
-          <div className="chat_btn_container position-fixed">
+          <div className="chat_btn_container">
           <button className="btn border-25 border-0">
             <img src={chatIcon} width="60" />
             {this.state.unread > 0 &&
-              <span className="badge badge-pill badge-danger unreadCount">1</span>
+              <span className="badge-msg unreadCount">1</span>
             }
           </button>  
           { (this.state.opened == false) &&
@@ -413,9 +412,9 @@ $(document).on("mouseover", "#stars li", function (e) {
           <div className="chat_box_container position-relative">
               <div className="col-md-12 p-0 h-100">
                   <div className="panel panel-primary">
-                      <div className="panel-heading d-flex justify-content-between align-items-center px-2 bg-primary">
-                          <span className="text-white font-weight-bold"><img src={chatlogo} width="33"/> {this.props.botName}</span>
-                          <div className="btn-group pull-right">
+                      <div className="panel-heading bg-primary">
+                          <span className="text-white font-weight-bold"><img  className="chat-logoheader" src={chatlogo} width="33"/> {this.props.botName}</span>
+                          <div className="btn-group-head">
                               <a href="#!" className="restart" onClick={()=>this.restartChat()} style={restartStyle}>
                                   <img src={updateArrow} alt="refresh" className="img-responsive" width="15"/>
                               </a>
@@ -424,13 +423,13 @@ $(document).on("mouseover", "#stars li", function (e) {
                                   <path d="m464 488h-416a24 24 0 0 1 -24-24v-416a24 24 0 0 1 24-24h176a24 24 0 0 1 0 48h-152v368h368v-152a24 24 0 0 1 48 0v176a24 24 0 0 1 -24 24zm-40-400h-33.941l-103.03 103.029a24 24 0 0 0 33.942 33.942l103.029-103.03zm64 88v-128a24 24 0 0 0 -24-24h-128a24 24 0 0 0 0 48h104v104a24 24 0 0 0 48 0z" />
                                 </svg>
                               </a>
-                              <button type="button" className="close" aria-label="Close" style={closeBtnStyle}>
+                              <div className="close" aria-label="Close" style={closeBtnStyle}>
                                   <svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                       <path
                                           d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
                                       </path>
                                   </svg>
-                              </button>
+                              </div>
                           </div>
                       </div>
                       <div className="panel-body">
@@ -442,8 +441,8 @@ $(document).on("mouseover", "#stars li", function (e) {
                           <ul className="chat">
                           {chat}
                           <li className="loading" style={{display: this.state.loading ? "block" : "none" }}>
-                            <div className="d-flex justify-content-start">
-                              <div className="chat-body bubble clearfix flex-column">
+                            <div className="adminchatlist">
+                              <div className="chat-body bubble clearfix">
                                 <img src="https://cogniwide.github.io/cogniassist-chat-widget/public/assets/tenor.gif"/>
                               </div>
                             </div>
@@ -464,9 +463,9 @@ $(document).on("mouseover", "#stars li", function (e) {
                             }
 
                         </div>
-                      <div className="panel-footer position-fixed">
+                      <div className="panel-footer">
                           <div className="suggestion_box bg-white">
-                              <div className="d-flex flex-row quick-replies">
+                              <div className="quick-replies">
                               {this.state.quick_replies.map((button,index)=> <button type="button" id="quick_reply_btn" key={index}
                                className="btn btn-outline-info text-left mx-2 see_all pl-4 bg-white"
                                onClick={()=> this.chooseReply(button.title,button.payload)}
@@ -475,7 +474,7 @@ $(document).on("mouseover", "#stars li", function (e) {
                               </div>
                           </div>
                           <div id="composer"
-                              className="composer d-flex justify-content-between align-items-center position-relative">
+                              className="composer position-relative">
                                 <textarea 
                                   value={this.state.userMessage}
                                   onKeyUp={this.handleSubmit}

@@ -44,6 +44,11 @@
     line-height: 19px !important;
     padding: 6px 15px;
 }
+.cogniwidechat .btn{
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
 .cogniwidechat .left .btn:hover {
     border-color: #00bbff !important;
 }
@@ -68,7 +73,7 @@
  opacity: 0.75;
 }
 .cogniwidechat .expand {
-    margin: 5px 5px 0 0;
+    margin: 3px 5px 0 0;
 }
 .cogniwidechat .restart span {
     cursor: pointer;
@@ -120,7 +125,23 @@
     line-height: 20px;
     background-color: #f8f8f8;
 }
-
+.cogniwidechat .adminchatlist{
+    display: flex;
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;
+    justify-content: start;
+}
+.cogniwidechat .right .clientchat{
+    display: flex;
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;
+    justify-content: start;
+    flex-flow: row-reverse;
+}
 .cogniwidechat .right .bubble,
 .cogniwidechat .bg-primary,
 .cogniwidechat .btn-primary {
@@ -235,6 +256,9 @@
     width: 100%;
     height: 45px;
     z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .cogniwidechat .panel-footer {
@@ -268,6 +292,7 @@
     font-size: 16px;
     transition: none 0s ease 0s;
     background: white;
+    font-family: 'Roboto', sans-serif;
 }
 
 .cogniwidechat pre {
@@ -278,7 +303,8 @@
     z-index: 999;
     right: 70px;
     top: 0;
-    padding: 15px;
+    padding: 0px;
+    margin-right: 15px;
     margin-top: 0px;
     height: 100%;
     background-image: url('cogniwide-assets/send.png');
@@ -300,7 +326,8 @@
     z-index: 999;
     right: 40px;
     top: 0;
-    padding: 15px;
+    margin-right: 15px;
+    padding:0px;
     margin-top: 0px;
     height: 100%;
     background-image: url('cogniwide-assets/mic.png');
@@ -318,7 +345,8 @@
     z-index: 999;
     right: 10px;
     top: 0;
-    padding: 15px;
+    margin-right: 15px;
+    padding:0;
     margin-top: 0px;
     height: 100%;
     background-image: url('cogniwide-assets/calendar.png');
@@ -528,9 +556,12 @@ animation-name: fadeInUp;
 .cogniwidechat .quick-replies {
     flex-flow: wrap;
     justify-content: flex-end;
+    display: flex;
     padding-right: 20px;
 }
-
+.cogniwidechat .quick-replies #quick_reply_btn{
+    margin-right: 10px;
+}
 .cogniwidechat .quick-replies>* {
     margin: .2em 0;
 }
@@ -625,29 +656,50 @@ animation-name: fadeInUp;
 .cogniwidechat .banner h3{
     font-size: 25px;
     color: white;
+    padding-right: 30px;
 }
 
 /* new style add */
-.cogniwidechat .badge-pill{
+.cogniwidechat .chat-logoheader{
+    vertical-align: middle;
+}
+.cogniwidechat .badge-msg{
     padding-left: 0;
     padding-right: 0;
     border-radius: 50%;
     border:2px solid #fff;
+    background: red;
+    color: #fff;
 }
-.cogniwidechat .badge{
-    width: 23px;
-    height: 23px;
-    padding: 5px;
+.cogniwidechat .badge-msg{
+    /* width: 10px;
+    height: 10px; */
+    padding: 0px 5px;
 }
-.cogniwidechat .btn-group a.restart {
+.cogniwidechat .btn-group-head a.restart {
     width: 20px;
-    margin-right: 5px;
-    margin-top: 5px !important;
+    margin-right: 7px;
+    margin-top: 3px !important;
    
 }
+.cogniwidechat .btn-group-head {
+    margin-top: 5px;
+    display: inline-flex;
 
+}
 
-
+.cogniwidechat .btn-group-head  .close{
+    width: 21px;
+    display: inline-block;
+    vertical-align: sub;
+    cursor: pointer;
+    margin-right: 10px;
+    opacity: 0.50;
+    font-size: initial;
+}
+.cogniwidechat .btn-group-head  .close:hover{
+    opacity: 0.75;
+}
 .cogniwidechat .react-calendar__navigation button {
     min-width: 30px !important;
     font-weight: 600;
@@ -755,6 +807,7 @@ animation-name: fadeInUp;
     font-weight: 400 !important;
     letter-spacing: 1px;
     padding-left: 10px;
+    color: #ffffff;
 }
 
 .cogniwidechat .feedback {
@@ -810,11 +863,14 @@ animation-name: fadeInUp;
     color: #000;  
     margin: 0; 
 }
-.cogniwidechat .chat_btn_container .btn .badge {
+.cogniwidechat .chat_btn_container .btn .badge-msg {
     position: absolute;
     right: 0px;
     z-index: 4;
     top: 0px !important;
+    background: red;
+    /* width: 25px;
+    height: 25px; */
 }
 .cogniwidechat .chat-heading{  
     border-bottom-right-radius: 7px;
@@ -859,8 +915,15 @@ animation-name: fadeInUp;
     border-bottom: none;
     box-shadow: 1px 2px 5px rgba(68,68,68,0.6);
   } */
-
-
+  .cogniwidechat .diplayalign{
+    display: flex;
+    flex-flow: column;
+}
+.cogniwidechat div#composer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
   .cogniwidechat .chat-body ul {
     padding: 20px 15px;
@@ -876,6 +939,7 @@ animation-name: fadeInUp;
   
 
 }
+
 .cogniwidechat.full-screen .panel-body ul.chat{
  max-width: 100%;
  /* display: inline-block; */
@@ -886,6 +950,9 @@ animation-name: fadeInUp;
 .cogniwidechat.full-screen .chat li.left span.timeStamp{
     right: auto;
     left: 40px;
+  }
+  .cogniwidechat.full-screen .feedback{
+      margin: 100px auto;
   }
   @media(max-width:1110px) {
     /* .chat_box_container {
