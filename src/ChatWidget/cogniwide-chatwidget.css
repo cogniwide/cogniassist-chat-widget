@@ -42,7 +42,7 @@
     border-radius: 10px !important;
     font-size: 14px;
     line-height: 19px !important;
-    padding: 6px 15px;
+    padding: 6px 25px;
 }
 .cogniwidechat .btn{
     border: 0;
@@ -561,14 +561,15 @@ animation-name: fadeInUp;
 }
 .cogniwidechat .quick-replies #quick_reply_btn{
     margin-right: 10px;
+    padding: 6px 15px;
 }
 .cogniwidechat .quick-replies>* {
     margin: .2em 0;
 }
 
-.cogniwidechat .panel-footer .btn {
+/* .cogniwidechat .panel-footer .btn {
     padding-left: 1em!important;
-}
+} */
 
 .cogniwidechat audio {
     filter: sepia(20%) saturate(70%) grayscale(1) contrast(99%) invert(12%);
@@ -954,6 +955,9 @@ animation-name: fadeInUp;
   .cogniwidechat.full-screen .feedback{
       margin: 100px auto;
   }
+  .cogniwidechat li.left .btn{
+      margin-bottom: 10px;
+  }
   @media(max-width:1110px) {
     /* .chat_box_container {
       max-height: 350px;
@@ -977,14 +981,14 @@ animation-name: fadeInUp;
     .cogniwidechat .chat_box_container {
         width: 100%;
         right: 0;
-        max-height: 100%;
+        max-height: 88%;
         height: 100%;
-        bottom: 0;
+        bottom: 93px;
         z-index: 9999999999999;
     }
     .cogniwidechat .chat-heading{
-        width: 240px !important;
-        right: 85px;
+        width: 200px !important;
+        right: 70px;
     }
    
     .cogniwidechat .feedback{
