@@ -297,7 +297,7 @@ $(document).on("mouseover", "#stars li", function (e) {
       this.loading(false);
       console.log(response)
       if(response.length==1){
-        response[index]['lastmessage'] = true;
+        response[0]['lastmessage'] = true;
       }
       this.renderResponse([response[0]])
       if(response.length>1){
