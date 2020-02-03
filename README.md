@@ -20,7 +20,8 @@ A simple widget to connect with CogniAssist chatbot platform.
 ### In a `<script>` tag
 
 In your `<body/>`:
-```javascript
+```html
+<div id="cogniassist"></div>
 <script src="https://cogniwide.github.io/cogniassist-chat-widget/public/cogniassist-latest.js"></script>
 <script>
   CogniAssistWidget.default.init({
@@ -33,6 +34,65 @@ In your `<body/>`:
   });
 </script>
 ```
+### As a React component
+
+Install the package from GitHub by running:
+```bash
+npm install cogniassist-chat-widget
+```
+
+Then once it is installed it can be implemented as follows.
+
+```javascript
+import { CogniAssistWidget } from 'cogniassist-chat-widget';
+
+function CustomWidget = () => {
+  return (
+    <CogniAssistWidget
+      initPayload={"/default/welcome"}
+      title={"Title"}
+      botName={'CogniAssist'}
+    />
+  )
+}
+```
+
+### As an angular component
+```typescript
+import { Component, OnInit ,AfterViewInit} from '@angular/core';
+
+@Component({
+  selector: 'app-chatwidget',
+  template: '<div id="cogniassist"></div>'
+})
+export class ChatwidgetComponent implements OnInit,AfterViewInit  {
+
+  constructor() { }
+  botUrl ="https://demo.cogniwide.com/cogniassist-backend/webhooks/rest/webhook"
+  botOnline: boolean = false
+
+  ngOnInit() {
+  }
+
+  ngAfterViewInit(){
+    window["CogniAssistWidget"].default.init({
+      selector: "#cogniassist",
+      initialPayload:"/default/welcome",
+      botName: 'Development',
+      botWelcomeMessage: "Hey, I'm your development bot",
+      botURL: this.botUrl,
+      bannerURL: null
+    });
+  }
+
+}
+```
+#### usage
+```html
+<app-chatwidget></app-chatwidget>
+```
+
+
 
 ## Release notes
 
