@@ -35,9 +35,9 @@ class ChatBubble extends Component {
   render() {    
     if (this.props.user==='human')
         return (
-        <li className='right'>
+        <li className='cwc-right'>
             <div className="clientchat">
-                <div className="chat-body bubble clearfix flex-column">
+                <div className="chat-body bubble clearfix">
                     <p>
                     {this.props.message.text}
                     </p>
@@ -48,7 +48,7 @@ class ChatBubble extends Component {
         )
     else
         return (
-        <li className='left'>
+        <li className='cwc-left'>
             <div className="adminchatlist">
                 <span className="avatar_wrapper mr-2">  
                 {(this.props.avatar) && 
@@ -80,7 +80,7 @@ class ChatBubble extends Component {
                 {('buttons' in this.props.message) &&  
                     <span className="mt-2 diplayalign">
                         {this.props.message.buttons.map((button,index)=> <button onClick={()=> this.handleClick(button)} type="button" key={index} id="quick_reply_btn"
-                            className="btn btn-outline-info text-left my-2 see_all pl-4 bg-white" data={button.payload}>{button.title}</button>)} 
+                            className="cwc-borderbtn see_all" data={button.payload}>{button.title}</button>)} 
                             
                     </span>
                 }
