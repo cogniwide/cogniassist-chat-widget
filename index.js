@@ -13,6 +13,8 @@ const plugin = {
         botURL={args.botURL}
         bannerURL={args.bannerURL}
         bannerText={args.bannerText}
+        rememberUser={args.rememberUser}
+
       />, document.querySelector(args.selector)
     );
   }

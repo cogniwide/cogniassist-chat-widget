@@ -15,6 +15,7 @@ const CogniAssistWidget = forwardRef((props, ref) => {
         botURL={props.botURL}
         bannerURL={props.bannerURL}
         bannerText={props.bannerText}
+        rememberUser={props.rememberUser}
       />
   );
 });
@@ -26,7 +27,8 @@ CogniAssistWidget.propTypes = {
     botIcon: PropTypes.string,
     botURL: PropTypes.string,
     bannerURL: PropTypes.string,
-    bannerText:PropTypes.string
+    bannerText:PropTypes.string,
+    rememberUser: PropTypes.bool
   };
 
 CogniAssistWidget.defaultProps = {
@@ -34,9 +36,10 @@ CogniAssistWidget.defaultProps = {
     botName: 'CogniAssist',
     botWelcomeMessage: "Hey there, I'm here to assist you with any doubts you migth have.",
     botIcon: botAvator,
-    botURL: 'http://localhost:8080/webhooks/rest/webhook/',
+    botURL: 'http://localhost:8080/',
     bannerURL: "",
-    bannerText:""
+    bannerText:"",
+    rememberUser: false
   };
 
 export default CogniAssistWidget;
