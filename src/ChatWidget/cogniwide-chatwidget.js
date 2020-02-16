@@ -6,7 +6,7 @@ import updateArrow from './cogniwide-assets/update-arrow.png'
 import smileEmoji from './cogniwide-assets/smile.svg'
 import normalEmoji from './cogniwide-assets/normal.svg'
 import worstEmoji from './cogniwide-assets/worst.svg'
-import chatIcon from './cogniwide-assets/bot-icon-svg.svg'
+import chatIcon from './cogniwide-assets/launcher-icon.png'
 import chatlogo from './cogniwide-assets/chat-headlogo.png'
 
 import ChatBubble from './components/cogniwide-chatbubble';
