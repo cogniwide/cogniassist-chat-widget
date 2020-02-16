@@ -36,7 +36,26 @@ class ChatWidget extends Component {
     this.sendText = this.sendText.bind(this);
     this.sendRequest = this.sendRequest.bind(this);
     this.restartChat = this.restartChat.bind(this);
+
+    this.setUpInitial()
   }
+
+  setUpInitial(){
+    if(this.props.rememberUser){
+      this.loadChatHistory();
+    }else{
+      this.sendRequest({
+        "sender": this.state.sender_id,
+        "message": this.props.initialPayload
+      })
+    }
+  }
+
+  componentDidUpdate(){
+    this.scrollToBottom()
+
+  }
+
   loading(val) {
     this.setState({
       loading: val
@@ -45,7 +64,51 @@ class ChatWidget extends Component {
 
 
   createOrRetriveSenderId() {
+    if (this.props.rememberUser){
+      let user = localStorage.getItem('cogniassist-user')
+      if(user){
+        console.info("Returning user", user)
+        return user
+      }else{
+        let user = this.guid()
+        localStorage.setItem('cogniassist-user', user);
+        return user
+      }
+    }
     return this.guid()
+  }
+
+
+  loadChatHistory(){
+
+    fetch(this.props.botURL+"chats/"+this.state.sender_id, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then(response => response.json())
+      .then(response => {
+          let messages = []
+          response.forEach(
+            (resp)=>{
+              messages.push({
+                "text":resp.query,
+                "user": "human"
+              })
+              resp.response.forEach(
+                (message)=>{
+                  messages.push({
+                    ...message,
+                    "user": "ai"
+                })
+                }
+              )
+            }
+          )
+          this.setState((prevState) => ({
+            conversation: messages
+          }));
+      });
+
   }
 
   restartChat() {
@@ -218,10 +281,6 @@ class ChatWidget extends Component {
         $('.chat_box_container .panel-footer #textInput').val($('.chat_box_container .panel-footer #textInput').val() + dateVal).trigger('change');
       }
     })
-    this.sendRequest({
-      "sender": this.state.sender_id,
-      "message": this.props.initialPayload
-    })
   }
 
   getFormattedDate(date) {
@@ -286,7 +345,7 @@ class ChatWidget extends Component {
   sendRequest(payload) {
     this.loading(true);
 
-    fetch(this.props.botURL, {
+    fetch(this.props.botURL + "webhooks/rest/webhook/", {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
@@ -362,7 +421,8 @@ class ChatWidget extends Component {
       return (
         <ChatBubble
           botIcon={this.props.botIcon}
-          parent={this} message={e}
+          parent={this} 
+          message={e}
           index={index}
           last_index={this.state.conversation}
           key={index}
