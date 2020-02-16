@@ -33,7 +33,14 @@ class ChatBubble extends Component {
         this.props.parent.chooseReply(title, payload);
     }
   render() {    
-    if (this.props.user==='human')
+    if ("line" in this.props.message){
+        return (
+            <li className='cwc-right'>
+                <div className="session-border"><span>{new Date().toLocaleString()}</span></div>
+            </li>
+                )
+    }
+    else if (this.props.user==='human')
         return (
         <li className='cwc-right'>
             <div className="clientchat">

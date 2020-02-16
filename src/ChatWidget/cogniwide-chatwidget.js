@@ -29,6 +29,7 @@ class ChatWidget extends Component {
       showFeedback: false,
       fullScreeen: false,
       delay: 1000,
+      sessionNew: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -40,10 +41,42 @@ class ChatWidget extends Component {
     this.setUpInitial()
   }
 
-  setUpInitial(){
-    if(this.props.rememberUser){
-      this.loadChatHistory();
-    }else{
+  setUpInitial() {
+    if (this.props.rememberUser) {
+      this.loadChatHistory().then(response => {
+        let messages = []
+        response.chats.forEach(
+          (resp) => {
+            messages.push({
+              "text": resp.query,
+              "user": "human"
+            })
+            resp.response.forEach(
+              (message) => {
+                messages.push({
+                  ...message,
+                  "user": "ai"
+                })
+              }
+            )
+          }
+        )
+        if (response["difference"] > .10){
+            messages.push({
+              "user":"human",
+              "line":true
+            })
+            this.sendRequest({
+              "sender": this.state.sender_id,
+              "message": this.props.initialPayload
+            })
+        }
+        this.setState((prevState) => ({
+          conversation: messages,
+          sessionNew: response.difference > 10
+        }));
+      });
+    } else {
       this.sendRequest({
         "sender": this.state.sender_id,
         "message": this.props.initialPayload
@@ -51,9 +84,8 @@ class ChatWidget extends Component {
     }
   }
 
-  componentDidUpdate(){
+  componentDidUpdate() {
     this.scrollToBottom()
-
   }
 
   loading(val) {
@@ -64,12 +96,12 @@ class ChatWidget extends Component {
 
 
   createOrRetriveSenderId() {
-    if (this.props.rememberUser){
+    if (this.props.rememberUser) {
       let user = localStorage.getItem('cogniassist-user')
-      if(user){
+      if (user) {
         console.info("Returning user", user)
         return user
-      }else{
+      } else {
         let user = this.guid()
         localStorage.setItem('cogniassist-user', user);
         return user
@@ -79,35 +111,12 @@ class ChatWidget extends Component {
   }
 
 
-  loadChatHistory(){
-
-    fetch(this.props.botURL+"chats/"+this.state.sender_id, {
+  loadChatHistory() {
+    return fetch(this.props.botURL + "chats/" + this.state.sender_id, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }
     })
       .then(response => response.json())
-      .then(response => {
-          let messages = []
-          response.forEach(
-            (resp)=>{
-              messages.push({
-                "text":resp.query,
-                "user": "human"
-              })
-              resp.response.forEach(
-                (message)=>{
-                  messages.push({
-                    ...message,
-                    "user": "ai"
-                })
-                }
-              )
-            }
-          )
-          this.setState((prevState) => ({
-            conversation: messages
-          }));
-      });
 
   }
 
@@ -421,7 +430,7 @@ class ChatWidget extends Component {
       return (
         <ChatBubble
           botIcon={this.props.botIcon}
-          parent={this} 
+          parent={this}
           message={e}
           index={index}
           last_index={this.state.conversation}
