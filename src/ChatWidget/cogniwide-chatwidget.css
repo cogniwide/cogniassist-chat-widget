@@ -93,6 +93,22 @@
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIW…55LnAu5oWzFfgHs274CTOkb8GsTPuSZ01CaRoZ8Rr6j1j+A8MFSuVPDYuhAAAAAElFTkSuQmCC);
 }
 
+
+/* unread badge */
+
+.cogniwidechat .badge-msg{
+    position: absolute;
+    top: 0px !important;
+    right: 0px;
+    z-index: 4;
+    background: red;
+    color: #fff;
+    padding: 0px 5px;
+    border-radius: 50%;
+    border:2px solid #fff;
+
+}
+
 .cogniwidechat .chat_box_container {
     z-index: 2147483000;
     /* overflow: hidden !important; */
@@ -645,21 +661,6 @@ animation-name: fadeInUp;
 .cogniwidechat .loading .bubble {
     padding: 5px 10px;
     line-height: 9px;
-}
-
-.cogniwidechat span.unreadCount {
-    position: absolute;
-    right: 0px;
-    top: -8px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    border: 2px solid #fff;
-    background: red;
-    color: #fff;
-    padding: 5px;
-    text-align: center;
-    display: none;
 }
 
 .cogniwidechat .banner {
