@@ -61,3 +61,39 @@
    color:#b9b6b6;
    padding:0 10px; 
 }
+
+.scrolling-wrapper-flexbox {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+
+  .card {
+    flex: 0 0 auto;
+  }
+}
+
+.card {
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 5px;
+  background: #f0f0f0;
+  border: 1px solid #e2e2e2;
+  border-radius: 3%;
+  cursor: pointer;
+  .title{
+    color: #000;
+    font-weight: bold;
+  }
+  .subtitle{
+    color: #787878;
+  }
+}
+
+.scrolling-wrapper, .scrolling-wrapper-flexbox {
+
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

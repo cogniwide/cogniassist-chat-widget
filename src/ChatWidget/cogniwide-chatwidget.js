@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 // import 'bootstrap/dist/css/bootstrap.css';
-import './cogniwide-chatwidget.css';
+import './cogniwide-chatwidget.scss';
 import updateArrow from './cogniwide-assets/update-arrow.png'
 import smileEmoji from './cogniwide-assets/smile.svg'
 import normalEmoji from './cogniwide-assets/normal.svg'
