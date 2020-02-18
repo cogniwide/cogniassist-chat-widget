@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './cogniwide-chatbubble.css';
+import './cogniwide-chatbubble.scss';
 import Calendar from 'react-calendar';
 import Cloud from '../cogniwide-assets/cloud-upload.png'
 
@@ -70,6 +70,18 @@ class ChatBubble extends Component {
                         <p dangerouslySetInnerHTML={{ __html:this.props.message.text}}></p>
                     </div>
             }
+
+            {('elements' in this.props.message) &&  
+                    <div className="scrolling-wrapper-flexbox">
+                        {this.props.message.elements.map((element,index)=> 
+                            <div className="card" onClick={()=> this.handleClick(element)}  key={index}>
+                                <span className="title">{element.title}</span> <br/>
+                                <span className="subtitle">{element.subtitle}</span> <br/>
+                            </div>
+                        )}   
+                    </div>
+            }
+
             
             {('image' in this.props.message) &&    
                     <p>
