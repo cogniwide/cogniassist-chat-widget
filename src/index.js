@@ -34,7 +34,7 @@ CogniAssistWidget.propTypes = {
 CogniAssistWidget.defaultProps = {
     initialPayload:"/default/welcome",
     botName: 'CogniAssist',
-    botWelcomeMessage: "Hey there, I'm here to assist you with any doubts you migth have.",
+    botWelcomeMessage: "Hey there, I'm here to assist you with any doubts you might have.",
     botIcon: botAvator,
     botURL: 'http://localhost:8080/',
     bannerURL: "",
