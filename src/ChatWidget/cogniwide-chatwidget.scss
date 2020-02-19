@@ -842,7 +842,7 @@ animation-name: fadeInUp;
     width: 60%;
 }
 
-/* .panel-body::-webkit-scrollbar {
+ .panel-body::-webkit-scrollbar {
     width: 6px;
 }
 
@@ -853,9 +853,9 @@ animation-name: fadeInUp;
 
 .panel-body::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background-color: #00bbffc2;
+    background-color: #a3a2a29f;
     outline: 1px solid slategrey;
-} */
+}
 
 .cogniwidechat li.star {
     margin-top: 5px;
@@ -991,17 +991,16 @@ animation-name: fadeInUp;
 }
 @media(max-width: 470px) {
     .cogniwidechat .chat_box_container {
-        width: 95%;
         right: 0;
-        max-height: 80%;
+        top: 45px;
+        width: 100%;
         height: 100%;
-        bottom: 93px;
         z-index: 9999999999999;
     }
     .cogniwidechat .chat-heading{
         width: 200px !important;
         bottom: 15px;
-    right: 179px;
+        right: 179px;
     }
    
     .cogniwidechat .feedback{
