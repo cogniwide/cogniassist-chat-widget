@@ -47,7 +47,7 @@
   color: #ffc107;
 }
 
-.session-border {
+.cogniwidechat .session-border {
   margin-top:20px !important;
   width: 100%; 
   text-align: center; 
@@ -56,13 +56,13 @@
   margin: 10px 0 20px; 
 } 
 
-.session-border span { 
+.cogniwidechat .session-border span { 
    background:#fff; 
    color:#b9b6b6;
    padding:0 10px; 
 }
 
-.scrolling-wrapper-flexbox {
+.cogniwidechat .scrolling-wrapper-flexbox {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
@@ -72,7 +72,7 @@
   }
 }
 
-.card {
+.cogniwidechat .card {
   padding: 10px 20px;
   margin: 10px;
   border-radius: 5px;
@@ -89,7 +89,7 @@
   }
 }
 
-.scrolling-wrapper, .scrolling-wrapper-flexbox {
+.cogniwidechat .scrolling-wrapper, .scrolling-wrapper-flexbox {
 
   width: 100%;
   -webkit-overflow-scrolling: touch;
