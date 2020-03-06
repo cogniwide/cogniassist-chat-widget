@@ -18,7 +18,7 @@ class ChatWidget extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      sender_id: this.createOrRetriveSenderId(),
+      sender_id: (this.props.senderId || this.createOrRetriveSenderId()),
       userMessage: '',
       conversation: [],
       quick_replies: [],

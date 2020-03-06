@@ -14,6 +14,7 @@ const plugin = {
         bannerURL={args.bannerURL}
         bannerText={args.bannerText}
         rememberUser={args.rememberUser}
+        senderId={args.senderId}
 
       />, document.querySelector(args.selector)
     );

@@ -15,6 +15,7 @@ const CogniAssistWidget = forwardRef((props, ref) => {
         botURL={props.botURL}
         bannerURL={props.bannerURL}
         bannerText={props.bannerText}
+        senderId={props.senderId}
         rememberUser={props.rememberUser}
       />
   );
@@ -28,6 +29,7 @@ CogniAssistWidget.propTypes = {
     botURL: PropTypes.string,
     bannerURL: PropTypes.string,
     bannerText:PropTypes.string,
+    senderId: PropTypes.string,
     rememberUser: PropTypes.bool
   };
 
@@ -39,6 +41,7 @@ CogniAssistWidget.defaultProps = {
     botURL: 'http://localhost:8080/',
     bannerURL: "",
     bannerText:"",
+    senderId: null,
     rememberUser: false
   };
 
