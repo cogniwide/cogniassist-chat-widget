@@ -76,7 +76,7 @@ class ChatWidget extends Component {
           sessionNew: response.difference > 10
         }));
       });
-    } else {
+    } else if (this.props.initialPayload != null) {
       this.sendRequest({
         "sender": this.state.sender_id,
         "message": this.props.initialPayload
