@@ -385,9 +385,10 @@
 
 .cogniwidechat .chat li.cwc-left {
     margin-bottom: 10px;
-    display: inline-block;
+    display: table;
     position: relative;
     padding: 0;
+    clear: both;
 }
 
 .cogniwidechat .chat li.cwc-left span.timeStamp {
@@ -958,6 +959,7 @@ animation-name: fadeInUp;
  /* display: inline-block; */
 }
 .cogniwidechat.full-screen .chat li.cwc-left{
+    float: left;
     display: block;
 }
 .cogniwidechat.full-screen .chat li.cwc-left span.timeStamp{
