@@ -2,25 +2,25 @@ import React, { Component } from 'react';
 import './cogniwide-chatbubble.scss';
 import Calendar from 'react-calendar';
 import Cloud from '../cogniwide-assets/cloud-upload.png'
+import Dropdown from './dropdown'
 
 class ChatBubble extends Component {
-
     constructor(props) {
         super(props);
-        this.handleClick = this.handleClick.bind(this);
-
         this.state = {
             date: new Date(),
             loading: true,
             showLoader: false
           }
-
+          this.handleClick = this.handleClick.bind(this);
+          this.dropDownOnChange = this.dropDownOnChange.bind(this)
     }
 
 
     onChange = date => {
         this.setState({ date });
     } 
+
     getFormattedDate(date){
         let year = date.getFullYear();
         let month = (1 + date.getMonth()).toString().padStart(2, '0');
@@ -32,6 +32,11 @@ class ChatBubble extends Component {
         const title = reply.title;
         this.props.parent.chooseReply(title, payload);
     }
+
+    dropDownOnChange(change) {
+                this.props.parent.chooseReply(change.title, change.value);
+    };
+
   render() {    
     if ("line" in this.props.message){
         return (
@@ -143,6 +148,17 @@ class ChatBubble extends Component {
                             </div>
                         </div>
                     </span>
+                }
+
+                {('select' in this.props.message) &&  
+                    <div className="mt-2 diplayalign">
+                        <Dropdown id='chat-dropdown' 
+                            options={this.props.message.select.options} 
+                            value={this.props.message.select.value}
+                            labelField={this.props.message.select.labelField}
+                            valueField={this.props.message.select.valueField}
+                            onChange={this.dropDownOnChange}/>
+                    </div>
                 }
 
             </div>

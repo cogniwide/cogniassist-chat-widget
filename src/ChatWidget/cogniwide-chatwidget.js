@@ -351,6 +351,7 @@ class ChatWidget extends Component {
   }
 
 
+
   sendRequest(payload) {
     this.loading(true);
 
@@ -362,7 +363,28 @@ class ChatWidget extends Component {
       .then(response => response.json())
       .then(response => {
         this.loading(false);
-        console.log(response)
+      //   console.log(response)
+      //   response = [
+      //     {
+      //       "text":"hello"
+      //     },
+      //     {
+      //     "select":{
+      //         "value":1,
+      //         "options":[
+      //             {
+      //                 "l":"Option 1",
+      //                 "v":1
+      //             },
+      //             {
+      //                 "l":"Option 2",
+      //                 "v":2
+      //             }
+      //         ],
+      //         "valueField":"v",
+      //         "labelField":"l"
+      //     }
+      // }]
         if (response.length == 1) {
           response[0]['lastmessage'] = true;
         }
@@ -394,7 +416,7 @@ class ChatWidget extends Component {
         ...response,
         "user": "ai"
       };
-      if ("quick_replies" in response) {
+      if (response && ("quick_replies" in response)) {
         quick_replies.push(...response["quick_replies"])
       }
       messages.push(msg)
