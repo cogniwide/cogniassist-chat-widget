@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './cogniwide-chatbubble.scss';
 import Calendar from 'react-calendar';
 import Cloud from '../cogniwide-assets/cloud-upload.png'
-import Dropdown from './dropdown'
+import Dropdown from './custom-responses/dropdown'
 
 class ChatBubble extends Component {
     constructor(props) {

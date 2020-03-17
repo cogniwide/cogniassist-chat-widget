@@ -57,7 +57,7 @@ class Dropdown extends Component {
             )
         });
         return (
-            <select className="form-control select-css" id={this.props.id} 
+            <select id={this.props.id} 
                     value={this.state.selected} 
                     onChange={this.handleChange.bind(this)}>
                 {options}
