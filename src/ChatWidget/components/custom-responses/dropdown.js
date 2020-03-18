@@ -28,7 +28,8 @@ class Dropdown extends Component {
     getSelectedFromProps(props) {
         var selected;
         if (props.value === null && props.options.length !== 0) {
-            selected = props.options[0][props.valueField];
+            // selected = props.options[0][props.valueField];
+            selected = ""
         } else {
             selected = props.value;
         }
@@ -57,9 +58,10 @@ class Dropdown extends Component {
             )
         });
         return (
-            <select className="form-control select-css" id={this.props.id} 
+            <select className="select-css" id={this.props.id} 
                     value={this.state.selected} 
                     onChange={this.handleChange.bind(this)}>
+                <option disabled key="" value="">Choose</option>
                 {options}
             </select>
         )
