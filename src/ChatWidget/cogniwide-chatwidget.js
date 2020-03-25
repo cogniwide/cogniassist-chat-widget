@@ -8,10 +8,7 @@ import normalEmoji from './cogniwide-assets/normal.svg'
 import worstEmoji from './cogniwide-assets/worst.svg'
 import chatIcon from './cogniwide-assets/launcher-icon.png'
 import chatlogo from './cogniwide-assets/chat-headlogo.png'
-
 import ChatBubble from './components/cogniwide-chatbubble';
-import datepicker from 'js-datepicker';
-import 'js-datepicker/dist/datepicker.min.css';
 
 
 class ChatWidget extends Component {
@@ -37,6 +34,8 @@ class ChatWidget extends Component {
     this.sendText = this.sendText.bind(this);
     this.sendRequest = this.sendRequest.bind(this);
     this.restartChat = this.restartChat.bind(this);
+    this.fullScreeenChat = this.fullScreeenChat.bind(this);
+
 
     this.setUpInitial()
   }
@@ -120,7 +119,8 @@ class ChatWidget extends Component {
 
   }
 
-  restartChat() {
+  restartChat($event) {
+    $event.preventDefault();
     this.setState({
       "sender_id": this.createOrRetriveSenderId(),
       "conversation": [],
@@ -131,7 +131,9 @@ class ChatWidget extends Component {
       "message": this.props.initialPayload
     })
   }
-  fullScreeenChat() {
+  fullScreeenChat($event) {
+    $event.preventDefault();
+
     this.setState({
       "fullScreeen": !this.state.fullScreeen
     })
@@ -282,14 +284,6 @@ class ChatWidget extends Component {
       });
 
     });
-
-    datepicker('.datepickerIcon', {
-      position: 'tr',
-      onSelect: (instance, date) => {
-        let dateVal = this.getFormattedDate(date);
-        $('.chat_box_container .panel-footer #textInput').val($('.chat_box_container .panel-footer #textInput').val() + dateVal).trigger('change');
-      }
-    })
   }
 
   getFormattedDate(date) {
@@ -310,6 +304,7 @@ class ChatWidget extends Component {
   handleSubmit(e) {
     if (e.key === 'Enter') {
       event.preventDefault();
+      event.stopPropagation();
       if (!this.state.userMessage.trim()) return;
       this.sendText()
 
@@ -504,10 +499,10 @@ class ChatWidget extends Component {
               <div className="panel-heading bg-primary">
                 <span className="text-white font-weight-bold"><img className="chat-logoheader" src={chatlogo} width="33" /> {this.props.botName}</span>
                 <div className="btn-group-head">
-                  <a href="#!" className="restart" onClick={() => this.restartChat()} style={restartStyle}>
+                  <a className="restart" onClick={this.restartChat} style={restartStyle}>
                     <img src={updateArrow} alt="refresh" className="img-responsive" width="15" />
                   </a>
-                  <a href="#!" className="expand" onClick={() => this.fullScreeenChat()} >
+                  <a className="expand" onClick={this.fullScreeenChat} >
                     <svg id="Solid" height="16" viewBox="0 0 512 512" width="16" xmlns="http://www.w3.org/2000/svg">
                       <path d="m464 488h-416a24 24 0 0 1 -24-24v-416a24 24 0 0 1 24-24h176a24 24 0 0 1 0 48h-152v368h368v-152a24 24 0 0 1 48 0v176a24 24 0 0 1 -24 24zm-40-400h-33.941l-103.03 103.029a24 24 0 0 0 33.942 33.942l103.029-103.03zm64 88v-128a24 24 0 0 0 -24-24h-128a24 24 0 0 0 0 48h104v104a24 24 0 0 0 48 0z" />
                     </svg>
@@ -574,7 +569,6 @@ class ChatWidget extends Component {
                   ></textarea>
                   <pre className={className} onClick={() => { this.sendText() }}></pre>
                   <pre className="mic-chat"></pre>
-                  <pre className="calender-chat  datepickerIcon"></pre>
                 </div>
                 <div className="power-by">
                   <span>Powered by <a href="#">Cogniwide</a></span>
