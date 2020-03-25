@@ -323,7 +323,7 @@
     cursor: pointer;
     width: 35px;
     z-index: 999;
-    right: 70px;
+    right: 1px;
     top: 0;
     padding: 0px;
     margin-right: 15px;
@@ -346,32 +346,13 @@
     cursor: pointer;
     width: 35px;
     z-index: 999;
-    right: 40px;
+    right: 30px;
     top: 0;
     margin-right: 15px;
     padding:0px;
     margin-top: 0px;
     height: 100%;
     background-image: url('cogniwide-assets/mic.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 22px;
-    opacity: 0.6;
-    /* background: transparent; */
-}
-
-.cogniwidechat pre.calender-chat {
-    position: absolute;
-    cursor: pointer;
-    width: 35px;
-    z-index: 999;
-    right: 10px;
-    top: 0;
-    margin-right: 15px;
-    padding:0;
-    margin-top: 0px;
-    height: 100%;
-    background-image: url('cogniwide-assets/calendar.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 22px;
