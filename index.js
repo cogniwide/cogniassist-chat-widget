@@ -7,6 +7,7 @@ const plugin = {
     ReactDOM.render(
       <CogniAssistWidget
         initialPayload={args.initialPayload}
+        communicationMethod={args.communicationMethod}
         botName={args.botName}
         botWelcomeMessage={args.botWelcomeMessage}
         botIcon={args.botIcon}
@@ -15,6 +16,8 @@ const plugin = {
         bannerText={args.bannerText}
         rememberUser={args.rememberUser}
         senderId={args.senderId}
+        socketURL= {args.socketURL}
+        socketPath= {args.socketPath}
 
       />, document.querySelector(args.selector)
     );
