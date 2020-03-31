@@ -447,6 +447,8 @@ class ChatWidget extends Component {
   }
 
   handleMessageReceived(response) {
+    console.log(response)
+
     if (response.length == 1) {
       response[0]['lastmessage'] = true;
     }
@@ -466,8 +468,8 @@ class ChatWidget extends Component {
   }
 
   handleBotUtterance(botUtterance) {
-    const newMessage = { ...botUtterance, text: String(botUtterance.text) };
-    this.handleMessageReceived([newMessage]);
+    // const newMessage = { ...botUtterance, text: String(botUtterance.text) };
+    this.handleMessageReceived([botUtterance]);
   }
 
   renderResponse(responses) {
