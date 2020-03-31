@@ -12,11 +12,17 @@
   <script>
     CogniAssistWidget.default.init({
       selector: "#cogniassist",
-      initialPayload:"/event/welcome",
+      initialPayload:"/default/welcome",
+      communicationMethod: "socket",
+      // botURL:'http://127.0.0.1/chatbot-backend/',
+      // socketURL: "http://127.0.0.1/",
+      // socketPath: "/chatbot-backend/socket.io",
+
+      botURL:'https://assistant.cogniwide.com/chatbot-backend/',
+      socketURL: "https://assistant.cogniwide.com/",
+      socketPath: "/chatbot-backend/socket.io",
       botName: 'CogniAssist',
       botWelcomeMessage: "Hey there, I'm here to assist you with any doubts you migth have.",
-      // botURL:'https://demo.cogniwide.com/exchange-house-backend/',
-      botURL:'http://127.0.0.1:8080/',
       bannerURL:"https://cogniwide.com/assets/images/background4.jpg",
       bannerText:"Cogniwide is a Digital Transformation company that specialises in AI, RPA, Cloud,IOT, Blockchain and Data Analytics.",
       rememberUser: false

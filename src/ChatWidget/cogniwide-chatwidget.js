@@ -35,120 +35,131 @@ class ChatWidget extends Component {
     this.sendRequest = this.sendRequest.bind(this);
     this.restartChat = this.restartChat.bind(this);
     this.fullScreeenChat = this.fullScreeenChat.bind(this);
-
-
-    this.setUpInitial()
   }
 
   setUpInitial() {
-    if (this.props.rememberUser) {
-      this.loadChatHistory().then(response => {
-        let messages = []
-        response.chats.forEach(
-          (resp) => {
-            messages.push({
-              "text": resp.query,
-              "user": "human"
-            })
-            resp.response.forEach(
-              (message) => {
-                messages.push({
-                  ...message,
-                  "user": "ai"
-                })
-              }
-            )
+    const {
+      socket,
+      communicationMethod
+    } = this.props;
+
+    if (communicationMethod == "socket") {
+      if (!socket.isInitialized()) {
+
+        console.log("socket",socket)
+        socket.createSocket();
+
+        socket.on('bot_uttered', (botUttered) => {
+          this.loading(false);
+          this.handleBotUtterance(botUttered);
+        });
+
+        // Request a session from server
+        socket.on('connect', () => {
+          socket.emit('session_request', { session_id: this.state.sender_id });
+        });
+
+
+        // When session_confirm is received from the server:
+        socket.on('session_confirm', (sessionObject) => {
+          console.log("session confirmed")
+
+          const remoteId = (sessionObject && sessionObject.session_id)
+            ? sessionObject.session_id
+            : sessionObject;
+
+          // eslint-disable-next-line no-console
+          console.log(`session_confirm:${socket.socket.id} session_id:${remoteId}`);
+          /*
+          Check if the session_id is consistent with the server
+          If the localId is null or different from the remote_id,
+          start a new session.
+          */
+         this.trySendInitSocketPayload();
+
+          if (this.state.sender_id !== remoteId) {
+            // storage.clear();
+            // Store the received session_id to storage
+            this.trySendInitSocketPayload();
           }
-        )
-        if (response["difference"] > .10){
+        });
+
+        socket.on('disconnect', (reason) => {
+          // eslint-disable-next-line no-console
+          console.log(reason);
+          if (reason !== 'io client disconnect') {
+            console.log(reason)
+          }
+        });
+      }
+    } else {
+
+      if (this.props.rememberUser) {
+        this.loadChatHistory().then(response => {
+          let messages = []
+          response.chats.forEach(
+            (resp) => {
+              messages.push({
+                "text": resp.query,
+                "user": "human"
+              })
+              resp.response.forEach(
+                (message) => {
+                  messages.push({
+                    ...message,
+                    "user": "ai"
+                  })
+                }
+              )
+            }
+          )
+          if (response["difference"] > .10) {
             messages.push({
-              "user":"human",
-              "line":true
+              "user": "human",
+              "line": true
             })
             this.sendRequest({
               "sender": this.state.sender_id,
               "message": this.props.initialPayload
             })
-        }
-        this.setState((prevState) => ({
-          conversation: messages,
-          sessionNew: response.difference > 10
-        }));
-      });
-    } else if (this.props.initialPayload != null) {
-      this.sendRequest({
-        "sender": this.state.sender_id,
-        "message": this.props.initialPayload
-      })
-    }
-  }
-
-  componentDidUpdate() {
-    this.scrollToBottom()
-  }
-
-  loading(val) {
-    this.setState({
-      loading: val
-    });
-  }
-
-
-  createOrRetriveSenderId() {
-    if (this.props.rememberUser) {
-      let user = localStorage.getItem('cogniassist-user')
-      if (user) {
-        console.info("Returning user", user)
-        return user
-      } else {
-        let user = this.guid()
-        localStorage.setItem('cogniassist-user', user);
-        return user
+          }
+          this.setState((prevState) => ({
+            conversation: messages,
+            sessionNew: response.difference > 10
+          }));
+        });
+      } else if (this.props.initialPayload != null) {
+        this.sendRequest({
+          "sender": this.state.sender_id,
+          "message": this.props.initialPayload
+        })
       }
     }
-    return this.guid()
   }
 
+  trySendInitSocketPayload() {
+    const {
+      initialPayload,
+      customData,
+      socket
+    } = this.props;
 
-  loadChatHistory() {
-    return fetch(this.props.botURL + "chats/" + this.state.sender_id, {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' }
-    })
-      .then(response => response.json())
 
-  }
+    // TODO: Send initial payload when chat is opened or widget is shown
+    if (socket.isInitialized()) {
+      // Only send initial payload if the widget is connected to the server but not yet initialized
 
-  restartChat($event) {
-    $event.preventDefault();
-    this.setState({
-      "sender_id": this.createOrRetriveSenderId(),
-      "conversation": [],
-      "quick_replies": []
-    })
-    this.sendRequest({
-      "sender": this.state.sender_id,
-      "message": this.props.initialPayload
-    })
-  }
-  fullScreeenChat($event) {
-    $event.preventDefault();
+      const sessionId = this.state.sender_id;
 
-    this.setState({
-      "fullScreeen": !this.state.fullScreeen
-    })
-  }
-  guid() {
-    function s4() {
-      return Math.floor((1 + Math.random()) * 0x10000)
-        .toString(16)
-        .substring(1);
+      // check that session_id is confirmed
+      if (!sessionId) return;
+      console.log('sending init payload', sessionId);
+      socket.emit('user_uttered', { message: initialPayload, customData, session_id: sessionId });
     }
-    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-      s4() + '-' + s4() + s4() + s4();
   }
 
   componentDidMount() {
+    this.setUpInitial()
 
     $(".chat_box_container").hide();
     $('.cwc-left').hide();
@@ -286,6 +297,70 @@ class ChatWidget extends Component {
     });
   }
 
+  componentDidUpdate() {
+    this.scrollToBottom()
+  }
+
+  loading(val) {
+    this.setState({
+      loading: val
+    });
+  }
+
+
+  createOrRetriveSenderId() {
+    if (this.props.rememberUser) {
+      let user = localStorage.getItem('cogniassist-user')
+      if (user) {
+        console.info("Returning user", user)
+        return user
+      } else {
+        let user = this.guid()
+        localStorage.setItem('cogniassist-user', user);
+        return user
+      }
+    }
+    return this.guid()
+  }
+
+
+  loadChatHistory() {
+    return fetch(this.props.botURL + "chats/" + this.state.sender_id, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then(response => response.json())
+
+  }
+
+  restartChat($event) {
+    $event.preventDefault();
+    this.setState({
+      "conversation": [],
+      "quick_replies": []
+    })
+    this.sendRequest({
+      "sender": this.state.sender_id,
+      "message": "/default/restart"
+    })
+  }
+  fullScreeenChat($event) {
+    $event.preventDefault();
+
+    this.setState({
+      "fullScreeen": !this.state.fullScreeen
+    })
+  }
+  guid() {
+    function s4() {
+      return Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1);
+    }
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+      s4() + '-' + s4() + s4() + s4();
+  }
+
   getFormattedDate(date) {
     let year = date.getFullYear();
     let month = (1 + date.getMonth()).toString().padStart(2, '0');
@@ -350,54 +425,49 @@ class ChatWidget extends Component {
   sendRequest(payload) {
     this.loading(true);
 
-    fetch(this.props.botURL + "webhooks/rest/webhook/", {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    })
-      .then(response => response.json())
-      .then(response => {
-        this.loading(false);
-      //   console.log(response)
-      //   response = [
-      //     {
-      //       "text":"hello"
-      //     },
-      //     {
-      //     "select":{
-      //         "value":1,
-      //         "options":[
-      //             {
-      //                 "l":"Option 1",
-      //                 "v":1
-      //             },
-      //             {
-      //                 "l":"Option 2",
-      //                 "v":2
-      //             }
-      //         ],
-      //         "valueField":"v",
-      //         "labelField":"l"
-      //     }
-      // }]
-        if (response.length == 1) {
-          response[0]['lastmessage'] = true;
-        }
-        this.renderResponse([response[0]])
-        if (response.length > 1) {
-          this.loading(true);
-          for (let index = 1; index < response.length; index++) {
-            setTimeout(() => {
-              if (index == (response.length - 1)) {
-                this.loading(false);
-                response[index]['lastmessage'] = true;
-              }
-              this.renderResponse([response[index]])
-            }, (index * this.state.delay));
-          }
-        }
-      });
+    const {
+      communicationMethod,
+      socket
+    } = this.props
 
+    if (communicationMethod == "socket"){
+      socket.emit('user_uttered', { message: payload.message , session_id: payload.sender_id });
+    }else{
+      fetch(this.props.botURL + "webhooks/rest/webhook/", {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+        .then(response => response.json())
+        .then(response => {
+          this.loading(false);
+          this.handleMessageReceived(response)
+        });
+    }
+  }
+
+  handleMessageReceived(response) {
+    if (response.length == 1) {
+      response[0]['lastmessage'] = true;
+    }
+    this.renderResponse([response[0]])
+    if (response.length > 1) {
+      this.loading(true);
+      for (let index = 1; index < response.length; index++) {
+        setTimeout(() => {
+          if (index == (response.length - 1)) {
+            this.loading(false);
+            response[index]['lastmessage'] = true;
+          }
+          this.renderResponse([response[index]])
+        }, (index * this.state.delay));
+      }
+    }
+  }
+
+  handleBotUtterance(botUtterance) {
+    const newMessage = { ...botUtterance, text: String(botUtterance.text) };
+    this.handleMessageReceived([newMessage]);
   }
 
   renderResponse(responses) {
@@ -426,11 +496,13 @@ class ChatWidget extends Component {
   }
 
 
-  dummyRequest() {
+  componentWillUnmount() {
+    const { socket } = this.props;
 
-    return this.messages.shift()
+    if (socket) {
+      socket.close();
+    }
   }
-
 
   render() {
     var aiIndex = 0;
