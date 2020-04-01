@@ -435,6 +435,7 @@ class ChatWidget extends Component {
         .then(response => response.json())
         .then(response => {
           this.loading(false);
+          this.addMessage("File uploaded", "human")
           this.handleMessageReceived(response)
         });
   }
