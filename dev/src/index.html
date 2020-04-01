@@ -1,25 +1,28 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CogniAssist Chatwidget 1.0</title>
-  </head>
-  <body>
-    <div id="cogniassist"></div>
-  </body>
-  <script src="index.js"  type="text/javascript"></script>
-  <script>
-    CogniAssistWidget.default.init({
-      selector: "#cogniassist",
-      initialPayload:"/event/welcome",
-      botName: 'CogniAssist',
-      botWelcomeMessage: "Hey there, I'm here to assist you with any doubts you migth have.",
-      // botURL:'https://demo.cogniwide.com/exchange-house-backend/',
-      botURL:'http://127.0.0.1:8080/',
-      bannerURL:"https://cogniwide.com/assets/images/background4.jpg",
-      bannerText:"Cogniwide is a Digital Transformation company that specialises in AI, RPA, Cloud,IOT, Blockchain and Data Analytics.",
-      rememberUser: false
-    });
-  </script>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CogniAssist Chatwidget 1.0</title>
+</head>
+
+<body>
+  <div id="cogniassist"></div>
+</body>
+<script src="index.js" type="text/javascript"></script>
+<script>
+  CogniAssistWidget.default.init({
+    selector: "#cogniassist",
+    initialPayload: "/default/welcome",
+    botName: 'CogniAssist',
+    botWelcomeMessage: "Hey there, I'm here to assist you with any doubts you migth have.",
+    botURL: 'https://assistant.cogniwide.com/chatbot-backend/',
+    // botURL:'http://127.0.0.1:8080/',
+    bannerURL: "https://cogniwide.com/assets/images/background4.jpg",
+    bannerText: "Cogniwide is a Digital Transformation company that specialises in AI, RPA, Cloud,IOT, Blockchain and Data Analytics.",
+    rememberUser: false
+  });
+</script>
+
 </html>

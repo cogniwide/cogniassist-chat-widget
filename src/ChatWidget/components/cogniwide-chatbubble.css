@@ -1,0 +1,112 @@
+@charset "UTF-8";
+.cogniwidechat .react-calendar {
+  width: 250px !important;
+}
+
+/* Attachment */
+.cogniwidechat .upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.cogniwidechat .upload_btn {
+  border: 1px solid #00bbff;
+  color: #00bbff;
+  background-color: white;
+  padding: 5px 15px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  position: relative;
+  /* z-index: 1; */
+  cursor: pointer !important;
+}
+
+.cogniwidechat .upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.cogniwidechat .upload-icon {
+  width: 20px;
+  margin-right: 10px;
+  vertical-align: bottom;
+}
+
+.cogniwidechat .right span.timeStamp {
+  position: absolute;
+  right: 0;
+}
+
+.cogniwidechat li.star:before {
+  content: '★ ';
+  font-size: 30px;
+  color: #d3d3d3;
+}
+
+.cogniwidechat li.star.hover:before, .cogniwidechat li.star.selected:before {
+  color: #ffc107;
+}
+
+.cogniwidechat .session-border {
+  margin-top: 20px !important;
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #e6e6e6;
+  line-height: 0.1em;
+  margin: 10px 0 20px;
+}
+
+.cogniwidechat .session-border span {
+  background: #fff;
+  color: #b9b6b6;
+  padding: 0 10px;
+}
+
+.cogniwidechat .scrolling-wrapper-flexbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.cogniwidechat .scrolling-wrapper-flexbox .card {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+}
+
+.cogniwidechat .card {
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 5px;
+  background: #f0f0f0;
+  border: 1px solid #e2e2e2;
+  border-radius: 3%;
+  cursor: pointer;
+}
+
+.cogniwidechat .card .title {
+  color: #000;
+  font-weight: bold;
+}
+
+.cogniwidechat .card .subtitle {
+  color: #787878;
+}
+
+.cogniwidechat .scrolling-wrapper, .scrolling-wrapper-flexbox {
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+.cogniwidechat .scrolling-wrapper::-webkit-scrollbar, .scrolling-wrapper-flexbox::-webkit-scrollbar {
+  display: none;
+}
+/*# sourceMappingURL=cogniwide-chatbubble.css.map */

@@ -3,6 +3,7 @@ import $ from 'jquery';
 // import 'bootstrap/dist/css/bootstrap.css';
 import './cogniwide-chatwidget.scss';
 import updateArrow from './cogniwide-assets/update-arrow.png'
+import minimize from './cogniwide-assets/minimize.png'
 import smileEmoji from './cogniwide-assets/smile.svg'
 import normalEmoji from './cogniwide-assets/normal.svg'
 import worstEmoji from './cogniwide-assets/worst.svg'
@@ -60,15 +61,15 @@ class ChatWidget extends Component {
             )
           }
         )
-        if (response["difference"] > .10){
-            messages.push({
-              "user":"human",
-              "line":true
-            })
-            this.sendRequest({
-              "sender": this.state.sender_id,
-              "message": this.props.initialPayload
-            })
+        if (response["difference"] > .10) {
+          messages.push({
+            "user": "human",
+            "line": true
+          })
+          this.sendRequest({
+            "sender": this.state.sender_id,
+            "message": this.props.initialPayload
+          })
         }
         this.setState((prevState) => ({
           conversation: messages,
@@ -358,28 +359,28 @@ class ChatWidget extends Component {
       .then(response => response.json())
       .then(response => {
         this.loading(false);
-      //   console.log(response)
-      //   response = [
-      //     {
-      //       "text":"hello"
-      //     },
-      //     {
-      //     "select":{
-      //         "value":1,
-      //         "options":[
-      //             {
-      //                 "l":"Option 1",
-      //                 "v":1
-      //             },
-      //             {
-      //                 "l":"Option 2",
-      //                 "v":2
-      //             }
-      //         ],
-      //         "valueField":"v",
-      //         "labelField":"l"
-      //     }
-      // }]
+        //   console.log(response)
+        //   response = [
+        //     {
+        //       "text":"hello"
+        //     },
+        //     {
+        //     "select":{
+        //         "value":1,
+        //         "options":[
+        //             {
+        //                 "l":"Option 1",
+        //                 "v":1
+        //             },
+        //             {
+        //                 "l":"Option 2",
+        //                 "v":2
+        //             }
+        //         ],
+        //         "valueField":"v",
+        //         "labelField":"l"
+        //     }
+        // }]
         if (response.length == 1) {
           response[0]['lastmessage'] = true;
         }
@@ -494,85 +495,94 @@ class ChatWidget extends Component {
 
 
         <div className="chat_box_container position-relative">
-          <div className="col-md-12 p-0 h-100">
-            <div className="panel panel-primary">
-              <div className="panel-heading bg-primary">
-                <span className="text-white font-weight-bold"><img className="chat-logoheader" src={chatlogo} width="33" /> {this.props.botName}</span>
-                <div className="btn-group-head">
-                  <a className="restart" onClick={this.restartChat} style={restartStyle}>
-                    <img src={updateArrow} alt="refresh" className="img-responsive" width="15" />
-                  </a>
-                  <a className="expand" onClick={this.fullScreeenChat} >
-                    <svg id="Solid" height="16" viewBox="0 0 512 512" width="16" xmlns="http://www.w3.org/2000/svg">
-                      <path d="m464 488h-416a24 24 0 0 1 -24-24v-416a24 24 0 0 1 24-24h176a24 24 0 0 1 0 48h-152v368h368v-152a24 24 0 0 1 48 0v176a24 24 0 0 1 -24 24zm-40-400h-33.941l-103.03 103.029a24 24 0 0 0 33.942 33.942l103.029-103.03zm64 88v-128a24 24 0 0 0 -24-24h-128a24 24 0 0 0 0 48h104v104a24 24 0 0 0 48 0z" />
-                    </svg>
-                  </a>
-                  <div className="close" aria-label="Close" style={closeBtnStyle}>
-                    <svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                      <path
-                        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
-                      </path>
-                    </svg>
-                  </div>
-                </div>
+          <div className="_full_container_wrapper">
+            <div className="panel-heading bg-primary">
+              <span className="text-white font-weight-bold"><img className="chat-logoheader" src={chatlogo} width="33" /> {this.props.botName}</span>
+              <div className="btn-group-head">
+                <a className="restart" onClick={this.restartChat} style={restartStyle}>
+                  <img src={updateArrow} alt="refresh" className="img-responsive" width="15" />
+                </a>
+                {/* <a className="expand" onClick={this.fullScreeenChat} >
+                  <svg id="Solid" height="16" viewBox="0 0 512 512" width="16" xmlns="http://www.w3.org/2000/svg">
+                    <path d="m464 488h-416a24 24 0 0 1 -24-24v-416a24 24 0 0 1 24-24h176a24 24 0 0 1 0 48h-152v368h368v-152a24 24 0 0 1 48 0v176a24 24 0 0 1 -24 24zm-40-400h-33.941l-103.03 103.029a24 24 0 0 0 33.942 33.942l103.029-103.03zm64 88v-128a24 24 0 0 0 -24-24h-128a24 24 0 0 0 0 48h104v104a24 24 0 0 0 48 0z" />
+                  </svg>
+                </a> */}
+                <a className="minimize">
+                  <img src={minimize} alt="minimise" className="img-responsive" width="15" />
+                </a>
+                <a className="close" aria-label="Close" style={closeBtnStyle}>
+                  <svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                      d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+                    </path>
+                  </svg>
+                </a>
               </div>
-              <div className="panel-body">
-                <div className="banner" style={bannerStyle}>
-                  <h3>{this.props.bannerText}</h3>
-                </div>
-                {
-                  this.state.showFeedback == false &&
-                  <ul className="chat">
-                    {chat}
-                    <li className="loading" style={{ display: this.state.loading ? "block" : "none" }}>
-                      <div className="adminchatlist">
-                        <div className="chat-body bubble clearfix">
-                          <img src="https://cogniwide.github.io/cogniassist-chat-widget/public/assets/tenor.gif" />
-                        </div>
+            </div>
+            <div className="panel-body">
+              <div className="banner" style={bannerStyle}>
+                <h3>{this.props.bannerText}</h3>
+              </div>
+              {
+                this.state.showFeedback == false &&
+                <ul className="chat">
+                  {chat}
+                  <li className="loading" style={{ display: this.state.loading ? "block" : "none" }}>
+                    <div className="adminchatlist">
+                      <div className="chat-body bubble clearfix">
+                        <img src="https://cogniwide.github.io/cogniassist-chat-widget/public/assets/tenor.gif" />
                       </div>
+                    </div>
+                  </li>
+                </ul>
+              }
+
+              {
+                this.state.showFeedback &&
+                <div className="feedback">
+                  Feedback
+                    <ul className="feedback-emoji">
+                    <li data-name="worst">
+                      <img src={worstEmoji} />
+                      <p> bad </p>
                     </li>
+                    <li data-name="normal"><img src={normalEmoji} />
+                      <p> Satisfied </p>
+                    </li>
+                    <li data-name="smile"><img src={smileEmoji} />
+                      <p> awesome </p></li>
                   </ul>
-                }
+                </div>
+              }
 
-                {
-                  this.state.showFeedback &&
-                  <div className="feedback">
-                    Feedback
-                                <ul className="feedback-emoji">
-                      <li data-name="worst"><img src={worstEmoji} width="50" /></li>
-                      <li data-name="normal"><img src={normalEmoji} width="50" /></li>
-                      <li data-name="smile"><img src={smileEmoji} width="50" /></li>
-                    </ul>
-                  </div>
-                }
-
+              <div className="suggestion_box bg-white">
+                <div className="quick-replies">
+                  {this.state.quick_replies.map((button, index) => <button type="button" id="quick_reply_btn" key={index}
+                    className="cwc-borderbtn see_all"
+                    onClick={() => this.chooseReply(button.title, button.payload)}
+                    data={button}>{button.title}</button>
+                  )}
+                </div>
               </div>
-              <div className="panel-footer">
-                <div className="suggestion_box bg-white">
-                  <div className="quick-replies">
-                    {this.state.quick_replies.map((button, index) => <button type="button" id="quick_reply_btn" key={index}
-                      className="cwc-borderbtn see_all"
-                      onClick={() => this.chooseReply(button.title, button.payload)}
-                      data={button}>{button.title}</button>
-                    )}
-                  </div>
-                </div>
-                <div id="composer"
-                  className="composer position-relative">
-                  <textarea
-                    value={this.state.userMessage}
-                    onKeyUp={this.handleSubmit}
-                    onChange={this.handleChange}
-                    id="textInput"
-                    className="textInput"
-                    placeholder="Type your query"
-                  ></textarea>
-                  <pre className={className} onClick={() => { this.sendText() }}></pre>
-                  <pre className="mic-chat"></pre>
-                </div>
-                <div className="power-by">
-                  <span>Powered by <a href="#">Cogniwide</a></span>
-                </div>
+
+            </div>
+            <div className="panel-footer">
+
+              <div id="composer"
+                className="composer position-relative">
+                <textarea
+                  value={this.state.userMessage}
+                  onKeyUp={this.handleSubmit}
+                  onChange={this.handleChange}
+                  id="textInput"
+                  className="textInput"
+                  placeholder="Type your query"
+                ></textarea>
+                <button className={className} onClick={() => { this.sendText() }}></button>
+                <button className="mic-chat"></button>
+              </div>
+              <div className="power-by">
+                <span>Powered by <a href="#">Cogniwide</a></span>
               </div>
             </div>
           </div>
