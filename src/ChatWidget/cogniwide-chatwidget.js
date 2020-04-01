@@ -35,6 +35,7 @@ class ChatWidget extends Component {
     this.sendRequest = this.sendRequest.bind(this);
     this.restartChat = this.restartChat.bind(this);
     this.fullScreeenChat = this.fullScreeenChat.bind(this);
+    this.sendFile.bind(this);
   }
 
   setUpInitial() {
@@ -418,6 +419,24 @@ class ChatWidget extends Component {
     this.sendRequest(reqJson)
     this.setState({ userMessage: '' });
     this.scrollToBottom()
+  }
+
+  sendFile(file) {
+      this.loading(true);
+      const formData = new FormData();
+      formData.append("sender", this.state.sender_id);
+      formData.append("file", file, file.name);
+      formData.append("message", "/file_uploaded");
+
+      return fetch(this.props.botURL + "webhooks/rest/webhook/", {
+        method: 'POST',
+        body: formData,
+      })
+        .then(response => response.json())
+        .then(response => {
+          this.loading(false);
+          this.handleMessageReceived(response)
+        });
   }
 
 
