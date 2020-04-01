@@ -10,7 +10,8 @@ class ChatBubble extends Component {
         super(props);
         this.state = {
             loading: true,
-            showLoader: false
+            showLoader: false,
+            uploading: false
         }
         this.handleClick = this.handleClick.bind(this);
         this.dropDownOnChange = this.dropDownOnChange.bind(this)
@@ -38,7 +39,21 @@ class ChatBubble extends Component {
     dropDownOnChange(change) {
         this.props.parent.chooseReply(change.title, change.value);
     };
+    handleFiles(files){
+        this.setState({
+            uploading: true
+          })
 
+        this.props.parent.sendFile(files[0]).then(
+            ()=>{
+                this.setState({
+                    uploading: false
+                  })
+            }
+        )
+
+
+    }
     render() {
         if ("line" in this.props.message) {
             return (
@@ -146,12 +161,13 @@ class ChatBubble extends Component {
                                     />
                                 </span>
                             }
+
                             {('upload' in this.props.message) &&
                                 <span className="mt-2 diplayalign">
                                     <div className="attachment">
                                         <div className="upload-btn-wrapper">
                                             <button className="upload_btn"><img className="upload-icon" src={Cloud} alt="Upload file" />Upload a file</button>
-                                            <input type="file" accept={this.props.message.upload.accept} name="myfile" onChange={() => { this.props.parent.sendText("File Uploaded Successfully"); }} />
+                                            <input type="file" accept={this.props.message.upload.accept} name="myfile" onChange={(e) => { this.handleFiles(e.target.files)}} />
                                         </div>
                                     </div>
                                 </span>
@@ -170,11 +186,11 @@ class ChatBubble extends Component {
 
                         </div>
                     </div>
-                    {this.props.message.lastmessage === true &&
+                    {/* {this.props.message.lastmessage === true &&
                         <div className="chatstimes">
                             <span className="timeStamp">1:35 AM</span>
                         </div>
-                    }
+                    } */}
 
                 </li>
             )
