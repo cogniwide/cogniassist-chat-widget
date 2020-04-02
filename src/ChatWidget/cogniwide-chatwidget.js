@@ -73,6 +73,11 @@ class ChatWidget extends Component {
 
           // eslint-disable-next-line no-console
           console.log(`session_confirm:${socket.socket.id} session_id:${remoteId}`);
+
+          this.setState({
+            "sender_id":socket.socket.id
+          })
+          
           /*
           Check if the session_id is consistent with the server
           If the localId is null or different from the remote_id,
@@ -80,11 +85,6 @@ class ChatWidget extends Component {
           */
          this.trySendInitSocketPayload();
 
-          if (this.state.sender_id !== remoteId) {
-            // storage.clear();
-            // Store the received session_id to storage
-            this.trySendInitSocketPayload();
-          }
         });
 
         socket.on('disconnect', (reason) => {
