@@ -1172,6 +1172,7 @@ $light: #eeeeee;
         background-image: url('cogniwide-assets/bg-pattern.png');
         background-size: contain;
         background-position: center center;
+        padding-bottom: 95px;
 
         .banner {
             // box-sizing: border-box;
@@ -1330,8 +1331,9 @@ $light: #eeeeee;
 
     /* BOF FOOTER */
     .panel-footer {
-        position: relative;
+        position: fixed;
         width: 100%;
+       
 
         .composer {
             position: relative;
