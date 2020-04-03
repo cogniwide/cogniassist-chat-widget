@@ -2,7 +2,7 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import ChatWidget from './ChatWidget/cogniwide-chatwidget';
-import botAvator from './ChatWidget/cogniwide-assets/bot-avator.png'
+import botAvator from './ChatWidget/cogniwide-assets/awnic_bot.png'
 import socket from './socket';
 
 const CogniAssistWidget = forwardRef((props, ref) => {
