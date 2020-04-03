@@ -1,3 +1,4 @@
+
 div {
     box-sizing: border-box;
 }
@@ -1069,6 +1070,19 @@ $white : #fff;
 $muted:#666;
 $light: #eeeeee;
 
+@font-face {
+    font-family: 'cogni-regular';
+    src: url(cogniwide-assets/fonts/Poppins-Regular.ttf) format("woff2");
+}
+@font-face {
+    font-family: 'cogni-medium';
+    src: url(assets/fonts/SailecRegular.ttf) format("woff2");
+}
+@font-face {
+    font-family: 'cogni-bold';
+    src: url(assets/fonts/SailecRegular.ttf) format("woff2");
+}
+
 #cogniassist {
     // border: 0px;
     // background-color: transparent;
@@ -1086,15 +1100,17 @@ $light: #eeeeee;
 }
 
 .cogniwidechat {
+    font-family: 'cogni-regular';
 
     .chat_box_container {
         width: 370px;
-        height: calc(100vh - 80px);
+        height: calc(100vh - 60px);
         bottom: 30px;
         box-shadow: 0 4px 16px rgba(0, 0, 0, .25);
         border-radius: 10px;
         overflow: hidden;
         font-family: 'Poppins', sans-serif !important;
+        
 
     }
 
@@ -1182,6 +1198,7 @@ $light: #eeeeee;
             width: 100%;
             box-sizing: border-box;
             margin-bottom: 0;
+            max-width: 100%;
         }
 
         .cwc-left {
@@ -1190,7 +1207,7 @@ $light: #eeeeee;
                 margin-left: 10px;
                 padding: 0;
                 background: $white;
-                max-width: 280px;
+                max-width: 270px;
 
                 p {
                     padding: 8px 15px;
@@ -1267,7 +1284,7 @@ $light: #eeeeee;
                 margin-left: 10px;
                 padding: 0;
                 background: $primary_clr !important;
-                max-width: 280px;
+                max-width: 270px;
 
                 p {
                     padding: 8px 15px;
@@ -1324,9 +1341,17 @@ $light: #eeeeee;
                 color: $white;
             }
         }
-        .avatar{
-            border-radius: 0 !important;
+        .avatar_wrapper{
+            width: 40px;
+            height: 40px;
+            .avatar{
+                width: 100%;
+                height: 100%;;
+                border-radius: 100px !important;
+                border: 1px solid $black;
+            }
         }
+        
     }
 
     /* BOF FOOTER */
