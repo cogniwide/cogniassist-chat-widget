@@ -13,18 +13,18 @@
     CogniAssistWidget.default.init({
       selector: "#cogniassist",
       initialPayload:"/default/welcome",
-      communicationMethod: "rest",
-      // botURL:'http://127.0.0.1/chatbot-backend/',
-      // socketURL: "http://127.0.0.1/",
-      // socketPath: "/chatbot-backend/socket.io",
-
-      botURL:'https://assistant.cogniwide.com/chatbot-backend/',
-      socketURL: "https://assistant.cogniwide.com/",
+      communicationMethod: "socket",
+      botURL:'http://127.0.0.1/chatbot-backend/',
+      socketURL: "http://127.0.0.1/",
       socketPath: "/chatbot-backend/socket.io",
+
+      // botURL:'https://assistant.cogniwide.com/chatbot-backend/',
+      // socketURL: "https://assistant.cogniwide.com/",
+      // socketPath: "/chatbot-backend/socket.io",
       botName: 'AWNIC Bot',
       botWelcomeMessage: "Hey there, I'm here to assist you with any doubts you migth have.",
-      bannerURL:"https://cogniwide.github.io/cogniassist-chat-widget/public/banner.jpg",
-      bannerText:"XYZ Exchange is one of the most trusted money exchange and money transfer companies in UAE, Dubai.",
+      bannerURL:"https://cogniwide.github.io/cogniassist-chat-widget/public/assets/banner.jpg",
+      bannerText:"AWNIC National Insurance is an insurance company that specialises in Motor, Home, Travel, UAE visit visa, Yacht & Jetski insurance plans..",
       rememberUser: false
     });
   </script>
