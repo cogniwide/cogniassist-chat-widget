@@ -1,4 +1,3 @@
-
 div {
     box-sizing: border-box;
 }
@@ -19,9 +18,9 @@ div {
     box-shadow: 0 0 0 0rem rgba(23, 162, 184, .0) !important;
 }
 
-.cogniwidechat img {
-    max-width: 225px;
-}
+// .cogniwidechat img {
+//     max-width: 225px;
+// }
 
 .cogniwidechat p {
     font-size: 15px;
@@ -1100,18 +1099,19 @@ $light: #eeeeee;
 }
 
 .cogniwidechat {
+
     // font-family: 'cogni-regular';
-    .badge-msg{
+    .badge-msg {
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 0 !important;
         min-width: 20px;
-        min-height: 20px; 
+        min-height: 20px;
         top: -5px !important;
         right: -2px !important;
-}
-  
+    }
+
 
     .chat_box_container {
         width: 400px;
@@ -1121,7 +1121,7 @@ $light: #eeeeee;
         border-radius: 10px;
         overflow: hidden;
         font-family: 'Poppins', sans-serif !important;
-        
+
 
     }
 
@@ -1140,7 +1140,7 @@ $light: #eeeeee;
         background: $primary_clr;
         height: auto;
 
-        span{
+        span {
             display: flex;
             align-items: center;
         }
@@ -1205,6 +1205,44 @@ $light: #eeeeee;
             // box-sizing: border-box;
         }
 
+        /* SLIDER STYLES */
+        .carousel .control-prev.control-arrow:before {
+            border-right: 8px solid $primary_clr;
+        }
+
+        .carousel .control-prev.control-arrow {
+            left: 10px;
+        }
+
+        .carousel .control-next.control-arrow:before {
+            border-left: 8px solid $primary_clr;
+        }
+
+        .carousel .control-next.control-arrow {
+            right: 10px;
+        }
+
+        .carousel .control-dots .dot {
+            background: $Secondary_clr
+        }
+        .carousel .slide{ background: none;}
+        .carousel-slider {
+            .control-arrow {
+                height: 40PX;
+                width: 40PX;
+                background: #fff !important;
+                border-radius: 100px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .slider-wrapper {
+                img {
+                    width: 100%;
+                }
+            }
+        }
+
         ul.chat {
             width: 100%;
             box-sizing: border-box;
@@ -1222,10 +1260,12 @@ $light: #eeeeee;
 
                 p {
                     padding: 8px 15px;
-                    b{
+
+                    b {
                         color: $black;
                     }
-                    p{
+
+                    p {
                         padding: 0;
                     }
                 }
@@ -1358,17 +1398,20 @@ $light: #eeeeee;
                 color: $white;
             }
         }
-        .avatar_wrapper{
+
+        .avatar_wrapper {
             width: 40px;
             height: 40px;
-            .avatar{
+
+            .avatar {
                 width: 100%;
-                height: 100%;;
+                height: 100%;
+                ;
                 border-radius: 100px !important;
-                border: 1px solid $white;
+                // border: 1px solid $white;
             }
         }
-        
+
     }
 
     /* BOF FOOTER */
@@ -1376,7 +1419,7 @@ $light: #eeeeee;
         position: relative;
         width: 100%;
         z-index: 999999;
-       
+
 
         .composer {
             position: relative;
@@ -1428,15 +1471,16 @@ $light: #eeeeee;
     }
 
     /* COMMON STYLES */
-    .feedback-emoji{
-        li{
+    .feedback-emoji {
+        li {
             margin: 0 20px;
             text-transform: capitalize;
 
-            img{
+            img {
                 width: 40px !important;
                 transition: all ease-in-out .3s;
-                &:hover{
+
+                &:hover {
                     transform: scale(1.2)
                 }
             }
@@ -1460,11 +1504,10 @@ $light: #eeeeee;
 }
 
 
-/* RESPONSIVE DESIGN */ 
-@media(max-width:767px){
-    .cogniwidechat
-    {
-        .chat_box_container{
+/* RESPONSIVE DESIGN */
+@media(max-width:767px) {
+    .cogniwidechat {
+        .chat_box_container {
             width: 100%;
             right: 0;
             height: 100vh;
@@ -1472,17 +1515,18 @@ $light: #eeeeee;
             max-height: 100vh;
             border-radius: 0;
             top: 0;
-            
+
         }
 
-        .feedback-emoji{
-            li{
+        .feedback-emoji {
+            li {
                 margin: 0 8%x;
-    
-                img{
+
+                img {
                     width: 60px !important;
                     transition: all ease-in-out .3s;
-                    &:hover{
+
+                    &:hover {
                         transform: scale(1.2)
                     }
                 }
@@ -1491,4 +1535,3 @@ $light: #eeeeee;
 
     }
 }
-
