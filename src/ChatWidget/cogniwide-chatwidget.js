@@ -595,6 +595,26 @@ class ChatWidget extends Component {
           }
         </div>
 
+        <div class="recommendations-container">
+          <div class="recommendations-header">
+          <div class="title">Recommendations</div>
+          <button>X</button>
+          </div>
+          <div class="recommendation-items">
+            <div class="recommendation-item">
+              <div class="icon">Icon</div>
+              Recommendation 1
+            </div>
+            <div class="recommendation-item">
+              Recommendation 2
+            </div>
+            <div class="recommendation-item">
+            <div class="icon">Icon 2</div>
+              Recommendation 3
+            </div>
+          </div>
+        </div>
+
 
         <div className="chat_box_container position-relative">
           <div className="_full_container_wrapper">
