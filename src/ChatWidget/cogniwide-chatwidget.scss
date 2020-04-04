@@ -278,6 +278,10 @@ div {
     -webkit-overflow-scrolling: touch;
     transition: all 1s ease-in-out;
     background-color: #fff;
+    iframe{
+        display:block;
+        width:100%;
+    }
 }
 
 
