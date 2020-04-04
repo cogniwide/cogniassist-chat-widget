@@ -1070,18 +1070,18 @@ $white : #fff;
 $muted:#666;
 $light: #eeeeee;
 
-@font-face {
-    font-family: 'cogni-regular';
-    src: url(cogniwide-assets/fonts/Poppins-Regular.ttf) format("woff2");
-}
-@font-face {
-    font-family: 'cogni-medium';
-    src: url(assets/fonts/SailecRegular.ttf) format("woff2");
-}
-@font-face {
-    font-family: 'cogni-bold';
-    src: url(assets/fonts/SailecRegular.ttf) format("woff2");
-}
+// @font-face {
+//     font-family: 'cogni-regular';
+//     src: url(cogniwide-assets/fonts/Poppins-Regular.ttf) format("woff2");
+// }
+// @font-face {
+//     font-family: 'cogni-medium';
+//     src: url(assets/fonts/SailecRegular.ttf) format("woff2");
+// }
+// @font-face {
+//     font-family: 'cogni-bold';
+//     src: url(assets/fonts/SailecRegular.ttf) format("woff2");
+// }
 
 #cogniassist {
     // border: 0px;
@@ -1100,12 +1100,23 @@ $light: #eeeeee;
 }
 
 .cogniwidechat {
-    font-family: 'cogni-regular';
+    // font-family: 'cogni-regular';
+    .badge-msg{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 !important;
+        min-width: 20px;
+        min-height: 20px; 
+        top: -5px !important;
+        right: -2px !important;
+}
+  
 
     .chat_box_container {
-        width: 370px;
-        height: calc(100vh - 60px);
-        bottom: 30px;
+        width: 400px;
+        height: calc(100vh - 40px);
+        bottom: 20px;
         box-shadow: 0 4px 16px rgba(0, 0, 0, .25);
         border-radius: 10px;
         overflow: hidden;
@@ -1211,6 +1222,12 @@ $light: #eeeeee;
 
                 p {
                     padding: 8px 15px;
+                    b{
+                        color: $black;
+                    }
+                    p{
+                        padding: 0;
+                    }
                 }
             }
 
@@ -1348,7 +1365,7 @@ $light: #eeeeee;
                 width: 100%;
                 height: 100%;;
                 border-radius: 100px !important;
-                border: 1px solid $black;
+                border: 1px solid $white;
             }
         }
         
@@ -1356,8 +1373,9 @@ $light: #eeeeee;
 
     /* BOF FOOTER */
     .panel-footer {
-        position: fixed;
+        position: relative;
         width: 100%;
+        z-index: 999999;
        
 
         .composer {
@@ -1441,6 +1459,7 @@ $light: #eeeeee;
     }
 }
 
+
 /* RESPONSIVE DESIGN */ 
 @media(max-width:767px){
     .cogniwidechat
@@ -1472,3 +1491,4 @@ $light: #eeeeee;
 
     }
 }
+
