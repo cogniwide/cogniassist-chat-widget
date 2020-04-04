@@ -106,6 +106,7 @@ const CogniAssistWidget = forwardRef((props, ref) => {
       bannerText={props.bannerText}
       senderId={props.senderId}
       rememberUser={props.rememberUser}
+      carouselItems={props.carouselItems}
     />
   );
 });
@@ -130,7 +131,8 @@ CogniAssistWidget.propTypes = {
   onSocketEvent: PropTypes.objectOf(PropTypes.func),
   protocol: PropTypes.string,
   protocolOptions: PropTypes.shape({}),
-  customData: PropTypes.shape({})
+  customData: PropTypes.shape({}),
+  carouselItems: PropTypes.array
 };
 
 CogniAssistWidget.defaultProps = {
@@ -149,7 +151,8 @@ CogniAssistWidget.defaultProps = {
   protocol: 'socketio',
   protocolOptions: {},
   onSocketEvent: {},
-  customData: {}
+  customData: {},
+  carouselItems: []
 };
 
 export default CogniAssistWidget;

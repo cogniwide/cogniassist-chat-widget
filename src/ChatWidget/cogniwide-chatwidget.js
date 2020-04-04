@@ -10,7 +10,7 @@ import worstEmoji from './cogniwide-assets/worst.svg'
 import chatIcon from './cogniwide-assets/launcher-icon.png'
 import chatlogo from './cogniwide-assets/chat-headlogo.png'
 import ChatBubble from './components/cogniwide-chatbubble';
-
+import CarouselWrapper from './components/carousel_wrapper'
 
 class ChatWidget extends Component {
   constructor(props) {
@@ -622,9 +622,15 @@ class ChatWidget extends Component {
               </div>
             </div>
             <div className="panel-body">
-              <div className="banner" style={bannerStyle}>
-                <h3>{this.props.bannerText}</h3>
-              </div>
+              {
+                this.props.carouselItems.length >0 ? (<CarouselWrapper items={this.props.carouselItems}/>):(
+                <div className="banner" style={bannerStyle}>
+                  <h3>{this.props.bannerText}</h3>
+                </div>
+                )
+                
+              }
+
               {
                 this.state.showFeedback == false &&
                 <ul className="chat">

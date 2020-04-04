@@ -18,6 +18,7 @@ const plugin = {
         senderId={args.senderId}
         socketURL= {args.socketURL}
         socketPath= {args.socketPath}
+        carouselItems={args.carouselItems}
 
       />, document.querySelector(args.selector)
     );
