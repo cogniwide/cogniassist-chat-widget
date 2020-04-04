@@ -49,7 +49,7 @@ class ChatWidget extends Component {
     if (communicationMethod == "socket") {
       if (!socket.isInitialized()) {
 
-        console.log("socket",socket)
+        console.log("socket", socket)
         socket.createSocket();
 
         socket.on('bot_uttered', (botUttered) => {
@@ -75,15 +75,15 @@ class ChatWidget extends Component {
           console.log(`session_confirm:${socket.socket.id} session_id:${remoteId}`);
 
           this.setState({
-            "sender_id":socket.socket.id
+            "sender_id": socket.socket.id
           })
-          
+
           /*
           Check if the session_id is consistent with the server
           If the localId is null or different from the remote_id,
           start a new session.
           */
-         this.trySendInitSocketPayload();
+          this.trySendInitSocketPayload();
 
         });
 
@@ -347,7 +347,7 @@ class ChatWidget extends Component {
       "message": "/default/restart"
     })
   }
-  minimizeWindow($event){
+  minimizeWindow($event) {
     $event.preventDefault();
     $(".chat_box_container").hide(100).removeClass('chat_box_active');
     this.setState({
@@ -431,22 +431,22 @@ class ChatWidget extends Component {
   }
 
   sendFile(file) {
-      this.loading(true);
-      const formData = new FormData();
-      formData.append("sender", this.state.sender_id);
-      formData.append("file", file, file.name);
-      formData.append("message", "/file_uploaded");
+    this.loading(true);
+    const formData = new FormData();
+    formData.append("sender", this.state.sender_id);
+    formData.append("file", file, file.name);
+    formData.append("message", "/file_uploaded");
 
-      return fetch(this.props.botURL + "webhooks/rest/webhook/", {
-        method: 'POST',
-        body: formData,
-      })
-        .then(response => response.json())
-        .then(response => {
-          this.loading(false);
-          this.addMessage("File uploaded", "human")
-          this.handleMessageReceived(response)
-        });
+    return fetch(this.props.botURL + "webhooks/rest/webhook/", {
+      method: 'POST',
+      body: formData,
+    })
+      .then(response => response.json())
+      .then(response => {
+        this.loading(false);
+        this.addMessage("File uploaded", "human")
+        this.handleMessageReceived(response)
+      });
   }
 
 
@@ -459,9 +459,9 @@ class ChatWidget extends Component {
       socket
     } = this.props
 
-    if (communicationMethod == "socket"){
-      socket.emit('user_uttered', { message: payload.message , session_id: payload.sender_id });
-    }else{
+    if (communicationMethod == "socket") {
+      socket.emit('user_uttered', { message: payload.message, session_id: payload.sender_id });
+    } else {
       fetch(this.props.botURL + "webhooks/rest/webhook/", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -595,22 +595,31 @@ class ChatWidget extends Component {
           }
         </div>
 
-        <div class="recommendations-container">
-          <div class="recommendations-header">
-          <div class="title">Recommendations</div>
-          <button>X</button>
-          </div>
-          <div class="recommendation-items">
-            <div class="recommendation-item">
-              <div class="icon">Icon</div>
-              Recommendation 1
+        <div class="recommendations_container">
+          <div class="full_wrapper">
+            <div class="recommendations_header">
+              <div class="title">Recommendations</div>
+              <button class="_btn_close">X</button>
             </div>
-            <div class="recommendation-item">
-              Recommendation 2
+            <div class="recommendation_body">
+              <div class="recommendation_item">
+                <div class="_icon">
+                  <img src="" />
+                </div>
+                <p class="recom_text"></p>Recommendation 1
             </div>
-            <div class="recommendation-item">
-            <div class="icon">Icon 2</div>
-              Recommendation 3
+              <div class="recommendation_item">
+                <div class="_icon">
+                  <img src="" />
+                </div>
+                <p class="recom_text"></p>Recommendation 1
+            </div>
+              <div class="recommendation_item">
+                <div class="_icon">
+                  <img src="" />
+                </div>
+                <p class="recom_text"></p>Recommendation 1
+            </div>
             </div>
           </div>
         </div>
@@ -643,12 +652,12 @@ class ChatWidget extends Component {
             </div>
             <div className="panel-body">
               {
-                this.props.carouselItems.length >0 ? (<CarouselWrapper items={this.props.carouselItems}/>):(
-                <div className="banner" style={bannerStyle}>
-                  <h3>{this.props.bannerText}</h3>
-                </div>
+                this.props.carouselItems.length > 0 ? (<CarouselWrapper items={this.props.carouselItems} />) : (
+                  <div className="banner" style={bannerStyle}>
+                    <h3>{this.props.bannerText}</h3>
+                  </div>
                 )
-                
+
               }
 
               {
