@@ -1551,6 +1551,7 @@ $light: #eeeeee;
                 display: flex;
                 align-items: center;
                 margin-bottom: 1rem;
+                padding: 3px;
                 ._icon{
                     width: 40px;
                     height: 40px;
@@ -1562,6 +1563,9 @@ $light: #eeeeee;
                     margin: 0;
                      padding: 0;
                 }
+            }
+            .recommendation_item:hover{
+                background-color: #E67D39;
             }
         }
     }

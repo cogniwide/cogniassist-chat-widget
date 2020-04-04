@@ -20,6 +20,8 @@ class ChatWidget extends Component {
       userMessage: '',
       conversation: [],
       quick_replies: [],
+      recommendations: [],
+      show_recommendation: false,
       loading: false,
       opened: false,
       unread: 1,
@@ -37,6 +39,7 @@ class ChatWidget extends Component {
     this.restartChat = this.restartChat.bind(this);
     this.fullScreeenChat = this.fullScreeenChat.bind(this);
     this.minimizeWindow = this.minimizeWindow.bind(this)
+    this.toggleRecommendation = this.toggleRecommendation.bind(this)
     this.sendFile.bind(this);
   }
 
@@ -340,7 +343,8 @@ class ChatWidget extends Component {
     $event.preventDefault();
     this.setState({
       "conversation": [],
-      "quick_replies": []
+      "quick_replies": [],
+      "recommendations":[]
     })
     this.sendRequest({
       "sender": this.state.sender_id,
@@ -504,18 +508,29 @@ class ChatWidget extends Component {
   renderResponse(responses) {
     let messages = []
     let quick_replies = []
+    let recommendations = []
     this.setState({
       last_response_count: responses.length
     })
     responses.forEach(response => {
-      const msg = {
-        ...response,
-        "user": "ai"
-      };
-      if (response && ("quick_replies" in response)) {
-        quick_replies.push(...response["quick_replies"])
+
+      if (response && ("recommendations" in response)) {
+        recommendations.push(...response["recommendations"])
+           this.setState((prevState) => ({
+            recommendations: [...prevState.recommendations, ...recommendations],
+            show_recommendation: true
+          }));
+
+      }else{
+        const msg = {
+          ...response,
+          "user": "ai"
+        };
+        if (response && ("quick_replies" in response)) {
+          quick_replies.push(...response["quick_replies"])
+        }
+        messages.push(msg)
       }
-      messages.push(msg)
     })
 
     this.setState((prevState) => ({
@@ -526,6 +541,17 @@ class ChatWidget extends Component {
     this.scrollToBottom()
   }
 
+  toggleRecommendation(show=false){
+    this.setState(({
+      show_recommendation: show
+    }));
+  }
+
+  recommendationClicked(recommendation){
+    if (["product","faq"].includes(recommendation["type"])){
+      this.chooseReply(recommendation.title,recommendation.payload)
+    }
+  }
 
   componentWillUnmount() {
     const { socket } = this.props;
@@ -595,34 +621,32 @@ class ChatWidget extends Component {
           }
         </div>
 
-        <div class="recommendations_container">
-          <div class="full_wrapper">
-            <div class="recommendations_header">
-              <div class="title">Recommendations</div>
-              <button class="_btn_close">X</button>
-            </div>
-            <div class="recommendation_body">
-              <div class="recommendation_item">
-                <div class="_icon">
-                  <img src="" />
-                </div>
-                <p class="recom_text"></p>Recommendation 1
-            </div>
-              <div class="recommendation_item">
-                <div class="_icon">
-                  <img src="" />
-                </div>
-                <p class="recom_text"></p>Recommendation 1
-            </div>
-              <div class="recommendation_item">
-                <div class="_icon">
-                  <img src="" />
-                </div>
-                <p class="recom_text"></p>Recommendation 1
-            </div>
+          {
+            (this.state.show_recommendation && this.state.opened) &&
+
+            <div className="recommendations_container">
+            <div className="full_wrapper">
+              <div className="recommendations_header">
+                <div className="title">Recommendations</div>
+                <button className="_btn_close" onClick={()=>{this.toggleRecommendation(false)}}>X</button>
+              </div>
+              <div className="recommendation_body">
+  
+              {this.state.recommendations.map((recommendation, idx) => (
+  
+                  <div className={'recommendation_item ' + recommendation.type} key={idx} onClick={()=>{this.recommendationClicked(recommendation)}}>
+                      <div className="_icon">
+                        <img src="" />
+                      </div>
+                    <p className="recom_text">{recommendation.title}</p>
+                  </div>))}
+  
+              </div>
             </div>
           </div>
-        </div>
+
+          }
+
 
 
         <div className="chat_box_container position-relative">

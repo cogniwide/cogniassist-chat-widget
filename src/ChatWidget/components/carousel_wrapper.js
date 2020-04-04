@@ -25,7 +25,7 @@ class CarouselWrapper extends Component {
     render() {
 
       const slides = this.props.items.map((val,idx)=>{
-        return <div>
+        return <div key={ val.src }>
         <img src={ val.src } />
         {
           val.legend &&
