@@ -516,11 +516,6 @@ class ChatWidget extends Component {
 
       if (response && ("recommendations" in response)) {
         recommendations.push(...response["recommendations"])
-           this.setState((prevState) => ({
-            recommendations: [...prevState.recommendations, ...recommendations],
-            show_recommendation: true
-          }));
-
       }else{
         const msg = {
           ...response,
@@ -535,7 +530,9 @@ class ChatWidget extends Component {
 
     this.setState((prevState) => ({
       conversation: [...prevState.conversation, ...messages],
-      quick_replies: quick_replies
+      quick_replies: quick_replies,
+      recommendations: recommendations,
+      show_recommendation: true
     }));
 
     this.scrollToBottom()
@@ -622,7 +619,7 @@ class ChatWidget extends Component {
         </div>
 
           {
-            (this.state.show_recommendation && this.state.opened) &&
+            (this.state.show_recommendation && (this.state.recommendations.length > 0) && this.state.opened) &&
 
             <div className="recommendations_container">
             <div className="full_wrapper">
