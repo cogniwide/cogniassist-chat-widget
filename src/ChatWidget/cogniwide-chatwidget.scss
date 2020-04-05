@@ -1532,7 +1532,7 @@ $light: #eeeeee;
         height: 100%;
         width: 100%;
 
-        .recommendations_header { 
+        .recommendations_header {
             height: 50px;
             display: flex;
             padding: 15px;
@@ -1560,10 +1560,12 @@ $light: #eeeeee;
                 border: 1px solid $light;
                 margin-bottom: -1px;
                 cursor: pointer;
-                &:first-child{
+
+                &:first-child {
                     border-radius: 5px 5px 0 0;
                 }
-                &:last-child{
+
+                &:last-child {
                     border-radius: 0px 0px 5px 5px;
                 }
 
@@ -1571,17 +1573,23 @@ $light: #eeeeee;
                     width: 40px;
                     height: 40px;
                     // background: $light;
-                    border-radius: 100px;
+                    // border-radius: 100px;
                     margin-right: 5px;
                     display: flex;
                     overflow: hidden;
                     align-items: center;
                     justify-content: center;
-                    
-                    ._image{
-                        width: 80%;
-                        opacity: .5;
+                    padding: 5px;
+
+                    ._image {
+                        width: 100%;
+                        height: 100%;
+                        background-size: contain;
+                        padding: 10px;
+                        background-position: center center;
                     }
+
+
                 }
 
                 .recom_text {
@@ -1589,19 +1597,28 @@ $light: #eeeeee;
                     padding: 0;
                 }
 
-                &:Hover{
+                &:Hover {
                     background: #f6f6f6;
-                    
-                    ._image{
+
+                    ._image {
                         opacity: 1;
                     }
-                    .recom_text{
+
+                    .recom_text {
                         color: $Secondary_clr;
                     }
                 }
             }
 
-            
+            .recommendation_item.product ._icon ._image {
+                background-image: url('cogniwide-assets/product.svg');
+            }
+
+            .recommendation_item.faq ._icon ._image {
+                background-image: url('cogniwide-assets/faq.svg');
+            }
+
+
         }
     }
 
