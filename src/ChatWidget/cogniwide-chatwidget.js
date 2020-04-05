@@ -98,7 +98,6 @@ class ChatWidget extends Component {
         });
       }
     } else {
-
       if (this.props.rememberUser) {
         this.handleChatHistory()
       } else if (this.props.initialPayload != null) {
@@ -160,7 +159,7 @@ class ChatWidget extends Component {
           "message": this.props.initialPayload
         })
       }
-      this.setState((prevState) => ({
+      this.setState(({
         conversation: messages,
         sessionNew: response.difference > 10
       }));
