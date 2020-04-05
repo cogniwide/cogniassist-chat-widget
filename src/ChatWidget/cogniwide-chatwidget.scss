@@ -278,9 +278,10 @@ div {
     -webkit-overflow-scrolling: touch;
     transition: all 1s ease-in-out;
     background-color: #fff;
-    iframe{
-        display:block;
-        width:100%;
+
+    iframe {
+        display: block;
+        width: 100%;
     }
 }
 
@@ -1203,7 +1204,7 @@ $light: #eeeeee;
         background-image: url('cogniwide-assets/bg-pattern.png');
         background-size: contain;
         background-position: center center;
-        padding-bottom: 95px;
+        // padding-bottom: 95px;
 
         .banner {
             // box-sizing: border-box;
@@ -1531,59 +1532,92 @@ $light: #eeeeee;
         height: 100%;
         width: 100%;
 
-        .recommendations_header {
+        .recommendations_header { 
             height: 50px;
             display: flex;
-            padding: 10px;
+            padding: 15px;
             justify-content: space-between;
             align-items: center;
-            background: $primary_clr;
-            box-shadow: 0px -3px 12px rgba(0, 0, 0, 0.013);
-            
-            .title{
+            background: $white;
+            box-shadow: 0px -3px 12px rgba(0, 0, 0, 0.33);
+
+            .title {
                 font-size: 18px;
-                color: $white;
+                color: $black;
             }
         }
-        .recommendation_body{
+
+        .recommendation_body {
             flex: 1;
-            padding: 10px;
+            padding: 1.5rem;
             overflow: auto;
 
-            .recommendation_item{
+            .recommendation_item {
                 width: 100%;
                 display: flex;
                 align-items: center;
-                margin-bottom: 1rem;
-                padding: 3px;
-                ._icon{
+                padding: 8px;
+                border: 1px solid $light;
+                margin-bottom: -1px;
+                cursor: pointer;
+                &:first-child{
+                    border-radius: 5px 5px 0 0;
+                }
+                &:last-child{
+                    border-radius: 0px 0px 5px 5px;
+                }
+
+                ._icon {
                     width: 40px;
                     height: 40px;
-                    background: $light;
+                    // background: $light;
                     border-radius: 100px;
-                    margin-right: 1rem;
+                    margin-right: 5px;
+                    display: flex;
+                    overflow: hidden;
+                    align-items: center;
+                    justify-content: center;
+                    
+                    ._image{
+                        width: 80%;
+                        opacity: .5;
+                    }
                 }
-                .recom_text{
+
+                .recom_text {
                     margin: 0;
-                     padding: 0;
+                    padding: 0;
+                }
+
+                &:Hover{
+                    background: #f6f6f6;
+                    
+                    ._image{
+                        opacity: 1;
+                    }
+                    .recom_text{
+                        color: $Secondary_clr;
+                    }
                 }
             }
-            .recommendation_item:hover{
-                background-color: #E67D39;
-            }
+
+            
         }
     }
-    ._btn_close{
+
+    ._btn_close {
         border: none;
         background: none;
         height: 30px;
         width: 30px;
         border-radius: 100px;
         transition: all ease-in-out .2s;
-        color: $white;
+        color: $primary_clr;
         opacity: 0.4;
+        background: rgba(0, 0, 0, .25);
         cursor: pointer;
-        &:hover{
+
+        &:hover {
             opacity: 1;
 
         }

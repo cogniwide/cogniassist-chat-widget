@@ -11,6 +11,8 @@ import chatIcon from './cogniwide-assets/launcher-icon.png'
 import chatlogo from './cogniwide-assets/chat-headlogo.png'
 import ChatBubble from './components/cogniwide-chatbubble';
 import CarouselWrapper from './components/carousel_wrapper'
+import LinkIcon from './cogniwide-assets/link.svg'
+import AnnouncemetIcon from './cogniwide-assets/marketing.svg'
 
 class ChatWidget extends Component {
   constructor(props) {
@@ -633,7 +635,7 @@ class ChatWidget extends Component {
   
                   <div className={'recommendation_item ' + recommendation.type} key={idx} onClick={()=>{this.recommendationClicked(recommendation)}}>
                       <div className="_icon">
-                        <img src="" />
+                        <img src={AnnouncemetIcon}  className="_image" alt={AnnouncemetIcon}/>
                       </div>
                     <p className="recom_text">{recommendation.title}</p>
                   </div>))}
