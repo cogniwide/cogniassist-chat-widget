@@ -1615,7 +1615,15 @@ $light: #eeeeee;
             }
 
             .recommendation_item.faq ._icon ._image {
-                background-image: url('cogniwide-assets/faq.svg');
+                background-image: url('cogniwide-assets/product.svg');
+            }
+
+            .recommendation_item.announcement ._icon ._image {
+                background-image: url('cogniwide-assets/marketing.svg');
+            }
+
+            .recommendation_item.link ._icon ._image {
+                background-image: url('cogniwide-assets/link.svg');
             }
 
 
