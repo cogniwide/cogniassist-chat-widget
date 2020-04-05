@@ -52,7 +52,6 @@ class ChatWidget extends Component {
     if (communicationMethod == "socket") {
       if (!socket.isInitialized()) {
 
-        console.log("socket", socket)
         socket.createSocket();
 
         socket.on('bot_uttered', (botUttered) => {
@@ -77,16 +76,16 @@ class ChatWidget extends Component {
           // eslint-disable-next-line no-console
           console.log(`session_confirm:${socket.socket.id} session_id:${remoteId}`);
 
-          this.setState({
-            "sender_id": socket.socket.id
-          })
-
           /*
           Check if the session_id is consistent with the server
           If the localId is null or different from the remote_id,
           start a new session.
           */
-          this.trySendInitSocketPayload();
+          if (this.props.rememberUser) {
+            this.handleChatHistory()
+          }else{
+            this.trySendInitSocketPayload();
+          }
 
         });
 
@@ -101,39 +100,7 @@ class ChatWidget extends Component {
     } else {
 
       if (this.props.rememberUser) {
-        this.loadChatHistory().then(response => {
-          let messages = []
-          response.chats.forEach(
-            (resp) => {
-              messages.push({
-                "text": resp.query,
-                "user": "human"
-              })
-              resp.response.forEach(
-                (message) => {
-                  messages.push({
-                    ...message,
-                    "user": "ai"
-                  })
-                }
-              )
-            }
-          )
-          if (response["difference"] > .10) {
-            messages.push({
-              "user": "human",
-              "line": true
-            })
-            this.sendRequest({
-              "sender": this.state.sender_id,
-              "message": this.props.initialPayload
-            })
-          }
-          this.setState((prevState) => ({
-            conversation: messages,
-            sessionNew: response.difference > 10
-          }));
-        });
+        this.handleChatHistory()
       } else if (this.props.initialPayload != null) {
         this.sendRequest({
           "sender": this.state.sender_id,
@@ -162,6 +129,42 @@ class ChatWidget extends Component {
       console.log('sending init payload', sessionId);
       socket.emit('user_uttered', { message: initialPayload, customData, session_id: sessionId });
     }
+  }
+
+  handleChatHistory(){
+    this.loadChatHistory().then(response => { 
+      let messages = []
+      response.chats.forEach(
+        (resp) => {
+          messages.push({
+            "text": resp.query,
+            "user": "human"
+          })
+          resp.response.forEach(
+            (message) => {
+              messages.push({
+                ...message,
+                "user": "ai"
+              })
+            }
+          )
+        }
+      )
+      if ((response["difference"] == 0) || (response["difference"] > 10)) {
+        messages.push({
+          "user": "human",
+          "line": true
+        })
+        this.sendRequest({
+          "sender": this.state.sender_id,
+          "message": this.props.initialPayload
+        })
+      }
+      this.setState((prevState) => ({
+        conversation: messages,
+        sessionNew: response.difference > 10
+      }));
+    });
   }
 
   componentDidMount() {
@@ -464,7 +467,7 @@ class ChatWidget extends Component {
     } = this.props
 
     if (communicationMethod == "socket") {
-      socket.emit('user_uttered', { message: payload.message, session_id: payload.sender_id });
+      socket.emit('user_uttered', { message: payload.message, session_id: payload.sender });
     } else {
       fetch(this.props.botURL + "webhooks/rest/webhook/", {
         method: 'POST',
