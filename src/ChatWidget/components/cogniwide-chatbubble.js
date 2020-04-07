@@ -19,8 +19,12 @@ class ChatBubble extends Component {
 
 
     onChange = date => {
-        console.log(date)
-        this.props.parent.sendText(this.getFormattedDate(date));
+        let readable_date = date.toDateString();
+        let formatted_date = this.getFormattedDate(date)
+        if(this.props.message.datepicker.defaultView == "decade"){
+            readable_date = date.getFullYear()
+        }
+        this.props.parent.chooseReply(readable_date, formatted_date);
 
     }
 
