@@ -16,11 +16,22 @@ class CarouselWrapper extends Component {
         this.state = {
           slides: null
         }
+        this.handleClick = this.handleClick.bind(this)
       }
 
       componentDidMount() {
         this.setState({ slides:this.props.items });
       }
+
+    
+      handleClick(idx) {
+        const item = this.props.items[idx]
+        if (item.payload){
+          const payload = item.payload;
+          const title = item.title || "Loading";
+          this.props.parent.chooseReply(title, payload);
+        }
+    }
 
     render() {
 
@@ -41,6 +52,7 @@ class CarouselWrapper extends Component {
           <Carousel
           showStatus={false}
           showThumbs={false}
+          onClickItem={this.handleClick}
           >
             {slides}
           </Carousel>

@@ -675,7 +675,7 @@ class ChatWidget extends Component {
             </div>
             <div className="panel-body">
               {
-                this.props.carouselItems.length > 0 ? (<CarouselWrapper items={this.props.carouselItems} />) : (
+                this.props.carouselItems.length > 0 ? (<CarouselWrapper parent={this} items={this.props.carouselItems} />) : (
                   <div className="banner" style={bannerStyle}>
                     <h3>{this.props.bannerText}</h3>
                   </div>
