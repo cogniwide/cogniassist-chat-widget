@@ -4,6 +4,7 @@ import Calendar from 'react-calendar';
 import Cloud from '../cogniwide-assets/cloud-upload.png'
 import Dropdown from './custom-responses/dropdown'
 import 'react-calendar/dist/Calendar.css';
+import CheckboxContainer from './custom-responses/checkbox-container'
 
 class ChatBubble extends Component {
     constructor(props) {
@@ -15,6 +16,7 @@ class ChatBubble extends Component {
         }
         this.handleClick = this.handleClick.bind(this);
         this.dropDownOnChange = this.dropDownOnChange.bind(this)
+        this.checkboxSubmit = this.checkboxSubmit.bind(this)
     }
 
 
@@ -43,6 +45,9 @@ class ChatBubble extends Component {
     dropDownOnChange(change) {
         this.props.parent.chooseReply(change.title, change.value);
     };
+    checkboxSubmit(title,payload){
+        this.props.parent.chooseReply(title, payload);
+    }
     handleFiles(files){
         this.setState({
             uploading: true
@@ -185,6 +190,14 @@ class ChatBubble extends Component {
                                         labelField={this.props.message.select.labelField}
                                         valueField={this.props.message.select.valueField}
                                         onChange={this.dropDownOnChange} />
+                                </div>
+                            }
+
+                            {('checkbox' in this.props.message) &&
+                                <div className="mt-2 diplayalign">
+                                    <CheckboxContainer id='chat-checkbox-container'
+                                        options={this.props.message.checkbox}
+                                        onChange={this.checkboxSubmit} />
                                 </div>
                             }
 

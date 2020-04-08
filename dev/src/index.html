@@ -12,11 +12,11 @@
   <script>
     CogniAssistWidget.default.init({
       selector: "#cogniassist",
-      initialPayload:"/default/welcome",
+      initialPayload:"/checkbox_demo",
       communicationMethod: "socket",
-      // botURL:'http://127.0.0.1/chatbot-backend/',
-      // socketURL: "http://127.0.0.1/",
-      // socketPath: "/chatbot-backend/socket.io",
+      // botURL:'http://127.0.0.1:8080/',
+      // socketURL: "http://127.0.0.1:8080/",
+      // socketPath: "/socket.io",
 
       botURL:'https://assistant.cogniwide.com/chatbot-backend/',
       socketURL: "https://assistant.cogniwide.com/",
@@ -28,10 +28,12 @@
       rememberUser: false,
       carouselItems:[
                   {
-                    "src":"http://newwallpapers1.com/wp-content/uploads/2017/05/Car-Insurance-Wallpaper-300x200.jpg"
+                    "src":"http://newwallpapers1.com/wp-content/uploads/2017/05/Car-Insurance-Wallpaper-300x200.jpg",
+                    "payload":"insurance"
                   },
                   {
-                    "src":"http://newwallpapers1.com/wp-content/uploads/2017/05/Car-Insurance-Wallpaper-3-300x188.jpg"
+                    "src":"http://newwallpapers1.com/wp-content/uploads/2017/05/Car-Insurance-Wallpaper-3-300x188.jpg",
+                    "payload":"/Getquotation"
 
                   },
                   {
