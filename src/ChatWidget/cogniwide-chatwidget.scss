@@ -1510,7 +1510,49 @@ $light: #eeeeee;
     .react-calendar__tile--active {
         background: $primary_clr !important;
     }
+
+
+    /* checkboa styles */ 
+    ._checkbox_label{
+        padding: 10px;
+        border-bottom: 1px solid $light;
+        transition: ease-in-out .3s;
+        &:hover{
+            background: $light;
+            cursor: pointer;
+        }
+    
+        input[type="checkbox" i] {
+            margin-right: 8px;
+        }
+        
+    }
+    .btn_trans_block {
+        display: block;
+        max-width: 100%;
+        // margin: 5px;
+        background: transparent;
+        color: $primary_clr;
+        border-radius: 0 !important;
+        border: none !important;
+        min-width: 120px;
+        padding: 10px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: ease-in-out .3s;
+        &:hover{
+            background: $primary_clr;
+            color: $white;
+        }
+    }
 }
+
+/* styles */ 
+/* MMARGIN */
+.m_05{ margin: 5px;}
+.m_02 { margin: 2px;}
+
+/* PADDING */
 
 /* BOF RECOMENDATION */
 .recommendations_container {

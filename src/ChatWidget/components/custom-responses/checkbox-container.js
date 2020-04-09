@@ -55,13 +55,13 @@ class CheckboxContainer extends Component {
             <React.Fragment>
             {
               this.props.options.map(item => (
-                <label key={item.id}>
-                  {item.title}
+                <label key={item.id} className="_checkbox_label">
                   <Checkbox name={item.id} checked={this.state.checkedItems.get(item.id)} onChange={this.handleChange} />
-                </label>
+                  {item.title}
+                </label> 
               ))
             }
-            <button onClick={this.onSubmit}>Done</button>
+            <button onClick={this.onSubmit} className="btn_trans_block ">Done</button>
           </React.Fragment>
         );
       }
