@@ -7,8 +7,6 @@ import minimize from './cogniwide-assets/minimize.png'
 import smileEmoji from './cogniwide-assets/smile.svg'
 import normalEmoji from './cogniwide-assets/normal.svg'
 import worstEmoji from './cogniwide-assets/worst.svg'
-import chatIcon from './cogniwide-assets/launcher-icon.png'
-import chatlogo from './cogniwide-assets/chat-headlogo.png'
 import ChatBubble from './components/cogniwide-chatbubble';
 import CarouselWrapper from './components/carousel_wrapper'
 
@@ -574,7 +572,7 @@ class ChatWidget extends Component {
       }
       return (
         <ChatBubble
-          botIcon={this.props.botIcon}
+          botIcon={this.props.botAvatar}
           parent={this}
           message={e}
           index={index}
@@ -608,7 +606,7 @@ class ChatWidget extends Component {
       <div className={parentClass}>
         <div className="chat_btn_container">
           <div className="chatbot-icon">
-            <img src={chatIcon} width="60" />
+            <img src={this.props.launcherIcon} width="60" />
             {this.state.unread > 0 &&
               <span className="badge-msg unreadCount">1</span>
             }
@@ -651,7 +649,7 @@ class ChatWidget extends Component {
         <div className="chat_box_container position-relative">
           <div className="_full_container_wrapper">
             <div className="panel-heading bg-primary">
-              <span className="text-white font-weight-bold"><img className="chat-logoheader" src={chatlogo} width="33" /> {this.props.botName}</span>
+              <span className="text-white font-weight-bold"><img className="chat-logoheader" src={this.props.headerLogo} width="33" /> {this.props.botName}</span>
               <div className="btn-group-head">
                 <a className="restart" onClick={this.restartChat} style={restartStyle}>
                   <img src={updateArrow} alt="refresh" className="img-responsive" width="15" />

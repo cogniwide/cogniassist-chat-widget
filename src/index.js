@@ -2,7 +2,10 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import ChatWidget from './ChatWidget/cogniwide-chatwidget';
-import botAvator from './ChatWidget/cogniwide-assets/awnic_bot.png'
+import botAvatar from './ChatWidget/cogniwide-assets/bot-avator.png'
+import launcherIcon from './ChatWidget/cogniwide-assets/launcher-icon.png'
+import headerLogo from './ChatWidget/cogniwide-assets/header-logo.png'
+
 import socket from './socket';
 
 const CogniAssistWidget = forwardRef((props, ref) => {
@@ -100,7 +103,9 @@ const CogniAssistWidget = forwardRef((props, ref) => {
       initialPayload={props.initialPayload}
       botName={props.botName}
       botWelcomeMessage={props.botWelcomeMessage}
-      botIcon={props.botIcon}
+      botAvatar={props.botAvatar}
+      launcherIcon={props.launcherIcon}
+      headerLogo={props.headerLogo}
       botURL={props.botURL}
       bannerURL={props.bannerURL}
       bannerText={props.bannerText}
@@ -119,7 +124,9 @@ CogniAssistWidget.propTypes = {
   initialPayload: PropTypes.string,
   botName: PropTypes.string,
   botWelcomeMessage: PropTypes.string,
-  botIcon: PropTypes.string,
+  botAvatar: PropTypes.string,
+  headerLogo: PropTypes.string,
+  launcherIcon: PropTypes.string,
   botURL: PropTypes.string,
   bannerURL: PropTypes.string,
   bannerText: PropTypes.string,
@@ -140,7 +147,9 @@ CogniAssistWidget.defaultProps = {
   initialPayload: "/default/welcome",
   botName: 'CogniAssist',
   botWelcomeMessage: "Hey there, I'm here to assist you with any doubts you might have.",
-  botIcon: botAvator,
+  botAvatar: botAvatar,
+  headerLogo: headerLogo,
+  launcherIcon: launcherIcon,
   botURL: 'http://localhost:8080/',
   bannerURL: "",
   bannerText: "",
