@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Carousel } from 'react-responsive-carousel'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import './carousel_wrapper.scss'
+import '../styles/carousel_wrapper.scss'
 
 class CarouselWrapper extends Component {
 

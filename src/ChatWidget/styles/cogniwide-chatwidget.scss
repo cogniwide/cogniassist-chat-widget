@@ -356,7 +356,7 @@ div {
     margin-right: 15px;
     margin-top: 0px;
     height: 100%;
-    background-image: url('cogniwide-assets/send.png');
+    background-image: url('../cogniwide-assets/send.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 22px;
@@ -366,7 +366,7 @@ div {
 
 .cogniwidechat pre.send-active {
     opacity: 1;
-    background-image: url('cogniwide-assets/active-send.png');
+    background-image: url('../cogniwide-assets/active-send.png');
 }
 
 .cogniwidechat pre.mic-chat {
@@ -380,7 +380,7 @@ div {
     padding: 0px;
     margin-top: 0px;
     height: 100%;
-    background-image: url('cogniwide-assets/mic.png');
+    background-image: url('../cogniwide-assets/mic.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 22px;
@@ -432,7 +432,7 @@ div {
 }
 
 .datetimepicker .glyphicon.icon-arrow-left {
-    background-image: url("cogniwide-assets/left-chevron.png");
+    background-image: url("../cogniwide-assets/left-chevron.png");
     background-repeat: no-repeat;
     background-size: 8px;
     background-position: center;
@@ -442,7 +442,7 @@ div {
 }
 
 .datetimepicker .glyphicon.icon-arrow-right {
-    background-image: url("cogniwide-assets/right-chevron.png");
+    background-image: url("../cogniwide-assets/right-chevron.png");
     background-repeat: no-repeat;
     background-size: 8px;
     background-position: center;
@@ -576,7 +576,7 @@ animation-name: fadeInUp;
 }
 
 .cogniwidechat .carousel-control-next-icon {
-    background: #00bbff url("cogniwide-assets/right-chevron.png");
+    background: #00bbff url("../cogniwide-assets/right-chevron.png");
     background-repeat: no-repeat;
     background-size: 12px;
     background-position: center center;
@@ -584,7 +584,7 @@ animation-name: fadeInUp;
 }
 
 .cogniwidechat .carousel-control-prev-icon {
-    background: #00bbff url("cogniwide-assets/left-chevron.png");
+    background: #00bbff url("../cogniwide-assets/left-chevron.png");
     background-repeat: no-repeat;
     background-size: 12px;
     background-position: center center;
@@ -1076,7 +1076,7 @@ $light: #eeeeee;
 
 // @font-face {
 //     font-family: 'cogni-regular';
-//     src: url(cogniwide-assets/fonts/Poppins-Regular.ttf) format("woff2");
+//     src: url(../cogniwide-assets/fonts/Poppins-Regular.ttf) format("woff2");
 // }
 // @font-face {
 //     font-family: 'cogni-medium';
@@ -1201,7 +1201,7 @@ $light: #eeeeee;
         height: 100%;
         flex-direction: column;
         background: #eeeeee;
-        background-image: url('cogniwide-assets/bg-pattern.png');
+        background-image: url('../cogniwide-assets/bg-pattern.png');
         background-size: contain;
         background-position: center center;
         // padding-bottom: 95px;
@@ -1448,14 +1448,14 @@ $light: #eeeeee;
 
         .send-active {
             opacity: 1;
-            background-image: url('cogniwide-assets/active-send.png');
+            background-image: url('../cogniwide-assets/active-send.png');
         }
 
         button {
             cursor: pointer;
             z-index: 999;
             background: none;
-            background-image: url('cogniwide-assets/send.png');
+            background-image: url('../cogniwide-assets/send.png');
             background-repeat: no-repeat;
             background-position: center;
             background-size: 22px;
@@ -1470,7 +1470,7 @@ $light: #eeeeee;
 
         .mic-chat {
 
-            background-image: url('cogniwide-assets/mic.png');
+            background-image: url('../cogniwide-assets/mic.png');
             background-repeat: no-repeat;
             background-position: center;
             background-size: 22px;
@@ -1653,19 +1653,19 @@ $light: #eeeeee;
             }
 
             .recommendation_item.product ._icon ._image {
-                background-image: url('cogniwide-assets/product.svg');
+                background-image: url('../cogniwide-assets/product.svg');
             }
 
             .recommendation_item.faq ._icon ._image {
-                background-image: url('cogniwide-assets/faq.svg');
+                background-image: url('../cogniwide-assets/faq.svg');
             }
 
             .recommendation_item.announcement ._icon ._image {
-                background-image: url('cogniwide-assets/marketing.svg');
+                background-image: url('../cogniwide-assets/marketing.svg');
             }
 
             .recommendation_item.link ._icon ._image {
-                background-image: url('cogniwide-assets/link.svg');
+                background-image: url('../cogniwide-assets/link.svg');
             }
 
 

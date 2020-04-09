@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './cogniwide-chatbubble.scss';
+import 'react-calendar/dist/Calendar.css';
+import '../styles/cogniwide-chatbubble.scss';
 import Calendar from 'react-calendar';
 import Cloud from '../cogniwide-assets/cloud-upload.png'
 import Dropdown from './custom-responses/dropdown'
-import 'react-calendar/dist/Calendar.css';
 import CheckboxContainer from './custom-responses/checkbox-container'
 
 class ChatBubble extends Component {

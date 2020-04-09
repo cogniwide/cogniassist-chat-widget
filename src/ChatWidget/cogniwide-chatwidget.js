@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-// import 'bootstrap/dist/css/bootstrap.css';
-import './cogniwide-chatwidget.scss';
+import './styles/cogniwide-chatwidget.scss';
 import updateArrow from './cogniwide-assets/update-arrow.png'
 import minimize from './cogniwide-assets/minimize.png'
 import smileEmoji from './cogniwide-assets/smile.svg'
