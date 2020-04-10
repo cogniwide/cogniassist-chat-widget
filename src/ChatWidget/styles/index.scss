@@ -1,37 +1,23 @@
-@import "variables";
-@import "custom";
+@import "./variables.scss";
+@import "./custom.scss";
 
-@font-face {
-    font-family: 'cogni-regular';
-    src: url(../fonts/Poppins/Poppins-Regular.ttf) format("woff2");
-}
-
-@font-face {
-    font-family: 'cogni-medium';
-    src: url(../fonts/Poppins/Poppins-Medium.ttf) format("woff2");
-}
-
-div {
-    box-sizing: border-box;
-}
-
-p,
-button {
+._cog_chat p,
+._cog_chatbutton {
     font-family: 'cogni-regular';
 }
 
-.cogniwidechat button:focus {
+._cog_chat button:focus {
     outline: none;
     box-shadow: 0 0 0 0rem rgba(23, 162, 184, .0) !important;
 }
 
-.cogniwidechat p {
+._cog_chat p {
     font-size: 15px;
     line-height: 20px;
     transition: all cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.cogniwidechat .chat_btn_container {
+._cog_chat .chat_btn_container {
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -43,31 +29,31 @@ button {
     margin-top: 10px;
 }
 
-.cogniwidechat .cwc-borderbtn {
+._cog_chat .cwc-borderbtn {
     border: 0;
     background: transparent;
     cursor: pointer;
 }
 
-.cogniwidechat .close svg,
-.cogniwidechat .expand svg {
+._cog_chat .close svg,
+._cog_chat .expand svg {
     stroke: #fff;
     fill: #fff;
 }
 
-.cogniwidechat .expand svg {
+._cog_chat .expand svg {
     opacity: 0.50;
 }
 
-.cogniwidechat .expand svg:hover {
+._cog_chat .expand svg:hover {
     opacity: 0.75;
 }
 
-.cogniwidechat .expand {
+._cog_chat .expand {
     margin: 3px 5px 0 0;
 }
 
-.cogniwidechat .adminchatlist {
+._cog_chat .adminchatlist {
     display: flex;
     display: -webkit-box;
     /* OLD - iOS 6-, Safari 3.1-6 */
@@ -79,7 +65,7 @@ button {
     justify-content: start;
 }
 
-.cogniwidechat .cwc-right .clientchat {
+._cog_chat .cwc-right .clientchat {
     display: flex;
     display: -webkit-box;
     /* OLD - iOS 6-, Safari 3.1-6 */
@@ -92,17 +78,17 @@ button {
     flex-flow: row-reverse;
 }
 
-.cogniwidechat .panel .slidedown .glyphicon,
-.cogniwidechat .chat .glyphicon {
+._cog_chat .panel .slidedown .glyphicon,
+._cog_chat .chat .glyphicon {
     margin-right: 5px;
 }
 
-.cogniwidechat .shaddow {
+._cog_chat .shaddow {
     box-shadow: 0px -3px 12px rgba(0, 0, 0, 0.013);
 }
 
-.cogniwidechat .datetimepicker td,
-.cogniwidechat .datetimepicker th {
+._cog_chat .datetimepicker td,
+._cog_chat .datetimepicker th {
     font-size: 12px;
 }
 
@@ -126,72 +112,72 @@ button {
     height: 20px;
 }
 
-.cogniwidechat .chat-body .content ul {
+._cog_chat .chat-body .content ul {
     padding: 0 0 0 15px;
 }
 
-.cogniwidechat .suggestion_box {
+._cog_chat .suggestion_box {
     padding: 3px;
     /* overflow-x: auto; */
     min-height: 40px;
 }
 
-.cogniwidechat .form_datetime_2 {
+._cog_chat .form_datetime_2 {
     background: #00bbff !important;
 }
 
-.cogniwidechat .form_datetime_2 th,
-.cogniwidechat .form_datetime_2 td,
-.cogniwidechat .form_datetime_2 .datetimepicker table tr td.old,
-.cogniwidechat .form_datetime_2 .datetimepicker_2 table tr td.new {
+._cog_chat .form_datetime_2 th,
+._cog_chat .form_datetime_2 td,
+._cog_chat .form_datetime_2 .datetimepicker table tr td.old,
+._cog_chat .form_datetime_2 .datetimepicker_2 table tr td.new {
     color: #fff !important;
 }
 
-.cogniwidechat .form_datetime_2 .datetimepicker table tr td.active.active,
-.cogniwidechat .form_datetime_2 .datetimepicker table tr td span.active.active,
-.cogniwidechat .form_datetime_2 .datetimepicker table tr td span.active:hover.active,
-.cogniwidechat .form_datetime_2 .datetimepicker table tr td span.active.disabled.active,
-.cogniwidechat .form_datetime_2 .datetimepicker table tr td span.active.disabled:hover.active,
-.cogniwidechat .form_datetime_2 .datetimepicker table tr td span.active:active,
-.cogniwidechat .form_datetime_2 .datetimepicker table tr td span.active:hover:active,
-.cogniwidechat .form_datetime_2 .datetimepicker table tr td span.active.disabled:active,
-.cogniwidechat .form_datetime_2 .datetimepicker table tr td span.active.disabled:hover:active {
+._cog_chat .form_datetime_2 .datetimepicker table tr td.active.active,
+._cog_chat .form_datetime_2 .datetimepicker table tr td span.active.active,
+._cog_chat .form_datetime_2 .datetimepicker table tr td span.active:hover.active,
+._cog_chat .form_datetime_2 .datetimepicker table tr td span.active.disabled.active,
+._cog_chat .form_datetime_2 .datetimepicker table tr td span.active.disabled:hover.active,
+._cog_chat .form_datetime_2 .datetimepicker table tr td span.active:active,
+._cog_chat .form_datetime_2 .datetimepicker table tr td span.active:hover:active,
+._cog_chat .form_datetime_2 .datetimepicker table tr td span.active.disabled:active,
+._cog_chat .form_datetime_2 .datetimepicker table tr td span.active.disabled:hover:active {
     background-color: #000 !important;
     background-image: linear-gradient(top, #000, #0606);
     background-image: -webkit-linear-gradient(top, #000, #0606);
 }
 
-.cogniwidechat .form_datetime_2 .datetimepicker table tr td.day:hover,
-.cogniwidechat .form_datetime_2 .datetimepicker table tr td span:hover,
-.cogniwidechat .form_datetime_2 .datetimepicker table tr td span:hover,
-.cogniwidechat .form_datetime_2 .datetimepicker thead tr:first-child th:hover {
+._cog_chat .form_datetime_2 .datetimepicker table tr td.day:hover,
+._cog_chat .form_datetime_2 .datetimepicker table tr td span:hover,
+._cog_chat .form_datetime_2 .datetimepicker table tr td span:hover,
+._cog_chat .form_datetime_2 .datetimepicker thead tr:first-child th:hover {
     background: #000;
 }
 
-.cogniwidechat .form_datetime_2 .datetimepicker table,
-.cogniwidechat .datetimepicker-inline {
+._cog_chat .form_datetime_2 .datetimepicker table,
+._cog_chat .datetimepicker-inline {
     margin: 0 auto;
 }
 
-.cogniwidechat .form_datetime_2 .datetimepicker {
+._cog_chat .form_datetime_2 .datetimepicker {
     margin-top: -5px;
     padding-bottom: 10px;
 }
 
-.cogniwidechat .suggestion_box::-webkit-scrollbar-track {
+._cog_chat .suggestion_box::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: #F5F5F5;
 }
 
-.cogniwidechat .suggestion_box::-webkit-scrollbar {
+._cog_chat .suggestion_box::-webkit-scrollbar {
     background-color: #F5F5F5;
     visibility: hidden;
     width: 0px;
     height: 0px;
 }
 
-.cogniwidechat .suggestion_box::-webkit-scrollbar-thumb {
+._cog_chat .suggestion_box::-webkit-scrollbar-thumb {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: #555;
@@ -220,16 +206,16 @@ button {
 }
 
 
-.cogniwidechat .cwc-right-time {
+._cog_chat .cwc-right-time {
     float: right;
 }
 
-.cogniwidechat .carousel-control-next,
-.cogniwidechat .carousel-control-prev {
+._cog_chat .carousel-control-next,
+._cog_chat .carousel-control-prev {
     width: 7%;
 }
 
-.cogniwidechat .carousel-control-next-icon {
+._cog_chat .carousel-control-next-icon {
     background: #00bbff url("../cogniwide-assets/right-chevron.png");
     background-repeat: no-repeat;
     background-size: 12px;
@@ -237,7 +223,7 @@ button {
     border-radius: 50%;
 }
 
-.cogniwidechat .carousel-control-prev-icon {
+._cog_chat .carousel-control-prev-icon {
     background: #00bbff url("../cogniwide-assets/left-chevron.png");
     background-repeat: no-repeat;
     background-size: 12px;
@@ -245,41 +231,41 @@ button {
     border-radius: 50%;
 }
 
-.cogniwidechat .quick-replies {
+._cog_chat .quick-replies {
     flex-flow: wrap;
     justify-content: flex-end;
     display: flex;
     padding-right: 20px;
 }
 
-.cogniwidechat .quick-replies #quick_reply_btn {
+._cog_chat .quick-replies #quick_reply_btn {
     margin-right: 10px;
     padding: 6px 15px;
 }
 
-.cogniwidechat .quick-replies>* {
+._cog_chat .quick-replies>* {
     margin: .2em 0;
 }
 
-.cogniwidechat audio {
+._cog_chat audio {
     filter: sepia(20%) saturate(70%) grayscale(1) contrast(99%) invert(12%);
 }
 
 
 /* star rating */
 
-.cogniwidechat .clearfix {
+._cog_chat .clearfix {
     clear: both;
 }
 
-.cogniwidechat .text-center {
+._cog_chat .text-center {
     text-align: center;
 }
 
 
 /* Rating Star Widgets Style */
 
-.cogniwidechat .rating-stars ul {
+._cog_chat .rating-stars ul {
     list-style-type: none;
     padding: 0;
     margin: 0px auto auto auto;
@@ -287,14 +273,14 @@ button {
     -webkit-user-select: none;
 }
 
-.cogniwidechat .rating-stars ul>li.star {
+._cog_chat .rating-stars ul>li.star {
     display: inline-block;
 }
 
 
 /* Idle State of the stars */
 
-.cogniwidechat .rating-stars ul>li.star>i.fa {
+._cog_chat .rating-stars ul>li.star>i.fa {
     font-size: 1.5em;
     /* Change the size of the stars */
     color: #ccc;
@@ -304,32 +290,32 @@ button {
 
 /* Hover state of the stars */
 
-.cogniwidechat .rating-stars ul>li.star.hover>i.fa {
+._cog_chat .rating-stars ul>li.star.hover>i.fa {
     color: #FFCC36;
 }
 
 
 /* Selected state of the stars */
 
-.cogniwidechat .rating-stars ul>li.star.selected>i.fa {
+._cog_chat .rating-stars ul>li.star.selected>i.fa {
     color: #FF912C;
 }
 
-.cogniwidechat .time {
+._cog_chat .time {
     width: 100px;
     margin-left: 40px !important;
 }
 
-.cogniwidechat .loading img {
+._cog_chat .loading img {
     width: 50px;
 }
 
-.cogniwidechat .loading .bubble {
+._cog_chat .loading .bubble {
     padding: 5px 10px;
     line-height: 9px;
 }
 
-.cogniwidechat .banner {
+._cog_chat .banner {
     /* margin-top: 45px; */
     width: 100%;
     max-width: 100%;
@@ -340,18 +326,18 @@ button {
     /* z-index: -1; */
 }
 
-.cogniwidechat .banner h3 {
+._cog_chat .banner h3 {
     font-size: 25px;
     color: white;
     padding-right: 30px;
 }
 
 /* new style add */
-.cogniwidechat .chat-logoheader {
+._cog_chat .chat-logoheader {
     vertical-align: middle;
 }
 
-// .cogniwidechat .btn-group-head a.restart {
+// ._cog_chat .btn-group-head a.restart {
 //     width: 20px;
 //     margin-right: 7px;
 //     margin-top: 3px !important;
@@ -360,7 +346,7 @@ button {
 
 
 
-.cogniwidechat .btn-group-head .close {
+._cog_chat .btn-group-head .close {
     width: 21px;
     display: inline-block;
     vertical-align: sub;
@@ -370,35 +356,35 @@ button {
     font-size: initial;
 }
 
-.cogniwidechat .btn-group-head .close:hover {
+._cog_chat .btn-group-head .close:hover {
     opacity: 1;
 }
 
-.cogniwidechat .react-calendar__navigation button {
+._cog_chat .react-calendar__navigation button {
     min-width: 30px !important;
     font-weight: 600;
 }
 
-.cogniwidechat .react-calendar__month-view__weekdays__weekday {
+._cog_chat .react-calendar__month-view__weekdays__weekday {
     padding: 0.4em;
 }
 
-.cogniwidechat .react-calendar__tile--active {
+._cog_chat .react-calendar__tile--active {
     background: #00bbff !important;
     color: white;
     border-radius: 50%;
 }
 
-// .cogniwidechat .cwc-borderbtn {
+// ._cog_chat .cwc-borderbtn {
 //     color: #00bbff;
 //     border: 1px solid #00bbff;
 // }
 
-.cogniwidechat .react-calendar__tile {
+._cog_chat .react-calendar__tile {
     padding: 9px !important;
 }
 
-.cogniwidechat .react-calendar {
+._cog_chat .react-calendar {
     width: 270px !important;
     border: 0 !important;
     border-radius: 8px;
@@ -406,54 +392,54 @@ button {
     box-shadow: 0 5px 40px rgba(0, 0, 0, .16) !important;
 }
 
-.cogniwidechat .react-calendar__tile:enabled:hover,
-.cogniwidechat .react-calendar__tile:enabled:focus {
+._cog_chat .react-calendar__tile:enabled:hover,
+._cog_chat .react-calendar__tile:enabled:focus {
     background-color: #e6e6e6;
     border-radius: 50%;
 }
 
-.cogniwidechat .react-calendar__navigation button:enabled:hover,
-.cogniwidechat .react-calendar__navigation button:enabled:focus {
+._cog_chat .react-calendar__navigation button:enabled:hover,
+._cog_chat .react-calendar__navigation button:enabled:focus {
     background-color: transparent !important;
 }
 
-.cogniwidechat audio {
+._cog_chat audio {
     width: 250px;
     height: 35px;
     margin-top: 5px;
 }
 
-.cogniwidechat .qs-datepicker .qs-controls {
+._cog_chat .qs-datepicker .qs-controls {
     padding-top: 8px !important;
     background: transparent !important;
 }
 
-.cogniwidechat .qs-square.qs-num {
+._cog_chat .qs-square.qs-num {
     font-size: 14px !important;
 }
 
-.cogniwidechat .qs-datepicker .qs-square {
+._cog_chat .qs-datepicker .qs-square {
     padding: 10px !important;
     height: 2em !important;
     border-radius: 50%;
 }
 
-.cogniwidechat .qs-datepicker .qs-square.qs-day {
+._cog_chat .qs-datepicker .qs-square.qs-day {
     font-weight: 500 !important;
     font-size: 15px;
     padding: 5px;
     color: #999;
 }
 
-.cogniwidechat .qs-datepicker-container {
+._cog_chat .qs-datepicker-container {
     border: 0px !important;
     border-radius: 8px;
     box-shadow: 0 5px 40px rgba(0, 0, 0, .16) !important;
     padding: 3px;
 }
 
-.cogniwidechat .qs-datepicker .qs-square.qs-active,
-.cogniwidechat .qs-datepicker .qs-square.qs-current {
+._cog_chat .qs-datepicker .qs-square.qs-active,
+._cog_chat .qs-datepicker .qs-square.qs-current {
     background: #00bbff !important;
     border: 1px solid #00bbff;
     border-radius: 50%;
@@ -461,93 +447,46 @@ button {
     color: #fff;
 }
 
-.cogniwidechat .qs-datepicker .qs-arrow:after {
+._cog_chat .qs-datepicker .qs-arrow:after {
     content: "";
     border: .500em solid rgba(0, 0, 0, 0);
 }
 
-.cogniwidechat .qs-datepicker .qs-arrow:hover {
+._cog_chat .qs-datepicker .qs-arrow:hover {
     background: transparent !important;
 }
 
-.cogniwidechat .qs-datepicker .qs-arrow.qs-left:after {
+._cog_chat .qs-datepicker .qs-arrow.qs-left:after {
     border-right-color: #00bbff !important;
     -webkit-transform: translate(65%, -65%);
     -ms-transform: translate(65%, -65%);
     transform: translate(65%, -65%) !important;
 }
 
-.cogniwidechat .qs-datepicker .qs-arrow.qs-right:after {
+._cog_chat .qs-datepicker .qs-arrow.qs-right:after {
     border-left-color: #00bbff !important;
     -webkit-transform: translate(-65%, -65%);
     -ms-transform: translate(-65%, -65%);
     transform: translate(-65%, -65%) !important;
 }
 
-.cogniwidechat .qs-datepicker .qs-square:not(.qs-empty):not(.qs-disabled):not(.qs-day):not(.qs-active):hover {
+._cog_chat .qs-datepicker .qs-square:not(.qs-empty):not(.qs-disabled):not(.qs-day):not(.qs-active):hover {
     background: #e6e6e6 !important;
     border: 1px solid #e6e6e6;
     border-radius: 50%;
     padding: 15px;
 }
 
-// .cogniwidechat .panel-heading span {
-//     font-size: 18px;
-//     font-weight: 400 !important;
-//     letter-spacing: 1px;
-//     // padding-left: 10px;
-//     color: #ffffff;
-// }
 
-// .cogniwidechat .feedback {
-//     padding-top: 80px;
-//     padding-left: 0;
-//     font-size: 20px;
-//     text-align: center;
-//     margin: 10px auto;
-// }
-
-// .cogniwidechat ul.feedback-emoji {
-//     display: flex;
-//     justify-content: center;
-//     padding: 0;
-//     margin-top: 20px;
-// }
-
-// .cogniwidechat ul.feedback-emoji li {
-//     width: 25%;
-//     list-style-type: none;
-//     cursor: pointer;
-// }
-
-// .cogniwidechat ul.feedback-emoji li img {
-//     width: 60%;
-// }
-
-// .panel-body::-webkit-scrollbar {
-//     width: 6px;
-// }
-
-// .panel-body::-webkit-scrollbar-track {
-//     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-//     border-radius: 10px;
-// }
-
-// .panel-body::-webkit-scrollbar-thumb {
-//     border-radius: 10px;
-//     background-color: #a3a2a29f;
-//     outline: 1px solid slategrey;
-// }
-
-.cogniwidechat li.star {
+._cog_chat li.star {
     margin-top: 5px;
 }
 
-.cogniwidechat li.star:before {
+._cog_chat li.star:before {
     font-size: 35px !important;
 }
 
-.cogniwidechat .chat-heading h5 {
+._cog_chat .chat-heading h5 {
     font-size: 16px !important;
     font-weight: 400;
     color: #000;
@@ -585,46 +524,46 @@ button {
     }
 }
 
-.cogniwidechat .power-by {
+._cog_chat .power-by {
     text-align: center;
     padding: 10px 0;
 
 }
 
-.cogniwidechat .power-by span {
+._cog_chat .power-by span {
     font-size: 13px;
     color: #000000ab;
 }
 
-.cogniwidechat .power-by span a {
+._cog_chat .power-by span a {
     color: #00b8fc;
 }
 
-/* .cogniwidechat .chat_btn_container .btn{
+/* ._cog_chat .chat_btn_container .btn{
     padding: 0.375rem 0 !important;
 } */
-.cogniwidechat .chatbot-icon {
+._cog_chat .chatbot-icon {
     cursor: pointer;
     position: relative;
 }
 
-.cogniwidechat .diplayalign {
+._cog_chat .diplayalign {
     display: flex;
     flex-flow: column;
 }
 
-.cogniwidechat div#composer {
+._cog_chat div#composer {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.cogniwidechat .chat-body ul {
+._cog_chat .chat-body ul {
     padding: 20px 15px;
 }
 
 /* Max Window style */
-.cogniwidechat.full-screen .chat_box_container {
+._cog_chat.full-screen .chat_box_container {
     width: 100%;
     right: 0;
     top: 45px;
@@ -634,26 +573,26 @@ button {
 
 }
 
-.cogniwidechat.full-screen .panel-body ul.chat {
+._cog_chat.full-screen .panel-body ul.chat {
     max-width: 100%;
     /* display: inline-block; */
 }
 
-.cogniwidechat.full-screen .chat li.cwc-left {
+._cog_chat.full-screen .chat li.cwc-left {
     float: left;
     display: block;
 }
 
-.cogniwidechat.full-screen .chat li.cwc-left span.timeStamp {
+._cog_chat.full-screen .chat li.cwc-left span.timeStamp {
     right: auto;
     left: 40px;
 }
 
-.cogniwidechat.full-screen .feedback {
+._cog_chat.full-screen .feedback {
     margin: 100px auto;
 }
 
-.cogniwidechat li.cwc-left .btn {
+._cog_chat li.cwc-left .btn {
     margin-bottom: 10px;
 }
 
@@ -668,19 +607,19 @@ button {
 }
 
 @media(max-width:1366px) {
-    .cogniwidechat .feedback {
+    ._cog_chat .feedback {
         padding-top: 45px;
     }
 }
 
 @media(max-width:1024px) {
-    .cogniwidechat .feedback {
+    ._cog_chat .feedback {
         padding-top: 75px;
     }
 }
 
 @media(max-width: 470px) {
-    .cogniwidechat .chat_box_container {
+    ._cog_chat .chat_box_container {
         right: 0;
         top: 45px;
         width: 100%;
@@ -688,35 +627,29 @@ button {
         z-index: 9999999999999;
     }
 
-    .cogniwidechat .chat-heading {
+    ._cog_chat .chat-heading {
         width: 200px !important;
         bottom: 15px;
         right: 179px;
     }
 
-    .cogniwidechat .feedback {
+    ._cog_chat .feedback {
         margin: 80px auto;
     }
 
-    .cogniwidechat .chat-heading h5 {
+    ._cog_chat .chat-heading h5 {
         font-size: 15px;
     }
 }
 
 
 
-$primary_clr : #292971;
-$Secondary_clr: #E67D39;
-$black:#000000;
-$white : #fff;
-$muted:#666;
-$light: #eeeeee;
 
 
 
 #cogniassist {}
 
-.cogniwidechat {
+._cog_chat {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -725,6 +658,10 @@ $light: #eeeeee;
     line-height: 1;
     background-color: $white;
     font-family: 'cogni-regular' !important;
+
+    div {
+        box-sizing: border-box;
+    }
 
     /*  BOF LOUNCHER ICON STYLE */
     .chat-heading {
@@ -813,6 +750,35 @@ $light: #eeeeee;
         flex-direction: column;
     }
 
+    /* COMMON STYLES */
+    .upload-btn-wrapper {
+        .upload_btn {
+            background-color: white;
+            padding: 5px 15px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            position: relative;
+            /* z-index: 1; */
+            cursor: pointer !important;
+            display: flex;
+            padding: 10px;
+
+            .upload-icon {
+                margin-right: 5px;
+            }
+        }
+
+        input[type=file] {
+            font-size: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+        }
+    }
+
     /*  EOF MAIN CONTAINER BOX */
 
     /* BOF HEADER STYLES */
@@ -891,7 +857,6 @@ $light: #eeeeee;
         height: 100%;
         flex-direction: column;
         background: #eeeeee;
-        background-image: url('../cogniwide-assets/bg-pattern.png');
         background-size: contain;
         background-position: center center;
         overflow-y: auto;
@@ -1309,6 +1274,7 @@ $light: #eeeeee;
     }
 
 
+
     /* checkboa styles */
     ._checkbox_label {
         padding: 10px;
@@ -1502,7 +1468,7 @@ $light: #eeeeee;
 
 /* RESPONSIVE DESIGN */
 @media(max-width:767px) {
-    .cogniwidechat {
+    ._cog_chat {
         .chat_box_container {
             width: 100%;
             right: 0;

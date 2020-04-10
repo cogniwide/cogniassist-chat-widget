@@ -1,0 +1,17 @@
+/* INCLUDING  FONTS */
+
+@font-face {
+    font-family: 'cogni-regular';
+    src: url(../fonts/Poppins/Poppins-Regular.ttf) format("woff2");
+}
+
+@font-face {
+    font-family: 'cogni-medium';
+    src: url(../fonts/Poppins/Poppins-Medium.ttf) format("woff2");
+}
+
+/* CUSTOM STYLES */
+
+._cog_chat .panel-body {
+    background-image: url('../cogniwide-assets/bg-pattern.png') !important;
+}
