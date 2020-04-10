@@ -488,13 +488,8 @@ class ChatWidget extends Component {
     if (response.length == 1) {
       response[0]['lastmessage'] = true;
     }
-
-    if((response.length > 1) && ("emotion" in response[0])){
-      const emotion = response.shift()["emotion"]
-      response = response.map(v => ({...v, emotion: emotion})) 
-    }
-
     this.renderResponse([response[0]])
+
     if (response.length > 1) {
       this.loading(true);
       for (let index = 1; index < response.length; index++) {
@@ -572,7 +567,6 @@ class ChatWidget extends Component {
   render() {
     var aiIndex = 0;
     const chat = this.state.conversation.map((e, index) => {
-      console.log(e)
       if (e.user === 'human') {
         aiIndex = 0;
       } else {
