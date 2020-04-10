@@ -756,7 +756,10 @@ class ChatWidget extends Component {
                   placeholder="Type your query"
                 ></textarea>
                 <button className={className} onClick={() => { this.sendText() }}></button>
-                <button className="mic-chat"></button>
+                {
+                  (window.SpeechRecognition || window.webkitSpeechRecognition) &&
+                  <button className="mic-chat"></button>
+                }
               </div>
               <div className="power-by">
                 <span>Powered by <a href="#">Cogniwide</a></span>
