@@ -605,7 +605,7 @@ class ChatWidget extends Component {
       <div className={parentClass}>
         <div className="chat_btn_container">
           <div className="chatbot-icon">
-            <img src={this.props.launcherIcon} width="60" />
+            <img src={this.props.launcherIcon} className="launcher_icon" />
             {this.state.unread > 0 &&
               <span className="badge-msg unreadCount">1</span>
             }

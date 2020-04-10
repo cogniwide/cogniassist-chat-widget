@@ -1,26 +1,28 @@
+@font-face {
+    font-family: 'cogni-regular';
+    src: url(../fonts/Poppins/Poppins-Regular.ttf) format("woff2");
+}
+
+@font-face {
+    font-family: 'cogni-medium';
+    src: url(../fonts/Poppins/Poppins-Medium.ttf) format("woff2");
+}
+
 div {
     box-sizing: border-box;
 }
 
-.cogniwidechat {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    outline: none;
-    font-size: 14px;
-    font-family: 'Roboto', sans-serif;
-    line-height: 1;
-    background-color: #fff;
+p,
+button {
+    font-family: 'cogni-regular';
 }
+
+
 
 .cogniwidechat button:focus {
     outline: none;
     box-shadow: 0 0 0 0rem rgba(23, 162, 184, .0) !important;
 }
-
-// .cogniwidechat img {
-//     max-width: 225px;
-// }
 
 .cogniwidechat p {
     font-size: 15px;
@@ -36,12 +38,7 @@ div {
     z-index: 2147482999;
 }
 
-.cogniwidechat .cwc-left .cwc-borderbtn:hover,
-.cogniwidechat .cwc-left .cwc-borderbtn:focus,
-.cogniwidechat .panel-footer .cwc-borderbtn:hover,
-.cogniwidechat .panel-footer .cwc-borderbtn:focus {
-    color: #00bbff !important;
-}
+
 
 .cogniwidechat li.cwc-left .cwc-borderbtn,
 .cogniwidechat .cwc-borderbtn {
@@ -62,18 +59,6 @@ div {
     cursor: pointer;
 }
 
-.cogniwidechat .cwc-left .cwc-borderbtn:hover {
-    border-color: #00bbff !important;
-}
-
-.cogniwidechat .restart {
-    opacity: .75;
-}
-
-.cogniwidechat .restart:hover {
-    opacity: 1;
-}
-
 .cogniwidechat .close svg,
 .cogniwidechat .expand svg {
     stroke: #fff;
@@ -92,19 +77,19 @@ div {
     margin: 3px 5px 0 0;
 }
 
-.cogniwidechat .restart span {
-    cursor: pointer;
-    background-size: 15px;
-    background-repeat: no-repeat;
-    background-position: center;
-    position: absolute;
-    top: 10px;
-    right: 50px;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIW…55LnAu5oWzFfgHs274CTOkb8GsTPuSZ01CaRoZ8Rr6j1j+A8MFSuVPDYuhAAAAAElFTkSuQmCC);
-}
+// .cogniwidechat .restart span {
+//     cursor: pointer;
+//     background-size: 15px;
+//     background-repeat: no-repeat;
+//     background-position: center;
+//     position: absolute;
+//     top: 10px;
+//     right: 50px;
+//     width: 30px;
+//     height: 30px;
+//     border-radius: 50%;
+//     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIW…55LnAu5oWzFfgHs274CTOkb8GsTPuSZ01CaRoZ8Rr6j1j+A8MFSuVPDYuhAAAAAElFTkSuQmCC);
+// }
 
 
 /* unread badge */
@@ -338,10 +323,10 @@ div {
     border-top: 1px solid #cfd8dc;
     position: relative;
     line-height: normal;
-    font-size: 16px;
+    font-size: 14px;
     transition: none 0s ease 0s;
     background: white;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'cogni-regular';
 }
 
 .cogniwidechat pre {
@@ -904,19 +889,7 @@ animation-name: fadeInUp;
     margin: 0;
 }
 
-.cogniwidechat .chat-heading {
-    border-bottom-right-radius: 7px;
-    position: absolute;
-    bottom: 45px;
-    right: 160px;
-    background: #fff;
-    padding: 10px 20px;
-    box-shadow: rgba(43, 45, 56, 0.15) 0px 0px 7px 0px !important;
-    width: 300px;
-    margin-left: 5px;
-    -webkit-animation: slide-right 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation: slide-right 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-}
+
 
 /**
  * ----------------------------------------
@@ -1074,38 +1047,38 @@ $white : #fff;
 $muted:#666;
 $light: #eeeeee;
 
-@font-face {
-    font-family: 'cogni-regular';
-    src: url(../fonts/Poppins/Poppins-Regular.ttf) format("woff2");
-}
-@font-face {
-    font-family: 'cogni-medium';
-    src: url(../fonts/Poppins/Poppins-Medium.ttf) format("woff2");
-}
-@font-face {
-    font-family: 'cogni-bold';
-    src: url(../fonts/Poppins/Poppins-Bold.ttf) format("woff2");
-}
+
 
 #cogniassist {
-    // border: 0px;
-    // background-color: transparent;
-    // pointer-events: none;
-    // z-index: 2147483639;
-    // position: fixed;
-    // bottom: 0px;
-    // width: 410px;
-    // height: 700px;
-    // overflow: hidden;
-    // opacity: 1;
-    // max-width: 100%;
-    // right: 30px;
-    // max-height: 100%;
+   
 }
 
 .cogniwidechat {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    font-size: 14px;
+    font-family: 'cogni-regular';
+    line-height: 1;
+    background-color: $white;
 
     // font-family: 'cogni-regular';
+    .chat-heading {
+        border-bottom-right-radius: 7px;
+        position: absolute;
+        bottom: 45px;
+        right: 185px;
+        background: $white;
+        padding: 12px 20px;
+        box-shadow: rgba(43, 45, 56, 0.15) 0px 0px 7px 0px !important;
+        width: 300px;
+        margin-left: 5px;
+        -webkit-animation: slide-right 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        animation: slide-right 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        border-radius: 5px 5px 0 5px;
+    }
+
     .badge-msg {
         display: flex;
         align-items: center;
@@ -1117,6 +1090,13 @@ $light: #eeeeee;
         right: -2px !important;
     }
 
+    .chatbot-icon {
+        .launcher_icon {
+            width: 80px;
+
+        }
+    }
+
 
     .chat_box_container {
         width: 400px;
@@ -1125,7 +1105,7 @@ $light: #eeeeee;
         box-shadow: 0 4px 16px rgba(0, 0, 0, .25);
         border-radius: 10px;
         overflow: hidden;
-        font-family: 'Poppins', sans-serif !important;
+        font-family: 'cogni-regular' !important;
 
 
     }
@@ -1512,21 +1492,23 @@ $light: #eeeeee;
     }
 
 
-    /* checkboa styles */ 
-    ._checkbox_label{
+    /* checkboa styles */
+    ._checkbox_label {
         padding: 10px;
         border-bottom: 1px solid $light;
         transition: ease-in-out .3s;
-        &:hover{
+
+        &:hover {
             background: $light;
             cursor: pointer;
         }
-    
-        input[type="checkbox" i] {
+
+        input[type="checkbox"i] {
             margin-right: 8px;
         }
-        
+
     }
+
     .btn_trans_block {
         display: block;
         max-width: 100%;
@@ -1539,18 +1521,25 @@ $light: #eeeeee;
         padding: 10px;
         cursor: pointer;
         font-weight: bold;
+        font-family: 'cogni-medium' !important;
         transition: ease-in-out .3s;
-        &:hover{
+
+        &:hover {
             background: $primary_clr;
             color: $white;
         }
     }
 }
 
-/* styles */ 
+/* styles */
 /* MMARGIN */
-.m_05{ margin: 5px;}
-.m_02 { margin: 2px;}
+.m_05 {
+    margin: 5px;
+}
+
+.m_02 {
+    margin: 2px;
+}
 
 /* PADDING */
 
