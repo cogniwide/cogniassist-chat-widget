@@ -9,6 +9,12 @@ import worstEmoji from './cogniwide-assets/worst.svg'
 import ChatBubble from './components/cogniwide-chatbubble';
 import CarouselWrapper from './components/carousel_wrapper'
 
+export class Emotions{
+  static SAD = "sadness"
+  static NEUTRAL = "neutral"
+  static HAPPY = "happiness"
+}
+
 class ChatWidget extends Component {
   constructor(props) {
     super(props);
@@ -26,7 +32,8 @@ class ChatWidget extends Component {
       showFeedback: false,
       fullScreeen: false,
       delay: 1000,
-      sessionNew: false
+      sessionNew: false,
+      emotion: Emotions.NEUTRAL
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -479,11 +486,15 @@ class ChatWidget extends Component {
   }
 
   handleMessageReceived(response) {
-    console.log(response)
-
     if (response.length == 1) {
       response[0]['lastmessage'] = true;
     }
+
+    if((response.length > 1) && ("emotion" in response[0])){
+      const emotion = response.shift()["emotion"]
+      response = response.map(v => ({...v, emotion: emotion})) 
+    }
+
     this.renderResponse([response[0]])
     if (response.length > 1) {
       this.loading(true);
@@ -505,6 +516,7 @@ class ChatWidget extends Component {
   }
 
   renderResponse(responses) {
+    console.log(responses)
     let messages = []
     let quick_replies = []
     let recommendations = []
@@ -515,7 +527,8 @@ class ChatWidget extends Component {
 
       if (response && ("recommendations" in response)) {
         recommendations.push(...response["recommendations"])
-      }else{
+      }
+      else{
         const msg = {
           ...response,
           "user": "ai"
@@ -560,6 +573,7 @@ class ChatWidget extends Component {
   render() {
     var aiIndex = 0;
     const chat = this.state.conversation.map((e, index) => {
+      console.log(e)
       if (e.user === 'human') {
         aiIndex = 0;
       } else {
@@ -569,9 +583,16 @@ class ChatWidget extends Component {
         $('.panel-body .banner, .panel-body ul.chat, .panel-footer').hide();
         $('.panel-body .feedback').show();
       }
+      let botIcon = this.props.botAvatar
+      if (e["emotion"] == Emotions.HAPPY){
+        botIcon = smileEmoji
+      }
+      else if (e["emotion"] == Emotions.SAD){
+        botIcon = normalEmoji
+      }
       return (
         <ChatBubble
-          botIcon={this.props.botAvatar}
+          botIcon={botIcon}
           parent={this}
           message={e}
           index={index}
@@ -648,7 +669,7 @@ class ChatWidget extends Component {
         <div className="chat_box_container position-relative">
           <div className="_full_container_wrapper">
             <div className="panel-heading bg-primary">
-              <span className="text-white font-weight-bold"><img className="chat-logoheader" src={this.props.headerLogo} width="33" /> {this.props.botName}</span>
+              <span className="text-white font-weight-bold"><img className="chat-logoheader" src={this.props.headerLogo} width="33" /> {this.state.emotion}</span>
               <div className="btn-group-head">
                 <a className="restart" onClick={this.restartChat} style={restartStyle}>
                   <img src={updateArrow} alt="refresh" className="img-responsive" width="15" />
