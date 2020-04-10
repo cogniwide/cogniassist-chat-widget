@@ -152,15 +152,18 @@ class ChatWidget extends Component {
           )
         }
       )
+      
       if ((response["difference"] == 0) || (response["difference"] > 10)) {
-        messages.push({
-          "user": "human",
-          "line": true
-        })
         this.sendRequest({
           "sender": this.state.sender_id,
           "message": this.props.initialPayload
         })
+        if(response["different"]> 10){
+          messages.push({
+            "user": "human",
+            "line": true
+          })
+        }
       }
       this.setState(({
         conversation: messages,
@@ -406,6 +409,9 @@ class ChatWidget extends Component {
   };
 
   chooseReply(title, payload) {
+    this.setState({
+      quick_replies:[]
+    })
     this.addMessage(title, "human")
     let reqJson = {
       "message": payload,
