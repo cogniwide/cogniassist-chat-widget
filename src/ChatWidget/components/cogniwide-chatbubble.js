@@ -77,7 +77,7 @@ class ChatBubble extends Component {
                     <div className="clientchat">
                         <div className="chat-body bubble clearfix">
                             <p>
-                                {this.props.message.text}
+                                {this.props.message.text.startsWith("/")? "Event": this.props.message.text}
                             </p>
                         </div>
                     </div>
