@@ -10,7 +10,9 @@ const plugin = {
         communicationMethod={args.communicationMethod}
         botName={args.botName}
         botWelcomeMessage={args.botWelcomeMessage}
-        botIcon={args.botIcon}
+        botAvatar={args.botAvatar}
+        headerLogo={args.headerLogo}
+        launcherIcon={args.launcherIcon}
         botURL={args.botURL}
         bannerURL={args.bannerURL}
         bannerText={args.bannerText}
@@ -18,6 +20,7 @@ const plugin = {
         senderId={args.senderId}
         socketURL= {args.socketURL}
         socketPath= {args.socketPath}
+        carouselItems={args.carouselItems}
 
       />, document.querySelector(args.selector)
     );

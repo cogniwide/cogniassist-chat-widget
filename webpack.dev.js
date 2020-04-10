@@ -15,7 +15,7 @@ module.exports = {
     hot: true,
     inline: true,
     stats: 'errors-only',
-    host: process.env.HOST, // Defaults to `localhost`
+    host: '0.0.0.0', // Defaults to `localhost`
     port: process.env.PORT, // Defaults to 8080
     open: true, // Open the page in browser
     contentBase: path.resolve(__dirname, '/lib'),
@@ -33,7 +33,7 @@ module.exports = {
       test: /\.(js|jsx)$/,
       exclude: /node_modules/,
       loader: 'babel-loader'
-    }, {
+    },{
       test: /\.(css|scss)$/,
       use: [
           // Creates `style` nodes from JS strings
@@ -43,7 +43,20 @@ module.exports = {
           // Compiles Sass to CSS
           'sass-loader',
       ]
-    }, {
+    },
+    {
+      test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+      use: [
+        {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'fonts/'
+          }
+        }
+      ]
+    },
+    {
       test: /\.(jpg|png|gif|svg)$/,
       use: {
         loader: 'url-loader'

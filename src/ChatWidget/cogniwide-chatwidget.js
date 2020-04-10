@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-// import 'bootstrap/dist/css/bootstrap.css';
-import './cogniwide-chatwidget.scss';
+import './styles/index.scss';
 import updateArrow from './cogniwide-assets/update-arrow.png'
+import minimize from './cogniwide-assets/minimize.png'
 import smileEmoji from './cogniwide-assets/smile.svg'
 import normalEmoji from './cogniwide-assets/normal.svg'
 import worstEmoji from './cogniwide-assets/worst.svg'
-import chatIcon from './cogniwide-assets/launcher-icon.png'
-import chatlogo from './cogniwide-assets/chat-headlogo.png'
 import ChatBubble from './components/cogniwide-chatbubble';
+import CarouselWrapper from './components/carousel_wrapper'
 
+export class Emotions{
+  static SAD = "sadness"
+  static NEUTRAL = "neutral"
+  static HAPPY = "happiness"
+}
 
 class ChatWidget extends Component {
   constructor(props) {
@@ -19,6 +23,8 @@ class ChatWidget extends Component {
       userMessage: '',
       conversation: [],
       quick_replies: [],
+      recommendations: [],
+      show_recommendation: false,
       loading: false,
       opened: false,
       unread: 1,
@@ -35,6 +41,8 @@ class ChatWidget extends Component {
     this.sendRequest = this.sendRequest.bind(this);
     this.restartChat = this.restartChat.bind(this);
     this.fullScreeenChat = this.fullScreeenChat.bind(this);
+    this.minimizeWindow = this.minimizeWindow.bind(this)
+    this.toggleRecommendation = this.toggleRecommendation.bind(this)
     this.sendFile.bind(this);
   }
 
@@ -47,7 +55,6 @@ class ChatWidget extends Component {
     if (communicationMethod == "socket") {
       if (!socket.isInitialized()) {
 
-        console.log("socket",socket)
         socket.createSocket();
 
         socket.on('bot_uttered', (botUttered) => {
@@ -71,18 +78,18 @@ class ChatWidget extends Component {
 
           // eslint-disable-next-line no-console
           console.log(`session_confirm:${socket.socket.id} session_id:${remoteId}`);
+
           /*
           Check if the session_id is consistent with the server
           If the localId is null or different from the remote_id,
           start a new session.
           */
-         this.trySendInitSocketPayload();
-
-          if (this.state.sender_id !== remoteId) {
-            // storage.clear();
-            // Store the received session_id to storage
+          if (this.props.rememberUser) {
+            this.handleChatHistory()
+          }else{
             this.trySendInitSocketPayload();
           }
+
         });
 
         socket.on('disconnect', (reason) => {
@@ -94,41 +101,8 @@ class ChatWidget extends Component {
         });
       }
     } else {
-
       if (this.props.rememberUser) {
-        this.loadChatHistory().then(response => {
-          let messages = []
-          response.chats.forEach(
-            (resp) => {
-              messages.push({
-                "text": resp.query,
-                "user": "human"
-              })
-              resp.response.forEach(
-                (message) => {
-                  messages.push({
-                    ...message,
-                    "user": "ai"
-                  })
-                }
-              )
-            }
-          )
-          if (response["difference"] > .10) {
-            messages.push({
-              "user": "human",
-              "line": true
-            })
-            this.sendRequest({
-              "sender": this.state.sender_id,
-              "message": this.props.initialPayload
-            })
-          }
-          this.setState((prevState) => ({
-            conversation: messages,
-            sessionNew: response.difference > 10
-          }));
-        });
+        this.handleChatHistory()
       } else if (this.props.initialPayload != null) {
         this.sendRequest({
           "sender": this.state.sender_id,
@@ -159,6 +133,45 @@ class ChatWidget extends Component {
     }
   }
 
+  handleChatHistory(){
+    this.loadChatHistory().then(response => { 
+      let messages = []
+      response.chats.forEach(
+        (resp) => {
+          messages.push({
+            "text": resp.query,
+            "user": "human"
+          })
+          resp.response.forEach(
+            (message) => {
+              messages.push({
+                ...message,
+                "user": "ai"
+              })
+            }
+          )
+        }
+      )
+      
+      if ((response["difference"] == 0) || (response["difference"] > 10)) {
+        this.sendRequest({
+          "sender": this.state.sender_id,
+          "message": this.props.initialPayload
+        })
+        if(response["different"]> 10){
+          messages.push({
+            "user": "human",
+            "line": true
+          })
+        }
+      }
+      this.setState(({
+        conversation: messages,
+        sessionNew: response.difference > 10
+      }));
+    });
+  }
+
   componentDidMount() {
     this.setUpInitial()
 
@@ -181,9 +194,9 @@ class ChatWidget extends Component {
     });
 
     $('.chat_btn_container').click(() => {
-      $(".chat_box_container").show(100).toggleClass('chat_box_active');
+      $(".chat_box_container").show(100).addClass('chat_box_active');
       this.setState((prevState) => ({
-        opened: !prevState.opened,
+        opened: true,
         unread: 0
       }))
     });
@@ -207,7 +220,7 @@ class ChatWidget extends Component {
     });
 
     $(document).on("click", ".feedback-emoji li", (e) => {
-      $(".chat_box_container").show(100).toggleClass('chat_box_active');
+      $(".chat_box_container").hide(100).removeClass('chat_box_active');
       this.setState({
         opened: false,
         showFeedback: false
@@ -216,7 +229,7 @@ class ChatWidget extends Component {
 
     $(".mic-chat").click(() => {
       $(".textInput").focus();
-      if (window.hasOwnProperty('webkitSpeechRecognition')) {
+      if (window.hasOwnProperty('webkitSpeechRecognition') || window.hasOwnProperty('SpeechRecognition')) {
         $(".mic-chat").css({ opacity: 1 })
         var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         var recognition = new SpeechRecognition();
@@ -338,11 +351,19 @@ class ChatWidget extends Component {
     $event.preventDefault();
     this.setState({
       "conversation": [],
-      "quick_replies": []
+      "quick_replies": [],
+      "recommendations":[]
     })
     this.sendRequest({
       "sender": this.state.sender_id,
       "message": "/default/restart"
+    })
+  }
+  minimizeWindow($event) {
+    $event.preventDefault();
+    $(".chat_box_container").hide(100).removeClass('chat_box_active');
+    this.setState({
+      "open": false
     })
   }
   fullScreeenChat($event) {
@@ -388,6 +409,9 @@ class ChatWidget extends Component {
   };
 
   chooseReply(title, payload) {
+    this.setState({
+      quick_replies:[]
+    })
     this.addMessage(title, "human")
     let reqJson = {
       "message": payload,
@@ -422,22 +446,22 @@ class ChatWidget extends Component {
   }
 
   sendFile(file) {
-      this.loading(true);
-      const formData = new FormData();
-      formData.append("sender", this.state.sender_id);
-      formData.append("file", file, file.name);
-      formData.append("message", "/file_uploaded");
+    this.loading(true);
+    const formData = new FormData();
+    formData.append("sender", this.state.sender_id);
+    formData.append("file", file, file.name);
+    formData.append("message", "/file_uploaded");
 
-      return fetch(this.props.botURL + "webhooks/rest/webhook/", {
-        method: 'POST',
-        body: formData,
-      })
-        .then(response => response.json())
-        .then(response => {
-          this.loading(false);
-          this.addMessage("File uploaded", "human")
-          this.handleMessageReceived(response)
-        });
+    return fetch(this.props.botURL + "webhooks/rest/webhook/", {
+      method: 'POST',
+      body: formData,
+    })
+      .then(response => response.json())
+      .then(response => {
+        this.loading(false);
+        this.addMessage("File uploaded", "human")
+        this.handleMessageReceived(response)
+      });
   }
 
 
@@ -450,9 +474,9 @@ class ChatWidget extends Component {
       socket
     } = this.props
 
-    if (communicationMethod == "socket"){
-      socket.emit('user_uttered', { message: payload.message , session_id: payload.sender_id });
-    }else{
+    if (communicationMethod == "socket") {
+      socket.emit('user_uttered', { message: payload.message, session_id: payload.sender });
+    } else {
       fetch(this.props.botURL + "webhooks/rest/webhook/", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -467,12 +491,11 @@ class ChatWidget extends Component {
   }
 
   handleMessageReceived(response) {
-    console.log(response)
-
     if (response.length == 1) {
       response[0]['lastmessage'] = true;
     }
     this.renderResponse([response[0]])
+
     if (response.length > 1) {
       this.loading(true);
       for (let index = 1; index < response.length; index++) {
@@ -493,30 +516,51 @@ class ChatWidget extends Component {
   }
 
   renderResponse(responses) {
+    console.log(responses)
     let messages = []
     let quick_replies = []
+    let recommendations = []
     this.setState({
       last_response_count: responses.length
     })
     responses.forEach(response => {
-      const msg = {
-        ...response,
-        "user": "ai"
-      };
-      if (response && ("quick_replies" in response)) {
-        quick_replies.push(...response["quick_replies"])
+
+      if (response && ("recommendations" in response)) {
+        recommendations.push(...response["recommendations"])
       }
-      messages.push(msg)
+      else{
+        const msg = {
+          ...response,
+          "user": "ai"
+        };
+        if (response && ("quick_replies" in response)) {
+          quick_replies.push(...response["quick_replies"])
+        }
+        messages.push(msg)
+      }
     })
 
     this.setState((prevState) => ({
       conversation: [...prevState.conversation, ...messages],
-      quick_replies: quick_replies
+      quick_replies: quick_replies,
+      recommendations: recommendations,
+      show_recommendation: true
     }));
 
     this.scrollToBottom()
   }
 
+  toggleRecommendation(show=false){
+    this.setState(({
+      show_recommendation: show
+    }));
+  }
+
+  recommendationClicked(recommendation){
+    if (["product","faq"].includes(recommendation["type"])){
+      this.chooseReply(recommendation.title,recommendation.payload)
+    }
+  }
 
   componentWillUnmount() {
     const { socket } = this.props;
@@ -538,9 +582,16 @@ class ChatWidget extends Component {
         $('.panel-body .banner, .panel-body ul.chat, .panel-footer').hide();
         $('.panel-body .feedback').show();
       }
+      let botIcon = this.props.botAvatar
+      if (e["emotion"] == Emotions.HAPPY){
+        botIcon = smileEmoji
+      }
+      else if (e["emotion"] == Emotions.SAD){
+        botIcon = normalEmoji
+      }
       return (
         <ChatBubble
-          botIcon={this.props.botIcon}
+          botIcon={botIcon}
           parent={this}
           message={e}
           index={index}
@@ -566,7 +617,7 @@ class ChatWidget extends Component {
     if (this.state.userMessage.length) {
       className += ' send-active';
     }
-    let parentClass = "cogniwidechat";
+    let parentClass = "_cog_chat";
     if (this.state.fullScreeen) {
       parentClass += ' full-screen';
     }
@@ -574,7 +625,7 @@ class ChatWidget extends Component {
       <div className={parentClass}>
         <div className="chat_btn_container">
           <div className="chatbot-icon">
-            <img src={chatIcon} width="60" />
+            <img src={this.props.launcherIcon} className="launcher_icon" />
             {this.state.unread > 0 &&
               <span className="badge-msg unreadCount">1</span>
             }
@@ -586,87 +637,129 @@ class ChatWidget extends Component {
           }
         </div>
 
+          {
+            (this.state.show_recommendation && (this.state.recommendations.length > 0) && this.state.opened) &&
+
+            <div className="recommendations_container">
+            <div className="full_wrapper">
+              <div className="recommendations_header">
+                <div className="title">Recommendations</div>
+                <button className="_btn_close" onClick={()=>{this.toggleRecommendation(false)}}>X</button>
+              </div>
+              <div className="recommendation_body">
+  
+              {this.state.recommendations.map((recommendation, idx) => (
+  
+                  <div className={'recommendation_item ' + recommendation.type} key={idx} onClick={()=>{this.recommendationClicked(recommendation)}}>
+                      <div className="_icon">
+                        <div className="_image"></div>
+                      </div>
+                    <p className="recom_text">{recommendation.title}</p>
+                  </div>))}
+  
+              </div>
+            </div>
+          </div>
+
+          }
+
+
 
         <div className="chat_box_container position-relative">
-          <div className="col-md-12 p-0 h-100">
-            <div className="panel panel-primary">
-              <div className="panel-heading bg-primary">
-                <span className="text-white font-weight-bold"><img className="chat-logoheader" src={chatlogo} width="33" /> {this.props.botName}</span>
-                <div className="btn-group-head">
-                  <a className="restart" onClick={this.restartChat} style={restartStyle}>
-                    <img src={updateArrow} alt="refresh" className="img-responsive" width="15" />
-                  </a>
-                  <a className="expand" onClick={this.fullScreeenChat} >
-                    <svg id="Solid" height="16" viewBox="0 0 512 512" width="16" xmlns="http://www.w3.org/2000/svg">
-                      <path d="m464 488h-416a24 24 0 0 1 -24-24v-416a24 24 0 0 1 24-24h176a24 24 0 0 1 0 48h-152v368h368v-152a24 24 0 0 1 48 0v176a24 24 0 0 1 -24 24zm-40-400h-33.941l-103.03 103.029a24 24 0 0 0 33.942 33.942l103.029-103.03zm64 88v-128a24 24 0 0 0 -24-24h-128a24 24 0 0 0 0 48h104v104a24 24 0 0 0 48 0z" />
-                    </svg>
-                  </a>
-                  <div className="close" aria-label="Close" style={closeBtnStyle}>
-                    <svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                      <path
-                        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
-                      </path>
-                    </svg>
-                  </div>
-                </div>
+          <div className="_full_container_wrapper">
+            <div className="panel-heading bg-primary">
+              <span className="text-white font-weight-bold"><img className="chat-logoheader" src={this.props.headerLogo} width="33" /> {this.props.botName}</span>
+              <div className="btn-group-head">
+                <a className="restart" onClick={this.restartChat} style={restartStyle}>
+                  <img src={updateArrow} alt="refresh" className="img-responsive" width="15" />
+                </a>
+                {/* <a className="expand" onClick={this.fullScreeenChat} >
+                  <svg id="Solid" height="16" viewBox="0 0 512 512" width="16" xmlns="http://www.w3.org/2000/svg">
+                    <path d="m464 488h-416a24 24 0 0 1 -24-24v-416a24 24 0 0 1 24-24h176a24 24 0 0 1 0 48h-152v368h368v-152a24 24 0 0 1 48 0v176a24 24 0 0 1 -24 24zm-40-400h-33.941l-103.03 103.029a24 24 0 0 0 33.942 33.942l103.029-103.03zm64 88v-128a24 24 0 0 0 -24-24h-128a24 24 0 0 0 0 48h104v104a24 24 0 0 0 48 0z" />
+                  </svg>
+                </a> */}
+                <a className="minimize" onClick={this.minimizeWindow}  >
+                  <img src={minimize} alt="minimise" className="img-responsive" width="15" />
+                </a>
+                <a className="close" aria-label="Close" style={closeBtnStyle}>
+                  <svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                      d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z">
+                    </path>
+                  </svg>
+                </a>
               </div>
-              <div className="panel-body">
-                <div className="banner" style={bannerStyle}>
-                  <h3>{this.props.bannerText}</h3>
-                </div>
-                {
-                  this.state.showFeedback == false &&
-                  <ul className="chat">
-                    {chat}
-                    <li className="loading" style={{ display: this.state.loading ? "block" : "none" }}>
-                      <div className="adminchatlist">
-                        <div className="chat-body bubble clearfix">
-                          <img src="https://cogniwide.github.io/cogniassist-chat-widget/public/assets/tenor.gif" />
-                        </div>
+            </div>
+            <div className="panel-body">
+              {
+                this.props.carouselItems.length > 0 ? (<CarouselWrapper parent={this} items={this.props.carouselItems} />) : (
+                  <div className="banner" style={bannerStyle}>
+                    <h3>{this.props.bannerText}</h3>
+                  </div>
+                )
+
+              }
+
+              {
+                this.state.showFeedback == false &&
+                <ul className="chat">
+                  {chat}
+                  <li className="loading" style={{ display: this.state.loading ? "block" : "none" }}>
+                    <div className="adminchatlist">
+                      <div className="chat-body bubble clearfix">
+                        <img src="https://cogniwide.github.io/cogniassist-chat-widget/public/assets/tenor.gif" />
                       </div>
+                    </div>
+                  </li>
+                </ul>
+              }
+
+              {
+                this.state.showFeedback &&
+                <div className="feedback">
+                  Feedback
+                    <ul className="feedback-emoji">
+                    <li data-name="worst">
+                      <img src={worstEmoji} />
+                      <p> bad </p>
                     </li>
+                    <li data-name="normal"><img src={normalEmoji} />
+                      <p> Satisfied </p>
+                    </li>
+                    <li data-name="smile"><img src={smileEmoji} />
+                      <p> awesome </p></li>
                   </ul>
-                }
+                </div>
+              }
 
-                {
-                  this.state.showFeedback &&
-                  <div className="feedback">
-                    Feedback
-                                <ul className="feedback-emoji">
-                      <li data-name="worst"><img src={worstEmoji} width="50" /></li>
-                      <li data-name="normal"><img src={normalEmoji} width="50" /></li>
-                      <li data-name="smile"><img src={smileEmoji} width="50" /></li>
-                    </ul>
-                  </div>
-                }
-
+              <div className="suggestion_box bg-white">
+                <div className="quick-replies">
+                  {this.state.quick_replies.map((button, index) => <button type="button" id="quick_reply_btn" key={index}
+                    className="cwc-borderbtn see_all"
+                    onClick={() => this.chooseReply(button.title, button.payload)}
+                    data={button}>{button.title}</button>
+                  )}
+                </div>
               </div>
-              <div className="panel-footer">
-                <div className="suggestion_box bg-white">
-                  <div className="quick-replies">
-                    {this.state.quick_replies.map((button, index) => <button type="button" id="quick_reply_btn" key={index}
-                      className="cwc-borderbtn see_all"
-                      onClick={() => this.chooseReply(button.title, button.payload)}
-                      data={button}>{button.title}</button>
-                    )}
-                  </div>
-                </div>
-                <div id="composer"
-                  className="composer position-relative">
-                  <textarea
-                    value={this.state.userMessage}
-                    onKeyUp={this.handleSubmit}
-                    onChange={this.handleChange}
-                    id="textInput"
-                    className="textInput"
-                    placeholder="Type your query"
-                  ></textarea>
-                  <pre className={className} onClick={() => { this.sendText() }}></pre>
-                  <pre className="mic-chat"></pre>
-                </div>
-                <div className="power-by">
-                  <span>Powered by <a href="#">Cogniwide</a></span>
-                </div>
+
+            </div>
+            <div className="panel-footer">
+
+              <div id="composer"
+                className="composer position-relative">
+                <textarea
+                  value={this.state.userMessage}
+                  onKeyUp={this.handleSubmit}
+                  onChange={this.handleChange}
+                  id="textInput"
+                  className="textInput"
+                  placeholder="Type your query"
+                ></textarea>
+                <button className={className} onClick={() => { this.sendText() }}></button>
+                <button className="mic-chat"></button>
+              </div>
+              <div className="power-by">
+                <span>Powered by <a href="#">Cogniwide</a></span>
               </div>
             </div>
           </div>

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import './cogniwide-chatbubble.scss';
+import 'react-calendar/dist/Calendar.css';
+import '../styles/cogniwide-chatbubble.scss';
 import Calendar from 'react-calendar';
 import Cloud from '../cogniwide-assets/cloud-upload.png'
 import Dropdown from './custom-responses/dropdown'
-import 'react-calendar/dist/Calendar.css';
+import CheckboxContainer from './custom-responses/checkbox-container'
 
 class ChatBubble extends Component {
     constructor(props) {
@@ -15,12 +16,17 @@ class ChatBubble extends Component {
         }
         this.handleClick = this.handleClick.bind(this);
         this.dropDownOnChange = this.dropDownOnChange.bind(this)
+        this.checkboxSubmit = this.checkboxSubmit.bind(this)
     }
 
 
     onChange = date => {
-        console.log(date)
-        this.props.parent.sendText(this.getFormattedDate(date));
+        let readable_date = date.toDateString();
+        let formatted_date = this.getFormattedDate(date)
+        if(this.props.message.datepicker.defaultView == "decade"){
+            readable_date = date.getFullYear()
+        }
+        this.props.parent.chooseReply(readable_date, formatted_date);
 
     }
 
@@ -39,6 +45,9 @@ class ChatBubble extends Component {
     dropDownOnChange(change) {
         this.props.parent.chooseReply(change.title, change.value);
     };
+    checkboxSubmit(title,payload){
+        this.props.parent.chooseReply(title, payload);
+    }
     handleFiles(files){
         this.setState({
             uploading: true
@@ -68,7 +77,7 @@ class ChatBubble extends Component {
                     <div className="clientchat">
                         <div className="chat-body bubble clearfix">
                             <p>
-                                {this.props.message.text}
+                                {this.props.message.text.startsWith("/")? "Event": this.props.message.text}
                             </p>
                         </div>
                     </div>
@@ -184,13 +193,21 @@ class ChatBubble extends Component {
                                 </div>
                             }
 
+                            {('checkbox' in this.props.message) &&
+                                <div className="mt-2 diplayalign">
+                                    <CheckboxContainer id='chat-checkbox-container'
+                                        options={this.props.message.checkbox}
+                                        onChange={this.checkboxSubmit} />
+                                </div>
+                            }
+
                         </div>
                     </div>
-                    {this.props.message.lastmessage === true &&
+                    {/* {this.props.message.lastmessage === true &&
                         <div className="chatstimes">
                             <span className="timeStamp">1:35 AM</span>
                         </div>
-                    }
+                    } */}
 
                 </li>
             )
