@@ -32,8 +32,7 @@ class ChatWidget extends Component {
       showFeedback: false,
       fullScreeen: false,
       delay: 1000,
-      sessionNew: false,
-      emotion: Emotions.NEUTRAL
+      sessionNew: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -669,7 +668,7 @@ class ChatWidget extends Component {
         <div className="chat_box_container position-relative">
           <div className="_full_container_wrapper">
             <div className="panel-heading bg-primary">
-              <span className="text-white font-weight-bold"><img className="chat-logoheader" src={this.props.headerLogo} width="33" /> {this.state.emotion}</span>
+              <span className="text-white font-weight-bold"><img className="chat-logoheader" src={this.props.headerLogo} width="33" /> {this.props.botName}</span>
               <div className="btn-group-head">
                 <a className="restart" onClick={this.restartChat} style={restartStyle}>
                   <img src={updateArrow} alt="refresh" className="img-responsive" width="15" />
