@@ -229,7 +229,7 @@ class ChatWidget extends Component {
 
     $(".mic-chat").click(() => {
       $(".textInput").focus();
-      if (window.hasOwnProperty('webkitSpeechRecognition')) {
+      if (window.hasOwnProperty('webkitSpeechRecognition') || window.hasOwnProperty('SpeechRecognition')) {
         $(".mic-chat").css({ opacity: 1 })
         var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         var recognition = new SpeechRecognition();
