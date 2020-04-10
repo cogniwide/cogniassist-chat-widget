@@ -1074,18 +1074,18 @@ $white : #fff;
 $muted:#666;
 $light: #eeeeee;
 
-// @font-face {
-//     font-family: 'cogni-regular';
-//     src: url(../cogniwide-assets/fonts/Poppins-Regular.ttf) format("woff2");
-// }
-// @font-face {
-//     font-family: 'cogni-medium';
-//     src: url(assets/fonts/SailecRegular.ttf) format("woff2");
-// }
-// @font-face {
-//     font-family: 'cogni-bold';
-//     src: url(assets/fonts/SailecRegular.ttf) format("woff2");
-// }
+@font-face {
+    font-family: 'cogni-regular';
+    src: url(../fonts/Poppins/Poppins-Regular.ttf) format("woff2");
+}
+@font-face {
+    font-family: 'cogni-medium';
+    src: url(../fonts/Poppins/Poppins-Medium.ttf) format("woff2");
+}
+@font-face {
+    font-family: 'cogni-bold';
+    src: url(../fonts/Poppins/Poppins-Bold.ttf) format("woff2");
+}
 
 #cogniassist {
     // border: 0px;
