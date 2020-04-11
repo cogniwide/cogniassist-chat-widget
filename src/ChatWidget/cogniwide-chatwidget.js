@@ -617,7 +617,7 @@ class ChatWidget extends Component {
     if (this.state.userMessage.length) {
       className += ' send-active';
     }
-    let parentClass = "_cog_chat";
+    let parentClass = "_cog_chat _left";
     if (this.state.fullScreeen) {
       parentClass += ' full-screen';
     }
