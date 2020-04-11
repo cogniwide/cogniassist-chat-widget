@@ -363,7 +363,7 @@ class ChatWidget extends Component {
     $event.preventDefault();
     $(".chat_box_container").hide(100).removeClass('chat_box_active');
     this.setState({
-      "open": false
+      "opened": false
     })
   }
   fullScreeenChat($event) {
