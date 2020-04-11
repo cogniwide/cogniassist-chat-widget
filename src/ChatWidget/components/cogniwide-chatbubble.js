@@ -67,7 +67,7 @@ class ChatBubble extends Component {
         if ("line" in this.props.message) {
             return (
                 <li className='cwc-right'>
-                    <div className="session-border"><span>{new Date().toLocaleString()}</span></div>
+                    <div className="session-border"><span>{new Date().toDateString()}</span></div>
                 </li>
             )
         }
@@ -81,7 +81,7 @@ class ChatBubble extends Component {
                             </p>
                         </div>
                     </div>
-                    <span className="timeStamp">1:35 AM</span>
+                    {/* <span className="timeStamp">1:35 AM</span> */}
                 </li>
             )
         else
