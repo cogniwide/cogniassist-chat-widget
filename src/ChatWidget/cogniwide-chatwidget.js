@@ -732,7 +732,7 @@ class ChatWidget extends Component {
                 </div>
               }
 
-              <div className="suggestion_box bg-white">
+              <div className="suggestion_box">
                 <div className="quick-replies">
                   {this.state.quick_replies.map((button, index) => <button type="button" id="quick_reply_btn" key={index}
                     className="cwc-borderbtn see_all"
