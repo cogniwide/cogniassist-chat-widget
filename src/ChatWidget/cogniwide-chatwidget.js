@@ -433,6 +433,8 @@ class ChatWidget extends Component {
 
   sendText(message = null) {
     message = (message == null) ? this.state.userMessage.trim() : message;
+    if(!message)
+    return
     this.addMessage(message, "human");
 
     let reqJson = {
