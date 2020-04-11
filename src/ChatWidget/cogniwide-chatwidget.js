@@ -32,7 +32,8 @@ class ChatWidget extends Component {
       showFeedback: false,
       fullScreeen: false,
       delay: 1000,
-      sessionNew: false
+      sessionNew: false,
+      delayFactor: 1
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -58,7 +59,6 @@ class ChatWidget extends Component {
         socket.createSocket();
 
         socket.on('bot_uttered', (botUttered) => {
-          this.loading(false);
           this.handleBotUtterance(botUttered);
         });
 
@@ -144,6 +144,7 @@ class ChatWidget extends Component {
           })
           resp.response.forEach(
             (message) => {
+              if (("custom" in message) == false)
               messages.push({
                 ...message,
                 "user": "ai"
@@ -469,14 +470,15 @@ class ChatWidget extends Component {
 
 
   sendRequest(payload) {
-    this.loading(true);
-
     const {
       communicationMethod,
       socket
     } = this.props
 
     if (communicationMethod == "socket") {
+      this.setState({
+        delayFactor: 0
+      })
       socket.emit('user_uttered', { message: payload.message, session_id: payload.sender });
     } else {
       fetch(this.props.botURL + "webhooks/rest/webhook/", {
@@ -486,34 +488,26 @@ class ChatWidget extends Component {
       })
         .then(response => response.json())
         .then(response => {
-          this.loading(false);
           this.handleMessageReceived(response)
         });
     }
   }
 
   handleMessageReceived(response) {
-    if (response.length == 1) {
-      response[0]['lastmessage'] = true;
-    }
-    this.renderResponse([response[0]])
-
-    if (response.length > 1) {
       this.loading(true);
-      for (let index = 1; index < response.length; index++) {
+      for (let index = 0; index < response.length; index++) {
+        let delayFactor = this.props.communicationMethod == "rest"? index : this.state.delayFactor
         setTimeout(() => {
-          if (index == (response.length - 1)) {
-            this.loading(false);
-            response[index]['lastmessage'] = true;
-          }
+          this.loading(false);
           this.renderResponse([response[index]])
-        }, (index * this.state.delay));
+        }, (delayFactor * this.state.delay));
       }
-    }
   }
 
   handleBotUtterance(botUtterance) {
-    // const newMessage = { ...botUtterance, text: String(botUtterance.text) };
+    this.setState((prevState)=>({
+      delayFactor: prevState.delayFactor + 1
+    }));
     this.handleMessageReceived([botUtterance]);
   }
 

@@ -1556,9 +1556,6 @@
             margin-bottom: 50px;
         }
         
-        // implement zoomout for iphone
-        // https://stackoverflow.com/questions/2989263/disable-auto-zoom-in-input-text-tag-safari-on-iphone
-        
         .feedback-emoji {
             li {
                 margin: 0 8%x;
@@ -1576,5 +1573,17 @@
 
 
 
+    }
+}
+
+// zoomout for iphone
+// https://stackoverflow.com/questions/2989263/disable-auto-zoom-in-input-text-tag-safari-on-iphone
+
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+    textarea {
+        font-size: 16px;
+    }
+    textarea:focus {
+        font-size: 16px;
     }
 }
