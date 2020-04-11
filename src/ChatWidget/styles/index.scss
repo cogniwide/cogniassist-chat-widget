@@ -23,13 +23,6 @@
     
     direction: ltr !important;
     z-index: 2147482999;
-
-    // &._left{
-    //     left:  20px;
-    // }
-    // &._right{
-    //     right: 20px;
-    // }
 }
 
 .cwc-borderbtn:first-child {
@@ -700,12 +693,14 @@
        .chat_btn_container{ right: 20px; }
        .chat-heading{ right: 185px;}
        .chat_box_container{ right: 20px;}
+       .recommendations_container{ right: 440px;}
     }
 
      /*  LAUNCHER LEFT ALIGN */
     &._left{
         .chat_btn_container{ left:  20px;}
         .chat_box_container{ left:  20px;}
+        .recommendations_container{ left:  440px;}
      }
 
     /*  BOF LOUNCHER ICON STYLE */
@@ -1365,9 +1360,8 @@
             color: $white;
         }
     }
-}
 
-/* styles */
+    /* styles */
 /* MMARGIN */
 .m_05 {
     margin: 5px;
@@ -1387,7 +1381,7 @@
     bottom: 20px;
     z-index: 2147483000;
     border-radius: 5px;
-    right: 440px;
+    // right: 440px;
     overflow: hidden;
     background: $white;
     box-shadow: 0 5px 40px rgba(0, 0, 0, 0.16) !important;
@@ -1517,6 +1511,9 @@
 }
 
 /* EOF RECOMENDATION */
+
+}
+
 
 /* RESPONSIVE DESIGN */
 @media(max-width:767px) {
