@@ -74,7 +74,7 @@
     display: -ms-flexbox;
     /* TWEENER - IE 10 */
     display: -webkit-flex;
-    justify-content: start;
+    justify-content: end;
     flex-flow: row-reverse;
 }
 
@@ -1209,7 +1209,7 @@
             opacity: 0.6;
             height: 35px;
             width: 35px;
-            position: relative;
+            position: relative !important;
             /* background: transparent; */
             margin-left: 5px;
             border: none;
@@ -1480,7 +1480,8 @@
         }
 
         .panel-footer{
-            margin-bottom: 50px;
+            // margin-bottom: 50px;
+
         }
         
         // implement zoomout for iphone
