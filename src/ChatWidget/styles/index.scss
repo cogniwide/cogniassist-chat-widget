@@ -301,6 +301,20 @@
     color: #FF912C;
 }
 
+._cog_chat li.star:before {
+    content: '★ ';
+    font-size: 30px;
+    color: #d3d3d3;
+}
+
+._cog_chat li.star:before {
+    font-size: 35px !important;
+}
+
+._cog_chat li.star.hover:before, ._cog_chat li.star.selected:before {
+    color: #ffc107;
+}
+
 ._cog_chat .time {
     width: 100px;
     margin-left: 40px !important;
@@ -1480,7 +1494,7 @@
         }
 
         .panel-footer{
-            // margin-bottom: 50px;
+            margin-bottom: 50px;
 
         }
         
