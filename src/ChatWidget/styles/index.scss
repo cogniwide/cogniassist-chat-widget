@@ -395,7 +395,13 @@
 // }
 
 ._cog_chat .react-calendar__tile {
-    padding: 9px !important;
+    padding: 5px !important;
+    font-size: 14px;
+    background: none;
+    color: $black;
+    &:hover{
+        color: $black;
+    }
 }
 
 ._cog_chat .react-calendar {
@@ -404,6 +410,11 @@
     border-radius: 8px;
     padding-bottom: 10px;
     box-shadow: 0 5px 40px rgba(0, 0, 0, .16) !important;
+
+    button{
+        font-size: 14px;
+        padding: 5px;
+    }
 }
 
 ._cog_chat .react-calendar__tile:enabled:hover,
@@ -870,7 +881,7 @@
         display: flex;
         height: 100%;
         flex-direction: column;
-        background: #EAEEF3;
+        background: #fff;
         background-size: contain;
         background-position: center center;
         overflow-y: auto;
@@ -994,6 +1005,7 @@
                 max-width: 270px;
 
                 p {
+                    text-align: left;
 
                     b {
                         color: $black;
@@ -1061,6 +1073,7 @@
                 border: none;
                 overflow: hidden;
                 filter: grayscale(100%);
+                height: auto;
             }
 
             .select-css option {
@@ -1199,7 +1212,10 @@
             font-family: 'cogni-regular';
             border: none;
             color: $black;
-            padding: 14px 0
+            padding: 14px 0;
+            min-height:auto !important;
+            margin-bottom: 0 !important;
+
         }
 
         .power-by {
