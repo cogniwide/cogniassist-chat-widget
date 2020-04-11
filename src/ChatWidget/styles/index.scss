@@ -20,7 +20,7 @@
 ._cog_chat .chat_btn_container {
     position: fixed;
     bottom: 20px;
-    right: 20px;
+    
     direction: ltr !important;
     z-index: 2147482999;
 }
@@ -395,7 +395,13 @@
 // }
 
 ._cog_chat .react-calendar__tile {
-    padding: 9px !important;
+    padding: 5px !important;
+    font-size: 14px;
+    background: none;
+    color: $black;
+    &:hover{
+        color: $black;
+    }
 }
 
 ._cog_chat .react-calendar {
@@ -404,6 +410,11 @@
     border-radius: 8px;
     padding-bottom: 10px;
     box-shadow: 0 5px 40px rgba(0, 0, 0, .16) !important;
+
+    button{
+        font-size: 14px;
+        // padding: 5px;
+    }
 }
 
 ._cog_chat .react-calendar__tile:enabled:hover,
@@ -633,27 +644,40 @@
 }
 
 @media(max-width: 470px) {
-    ._cog_chat .chat_box_container {
+    ._cog_chat {
+    .chat_box_container {
         right: 0;
         top: 45px;
         width: 100%;
         height: 100%;
         z-index: 9999999999999;
     }
-
-    ._cog_chat .chat-heading {
-        width: 200px !important;
-        bottom: 15px;
-        right: 179px;
+    &._left{
+        .chat-heading {
+            left: -15px;
+            padding: 8px 10px;
+            // right: 179px;
+        }
+    }
+    &._right{ right: 175px;}
+    .chatbot-icon{
+        .launcher_icon{
+            width: 70px !important;
+        }
+    }
+    .chat-heading {  width: 200px !important; bottom: 15px;}
+    .chat-heading h5 {
+        font-size: 14px !important;
     }
 
-    ._cog_chat .feedback {
+    
+
+     .feedback {
         margin: 80px auto;
     }
 
-    ._cog_chat .chat-heading h5 {
-        font-size: 15px;
-    }
+     
+}
 }
 
 
@@ -677,11 +701,26 @@
         box-sizing: border-box;
     }
 
+    /*  LAUNCHER RIGHT ALIGN */
+    &._right{
+       .chat_btn_container{ right: 20px; }
+       .chat-heading{ right: 185px;}
+       .chat_box_container{ right: 20px;}
+       .recommendations_container{ right: 440px;}
+    }
+
+     /*  LAUNCHER LEFT ALIGN */
+    &._left{
+        .chat_btn_container{ left:  20px;}
+        .chat_box_container{ left:  20px;}
+        .recommendations_container{ left:  440px;}
+     }
+
     /*  BOF LOUNCHER ICON STYLE */
     .chat-heading {
         position: absolute;
         bottom: 45px;
-        right: 185px;
+        // right: 185px;
         background: $white;
         padding: 12px 20px;
         box-shadow: rgba(43, 45, 56, 0.15) 0px 0px 7px 0px !important;
@@ -727,7 +766,7 @@
         transform: translateY(5%);
         position: fixed !important;
         bottom: 100px;
-        right: 20px;
+        // right: 20px;
         max-height: 610px;
         margin: 0px;
         width: 377px;
@@ -870,7 +909,7 @@
         display: flex;
         height: 100%;
         flex-direction: column;
-        background: #EAEEF3;
+        background: #fff;
         background-size: contain;
         background-position: center center;
         overflow-y: auto;
@@ -920,6 +959,7 @@
 
         .carousel .slide {
             background: none;
+            padding: 0;
         }
 
         .carousel-slider {
@@ -994,6 +1034,7 @@
                 max-width: 270px;
 
                 p {
+                    text-align: left;
 
                     b {
                         color: $black;
@@ -1061,6 +1102,7 @@
                 border: none;
                 overflow: hidden;
                 filter: grayscale(100%);
+                height: auto;
             }
 
             .select-css option {
@@ -1199,7 +1241,10 @@
             font-family: 'cogni-regular';
             border: none;
             color: $black;
-            padding: 14px 0
+            padding: 14px 0;
+            min-height:auto !important;
+            margin-bottom: 0 !important;
+
         }
 
         .power-by {
@@ -1285,6 +1330,7 @@
 
     .react-calendar__tile--active {
         background: $primary_clr !important;
+        color: $white;
     }
 
 
@@ -1327,9 +1373,8 @@
             color: $white;
         }
     }
-}
 
-/* styles */
+    /* styles */
 /* MMARGIN */
 .m_05 {
     margin: 5px;
@@ -1349,7 +1394,7 @@
     bottom: 20px;
     z-index: 2147483000;
     border-radius: 5px;
-    right: 440px;
+    // right: 440px;
     overflow: hidden;
     background: $white;
     box-shadow: 0 5px 40px rgba(0, 0, 0, 0.16) !important;
@@ -1480,9 +1525,23 @@
 
 /* EOF RECOMENDATION */
 
+}
+
+
 /* RESPONSIVE DESIGN */
 @media(max-width:767px) {
     ._cog_chat {
+        &._right{ 
+            .chat_box_container{
+                right: 0;
+            }
+        }
+        &._left{ 
+            .chat_box_container{
+                left: 0;
+            }
+        }
+        &._left{ left: 0;}
         .chat_box_container {
             width: 100%;
             right: 0;
@@ -1514,6 +1573,8 @@
                 }
             }
         }
+
+
 
     }
 }

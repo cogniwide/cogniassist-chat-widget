@@ -363,7 +363,7 @@ class ChatWidget extends Component {
     $event.preventDefault();
     $(".chat_box_container").hide(100).removeClass('chat_box_active');
     this.setState({
-      "open": false
+      "opened": false
     })
   }
   fullScreeenChat($event) {
@@ -433,6 +433,8 @@ class ChatWidget extends Component {
 
   sendText(message = null) {
     message = (message == null) ? this.state.userMessage.trim() : message;
+    if(!message)
+    return
     this.addMessage(message, "human");
 
     let reqJson = {
@@ -617,7 +619,9 @@ class ChatWidget extends Component {
     if (this.state.userMessage.length) {
       className += ' send-active';
     }
-    let parentClass = "_cog_chat";
+    console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",this.props.widgetPosition )
+    const widgetPosition = (this.props.widgetPosition == "right") ? "_right":"_left";
+    let parentClass = "_cog_chat "+ widgetPosition;
     if (this.state.fullScreeen) {
       parentClass += ' full-screen';
     }
