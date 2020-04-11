@@ -1518,6 +1518,17 @@
 /* RESPONSIVE DESIGN */
 @media(max-width:767px) {
     ._cog_chat {
+        &._right{ 
+            .chat_box_container{
+                right: 0;
+            }
+        }
+        &._left{ 
+            .chat_box_container{
+                left: 0;
+            }
+        }
+        &._left{ left: 0;}
         .chat_box_container {
             width: 100%;
             right: 0;
@@ -1550,6 +1561,8 @@
                 }
             }
         }
+
+
 
     }
 }
