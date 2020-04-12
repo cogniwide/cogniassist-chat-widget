@@ -1582,9 +1582,9 @@
 
 @media screen and (-webkit-min-device-pixel-ratio:0) { 
     textarea {
-        font-size: 16px;
+        font-size: 16px !important;
     }
     textarea:focus {
-        font-size: 16px;
+        font-size: 16px !important;
     }
 }
