@@ -12,7 +12,7 @@
   <script>
     CogniAssistWidget.default.init({
       selector: "#cogniassist",
-      initialPayload:"/recommendations_demo",
+      initialPayload:"/default/welcome",
       communicationMethod: "rest",
       // botURL:'http://127.0.0.1:8080/',
       // socketURL: "http://127.0.0.1:8080/",
@@ -23,11 +23,11 @@
       botURL:'https://assistant.cogniwide.com/chatbot-backend/',
       socketURL: "https://assistant.cogniwide.com/",
       socketPath: "/chatbot-backend/socket.io",
-      botName: 'AWNIC Bot',
+      botName: 'Al Wathba Virtual Assistant',
       botWelcomeMessage: "Hey there, I'm here to assist you with any doubts you migth have.",
       bannerURL:"https://cogniwide.github.io/cogniassist-chat-widget/public/assets/banner.jpg",
       bannerText:"AWNIC National Insurance is an insurance company that specialises in Motor, Home, Travel, UAE visit visa, Yacht & Jetski insurance plans..",
-      rememberUser: false,
+      rememberUser: true,
       carouselItems:[
                   {
                     "src":"https://demo.cogniwide.com/bots/awnic/assets/banner-4.png",

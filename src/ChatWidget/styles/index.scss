@@ -1573,18 +1573,15 @@
         }
 
 
+        // zoomout for iphone
+        // https://stackoverflow.com/questions/2989263/disable-auto-zoom-in-input-text-tag-safari-on-iphone
 
-    }
-}
+        textarea {
+            font-size: 16px !important;
+        }
+        textarea:focus {
+            font-size: 16px !important;
+        }
 
-// zoomout for iphone
-// https://stackoverflow.com/questions/2989263/disable-auto-zoom-in-input-text-tag-safari-on-iphone
-
-@media screen and (-webkit-min-device-pixel-ratio:0) { 
-    textarea {
-        font-size: 16px !important;
-    }
-    textarea:focus {
-        font-size: 16px !important;
     }
 }
