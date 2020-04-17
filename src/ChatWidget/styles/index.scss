@@ -20,7 +20,7 @@
 ._cog_chat .chat_btn_container {
     position: fixed;
     bottom: 20px;
-    
+
     direction: ltr !important;
     z-index: 2147482999;
 }
@@ -311,7 +311,8 @@
     font-size: 35px !important;
 }
 
-._cog_chat li.star.hover:before, ._cog_chat li.star.selected:before {
+._cog_chat li.star.hover:before,
+._cog_chat li.star.selected:before {
     color: #ffc107;
 }
 
@@ -399,7 +400,8 @@
     font-size: 14px;
     background: none;
     color: $black;
-    &:hover{
+
+    &:hover {
         color: $black;
     }
 }
@@ -411,7 +413,7 @@
     padding-bottom: 10px;
     box-shadow: 0 5px 40px rgba(0, 0, 0, .16) !important;
 
-    button{
+    button {
         font-size: 14px;
         // padding: 5px;
     }
@@ -645,39 +647,49 @@
 
 @media(max-width: 470px) {
     ._cog_chat {
-    .chat_box_container {
-        right: 0;
-        top: 45px;
-        width: 100%;
-        height: 100%;
-        z-index: 9999999999999;
-    }
-    &._left{
+        .chat_box_container {
+            right: 0;
+            top: 45px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999999999999;
+        }
+
+        &._left {
+            .chat-heading {
+                left: -15px;
+                padding: 8px 10px;
+                // right: 179px;
+            }
+        }
+
+        &._right {
+            right: 175px;
+        }
+
+        .chatbot-icon {
+            .launcher_icon {
+                width: 70px !important;
+            }
+        }
+
         .chat-heading {
-            left: -15px;
-            padding: 8px 10px;
-            // right: 179px;
+            width: 200px !important;
+            bottom: 15px;
         }
-    }
-    &._right{ right: 175px;}
-    .chatbot-icon{
-        .launcher_icon{
-            width: 70px !important;
+
+        .chat-heading h5 {
+            font-size: 14px !important;
         }
-    }
-    .chat-heading {  width: 200px !important; bottom: 15px;}
-    .chat-heading h5 {
-        font-size: 14px !important;
-    }
 
-    
 
-     .feedback {
-        margin: 80px auto;
+
+        .feedback {
+            margin: 80px auto;
+        }
+
+
     }
-
-     
-}
 }
 
 
@@ -702,19 +714,38 @@
     }
 
     /*  LAUNCHER RIGHT ALIGN */
-    &._right{
-       .chat_btn_container{ right: 20px; }
-       .chat-heading{ right: 185px;}
-       .chat_box_container{ right: 20px;}
-       .recommendations_container{ right: 440px;}
+    &._right {
+        .chat_btn_container {
+            right: 20px;
+        }
+
+        .chat-heading {
+            right: 185px;
+        }
+
+        .chat_box_container {
+            right: 20px;
+        }
+
+        .recommendations_container {
+            right: 440px;
+        }
     }
 
-     /*  LAUNCHER LEFT ALIGN */
-    &._left{
-        .chat_btn_container{ left:  20px;}
-        .chat_box_container{ left:  20px;}
-        .recommendations_container{ left:  440px;}
-     }
+    /*  LAUNCHER LEFT ALIGN */
+    &._left {
+        .chat_btn_container {
+            left: 20px;
+        }
+
+        .chat_box_container {
+            left: 20px;
+        }
+
+        .recommendations_container {
+            left: 440px;
+        }
+    }
 
     /*  BOF LOUNCHER ICON STYLE */
     .chat-heading {
@@ -909,9 +940,10 @@
         display: flex;
         height: 100%;
         flex-direction: column;
-        background: #fff;
-        background-size: contain;
+        background: $light;
+        background-size: cover;
         background-position: center center;
+        background-repeat: no-repeat;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
         transition: all 1s ease-in-out;
@@ -1032,6 +1064,7 @@
                 margin-left: 10px;
                 padding: 0;
                 max-width: 270px;
+                background: $white;
 
                 p {
                     text-align: left;
@@ -1215,6 +1248,7 @@
         width: 100%;
         z-index: 999999;
         background: $white;
+        border-top: 1px solid $light;
 
 
         .composer {
@@ -1242,7 +1276,7 @@
             border: none;
             color: $black;
             padding: 14px 0;
-            min-height:auto !important;
+            min-height: auto !important;
             margin-bottom: 0 !important;
 
         }
@@ -1375,155 +1409,155 @@
     }
 
     /* styles */
-/* MMARGIN */
-.m_05 {
-    margin: 5px;
-}
+    /* MMARGIN */
+    .m_05 {
+        margin: 5px;
+    }
 
-.m_02 {
-    margin: 2px;
-}
+    .m_02 {
+        margin: 2px;
+    }
 
-/* PADDING */
+    /* PADDING */
 
-/* BOF RECOMENDATION */
-.recommendations_container {
-    position: fixed;
-    width: 360px;
-    height: auto;
-    bottom: 20px;
-    z-index: 2147483000;
-    border-radius: 5px;
-    // right: 440px;
-    overflow: hidden;
-    background: $white;
-    box-shadow: 0 5px 40px rgba(0, 0, 0, 0.16) !important;
+    /* BOF RECOMENDATION */
+    .recommendations_container {
+        position: fixed;
+        width: 360px;
+        height: auto;
+        bottom: 20px;
+        z-index: 2147483000;
+        border-radius: 5px;
+        // right: 440px;
+        overflow: hidden;
+        background: $white;
+        box-shadow: 0 5px 40px rgba(0, 0, 0, 0.16) !important;
 
 
-    .full_wrapper {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        width: 100%;
-
-        .recommendations_header {
-            height: 50px;
+        .full_wrapper {
             display: flex;
-            padding: 15px;
-            justify-content: space-between;
-            align-items: center;
-            background: $white;
-            box-shadow: 0px -3px 12px rgba(0, 0, 0, 0.33);
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
 
-            .title {
-                font-size: 18px;
-                color: $black;
-            }
-        }
-
-        .recommendation_body {
-            flex: 1;
-            padding: 1.5rem;
-            overflow: auto;
-
-            .recommendation_item {
-                width: 100%;
+            .recommendations_header {
+                height: 50px;
                 display: flex;
+                padding: 15px;
+                justify-content: space-between;
                 align-items: center;
-                padding: 8px;
-                border: 1px solid $light;
-                margin-bottom: -1px;
-                cursor: pointer;
+                background: $white;
+                box-shadow: 0px -3px 12px rgba(0, 0, 0, 0.33);
 
-                &:first-child {
-                    border-radius: 5px 5px 0 0;
+                .title {
+                    font-size: 18px;
+                    color: $black;
                 }
+            }
 
-                &:last-child {
-                    border-radius: 0px 0px 5px 5px;
-                }
+            .recommendation_body {
+                flex: 1;
+                padding: 1.5rem;
+                overflow: auto;
 
-                ._icon {
-                    width: 40px;
-                    height: 40px;
-                    // background: $light;
-                    // border-radius: 100px;
-                    margin-right: 5px;
+                .recommendation_item {
+                    width: 100%;
                     display: flex;
-                    overflow: hidden;
                     align-items: center;
-                    justify-content: center;
-                    padding: 5px;
+                    padding: 8px;
+                    border: 1px solid $light;
+                    margin-bottom: -1px;
+                    cursor: pointer;
 
-                    ._image {
-                        width: 100%;
-                        height: 100%;
-                        background-size: contain;
-                        padding: 10px;
-                        background-position: center center;
+                    &:first-child {
+                        border-radius: 5px 5px 0 0;
                     }
 
+                    &:last-child {
+                        border-radius: 0px 0px 5px 5px;
+                    }
 
-                }
+                    ._icon {
+                        width: 40px;
+                        height: 40px;
+                        // background: $light;
+                        // border-radius: 100px;
+                        margin-right: 5px;
+                        display: flex;
+                        overflow: hidden;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 5px;
 
-                .recom_text {
-                    margin: 0;
-                    padding: 0;
-                }
+                        ._image {
+                            width: 100%;
+                            height: 100%;
+                            background-size: contain;
+                            padding: 10px;
+                            background-position: center center;
+                        }
 
-                &:Hover {
-                    background: #f6f6f6;
 
-                    ._image {
-                        opacity: 1;
                     }
 
                     .recom_text {
-                        color: $Secondary_clr;
+                        margin: 0;
+                        padding: 0;
+                    }
+
+                    &:Hover {
+                        background: #f6f6f6;
+
+                        ._image {
+                            opacity: 1;
+                        }
+
+                        .recom_text {
+                            color: $Secondary_clr;
+                        }
                     }
                 }
+
+                .recommendation_item.product ._icon ._image {
+                    background-image: url('../cogniwide-assets/product.svg');
+                }
+
+                .recommendation_item.faq ._icon ._image {
+                    background-image: url('../cogniwide-assets/faq.svg');
+                }
+
+                .recommendation_item.announcement ._icon ._image {
+                    background-image: url('../cogniwide-assets/marketing.svg');
+                }
+
+                .recommendation_item.link ._icon ._image {
+                    background-image: url('../cogniwide-assets/link.svg');
+                }
+
+
             }
+        }
 
-            .recommendation_item.product ._icon ._image {
-                background-image: url('../cogniwide-assets/product.svg');
+        ._btn_close {
+            border: none;
+            background: none;
+            height: 30px;
+            width: 30px;
+            border-radius: 100px;
+            transition: all ease-in-out .2s;
+            color: $primary_clr;
+            opacity: 0.4;
+            background: rgba(0, 0, 0, .25);
+            cursor: pointer;
+
+            &:hover {
+                opacity: 1;
+
             }
-
-            .recommendation_item.faq ._icon ._image {
-                background-image: url('../cogniwide-assets/faq.svg');
-            }
-
-            .recommendation_item.announcement ._icon ._image {
-                background-image: url('../cogniwide-assets/marketing.svg');
-            }
-
-            .recommendation_item.link ._icon ._image {
-                background-image: url('../cogniwide-assets/link.svg');
-            }
-
-
         }
     }
 
-    ._btn_close {
-        border: none;
-        background: none;
-        height: 30px;
-        width: 30px;
-        border-radius: 100px;
-        transition: all ease-in-out .2s;
-        color: $primary_clr;
-        opacity: 0.4;
-        background: rgba(0, 0, 0, .25);
-        cursor: pointer;
-
-        &:hover {
-            opacity: 1;
-
-        }
-    }
-}
-
-/* EOF RECOMENDATION */
+    /* EOF RECOMENDATION */
 
 }
 
@@ -1531,17 +1565,22 @@
 /* RESPONSIVE DESIGN */
 @media(max-width:767px) {
     ._cog_chat {
-        &._right{ 
-            .chat_box_container{
+        &._right {
+            .chat_box_container {
                 right: 0;
             }
         }
-        &._left{ 
-            .chat_box_container{
+
+        &._left {
+            .chat_box_container {
                 left: 0;
             }
         }
-        &._left{ left: 0;}
+
+        &._left {
+            left: 0;
+        }
+
         .chat_box_container {
             width: 100%;
             right: 0;
@@ -1552,10 +1591,10 @@
             top: 0;
         }
 
-        .panel-footer{
+        .panel-footer {
             margin-bottom: 50px;
         }
-        
+
         .feedback-emoji {
             li {
                 margin: 0 8%x;
@@ -1572,18 +1611,15 @@
         }
 
 
+        // zoomout for iphone
+        // https://stackoverflow.com/questions/2989263/disable-auto-zoom-in-input-text-tag-safari-on-iphone
 
-    }
-}
+        textarea {
+            font-size: 16px !important;
+        }
+        textarea:focus {
+            font-size: 16px !important;
+        }
 
-// zoomout for iphone
-// https://stackoverflow.com/questions/2989263/disable-auto-zoom-in-input-text-tag-safari-on-iphone
-
-@media screen and (-webkit-min-device-pixel-ratio:0) { 
-    textarea {
-        font-size: 16px;
-    }
-    textarea:focus {
-        font-size: 16px;
     }
 }
