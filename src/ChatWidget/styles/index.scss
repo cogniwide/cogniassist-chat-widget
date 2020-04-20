@@ -399,10 +399,10 @@
     padding: 5px !important;
     font-size: 14px;
     background: none;
-    color: $black;
+    color: var(--black);
 
     &:hover {
-        color: $black;
+        color: var(--black);
     }
 }
 
@@ -706,7 +706,7 @@
     outline: none;
     font-size: 14px;
     line-height: 1;
-    background-color: $white;
+    background-color: var(--white);
     font-family: 'cogni-regular' !important;
 
     div {
@@ -752,7 +752,7 @@
         position: absolute;
         bottom: 45px;
         // right: 185px;
-        background: $white;
+        background: var(--white);
         padding: 12px 20px;
         box-shadow: rgba(43, 45, 56, 0.15) 0px 0px 7px 0px !important;
         width: 300px;
@@ -773,10 +773,10 @@
         right: 1px !important;
         z-index: 4;
         background: #df0000;
-        color: $white;
+        color: var(--white);
         padding: 0px 5px;
         border-radius: 50%;
-        border: 2px solid $white;
+        border: 2px solid var(--white);
     }
 
     .chatbot-icon {
@@ -871,7 +871,7 @@
         border-radius: 0;
         top: 0;
         padding: 10px;
-        background: $primary_clr;
+        background: var(--primary_clr);
         height: 50px;
         left: 0;
         width: 100%;
@@ -929,7 +929,7 @@
     }
 
     .bg-primary {
-        background: $primary_clr !important;
+        background: var(--primary_clr) !important;
     }
 
     /*  BOF BODY STYLES */
@@ -940,7 +940,7 @@
         display: flex;
         height: 100%;
         flex-direction: column;
-        background: $light;
+        background: var(--light);
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
@@ -970,7 +970,7 @@
 
         /* BOF SLIDER STYLES */
         .carousel .control-prev.control-arrow:before {
-            border-right: 8px solid $primary_clr;
+            border-right: 8px solid var(--primary_clr);
         }
 
         .carousel .control-prev.control-arrow {
@@ -978,7 +978,7 @@
         }
 
         .carousel .control-next.control-arrow:before {
-            border-left: 8px solid $primary_clr;
+            border-left: 8px solid var(--primary_clr);
         }
 
         .carousel .control-next.control-arrow {
@@ -986,7 +986,7 @@
         }
 
         .carousel .control-dots .dot {
-            background: $Secondary_clr
+            background: var(--Secondary_clr)
         }
 
         .carousel .slide {
@@ -1041,11 +1041,11 @@
             transition: width 2s;
             word-break: break-word;
             line-height: 20px;
-            background: $white;
+            background: var(--white);
             border-radius: 100px;
 
             p {
-                color: $muted;
+                color: var(--muted);
                 margin: 0;
                 padding: 10px 15px 8px;
 
@@ -1064,13 +1064,13 @@
                 margin-left: 10px;
                 padding: 0;
                 max-width: 270px;
-                background: $white;
+                background: var(--white);
 
                 p {
                     text-align: left;
 
                     b {
-                        color: $black;
+                        color: var(--black);
                     }
 
                     p {
@@ -1104,9 +1104,9 @@
                     max-width: 100%;
                     margin: 0;
                     border: none;
-                    color: $muted;
+                    color: var(--muted);
                     border-radius: 0 !important;
-                    color: $black;
+                    color: var(--black);
                     border-bottom: 1px solid #eeeeee !important;
 
                     &:last-child {
@@ -1114,8 +1114,8 @@
                     }
 
                     &:focus {
-                        background: $primary_clr;
-                        color: $white !important;
+                        background: var(--primary_clr);
+                        color: var(--white) !important;
                     }
 
                     &::before {
@@ -1123,15 +1123,15 @@
                     }
 
                     &:Hover {
-                        background: $primary_clr;
-                        color: $white !important;
+                        background: var(--primary_clr);
+                        color: var(--white) !important;
                     }
                 }
 
             }
 
             .select-css {
-                color: $primary_clr;
+                color: var(--primary_clr);
                 border: none;
                 overflow: hidden;
                 filter: grayscale(100%);
@@ -1139,7 +1139,7 @@
             }
 
             .select-css option {
-                color: $primary_clr !important;
+                color: var(--primary_clr) !important;
                 padding: 5px;
             }
 
@@ -1157,11 +1157,11 @@
                 border-radius: 10px 0px 10px 10px;
                 margin-left: 10px;
                 padding: 0;
-                background: $primary_clr !important;
+                background: var(--primary_clr) !important;
                 max-width: 270px;
 
                 p {
-                    color: $white;
+                    color: var(--white);
                 }
             }
 
@@ -1177,7 +1177,7 @@
 
         .upload_btn {
             border: none;
-            color: $primary_clr !important;
+            color: var(--primary_clr) !important;
 
             img {
                 filter: grayscale(100%);
@@ -1203,9 +1203,9 @@
         }
 
         .cwc-borderbtn {
-            border: 1px solid $Secondary_clr;
-            color: $Secondary_clr;
-            background: $white;
+            border: 1px solid var(--Secondary_clr);
+            color: var(--Secondary_clr);
+            background: var(--white);
             border-radius: 100px !important;
             margin: 5px;
             padding: 8px 15px !important;
@@ -1214,14 +1214,14 @@
             text-transform: capitalize;
 
             &:hover {
-                background: $Secondary_clr;
-                color: $white;
+                background: var(--Secondary_clr);
+                color: var(--white);
             }
 
             &:focus,
             &:visited {
-                background: $Secondary_clr;
-                color: $white;
+                background: var(--Secondary_clr);
+                color: var(--white);
             }
         }
 
@@ -1234,7 +1234,7 @@
                 height: 100%;
                 ;
                 border-radius: 100px !important;
-                // border: 1px solid $white;
+                // border: 1px solid var(--white);
             }
         }
 
@@ -1247,8 +1247,8 @@
         position: relative;
         width: 100%;
         z-index: 999999;
-        background: $white;
-        border-top: 1px solid $light;
+        background: var(--white);
+        border-top: 1px solid var(--light);
 
 
         .composer {
@@ -1274,7 +1274,7 @@
             background: white;
             font-family: 'cogni-regular';
             border: none;
-            color: $black;
+            color: var(--black);
             padding: 14px 0;
             min-height: auto !important;
             margin-bottom: 0 !important;
@@ -1352,19 +1352,19 @@
     }
 
     .react-calendar__tile--now {
-        background: $light;
+        background: var(--light);
         transition: all ease-in-out .3s;
         border-radius: 100%;
 
         &:hover {
-            background: $primary_clr !important;
+            background: var(--primary_clr) !important;
             color: white;
         }
     }
 
     .react-calendar__tile--active {
-        background: $primary_clr !important;
-        color: $white;
+        background: var(--primary_clr) !important;
+        color: var(--white);
     }
 
 
@@ -1372,12 +1372,12 @@
     /* checkboa styles */
     ._checkbox_label {
         padding: 10px;
-        border-bottom: 1px solid $light;
+        border-bottom: 1px solid var(--light);
         transition: ease-in-out .3s;
         min-width: 120px;
 
         &:hover {
-            background: $light;
+            background: var(--light);
             cursor: pointer;
         }
 
@@ -1392,7 +1392,7 @@
         max-width: 100%;
         // margin: 5px;
         background: transparent;
-        color: $primary_clr;
+        color: var(--primary_clr);
         border-radius: 0 !important;
         border: none !important;
         min-width: 120px;
@@ -1403,8 +1403,8 @@
         transition: ease-in-out .3s;
 
         &:hover {
-            background: $primary_clr;
-            color: $white;
+            background: var(--primary_clr);
+            color: var(--white);
         }
     }
 
@@ -1430,7 +1430,7 @@
         border-radius: 5px;
         // right: 440px;
         overflow: hidden;
-        background: $white;
+        background: var(--white);
         box-shadow: 0 5px 40px rgba(0, 0, 0, 0.16) !important;
 
 
@@ -1446,12 +1446,12 @@
                 padding: 15px;
                 justify-content: space-between;
                 align-items: center;
-                background: $white;
+                background: var(--white);
                 box-shadow: 0px -3px 12px rgba(0, 0, 0, 0.33);
 
                 .title {
                     font-size: 18px;
-                    color: $black;
+                    color: var(--black);
                 }
             }
 
@@ -1465,7 +1465,7 @@
                     display: flex;
                     align-items: center;
                     padding: 8px;
-                    border: 1px solid $light;
+                    border: 1px solid var(--light);
                     margin-bottom: -1px;
                     cursor: pointer;
 
@@ -1480,7 +1480,7 @@
                     ._icon {
                         width: 40px;
                         height: 40px;
-                        // background: $light;
+                        // background: var(--light);
                         // border-radius: 100px;
                         margin-right: 5px;
                         display: flex;
@@ -1513,7 +1513,7 @@
                         }
 
                         .recom_text {
-                            color: $Secondary_clr;
+                            color: var(--Secondary_clr);
                         }
                     }
                 }
@@ -1545,7 +1545,7 @@
             width: 30px;
             border-radius: 100px;
             transition: all ease-in-out .2s;
-            color: $primary_clr;
+            color: var(--primary_clr);
             opacity: 0.4;
             background: rgba(0, 0, 0, .25);
             cursor: pointer;
