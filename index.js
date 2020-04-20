@@ -22,6 +22,7 @@ const plugin = {
         socketPath= {args.socketPath}
         carouselItems={args.carouselItems}
         widgetPosition={args.widgetPosition}
+        theme={args.theme}
 
       />, document.querySelector(args.selector)
     );

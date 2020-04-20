@@ -47,6 +47,14 @@ class ChatWidget extends Component {
     this.sendFile.bind(this);
   }
 
+  setTheme(){
+    const {theme} = this.props;
+    Object.keys(theme).map(key => {
+      const value = theme[key];
+      document.documentElement.style.setProperty(key, value);
+    });
+  }
+
   setUpInitial() {
     const {
       socket,
@@ -174,6 +182,7 @@ class ChatWidget extends Component {
   }
 
   componentDidMount() {
+    this.setTheme()
     this.setUpInitial()
 
     $(".chat_box_container").hide();

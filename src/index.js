@@ -113,6 +113,7 @@ const CogniAssistWidget = forwardRef((props, ref) => {
       rememberUser={props.rememberUser}
       carouselItems={props.carouselItems}
       widgetPosition={props.widgetPosition}
+      theme={props.theme}
     />
   );
 });
@@ -141,7 +142,14 @@ CogniAssistWidget.propTypes = {
   protocolOptions: PropTypes.shape({}),
   customData: PropTypes.shape({}),
   carouselItems: PropTypes.array,
-
+  theme: PropTypes.shape({
+    "--primary_clr": PropTypes.string,
+    "--Secondary_clr":  PropTypes.string,
+    "--black": PropTypes.string,
+    "--white" :  PropTypes.string,
+    "--muted": PropTypes.string,
+    "--light":  PropTypes.string
+  }),
   widgetPosition: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.oneOf(['left', 'right']),
@@ -168,7 +176,15 @@ CogniAssistWidget.defaultProps = {
   onSocketEvent: {},
   customData: {},
   carouselItems: [],
-  widgetPosition: "right"
+  widgetPosition: "right",
+  theme:{
+      "--primary_clr": "#00BBFF",
+      "--Secondary_clr": "#62acf1",
+      "--black":"#000000",
+      "--white" : "#fff",
+      "--muted":"#666",
+      "--light": "#eeeeee"
+  }
 };
 
 export default CogniAssistWidget;
