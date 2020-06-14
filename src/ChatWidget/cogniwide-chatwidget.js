@@ -27,7 +27,7 @@ class ChatWidget extends Component {
       show_recommendation: false,
       loading: false,
       opened: false,
-      unread: 1,
+      unread: 2,
       last_response_count: 0,
       showFeedback: false,
       fullScreeen: false,
@@ -319,7 +319,25 @@ class ChatWidget extends Component {
       });
 
     });
+
+    this.audio = new Audio('https://cogniwide.github.io/cogniassist-chat-widget/public/assets/ding.mp3')
+    this.audio.load()
+
   }
+
+  playAudio() {
+    const audioPromise = this.audio.play()
+    if (audioPromise !== undefined) {
+      audioPromise
+        .then(_ => {
+          // autoplay started
+        })
+        .catch(err => {
+          // catch dom exception
+          console.info(err)
+        })
+    }
+}
 
   componentDidUpdate() {
     this.scrollToBottom()
@@ -514,6 +532,12 @@ class ChatWidget extends Component {
   }
 
   handleBotUtterance(botUtterance) {
+    if(!this.state.opened){
+      this.playAudio()
+      this.setState((prevState)=>({
+        unread: prevState.unread + 1
+      }));
+    }
     this.setState((prevState)=>({
       delayFactor: prevState.delayFactor + 1
     }));
@@ -634,7 +658,7 @@ class ChatWidget extends Component {
           <div className="chatbot-icon">
             <img src={this.props.launcherIcon} className="launcher_icon" />
             {this.state.unread > 0 &&
-              <span className="badge-msg unreadCount">1</span>
+              <span className="badge-msg unreadCount">{this.state.unread}</span>
             }
           </div>
           {(this.state.opened == false) &&
