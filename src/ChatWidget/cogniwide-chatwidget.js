@@ -674,7 +674,7 @@ class ChatWidget extends Component {
             <div className="recommendations_container">
             <div className="full_wrapper">
               <div className="recommendations_header">
-                <div className="title">Recommendations</div>
+                <div className="title">Related Information</div>
                 <button className="_btn_close" onClick={()=>{this.toggleRecommendation(false)}}>X</button>
               </div>
               <div className="recommendation_body">
@@ -685,7 +685,7 @@ class ChatWidget extends Component {
                       <div className="_icon">
                         <div className="_image"></div>
                       </div>
-                    <p className="recom_text">{recommendation.title}</p>
+                    <p className="recom_text" dangerouslySetInnerHTML={{ __html: recommendation.title }}></p>
                   </div>))}
   
               </div>
