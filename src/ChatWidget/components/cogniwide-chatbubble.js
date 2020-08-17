@@ -39,6 +39,12 @@ class ChatBubble extends Component {
     handleClick(reply) {
         const payload = reply.payload;
         const title = reply.title;
+
+        if(payload.startsWith("link:")){
+            const link = payload.split("link:")[1]
+            window.open(link, "_blank")
+            return;
+        }
         this.props.parent.chooseReply(title, payload);
     }
 
