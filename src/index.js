@@ -1,5 +1,5 @@
 
-import React, { forwardRef } from 'react';
+import React, { forwardRef,useRef } from 'react';
 import PropTypes from 'prop-types';
 import ChatWidget from './ChatWidget/cogniwide-chatwidget';
 import botAvatar from './ChatWidget/cogniwide-assets/bot-avator.png'
@@ -81,10 +81,10 @@ const CogniAssistWidget = forwardRef((props, ref) => {
     }
   }
 
-  let socket_holder = null
+  const instanceSocket = useRef({});
 
-  if(props.communicationMethod=="socket"){
-    socket_holder = new Socket(
+  if(!instanceSocket.current.url && props.communicationMethod=="socket"){
+    instanceSocket.current = new Socket(
       props.socketURL,
       props.customData,
       props.socketPath,
@@ -93,12 +93,11 @@ const CogniAssistWidget = forwardRef((props, ref) => {
       props.onSocketEvent
     );
   }
-  const sock = socket_holder
 
   return (
     <ChatWidget
       ref={ref}
-      socket={sock}
+      socket={instanceSocket.current}
       communicationMethod={props.communicationMethod}
       initialPayload={props.initialPayload}
       botName={props.botName}
