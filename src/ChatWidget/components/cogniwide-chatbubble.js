@@ -181,8 +181,8 @@ class ChatBubble extends Component {
                                 <span className="mt-2 diplayalign">
                                     <div className="attachment">
                                         <div className="upload-btn-wrapper">
-                                            <button className="upload_btn"><img className="upload-icon" src={Cloud} alt="Upload file" />Upload a file</button>
-                                            <input type="file" accept={this.props.message.upload.accept} name="myfile" onChange={(e) => { this.handleFiles(e.target.files)}} />
+                                            <button className="upload_btn" onClick={()=>{this.upload.click()}}><img className="upload-icon" src={Cloud} alt="Upload file" />Upload a file</button>
+                                            <input type="file" ref={(ref) => this.upload = ref} accept={this.props.message.upload.accept} name="myfile" onChange={(e) => { this.handleFiles(e.target.files)}} />
                                         </div>
                                     </div>
                                 </span>
