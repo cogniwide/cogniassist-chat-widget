@@ -1,0 +1,47 @@
+.welcome-form {
+    padding: 5px;
+    margin: 5px;
+    display: inline-block;
+    .form-header {
+        font-size: 1.125rem;
+        letter-spacing: 0.01875rem;
+        margin-bottom: 10px;
+    }
+
+    .form-footer {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    label {
+        font-size: 0.875rem;
+        font-weight: 600;
+    }
+
+    input {
+        font-size: 0.875rem;
+        display: block;
+        // width: 100%;
+        height: 2rem;
+        min-width: 15rem;
+        // padding: 0 1rem;
+        color: #152935;
+        background-color: #f0f3f5;
+        border: 1px solid transparent;
+        border-radius: 0.5rem;
+    }
+
+    button {
+        float: right;
+        color: var(--white);
+        text-align: center;
+        border-radius: 7px;
+        background-color: var(--primary_clr); 
+        font-size: 14px;
+        cursor: pointer;
+        border-style: none;
+        padding: 7px;
+        line-height: normal;
+        min-width: 50px;
+    }
+}
