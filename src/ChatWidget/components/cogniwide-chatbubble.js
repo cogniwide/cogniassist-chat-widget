@@ -5,6 +5,7 @@ import Calendar from 'react-calendar';
 import Cloud from '../cogniwide-assets/cloud-upload.png'
 import Dropdown from './custom-responses/dropdown'
 import CheckboxContainer from './custom-responses/checkbox-container'
+import  CustomComponentWrapper from '../../CustomComponents/registry'
 
 class ChatBubble extends Component {
     constructor(props) {
@@ -17,6 +18,7 @@ class ChatBubble extends Component {
         this.handleClick = this.handleClick.bind(this);
         this.dropDownOnChange = this.dropDownOnChange.bind(this)
         this.checkboxSubmit = this.checkboxSubmit.bind(this)
+        this.formSubmit = this.formSubmit.bind(this)
     }
 
 
@@ -51,9 +53,18 @@ class ChatBubble extends Component {
     dropDownOnChange(change) {
         this.props.parent.chooseReply(change.title, change.value);
     };
+
+    
     checkboxSubmit(title,payload){
         this.props.parent.chooseReply(title, payload);
     }
+
+    formSubmit(title,payload){
+        this.props.parent.chooseReply(title,payload);
+
+    }
+
+
     handleFiles(files){
         this.setState({
             uploading: true
@@ -90,6 +101,27 @@ class ChatBubble extends Component {
                     {/* <span className="timeStamp">1:35 AM</span> */}
                 </li>
             )
+        else if ('customComponent' in this.props.message)
+        {
+            return (
+                <li className='cwc-left'>
+                    <div className="adminchatlist">
+                        <span className="avatar_wrapper mr-2">
+                            {(this.props.avatar) &&
+                                <img src={this.props.botIcon} alt="User Avatar"
+                                    className="img-circle avatar" />
+                            }
+                        </span>
+                        <div className="chat-body bubble clearfix flex-column">
+                            <CustomComponentWrapper 
+                                formSubmit={this.formSubmit}
+                                customComponent={this.props.message.customComponent} />
+                        </div>
+                        </div>
+                </li>
+            )
+        }
+
         else
             return (
                 <li className='cwc-left'>
@@ -206,6 +238,8 @@ class ChatBubble extends Component {
                                         onChange={this.checkboxSubmit} />
                                 </div>
                             }
+
+
 
                         </div>
                     </div>
