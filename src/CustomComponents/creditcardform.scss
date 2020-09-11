@@ -1,3 +1,49 @@
+
+.form-container {
+    display: grid;
+    grid-column-gap: 10px;
+    grid-template-columns: auto auto;
+    grid-template-rows: 90px 90px 90px;
+    grid-template-areas: "name name""number number""expiration security";
+    max-width: 400px;
+    padding: 20px;
+    color: #707070;
+
+
+    label {
+        padding-bottom: 5px;
+        font-size: 13px;
+    }
+
+    input {
+        margin-top: 3px;
+        padding: 15px;
+        font-size: 16px;
+        width: 100%;
+        border-radius: 3px;
+        border: 1px solid #dcdcdc;
+    }
+
+    .ccicon {
+        height: 38px;
+        position: absolute;
+        right: 6px;
+        top: calc(50% - 17px);
+        width: 60px;
+    }
+
+    button{
+        color: var(--white);
+        margin-top: 3px;
+        padding: 15px;
+        font-size: 16px;
+        width: 100%;
+        border-radius: 3px;
+        border: 1px solid #dcdcdc;
+        background: var(--primary_clr);
+    }
+}
+
 .form-container .field-container:first-of-type {
     grid-area: name;
 }
@@ -21,48 +67,4 @@
 
 .field-container {
     position: relative;
-}
-
-.form-container {
-    display: grid;
-    grid-column-gap: 10px;
-    grid-template-columns: auto auto;
-    grid-template-rows: 90px 90px 90px;
-    grid-template-areas: "name name""number number""expiration security";
-    max-width: 400px;
-    padding: 20px;
-    color: #707070;
-}
-
-label {
-    padding-bottom: 5px;
-    font-size: 13px;
-}
-
-input {
-    margin-top: 3px;
-    padding: 15px;
-    font-size: 16px;
-    width: 100%;
-    border-radius: 3px;
-    border: 1px solid #dcdcdc;
-}
-
-.ccicon {
-    height: 38px;
-    position: absolute;
-    right: 6px;
-    top: calc(50% - 17px);
-    width: 60px;
-}
-
-button{
-    color: var(--white);
-    margin-top: 3px;
-    padding: 15px;
-    font-size: 16px;
-    width: 100%;
-    border-radius: 3px;
-    border: 1px solid #dcdcdc;
-    background: var(--primary_clr);
 }
