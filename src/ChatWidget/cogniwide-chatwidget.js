@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import $ from 'jquery';
+//import $ from 'jquery';
 import './styles/index.scss';
 import updateArrow from './cogniwide-assets/update-arrow.png';
 import minimize from './cogniwide-assets/minimize.png';
@@ -232,10 +232,10 @@ class ChatWidget extends Component {
     this.setTheme();
     this.setUpInitial();
 
-    $('.cwc-left').hide();
-    $('.cwc-right').hide();
-    $('.panel-footer').show();
-    $('.cwc-left.initial_show').show(450);
+    // $('.cwc-left').hide();
+    // $('.cwc-right').hide();
+    // $('.panel-footer').show();
+    // $('.cwc-left.initial_show').show(450);
 
     // $('.close').click(() => {
     //   this.setState({
@@ -243,12 +243,12 @@ class ChatWidget extends Component {
     //   });
     // });
 
-    $('.see_next').click(function() {
-      $('li:eq(1)').show(300);
-      setTimeout(function() {
-        $('li:eq(2)').show(2000);
-      }, 2000);
-    });
+    // $('.see_next').click(function() {
+    //   $('li:eq(1)').show(300);
+    //   setTimeout(function() {
+    //     $('li:eq(2)').show(2000);
+    //   }, 2000);
+    // });
 
     // $('.chat_btn_container').click(() => {
     //   $('.chat_box_container')
@@ -260,20 +260,20 @@ class ChatWidget extends Component {
     //   }));
     // });
 
-    $('.see_all').click(function() {
-      $('.cwc-left,.cwc-right').show(1000);
-      $('.panel-footer').show(2000);
-    });
+    // $('.see_all').click(function() {
+    //   $('.cwc-left,.cwc-right').show(1000);
+    //   $('.panel-footer').show(2000);
+    // });
 
-    $('.panel-body').scroll(function() {
-      // declare variable
-      var topPos = $(this).scrollTop();
-      if (topPos > 50) {
-        $('.panel-heading ').addClass('shaddow');
-      } else {
-        $('.panel-heading').removeClass('shaddow');
-      }
-    });
+    // $('.panel-body').scroll(function() {
+    //   // declare variable
+    //   var topPos = $(this).scrollTop();
+    //   if (topPos > 50) {
+    //     $('.panel-heading ').addClass('shaddow');
+    //   } else {
+    //     $('.panel-heading').removeClass('shaddow');
+    //   }
+    // });
 
     // $(document).on('click', '.feedback-emoji li', (e) => {
     //   $('.chat_box_container')
@@ -286,69 +286,69 @@ class ChatWidget extends Component {
     // });
 
     /* 1. Visualizing things on Hover - See next part for action on click */
-    $(document)
-      .on('mouseover', '#stars li', function(e) {
-        var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
+    // $(document)
+    //   .on('mouseover', '#stars li', function(e) {
+    //     var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
 
-        // Now highlight all the stars that's not after the current hovered star
-        $(this)
-          .parent()
-          .children('li.star')
-          .each(function(e) {
-            if (e < onStar) {
-              $(this).addClass('hover');
-            } else {
-              $(this).removeClass('hover');
-            }
-          });
-      })
-      .on('mouseout', function() {
-        $(this)
-          .parent()
-          .children('li.star')
-          .each(function(e) {
-            $(this).removeClass('hover');
-          });
-      });
+    //     // Now highlight all the stars that's not after the current hovered star
+    //     $(this)
+    //       .parent()
+    //       .children('li.star')
+    //       .each(function(e) {
+    //         if (e < onStar) {
+    //           $(this).addClass('hover');
+    //         } else {
+    //           $(this).removeClass('hover');
+    //         }
+    //       });
+    //   })
+    //   .on('mouseout', function() {
+    //     $(this)
+    //       .parent()
+    //       .children('li.star')
+    //       .each(function(e) {
+    //         $(this).removeClass('hover');
+    //       });
+    //   });
 
     /* 2. Action to perform on click */
 
-    $(document).on('click', '#stars li', function(e) {
-      var onStar = parseInt($(this).data('value'), 10); // The star currently selected
-      var stars = $(this)
-        .parent()
-        .children('li.star');
+    // $(document).on('click', '#stars li', function(e) {
+    //   var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+    //   var stars = $(this)
+    //     .parent()
+    //     .children('li.star');
 
-      for (let i = 0; i < stars.length; i++) {
-        $(stars[i]).removeClass('selected');
-      }
+    //   for (let i = 0; i < stars.length; i++) {
+    //     $(stars[i]).removeClass('selected');
+    //   }
 
-      for (let i = 0; i < onStar; i++) {
-        $(stars[i]).addClass('selected');
-      }
+    //   for (let i = 0; i < onStar; i++) {
+    //     $(stars[i]).addClass('selected');
+    //   }
 
-      // JUST RESPONSE (Not needed)
-      var ratingValue = parseInt(
-        $('#stars li.selected')
-          .last()
-          .data('value'),
-        10
-      );
-      var ratingMsg = '';
-      if (ratingValue > 2) {
-        ratingMsg = "Thanks! I'm glad we could help you";
-      } else {
-        ratingMsg = 'Sorry,We will improve ourselves.';
-      }
-      const msg = {
-        text: ratingMsg,
-        user: 'ai',
-      };
+    //   // JUST RESPONSE (Not needed)
+    //   var ratingValue = parseInt(
+    //     $('#stars li.selected')
+    //       .last()
+    //       .data('value'),
+    //     10
+    //   );
+    //   var ratingMsg = '';
+    //   if (ratingValue > 2) {
+    //     ratingMsg = "Thanks! I'm glad we could help you";
+    //   } else {
+    //     ratingMsg = 'Sorry,We will improve ourselves.';
+    //   }
+    //   const msg = {
+    //     text: ratingMsg,
+    //     user: 'ai',
+    //   };
 
-      this.setState({
-        conversation: [...this.state.conversation, msg],
-      });
-    });
+    //   this.setState({
+    //     conversation: [...this.state.conversation, msg],
+    //   });
+    // });
 
     this.audio = new Audio(
       'https://cogniwide.github.io/cogniassist-chat-widget/public/assets/ding.mp3'

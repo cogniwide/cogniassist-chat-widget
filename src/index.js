@@ -1,15 +1,14 @@
-
-import React, { forwardRef,useRef } from 'react';
+import React, { forwardRef, useRef } from 'react';
 import PropTypes from 'prop-types';
 import ChatWidget from './ChatWidget/cogniwide-chatwidget';
-import botAvatar from './ChatWidget/cogniwide-assets/bot-avator.png'
-import launcherIcon from './ChatWidget/cogniwide-assets/launcher-icon.png'
-import headerLogo from './ChatWidget/cogniwide-assets/header-logo.png'
+import ModalWidget from './ChatWidget/cogniwide-Modalwidget';
+import botAvatar from './ChatWidget/cogniwide-assets/bot-avator.png';
+import launcherIcon from './ChatWidget/cogniwide-assets/launcher-icon.png';
+import headerLogo from './ChatWidget/cogniwide-assets/header-logo.png';
 
 import socket from './socket';
 
 const CogniAssistWidget = forwardRef((props, ref) => {
-
   class Socket {
     constructor(
       url,
@@ -66,9 +65,10 @@ const CogniAssistWidget = forwardRef((props, ref) => {
       // this will be called first and will set those parameters for everyone to use.
       this.socket.on('session_confirm', (sessionObject) => {
         this.sessionConfirmed = true;
-        this.sessionId = (sessionObject && sessionObject.session_id)
-          ? sessionObject.session_id
-          : sessionObject;
+        this.sessionId =
+          sessionObject && sessionObject.session_id
+            ? sessionObject.session_id
+            : sessionObject;
       });
       this.onEvents.forEach((event) => {
         this.socket.on(event.event, event.callback);
@@ -83,7 +83,7 @@ const CogniAssistWidget = forwardRef((props, ref) => {
 
   const instanceSocket = useRef({});
 
-  if(!instanceSocket.current.url && props.communicationMethod=="socket"){
+  if (!instanceSocket.current.url && props.communicationMethod == 'socket') {
     instanceSocket.current = new Socket(
       props.socketURL,
       props.customData,
@@ -93,28 +93,52 @@ const CogniAssistWidget = forwardRef((props, ref) => {
       props.onSocketEvent
     );
   }
-
-  return (
-    <ChatWidget
-      ref={ref}
-      socket={instanceSocket.current}
-      communicationMethod={props.communicationMethod}
-      initialPayload={props.initialPayload}
-      botName={props.botName}
-      botWelcomeMessage={props.botWelcomeMessage}
-      botAvatar={props.botAvatar}
-      launcherIcon={props.launcherIcon}
-      headerLogo={props.headerLogo}
-      botURL={props.botURL}
-      bannerURL={props.bannerURL}
-      bannerText={props.bannerText}
-      senderId={props.senderId}
-      rememberUser={props.rememberUser}
-      carouselItems={props.carouselItems}
-      widgetPosition={props.widgetPosition}
-      theme={props.theme}
-    />
-  );
+  switch (props.template) {
+    case 'Base':
+      return (
+        <ChatWidget
+          ref={ref}
+          socket={instanceSocket.current}
+          communicationMethod={props.communicationMethod}
+          initialPayload={props.initialPayload}
+          botName={props.botName}
+          botWelcomeMessage={props.botWelcomeMessage}
+          botAvatar={props.botAvatar}
+          launcherIcon={props.launcherIcon}
+          headerLogo={props.headerLogo}
+          botURL={props.botURL}
+          bannerURL={props.bannerURL}
+          bannerText={props.bannerText}
+          senderId={props.senderId}
+          rememberUser={props.rememberUser}
+          carouselItems={props.carouselItems}
+          widgetPosition={props.widgetPosition}
+          theme={props.theme}
+        />
+      );
+    case 'Modal':
+      return (
+        <ModalWidget
+          ref={ref}
+          socket={instanceSocket.current}
+          communicationMethod={props.communicationMethod}
+          initialPayload={props.initialPayload}
+          botName={props.botName}
+          botWelcomeMessage={props.botWelcomeMessage}
+          botAvatar={props.botAvatar}
+          launcherIcon={props.launcherIcon}
+          headerLogo={props.headerLogo}
+          botURL={props.botURL}
+          bannerURL={props.bannerURL}
+          bannerText={props.bannerText}
+          senderId={props.senderId}
+          rememberUser={props.rememberUser}
+          carouselItems={props.carouselItems}
+          widgetPosition={props.widgetPosition}
+          theme={props.theme}
+        />
+      );
+  }
 });
 
 CogniAssistWidget.propTypes = {
@@ -142,48 +166,50 @@ CogniAssistWidget.propTypes = {
   customData: PropTypes.shape({}),
   carouselItems: PropTypes.array,
   theme: PropTypes.shape({
-    "--primary_clr": PropTypes.string,
-    "--Secondary_clr":  PropTypes.string,
-    "--black": PropTypes.string,
-    "--white" :  PropTypes.string,
-    "--muted": PropTypes.string,
-    "--light":  PropTypes.string
+    '--primary_clr': PropTypes.string,
+    '--Secondary_clr': PropTypes.string,
+    '--black': PropTypes.string,
+    '--white': PropTypes.string,
+    '--muted': PropTypes.string,
+    '--light': PropTypes.string,
   }),
   widgetPosition: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.oneOf(['left', 'right']),
-  ])
+  ]),
 };
 
 CogniAssistWidget.defaultProps = {
-  communicationMethod: "socket",
-  initialPayload: "/default/welcome",
+  communicationMethod: 'socket',
+  initialPayload: '/default/welcome',
   botName: 'CogniAssist',
-  botWelcomeMessage: "Hey there, I'm here to assist you with any doubts you might have.",
+  botWelcomeMessage:
+    "Hey there, I'm here to assist you with any doubts you might have.",
   botAvatar: botAvatar,
   headerLogo: headerLogo,
   launcherIcon: launcherIcon,
   botURL: 'http://localhost:8080/',
-  bannerURL: "",
-  bannerText: "",
+  bannerURL: '',
+  bannerText: '',
   senderId: null,
   rememberUser: false,
   socketURL: 'http://localhost:8080/',
-  socketPath: "/socket.io",
+  socketPath: '/socket.io',
   protocol: 'socketio',
   protocolOptions: {},
   onSocketEvent: {},
   customData: {},
   carouselItems: [],
-  widgetPosition: "right",
-  theme:{
-      "--primary_clr": "#00BBFF",
-      "--Secondary_clr": "#62acf1",
-      "--black":"#000000",
-      "--white" : "#fff",
-      "--muted":"#666",
-      "--light": "#eeeeee"
-  }
+  widgetPosition: 'right',
+  theme: {
+    '--primary_clr': '#00BBFF',
+    '--Secondary_clr': '#62acf1',
+    '--black': '#000000',
+    '--white': '#fff',
+    '--muted': '#666',
+    '--light': '#eeeeee',
+  },
+  template: 'Base',
 };
 
 export default CogniAssistWidget;
