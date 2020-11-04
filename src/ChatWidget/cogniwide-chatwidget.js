@@ -8,6 +8,7 @@ import normalEmoji from './cogniwide-assets/normal.svg';
 import worstEmoji from './cogniwide-assets/worst.svg';
 import ChatBubble from './components/cogniwide-chatbubble';
 import CarouselWrapper from './components/carousel_wrapper';
+import ModalWidget from '../ChatWidget/cogniwide-Modalwidget';
 
 export class Emotions {
   static SAD = 'sadness';
@@ -34,6 +35,7 @@ class ChatWidget extends Component {
       delay: 1000,
       sessionNew: false,
       delayFactor: 1,
+      clearText: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -51,7 +53,6 @@ class ChatWidget extends Component {
     this.startRecord = this.startRecord.bind(this);
 
     //-----refs---------
-    this.textInput = React.createRef();
   }
 
   setTheme() {
@@ -231,6 +232,8 @@ class ChatWidget extends Component {
   componentDidMount() {
     this.setTheme();
     this.setUpInitial();
+
+    this.textInput = React.createRef();
 
     // $('.cwc-left').hide();
     // $('.cwc-right').hide();
@@ -463,7 +466,9 @@ class ChatWidget extends Component {
   }
 
   scrollToBottom() {
-    this.state.opened && this.el.scrollIntoView({ behavior: 'smooth' });
+    this.state.opened &&
+      this.el &&
+      this.el.scrollIntoView({ behavior: 'smooth' });
   }
 
   handleChange(event) {
@@ -506,6 +511,7 @@ class ChatWidget extends Component {
     message = message == null ? this.state.userMessage.trim() : message;
     if (!message) return;
     this.addMessage(message, 'human');
+    this.setState({ clearText: true });
 
     let reqJson = {
       message: message,
@@ -514,6 +520,7 @@ class ChatWidget extends Component {
 
     this.sendRequest(reqJson);
     this.setState({ userMessage: '' });
+    //this.setState({ clearText: false });
     this.scrollToBottom();
   }
 
@@ -639,20 +646,23 @@ class ChatWidget extends Component {
       socket.close();
     }
   }
-
   render() {
     var aiIndex = 0;
+    var uiIndex = 0;
     const chat = this.state.conversation.map((e, index) => {
       if (e.user === 'human') {
         aiIndex = 0;
+        uiIndex++;
       } else {
         aiIndex++;
+        uiIndex = 0;
       }
       if (e.end) {
         $('.panel-body .banner, .panel-body ul.chat, .panel-footer').hide();
         $('.panel-body .feedback').show();
       }
       let botIcon = this.props.botAvatar;
+      let userIcon = this.props.userAvatar;
       if (e['emotion'] == Emotions.HAPPY) {
         botIcon = smileEmoji;
       } else if (e['emotion'] == Emotions.SAD) {
@@ -661,6 +671,8 @@ class ChatWidget extends Component {
       return (
         <ChatBubble
           botIcon={botIcon}
+          userIcon={userIcon}
+          template={this.props.template}
           parent={this}
           message={e}
           index={index}
@@ -670,6 +682,7 @@ class ChatWidget extends Component {
           last_response_count={this.state.last_response_count}
           aiIndex={aiIndex}
           avatar={aiIndex == 1}
+          userAvatar={uiIndex == 1}
         />
       );
     });
@@ -697,16 +710,27 @@ class ChatWidget extends Component {
     }
     return (
       <div className={parentClass}>
-        <div className='chat_btn_container' onClick={this.openWindow}>
+        <div
+          className='chat_btn_container'
+          onClick={() => {
+            this.props.template === 'Base'
+              ? this.setState({ opened: true, unread: 0 })
+              : this.setState({
+                  opened: true,
+                  isModalOpen: true,
+                  unread: 0,
+                });
+          }}
+        >
           <div className='chatbot-icon'>
             <img src={this.props.launcherIcon} className='launcher_icon' />
             {this.state.unread > 0 && (
               <span className='badge-msg unreadCount'>{this.state.unread}</span>
             )}
           </div>
-          {this.state.opened == false && (
+          {this.props.template !== 'Modal' && this.state.opened == false && (
             <div className='chat-heading arrow-bottom'>
-              <h5> {this.props.botWelcomeMessage}</h5>
+              <h5>{this.props.botWelcomeMessage}</h5>
             </div>
           )}
         </div>
@@ -752,7 +776,7 @@ class ChatWidget extends Component {
             </div>
           )}
 
-        {this.state.opened && (
+        {this.state.opened && this.props.template === 'Base' && (
           <div
             className={`chat_box_container position-relative ${
               this.state.opened ? 'chat_box_active' : ''
@@ -827,7 +851,9 @@ class ChatWidget extends Component {
                     {chat}
                     <li
                       className='loading'
-                      style={{ display: this.state.loading ? 'block' : 'none' }}
+                      style={{
+                        display: this.state.loading ? 'block' : 'none',
+                      }}
                     >
                       <div className='adminchatlist'>
                         <div className='chat-body bubble clearfix'>
@@ -917,6 +943,24 @@ class ChatWidget extends Component {
               </div>
             </div>
           </div>
+        )}
+
+        {this.state.opened && this.props.template === 'Modal' && (
+          <ModalWidget
+            isModalOpen={this.state.isModalOpen}
+            closeWindow={this.closeWindow}
+            closeModal={() => {
+              this.setState({ opened: false, isModalOpen: false });
+            }}
+            chat={chat}
+            quick_replies={this.state.quick_replies}
+            userMessage={this.state.userMessage}
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+            sendText={(msg) => this.sendText(msg)}
+            chooseReply={(title, payload) => this.chooseReply(title, payload)}
+            clearText={this.state.clearText}
+          />
         )}
       </div>
     );
