@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ChatWidget from './ChatWidget/cogniwide-chatwidget';
 import botAvatar from './ChatWidget/cogniwide-assets/bot-avator.png';
 import launcherIcon from './ChatWidget/cogniwide-assets/launcher-icon.png';
+import modalLauncherIcon from '../public/assets/modal/launcher.png';
 import headerLogo from './ChatWidget/cogniwide-assets/header-logo.png';
 
 import modalBotAvatar from '../public/assets/modal/robot.svg';
@@ -168,7 +169,7 @@ CogniAssistWidget.defaultProps = {
   botAvatar: modalBotAvatar,
   userAvatar: userAvatar,
   headerLogo: headerLogo,
-  launcherIcon: launcherIcon,
+  launcherIcon: modalLauncherIcon,
   botURL: 'http://localhost:8080/',
   bannerURL: '',
   bannerText: '',

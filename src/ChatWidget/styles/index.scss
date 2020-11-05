@@ -729,7 +729,7 @@
   font-size: 14px;
   line-height: 1;
   background-color: var(--white);
-  font-family: 'cogni-regular' !important;
+  font-family: 'cogni-regular';
 
   div {
     box-sizing: border-box;
@@ -1231,7 +1231,7 @@
 
     .avatar_wrapper {
       width: 40px;
-      height: 40px;
+      height: 60px;
 
       .avatar {
         width: 100%;

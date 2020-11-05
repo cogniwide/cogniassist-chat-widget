@@ -73,7 +73,7 @@ class ModalWidget extends React.Component {
           {this.state.isConfirmed ? (
             <React.Fragment>
               <div className='modal-left-content'>
-                <div className='modal-chat-content _cog_chat'>
+                <div className='modal-chat-content'>
                   <div className='header'>
                     <div className='date-wrapper'>
                       Sep 23, 2020{' '}

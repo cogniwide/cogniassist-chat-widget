@@ -319,39 +319,75 @@ class ChatBubble extends Component {
                     this.state.errors.file ? 'errors' : ''
                   }`}
                 >
-                  <div className='attachment'>
-                    <div className='upload-btn-wrapper'>
-                      <button
-                        className='upload_btn'
-                        onClick={() => {
-                          this.upload.click();
-                        }}
-                      >
-                        <img
-                          className='upload-icon'
-                          src={Cloud}
-                          alt='Upload file'
+                  {this.props.template === 'Modal' ? (
+                    <div className='attachment'>
+                      <div className='upload-btn-wrapper'>
+                        <button
+                          className='upload_btn'
+                          onClick={() => {
+                            this.upload.click();
+                          }}
+                        >
+                          <img
+                            className='upload-icon'
+                            src={Cloud}
+                            alt='Upload file'
+                          />
+                          Upload a file
+                        </button>
+                        <input
+                          type='file'
+                          ref={(ref) => (this.upload = ref)}
+                          accept={this.props.message.upload.accept}
+                          name='myfile'
+                          onChange={(e) => {
+                            this.setState({ files: e.target.files });
+                            this.setState({ errors: { file: false } });
+                          }}
                         />
-                        Upload a file
+                      </div>
+                      <button
+                        onClick={this.handleFiles}
+                        className='btn_trans_block '
+                      >
+                        Done
                       </button>
-                      <input
-                        type='file'
-                        ref={(ref) => (this.upload = ref)}
-                        accept={this.props.message.upload.accept}
-                        name='myfile'
-                        onChange={(e) => {
-                          this.setState({ files: e.target.files });
-                          this.setState({ errors: { file: false } });
-                        }}
-                      />
                     </div>
-                    <button
-                      onClick={this.handleFiles}
-                      className='btn_trans_block '
-                    >
-                      Done
-                    </button>
-                  </div>
+                  ) : (
+                    <div className='attachment'>
+                      <div className='upload-btn-wrapper'>
+                        <button
+                          className='upload_btn'
+                          onClick={() => {
+                            this.upload.click();
+                          }}
+                        >
+                          <img
+                            className='upload-icon'
+                            src={Cloud}
+                            alt='Upload file'
+                          />
+                          Upload a file
+                        </button>
+                        <input
+                          type='file'
+                          ref={(ref) => (this.upload = ref)}
+                          accept={this.props.message.upload.accept}
+                          name='myfile'
+                          onChange={(e) => {
+                            this.setState({ files: e.target.files });
+                            this.setState({ errors: { file: false } });
+                          }}
+                        />
+                      </div>
+                      <button
+                        onClick={this.handleFiles}
+                        className='btn_trans_block '
+                      >
+                        Done
+                      </button>
+                    </div>
+                  )}
                 </span>
               )}
 
