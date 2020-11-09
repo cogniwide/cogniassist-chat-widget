@@ -36,6 +36,7 @@ class ChatWidget extends Component {
       sessionNew: false,
       delayFactor: 1,
       clearText: false,
+      showBack: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -668,6 +669,10 @@ class ChatWidget extends Component {
       } else if (e['emotion'] == Emotions.SAD) {
         botIcon = normalEmoji;
       }
+      //-----------------Sho wback controls ------
+      if ('workflow_menu' in e) {
+        // this.setState({ showBack: true });
+      }
       return (
         <ChatBubble
           botIcon={botIcon}
@@ -960,6 +965,7 @@ class ChatWidget extends Component {
             sendText={(msg) => this.sendText(msg)}
             chooseReply={(title, payload) => this.chooseReply(title, payload)}
             clearText={this.state.clearText}
+            showBack={this.state.showBack}
           />
         )}
       </div>

@@ -103,6 +103,17 @@ class ChatBubble extends Component {
       this.setState({ errors: { file: true } });
     }
   }
+  handleModalFiles(files) {
+    this.setState({
+      uploading: true,
+    });
+
+    this.props.parent.sendFile(files[0]).then(() => {
+      this.setState({
+        uploading: false,
+      });
+    });
+  }
   render() {
     if ('line' in this.props.message) {
       return (
@@ -213,6 +224,7 @@ class ChatBubble extends Component {
                 <p>
                   <img
                     src={this.props.message.image}
+                    className='responseImg'
                     alt=''
                     width='250'
                     height='200'
@@ -322,36 +334,33 @@ class ChatBubble extends Component {
                   {this.props.template === 'Modal' ? (
                     <div className='attachment'>
                       <div className='upload-btn-wrapper'>
-                        <button
-                          className='upload_btn'
-                          onClick={() => {
-                            this.upload.click();
-                          }}
-                        >
+                        <div className='dropbox-container'>
                           <img
                             className='upload-icon'
                             src={Cloud}
                             alt='Upload file'
                           />
-                          Upload a file
-                        </button>
+                          <p>Drag & Drop Files here</p>
+                          <p>or</p>
+                        </div>
                         <input
                           type='file'
                           ref={(ref) => (this.upload = ref)}
                           accept={this.props.message.upload.accept}
                           name='myfile'
                           onChange={(e) => {
-                            this.setState({ files: e.target.files });
-                            this.setState({ errors: { file: false } });
+                            this.handleModalFiles(e.target.files);
                           }}
                         />
+                        <button
+                          className='upload_btn'
+                          onClick={() => {
+                            this.upload.click();
+                          }}
+                        >
+                          Upload a file
+                        </button>
                       </div>
-                      <button
-                        onClick={this.handleFiles}
-                        className='btn_trans_block '
-                      >
-                        Done
-                      </button>
                     </div>
                   ) : (
                     <div className='attachment'>

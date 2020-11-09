@@ -90,6 +90,34 @@ class ModalWidget extends React.Component {
                       <img src={arrowDown} />
                     </div>
                   </div>
+                  {this.props.showBack && (
+                    <div className='back-container'>
+                      <div className='button-container'>
+                        <button
+                          onClick={() => {
+                            this.setState({ showBack: false });
+                          }}
+                        >
+                          Back
+                        </button>
+                        <button
+                          onClick={() => {
+                            this.setState({ showBack: false });
+                          }}
+                        >
+                          Reset
+                        </button>
+                      </div>
+                      <div
+                        className='close-back-container'
+                        onClick={() => {
+                          this.setState({ showBack: false });
+                        }}
+                      >
+                        x
+                      </div>
+                    </div>
+                  )}
                   <div className='panel-body'>
                     <ul className='chat'>
                       {this.props.chat}

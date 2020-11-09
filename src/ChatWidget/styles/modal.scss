@@ -12,7 +12,7 @@
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
   font-family: 'cogni-mont-regular' !important;
-  div p button {
+  div p button label {
     font-family: 'cogni-mont-regular' !important;
   }
 }
@@ -73,6 +73,26 @@
             content: ' >   ' !important;
           }
         }
+        ._checkbox_label {
+          font-size: 12px;
+          color: #212121 !important;
+        }
+        .btn_trans_block {
+          color: var(--modal_primary_text);
+          font-family: 'cogni-mont-regular' !important;
+          font-size: 12px;
+          &:hover {
+            background: var(--modal_primary);
+            color: var(--white);
+          }
+        }
+      }
+      .chat-body {
+        .responseImg {
+          width: 220px;
+          height: 180px;
+          border-radius: 15px;
+        }
       }
     }
     .cwc-right {
@@ -89,10 +109,63 @@
     .cwc-borderbtn {
       font-size: 12px !important;
     }
+    .form {
+      label {
+        font-family: 'cogni-mont-regular' !important;
+        font-size: 12px;
+      }
+      input {
+        padding: 5px !important;
+        font-family: 'cogni-mont-regular' !important;
+        font-size: 12px;
+        outline: none;
+        border-radius: 30px;
+      }
+      button {
+        color: var(--white);
+        background: var(--modal_primary);
+        padding: 5px;
+        border-radius: 30px;
+        font-size: 12px;
+        cursor: pointer !important;
+      }
+    }
+  }
+  .back-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background: var(--modal_primary);
+    transition: all ease-in-out 0.3s;
+    .button-container {
+      display: flex;
+      flex-direction: row;
+      button {
+        color: var(--modal_primary);
+        background: var(--white);
+        padding: 5px;
+        margin: 0 5px;
+        border-radius: 30px;
+        font-size: 12px;
+        cursor: pointer !important;
+        width: 100px;
+      }
+    }
+    .close-back-container {
+      cursor: pointer;
+      color: var(--white) !important;
+    }
   }
   .panel-footer {
     border-top: 0px !important;
     border-radius: 15px;
+    .mic-chat {
+      border-right: 1px solid #ccc;
+      border-left: 1px solid #ccc;
+      padding: 0 20px;
+    }
   }
   .quick-replies #quick_reply_btn {
     background-color: var(--white) !important;
@@ -103,9 +176,41 @@
       background-color: var(--modal_primary_text) !important;
     }
   }
+  .attachment {
+    .upload-btn-wrapper {
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .dropbox-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 5px;
+      background: var(--white);
+      width: 270px;
+
+      p {
+        font-size: 8px !important;
+        color: var(--modal_secondary_text) !important;
+        padding: 5px !important;
+      }
+    }
+  }
+  .upload_btn {
+    color: var(--white) !important;
+    background: var(--modal_primary) !important;
+    margin-bottom: 5px;
+    border-radius: 30px !important;
+    font-size: 12px !important;
+    cursor: pointer !important;
+  }
 }
 .modal-content.minwidth {
-  width: 650px;
+  width: 65%;
 }
 .modal-content.confirmWidth {
   width: 450px;
