@@ -52,6 +52,7 @@ class ChatWidget extends Component {
     this.openWindow = this.openWindow.bind(this);
     this.closeWindow = this.closeWindow.bind(this);
     this.startRecord = this.startRecord.bind(this);
+    this.showBack = this.showBack.bind(this);
 
     //-----refs---------
   }
@@ -647,6 +648,10 @@ class ChatWidget extends Component {
       socket.close();
     }
   }
+  showBack() {
+    this.setState({ showBack: true });
+    alert('vj');
+  }
   render() {
     var aiIndex = 0;
     var uiIndex = 0;
@@ -670,9 +675,9 @@ class ChatWidget extends Component {
         botIcon = normalEmoji;
       }
       //-----------------Sho wback controls ------
-      if ('workflow_menu' in e) {
-        // this.setState({ showBack: true });
-      }
+      // if ('workflow_menu' in e) {
+      //   // this.setState({ showBack: true });
+      // }
       return (
         <ChatBubble
           botIcon={botIcon}
@@ -688,6 +693,7 @@ class ChatWidget extends Component {
           aiIndex={aiIndex}
           avatar={aiIndex == 1}
           userAvatar={uiIndex == 1}
+          showBack={this.showBack}
         />
       );
     });

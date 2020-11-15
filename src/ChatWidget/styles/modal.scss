@@ -130,6 +130,13 @@
         cursor: pointer !important;
       }
     }
+    .react-calendar__tile--active {
+      background: var(--modal_primary) !important;
+      &:hover {
+        background: var(--modal_primary) !important;
+        color: #ffffff !important;
+      }
+    }
   }
   .back-container {
     display: flex;

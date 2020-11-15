@@ -4,6 +4,8 @@ import '../styles/cogniwide-chatbubble.scss';
 import Calendar from 'react-calendar';
 import Cloud from '../cogniwide-assets/cloud-upload.png';
 import Dropdown from './custom-responses/dropdown';
+import Autocomplete from './custom-responses/autocomplete';
+import Carousel from './custom-responses/carousel';
 import CheckboxContainer from './custom-responses/checkbox-container';
 import CustomComponentWrapper from '../../CustomComponents/registry';
 
@@ -205,18 +207,33 @@ class ChatBubble extends Component {
               )}
 
               {'elements' in this.props.message && (
-                <div className='scrolling-wrapper-flexbox'>
-                  {this.props.message.elements.map((element, index) => (
-                    <div
-                      className='card'
-                      onClick={() => this.handleClick(element)}
-                      key={index}
-                    >
-                      <span className='title'>{element.title}</span> <br />
-                      <span className='subtitle'>{element.subtitle}</span>{' '}
-                      <br />
+                <div>
+                  {this.props.template === 'Modal' ? (
+                    <div className='scrolling-wrapper-flexbox'>
+                      <Carousel
+                        elements={this.props.message.elements}
+                        handleClick={(ele) => {
+                          this.handleClick(ele);
+                        }}
+                      />
                     </div>
-                  ))}
+                  ) : (
+                    <div className='scrolling-wrapper-flexbox'>
+                      {this.props.message.elements.map((element, index) => (
+                        <div
+                          className='card'
+                          onClick={() => this.handleClick(element)}
+                          key={index}
+                        >
+                          <span className='title'>{element.title}</span> <br />
+                          <span className='subtitle'>
+                            {element.subtitle}
+                          </span>{' '}
+                          <br />
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               )}
 
@@ -406,14 +423,23 @@ class ChatBubble extends Component {
                     this.state.errors.dropdown ? 'errors' : ''
                   }`}
                 >
-                  <Dropdown
+                  {/* <Dropdown
                     id='chat-dropdown'
                     options={this.props.message.select.options}
                     value={this.props.message.select.value}
                     labelField={this.props.message.select.labelField}
                     valueField={this.props.message.select.valueField}
                     onChange={this.dropDownOnChange}
-                  />
+                  /> */}
+
+                  <Autocomplete
+                    options={this.props.message.select.options}
+                    labelField={this.props.message.select.labelField}
+                    valueField={this.props.message.select.valueField}
+                    onChange={this.dropDownOnChange}
+                  ></Autocomplete>
+
+                  <datalist id='cities'></datalist>
 
                   <button
                     onClick={this.dropDownOnSubmit}
@@ -433,6 +459,7 @@ class ChatBubble extends Component {
                   />
                 </div>
               )}
+              {'workflow_menu' in this.props.message && this.props.showBack()}
             </div>
           </div>
           {/* {this.props.message.lastmessage === true &&
