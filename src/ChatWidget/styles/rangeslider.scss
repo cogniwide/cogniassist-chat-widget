@@ -1,0 +1,16 @@
+.range-slider {
+  background: white;
+  margin: 10px;
+  width: 230px;
+  border-radius: 15px;
+  .title {
+    font-size: 13px;
+    padding: 10px;
+  }
+  .range-wrapper {
+    padding: 10px;
+    input {
+      width: 100%;
+    }
+  }
+}

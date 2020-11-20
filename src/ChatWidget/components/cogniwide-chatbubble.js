@@ -6,6 +6,7 @@ import Cloud from '../cogniwide-assets/cloud-upload.png';
 import Dropdown from './custom-responses/dropdown';
 import Autocomplete from './custom-responses/autocomplete';
 import Carousel from './custom-responses/carousel';
+import RangeSlider from './custom-responses/rangeslider';
 import CheckboxContainer from './custom-responses/checkbox-container';
 import CustomComponentWrapper from '../../CustomComponents/registry';
 
@@ -237,6 +238,17 @@ class ChatBubble extends Component {
                 </div>
               )}
 
+              {'slider' in this.props.message && (
+                <div>
+                  <RangeSlider
+                    range={this.props.message.slider}
+                    rangeOnSubmit={(budget) => {
+                      this.props.parent.chooseReply(budget, budget);
+                    }}
+                  />
+                </div>
+              )}
+
               {'image' in this.props.message && (
                 <p>
                   <img
@@ -459,7 +471,6 @@ class ChatBubble extends Component {
                   />
                 </div>
               )}
-              {'workflow_menu' in this.props.message && this.props.showBack()}
             </div>
           </div>
           {/* {this.props.message.lastmessage === true &&

@@ -33,63 +33,28 @@ function Carousel(props) {
                 <img src={righticon} className='swipe-right' />
               </div>
               <div className='carousel-header'>
-                <div className='title'>Third party liability - {index}</div>
-                <div className='subtitle'>
-                  Deductible is AED 0 Premium is exclusive of 5% VAT
-                </div>
-                <div className='price-tag'>AED 600.00</div>
+                <div className='title'>{element.title}</div>
+                <div className='subtitle'>{element.subtitle}</div>
+                <div className='price-tag'>{element.data.amount}</div>
               </div>
               <div className='carousel-body'>
                 <div className='body-title'>Policy features summary</div>
-                <div className='body-table'>
-                  <div className='c1'>15% No Claim Discount</div>
-                  <div className='c2'>Covered</div>
-                  <div className='c3'>
-                    <img src={tick} />
-                  </div>
-                </div>
-                <div className='body-table'>
-                  <div className='c1'>15% No Claim Discount</div>
-                  <div className='c2'>Covered</div>
-                  <div className='c3'>
-                    <img src={tick} />
-                  </div>
-                </div>
-                <div className='body-table'>
-                  <div className='c1'>15% No Claim Discount</div>
-                  <div className='c2'>Covered</div>
-                  <div className='c3'>
-                    <img src={tick} />
-                  </div>
-                </div>
-                <div className='body-table'>
-                  <div className='c1'>15% No Claim Discount</div>
-                  <div className='c2'>Covered</div>
-                  <div className='c3'>
-                    <img src={tick} />
-                  </div>
-                </div>
-                <div className='body-table'>
-                  <div className='c1'>15% No Claim Discount</div>
-                  <div className='c2'>Covered</div>
-                  <div className='c3'>
-                    <img src={tick} />
-                  </div>
-                </div>
-                <div className='body-table'>
-                  <div className='c1'>15% No Claim Discount</div>
-                  <div className='c2'>Covered</div>
-                  <div className='c3'>
-                    <img src={tick} />
-                  </div>
-                </div>
-                <div className='body-table'>
-                  <div className='c1'>15% No Claim Discount</div>
-                  <div className='c2'>Covered</div>
-                  <div className='c3'>
-                    <img src={tick} />
-                  </div>
-                </div>
+                {element.data.coverage &&
+                  element.data.coverage.map((coverage) => {
+                    return (
+                      <div className='body-table'>
+                        <div className='c1'>{coverage.title}</div>
+                        <div className='c2'>{coverage.type}</div>
+                        <div className='c3'>
+                          {coverage.type === 'covered' ? (
+                            <img src={tick} />
+                          ) : (
+                            <input type='checkbox' />
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
               </div>
               <div className='carousel-footer'>
                 <div

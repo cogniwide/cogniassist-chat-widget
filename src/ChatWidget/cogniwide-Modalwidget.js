@@ -111,7 +111,7 @@ class ModalWidget extends React.Component {
                       <div
                         className='close-back-container'
                         onClick={() => {
-                          this.setState({ showBack: false });
+                          this.props.toggleworkflow(false);
                         }}
                       >
                         x

@@ -52,7 +52,6 @@ class ChatWidget extends Component {
     this.openWindow = this.openWindow.bind(this);
     this.closeWindow = this.closeWindow.bind(this);
     this.startRecord = this.startRecord.bind(this);
-    this.showBack = this.showBack.bind(this);
 
     //-----refs---------
   }
@@ -615,6 +614,10 @@ class ChatWidget extends Component {
         if (response && 'quick_replies' in response) {
           quick_replies.push(...response['quick_replies']);
         }
+
+        if (response && 'workflow_menu' in response) {
+          this.setState({ showBack: true });
+        }
         messages.push(msg);
       }
     });
@@ -648,10 +651,6 @@ class ChatWidget extends Component {
       socket.close();
     }
   }
-  showBack() {
-    this.setState({ showBack: true });
-    alert('vj');
-  }
   render() {
     var aiIndex = 0;
     var uiIndex = 0;
@@ -674,10 +673,6 @@ class ChatWidget extends Component {
       } else if (e['emotion'] == Emotions.SAD) {
         botIcon = normalEmoji;
       }
-      //-----------------Sho wback controls ------
-      // if ('workflow_menu' in e) {
-      //   // this.setState({ showBack: true });
-      // }
       return (
         <ChatBubble
           botIcon={botIcon}
@@ -693,7 +688,6 @@ class ChatWidget extends Component {
           aiIndex={aiIndex}
           avatar={aiIndex == 1}
           userAvatar={uiIndex == 1}
-          showBack={this.showBack}
         />
       );
     });
@@ -962,6 +956,9 @@ class ChatWidget extends Component {
             closeWindow={this.closeWindow}
             closeModal={() => {
               this.setState({ opened: false, isModalOpen: false });
+            }}
+            toggleworkflow={(bool) => {
+              this.setState({ showBack: bool });
             }}
             chat={chat}
             quick_replies={this.state.quick_replies}
