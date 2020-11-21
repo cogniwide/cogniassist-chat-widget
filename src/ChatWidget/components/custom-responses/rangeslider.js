@@ -3,10 +3,13 @@ import React, { useState } from 'react';
 function RangeSlider(props) {
   const [rangeValue, setRangeValue] = useState(0);
   return (
-    <div className='range-slider'>
-      <div className='title'>Budget</div>
+    <div className='range-slider diplayalign'>
+      <div className='title'>Budget - {rangeValue}</div>
       <div className='range-wrapper'>
-        <div>{rangeValue}</div>
+        <div className='minmax-wrapper'>
+          <div>{props.range.min}</div>
+          <div>{props.range.max}</div>
+        </div>
         <input
           type='range'
           min={props.range.min}

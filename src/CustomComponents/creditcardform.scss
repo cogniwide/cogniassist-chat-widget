@@ -1,71 +1,68 @@
-
 ._cog_chat .form-container {
-    display: grid;
-    grid-column-gap: 10px;
-    grid-template-columns: auto auto;
-    grid-template-rows: 90px 90px 90px;
-    grid-template-areas: "name name""number number""expiration security";
-    max-width: 400px;
-    padding: 20px;
-    color: #707070;
+  display: grid;
+  grid-column-gap: 10px;
+  grid-template-columns: auto auto;
+  grid-template-rows: 65px 65px 65px;
+  grid-template-areas: 'name name' 'number number' 'expiration security';
+  max-width: 400px;
+  padding: 20px;
+  color: #707070;
 
+  label {
+    padding-bottom: 5px;
+    font-size: 13px;
+  }
 
-    label {
-        padding-bottom: 5px;
-        font-size: 13px;
-    }
+  input {
+    margin-top: 3px;
+    padding: 15px;
+    font-size: 16px;
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid #dcdcdc;
+  }
 
-    input {
-        margin-top: 3px;
-        padding: 15px;
-        font-size: 16px;
-        width: 100%;
-        border-radius: 3px;
-        border: 1px solid #dcdcdc;
-    }
+  .ccicon {
+    height: 38px;
+    position: absolute;
+    right: 6px;
+    top: calc(50% - 17px);
+    width: 60px;
+  }
 
-    .ccicon {
-        height: 38px;
-        position: absolute;
-        right: 6px;
-        top: calc(50% - 17px);
-        width: 60px;
-    }
+  button {
+    color: var(--white);
+    margin-top: 3px;
+    padding: 15px;
+    font-size: 16px;
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid #dcdcdc;
+    background: var(--primary_clr);
+  }
 
-    button{
-        color: var(--white);
-        margin-top: 3px;
-        padding: 15px;
-        font-size: 16px;
-        width: 100%;
-        border-radius: 3px;
-        border: 1px solid #dcdcdc;
-        background: var(--primary_clr);
-    }
+  .field-container:first-of-type {
+    grid-area: name;
+  }
 
-    .field-container:first-of-type {
-        grid-area: name;
-    }
-    
-    .field-container:nth-of-type(2) {
-        grid-area: number;
-    }
-    
-    .field-container:nth-of-type(3) {
-        grid-area: expiration;
-    }
+  .field-container:nth-of-type(2) {
+    grid-area: number;
+  }
 
-    .field-container:nth-of-type(4) {
-        grid-area: security;
-    }
-    
-    .field-container input {
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-    }
-    
-    .field-container {
-        position: relative;
-    }
-    
+  .field-container:nth-of-type(3) {
+    grid-area: expiration;
+  }
+
+  .field-container:nth-of-type(4) {
+    grid-area: security;
+  }
+
+  .field-container input {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .field-container {
+    position: relative;
+  }
 }
