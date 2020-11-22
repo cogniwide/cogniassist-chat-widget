@@ -35,7 +35,7 @@ class ModalWidget extends React.Component {
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or",
         },
       ],
-      openedAccordionIndex: '',
+      openedAccordionIndex: '-1',
     };
     this.openWindow = this.openWindow.bind(this);
   }
@@ -73,6 +73,17 @@ class ModalWidget extends React.Component {
           {this.state.isConfirmed ? (
             <React.Fragment>
               <div className='modal-left-content'>
+                <div className='close-container'>
+                  <div className='close-wrapper'>
+                    <img
+                      src={closeIcon}
+                      onClick={() => {
+                        this.props.closeModal();
+                      }}
+                    ></img>
+                  </div>
+                </div>
+
                 <div className='modal-chat-content'>
                   <div className='header'>
                     <div className='date-wrapper'>
@@ -118,6 +129,7 @@ class ModalWidget extends React.Component {
                       </div>
                     </div>
                   )}
+
                   <div className='panel-body'>
                     <ul className='chat'>
                       {this.props.chat}
@@ -206,43 +218,43 @@ class ModalWidget extends React.Component {
                       {' '}
                     </div>
                   </div>
-                </div>
-                <div className='panel-footer'>
-                  <div
-                    id='composers'
-                    className='composer position-relative'
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      margin: '0 15px',
-                      border: '1px solid #ccc',
-                      marginBottom: '15px',
-                      borderRadius: '15px',
-                    }}
-                  >
-                    <textarea
-                      value={this.props.userMessage}
-                      onKeyUp={this.props.handleSubmit}
-                      onChange={this.props.handleChange}
-                      id='textInput'
-                      ref='textInput'
-                      className='textInput'
-                      placeholder='Type your query'
-                    ></textarea>
-                    {(window.SpeechRecognition ||
-                      window.webkitSpeechRecognition) && (
-                      <button
-                        className='mic-chat'
-                        onClick={this.startRecord}
-                      ></button>
-                    )}
-                    <button
-                      className='send-button'
-                      onClick={() => {
-                        this.props.sendText();
+                  <div className='panel-footer'>
+                    <div
+                      id='composers'
+                      className='composer position-relative'
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        margin: '0 15px',
+                        border: '1px solid #ccc',
+                        marginBottom: '15px',
+                        borderRadius: '15px',
                       }}
-                    ></button>
+                    >
+                      <textarea
+                        value={this.props.userMessage}
+                        onKeyUp={this.props.handleSubmit}
+                        onChange={this.props.handleChange}
+                        id='textInput'
+                        ref='textInput'
+                        className='textInput'
+                        placeholder='Type your query'
+                      ></textarea>
+                      {(window.SpeechRecognition ||
+                        window.webkitSpeechRecognition) && (
+                        <button
+                          className='mic-chat'
+                          onClick={this.startRecord}
+                        ></button>
+                      )}
+                      <button
+                        className='send-button'
+                        onClick={() => {
+                          this.props.sendText();
+                        }}
+                      ></button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -290,7 +302,7 @@ class ModalWidget extends React.Component {
                               <img
                                 src={accordionMinus}
                                 onClick={() => {
-                                  this.setState({ openedAccordionIndex: '' });
+                                  this.setState({ openedAccordionIndex: '-1' });
                                 }}
                               ></img>
                             ) : (

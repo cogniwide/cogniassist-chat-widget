@@ -715,30 +715,34 @@ class ChatWidget extends Component {
     }
     return (
       <div className={parentClass}>
-        <div
-          className='chat_btn_container'
-          onClick={() => {
-            this.props.template === 'Base'
-              ? this.setState({ opened: true, unread: 0 })
-              : this.setState({
-                  opened: true,
-                  isModalOpen: true,
-                  unread: 0,
-                });
-          }}
-        >
-          <div className='chatbot-icon'>
-            <img src={this.props.launcherIcon} className='launcher_icon' />
-            {this.state.unread > 0 && (
-              <span className='badge-msg unreadCount'>{this.state.unread}</span>
+        {this.state.opened == false && (
+          <div
+            className='chat_btn_container'
+            onClick={() => {
+              this.props.template === 'Base'
+                ? this.setState({ opened: true, unread: 0 })
+                : this.setState({
+                    opened: true,
+                    isModalOpen: true,
+                    unread: 0,
+                  });
+            }}
+          >
+            <div className='chatbot-icon'>
+              <img src={this.props.launcherIcon} className='launcher_icon' />
+              {this.state.unread > 0 && (
+                <span className='badge-msg unreadCount'>
+                  {this.state.unread}
+                </span>
+              )}
+            </div>
+            {this.props.template !== 'Modal' && this.state.opened == false && (
+              <div className='chat-heading arrow-bottom'>
+                <h5>{this.props.botWelcomeMessage}</h5>
+              </div>
             )}
           </div>
-          {this.props.template !== 'Modal' && this.state.opened == false && (
-            <div className='chat-heading arrow-bottom'>
-              <h5>{this.props.botWelcomeMessage}</h5>
-            </div>
-          )}
-        </div>
+        )}
 
         {this.state.show_recommendation &&
           this.state.recommendations.length > 0 &&
