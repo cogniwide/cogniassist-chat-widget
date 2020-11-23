@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import 'react-calendar/dist/Calendar.css';
 import '../styles/cogniwide-chatbubble.scss';
 import Calendar from 'react-calendar';
-import Cloud from '../cogniwide-assets/cloud-upload.png';
+import Cloud from '../../../public/assets/modal/upload-cloud.svg';
 import Dropdown from './custom-responses/dropdown';
 import Autocomplete from './custom-responses/autocomplete';
 import Carousel from './custom-responses/carousel';
@@ -361,13 +361,13 @@ class ChatBubble extends Component {
                   }`}
                 >
                   {this.props.template === 'Modal' ? (
-                    <div className='attachment'>
+                    <div className='attachment '>
                       <div className='upload-btn-wrapper'>
                         <div className='dropbox-container'>
                           <img
                             className='upload-icon'
                             src={Cloud}
-                            alt='Upload file'
+                            alt='Browse file'
                           />
                           <p>Drag & Drop Files here</p>
                           <p>or</p>
@@ -387,7 +387,7 @@ class ChatBubble extends Component {
                             this.upload.click();
                           }}
                         >
-                          Upload a file
+                          BROWSE FILE
                         </button>
                       </div>
                     </div>

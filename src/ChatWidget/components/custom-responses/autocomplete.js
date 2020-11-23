@@ -34,6 +34,7 @@ function AutoComplete(props) {
           type='text'
           name='autocompleteinput'
           className='autocomplete-input'
+          placeholder='Type to search'
           value={text}
           onFocus={() => {
             setShowOptions(true);
