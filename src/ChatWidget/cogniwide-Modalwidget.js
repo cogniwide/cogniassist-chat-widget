@@ -110,7 +110,8 @@ class ModalWidget extends React.Component {
                       <div className='button-container'>
                         <button
                           onClick={() => {
-                            this.props.chooseReply('back', 'default/back');
+                            this.props.chooseReply('back', '/default/back');
+                            this.props.toggleworkflow(false);
                           }}
                         >
                           Back
@@ -119,8 +120,9 @@ class ModalWidget extends React.Component {
                           onClick={() => {
                             this.props.chooseReply(
                               'reset',
-                              'default/restart_workflow'
+                              '/default/restart_workflow'
                             );
+                            this.props.toggleworkflow(false);
                           }}
                         >
                           Reset

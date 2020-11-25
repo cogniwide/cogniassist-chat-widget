@@ -121,6 +121,7 @@ class ChatWidget extends Component {
         this.sendRequest({
           sender: this.state.sender_id,
           message: this.props.initialPayload,
+          lang: 'ar',
         });
       }
     }
@@ -140,6 +141,7 @@ class ChatWidget extends Component {
       console.log('sending init payload', sessionId);
       socket.emit('user_uttered', {
         message: initialPayload,
+        lang: 'ar',
         customData,
         session_id: sessionId,
       });
