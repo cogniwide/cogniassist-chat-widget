@@ -23,8 +23,10 @@ class ChatBubble extends Component {
         value: '',
       },
       errors: {},
+      ratingHover: 0,
     };
     this.handleClick = this.handleClick.bind(this);
+    this.handleHover = this.handleHover.bind(this);
     this.handleFiles = this.handleFiles.bind(this);
     this.dropDownOnChange = this.dropDownOnChange.bind(this);
     this.dropDownOnSubmit = this.dropDownOnSubmit.bind(this);
@@ -60,6 +62,9 @@ class ChatBubble extends Component {
       return;
     }
     this.props.parent.chooseReply(title, payload);
+  }
+  handleHover(target) {
+    this.setState({ ratingHover: target });
   }
 
   dropDownOnChange(change) {
@@ -289,9 +294,17 @@ class ChatBubble extends Component {
                 <div className='rating-stars text-center'>
                   <ul id='stars'>
                     <li
-                      className='star'
+                      className={`star ${
+                        this.state.ratingHover >= 1 ? 'hover' : ''
+                      }`}
                       title='Poor'
                       data-value='1'
+                      onMouseOver={(e) => {
+                        this.handleHover(1);
+                      }}
+                      onMouseOut={() => {
+                        this.setState({ ratingHover: 0 });
+                      }}
                       onClick={() =>
                         this.handleClick({ title: '1 Rating', payload: '1' })
                       }
@@ -299,9 +312,17 @@ class ChatBubble extends Component {
                       <i className='fa fa-star fa-fw'></i>
                     </li>
                     <li
-                      className='star'
+                      className={`star ${
+                        this.state.ratingHover >= 2 ? 'hover' : ''
+                      }`}
                       title='Fair'
                       data-value='2'
+                      onMouseOver={(e) => {
+                        this.handleHover(2);
+                      }}
+                      onMouseOut={() => {
+                        this.setState({ ratingHover: 0 });
+                      }}
                       onClick={() =>
                         this.handleClick({ title: '2 Rating', payload: '2' })
                       }
@@ -309,9 +330,17 @@ class ChatBubble extends Component {
                       <i className='fa fa-star fa-fw'></i>
                     </li>
                     <li
-                      className='star'
+                      className={`star ${
+                        this.state.ratingHover >= 3 ? 'hover' : ''
+                      }`}
                       title='Good'
                       data-value='3'
+                      onMouseOver={(e) => {
+                        this.handleHover(3);
+                      }}
+                      onMouseOut={() => {
+                        this.setState({ ratingHover: 0 });
+                      }}
                       onClick={() =>
                         this.handleClick({ title: '3 Rating', payload: '3' })
                       }
@@ -319,8 +348,16 @@ class ChatBubble extends Component {
                       <i className='fa fa-star fa-fw'></i>
                     </li>
                     <li
-                      className='star'
+                      className={`star ${
+                        this.state.ratingHover >= 4 ? 'hover' : ''
+                      }`}
                       title='Excellent'
+                      onMouseOver={(e) => {
+                        this.handleHover(4);
+                      }}
+                      onMouseOut={() => {
+                        this.setState({ ratingHover: 0 });
+                      }}
                       data-value='4'
                       onClick={() =>
                         this.handleClick({ title: '4 Rating', payload: '4' })
@@ -329,9 +366,17 @@ class ChatBubble extends Component {
                       <i className='fa fa-star fa-fw'></i>
                     </li>
                     <li
-                      className='star'
+                      className={`star ${
+                        this.state.ratingHover >= 5 ? 'hover' : ''
+                      }`}
                       title='WOW!!!'
                       data-value='5'
+                      onMouseOver={(e) => {
+                        this.handleHover(5);
+                      }}
+                      onMouseOut={() => {
+                        this.setState({ ratingHover: 0 });
+                      }}
                       onClick={() =>
                         this.handleClick({ title: '5 Rating', payload: '5' })
                       }
@@ -463,7 +508,7 @@ class ChatBubble extends Component {
               )}
 
               {'checkbox' in this.props.message && (
-                <div className='mt-2 diplayalign'>
+                <div className='mt-2 checkbox-container diplayalign'>
                   <CheckboxContainer
                     id='chat-checkbox-container'
                     options={this.props.message.checkbox}

@@ -110,14 +110,17 @@ class ModalWidget extends React.Component {
                       <div className='button-container'>
                         <button
                           onClick={() => {
-                            this.setState({ showBack: false });
+                            this.props.chooseReply('back', 'default/back');
                           }}
                         >
                           Back
                         </button>
                         <button
                           onClick={() => {
-                            this.setState({ showBack: false });
+                            this.props.chooseReply(
+                              'reset',
+                              'default/restart_workflow'
+                            );
                           }}
                         >
                           Reset
@@ -134,137 +137,145 @@ class ModalWidget extends React.Component {
                     </div>
                   )}
 
-                  {this.state.openedAccordionIndex === '-1' && (
-                    <div className='panel-body'>
-                      <ul className='chat'>
-                        {this.props.chat}
-                        <li
-                          className='loading'
-                          style={{
-                            display: this.state.loading ? 'block' : 'none',
-                          }}
-                        >
-                          <div className='adminchatlist'>
-                            <div className='chat-body bubble clearfix'>
-                              <img src='https://cogniwide.github.io/cogniassist-chat-widget/public/assets/tenor.gif' />
-                            </div>
+                  <div
+                    className={`panel-body ${
+                      this.state.openedAccordionIndex === '-1'
+                        ? ''
+                        : 'hide-body'
+                    }`}
+                  >
+                    <ul className='chat'>
+                      {this.props.chat}
+                      <li
+                        className='loading'
+                        style={{
+                          display: this.state.loading ? 'block' : 'none',
+                        }}
+                      >
+                        <div className='adminchatlist'>
+                          <div className='chat-body bubble clearfix'>
+                            <img src='https://cogniwide.github.io/cogniassist-chat-widget/public/assets/tenor.gif' />
                           </div>
-                        </li>
-                      </ul>
-
-                      {this.state.showFeedback && (
-                        <div className='feedback'>
-                          Feedback
-                          <ul
-                            className='feedback-emoji'
-                            onClick={this.props.closeWindow}
-                          >
-                            <li data-name='worst'>
-                              <img src={worstEmoji} />
-                              <p> bad </p>
-                            </li>
-                            <li data-name='normal'>
-                              <img src={normalEmoji} />
-                              <p> Satisfied </p>
-                            </li>
-                            <li data-name='smile'>
-                              <img src={smileEmoji} />
-                              <p> awesome </p>
-                            </li>
-                          </ul>
                         </div>
-                      )}
+                      </li>
+                    </ul>
 
-                      <div className='suggestion_box'>
-                        <div className='quick-replies'>
-                          {this.state.quick_replies &&
-                            this.state.quick_replies.map((button, index) => (
-                              <button
-                                type='button'
-                                id='quick_reply_btn'
-                                key={index}
-                                className='cwc-borderbtn see_all'
-                                onClick={() =>
-                                  this.chooseReply(button.title, button.payload)
-                                }
-                                data={button}
-                              >
-                                {button.title}
-                              </button>
-                            ))}
-                        </div>
+                    {this.state.showFeedback && (
+                      <div className='feedback'>
+                        Feedback
+                        <ul
+                          className='feedback-emoji'
+                          onClick={this.props.closeWindow}
+                        >
+                          <li data-name='worst'>
+                            <img src={worstEmoji} />
+                            <p> bad </p>
+                          </li>
+                          <li data-name='normal'>
+                            <img src={normalEmoji} />
+                            <p> Satisfied </p>
+                          </li>
+                          <li data-name='smile'>
+                            <img src={smileEmoji} />
+                            <p> awesome </p>
+                          </li>
+                        </ul>
                       </div>
-                      <div className='suggestion_box'>
-                        <div className='quick-replies'>
-                          {this.props.quick_replies.map((button, index) => (
+                    )}
+
+                    <div className='suggestion_box'>
+                      <div className='quick-replies'>
+                        {this.state.quick_replies &&
+                          this.state.quick_replies.map((button, index) => (
                             <button
                               type='button'
                               id='quick_reply_btn'
                               key={index}
                               className='cwc-borderbtn see_all'
                               onClick={() =>
-                                this.props.chooseReply(
-                                  button.title,
-                                  button.payload
-                                )
+                                this.chooseReply(button.title, button.payload)
                               }
                               data={button}
                             >
                               {button.title}
                             </button>
                           ))}
-                        </div>
-                      </div>
-                      <div
-                        ref={(el) => {
-                          this.el = el;
-                        }}
-                      >
-                        {' '}
                       </div>
                     </div>
-                  )}
-
-                  {this.state.openedAccordionIndex === '-1' && (
-                    <div className='panel-footer'>
-                      <div
-                        id='composers'
-                        className='composer position-relative'
-                        style={{
-                          display: 'flex',
-                          justifyContent: 'center',
-                          alignItems: 'center',
-                          margin: '0 15px',
-                          border: '1px solid #ccc',
-                          marginBottom: '15px',
-                          borderRadius: '15px',
-                        }}
-                      >
-                        <textarea
-                          value={this.props.userMessage}
-                          onKeyUp={this.props.handleSubmit}
-                          onChange={this.props.handleChange}
-                          id='textInput'
-                          ref='textInput'
-                          className='textInput'
-                          placeholder='Type your query'
-                        ></textarea>
-                        {(window.SpeechRecognition ||
-                          window.webkitSpeechRecognition) && (
+                    <div className='suggestion_box'>
+                      <div className='quick-replies'>
+                        {this.props.quick_replies.map((button, index) => (
                           <button
-                            className='mic-chat'
-                            onClick={this.startRecord}
-                          ></button>
-                        )}
-                        <button
-                          className='send-button'
-                          onClick={() => {
-                            this.props.sendText();
-                          }}
-                        ></button>
+                            type='button'
+                            id='quick_reply_btn'
+                            key={index}
+                            className='cwc-borderbtn see_all'
+                            onClick={() =>
+                              this.props.chooseReply(
+                                button.title,
+                                button.payload
+                              )
+                            }
+                            data={button}
+                          >
+                            {button.title}
+                          </button>
+                        ))}
                       </div>
                     </div>
-                  )}
+                    <div
+                      ref={(el) => {
+                        this.el = el;
+                      }}
+                    >
+                      {' '}
+                    </div>
+                  </div>
+
+                  <div
+                    className={`panel-footer ${
+                      this.state.openedAccordionIndex === '-1'
+                        ? ''
+                        : 'hide-body'
+                    }`}
+                  >
+                    <div
+                      id='composers'
+                      className='composer position-relative'
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        margin: '0 15px',
+                        border: '1px solid #ccc',
+                        marginBottom: '15px',
+                        borderRadius: '15px',
+                      }}
+                    >
+                      <textarea
+                        value={this.props.userMessage}
+                        onKeyUp={this.props.handleSubmit}
+                        onChange={this.props.handleChange}
+                        id='textInput'
+                        ref='textInput'
+                        className='textInput'
+                        placeholder='Type your query'
+                      ></textarea>
+                      {(window.SpeechRecognition ||
+                        window.webkitSpeechRecognition) && (
+                        <button
+                          className='mic-chat'
+                          onClick={this.startRecord}
+                        ></button>
+                      )}
+                      <button
+                        className='send-button'
+                        onClick={() => {
+                          this.props.sendText();
+                        }}
+                      ></button>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className='modal-right-content'>
