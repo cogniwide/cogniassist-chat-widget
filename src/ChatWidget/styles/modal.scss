@@ -523,6 +523,10 @@
     margin: 10px;
     width: 350px;
     flex-direction: column;
+    .panel-body {
+      min-height: 350px;
+      max-height: 350px;
+    }
   }
   .modal-left-content.flex6 {
     flex: 6;

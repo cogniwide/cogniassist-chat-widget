@@ -580,7 +580,7 @@ class ChatWidget extends Component {
       setTimeout(() => {
         this.loading(false);
         this.renderResponse([response[index]]);
-      }, delayFactor * this.state.delay);
+      }, 2000);
     }
   }
 
@@ -958,6 +958,7 @@ class ChatWidget extends Component {
 
         {this.state.opened && this.props.template === 'Modal' && (
           <ModalWidget
+            loading={this.state.loading}
             isModalOpen={this.state.isModalOpen}
             closeWindow={this.closeWindow}
             closeModal={() => {

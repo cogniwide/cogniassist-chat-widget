@@ -175,7 +175,7 @@ class ModalWidget extends React.Component {
                       <li
                         className='loading'
                         style={{
-                          display: this.state.loading ? 'block' : 'none',
+                          display: this.props.loading ? 'block' : 'none',
                         }}
                       >
                         <div className='adminchatlist'>
@@ -208,47 +208,30 @@ class ModalWidget extends React.Component {
                         </ul>
                       </div>
                     )}
-
-                    <div className='suggestion_box'>
-                      <div className='quick-replies'>
-                        {this.state.quick_replies &&
-                          this.state.quick_replies.map((button, index) => (
-                            <button
-                              type='button'
-                              id='quick_reply_btn'
-                              key={index}
-                              className='cwc-borderbtn see_all'
-                              onClick={() =>
-                                this.chooseReply(button.title, button.payload)
-                              }
-                              data={button}
-                            >
-                              {button.title}
-                            </button>
-                          ))}
-                      </div>
-                    </div>
-                    <div className='suggestion_box'>
-                      <div className='quick-replies'>
-                        {this.props.quick_replies.map((button, index) => (
-                          <button
-                            type='button'
-                            id='quick_reply_btn'
-                            key={index}
-                            className='cwc-borderbtn see_all'
-                            onClick={() =>
-                              this.props.chooseReply(
-                                button.title,
-                                button.payload
-                              )
-                            }
-                            data={button}
-                          >
-                            {button.title}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
+                    {this.props.quick_replies &&
+                      this.props.quick_replies.length > 0 && (
+                        <div className='suggestion_box'>
+                          <div className='quick-replies'>
+                            {this.props.quick_replies.map((button, index) => (
+                              <button
+                                type='button'
+                                id='quick_reply_btn'
+                                key={index}
+                                className='cwc-borderbtn see_all'
+                                onClick={() =>
+                                  this.props.chooseReply(
+                                    button.title,
+                                    button.payload
+                                  )
+                                }
+                                data={button}
+                              >
+                                {button.title}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     <div
                       ref={(el) => {
                         this.el = el;
