@@ -36,7 +36,7 @@
   .left-icon {
     position: absolute;
     display: none;
-    top: 37%;
+    top: 35%;
     left: 0px;
     background: #fff;
     align-items: center;
@@ -51,7 +51,7 @@
   }
   .right-icon {
     position: absolute;
-    top: 37%;
+    top: 35%;
     right: 0px;
     background: #fff;
     display: none;
@@ -70,6 +70,7 @@
     display: flex;
   }
   .carousel-body {
+    min-height: 120px;
     max-height: 150px;
     overflow-y: auto;
     margin-top: 20px;

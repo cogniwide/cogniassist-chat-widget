@@ -114,6 +114,17 @@
     .cwc-borderbtn {
       font-size: 12px !important;
     }
+    .contact-form {
+      .form-container {
+        grid-template-areas: 'name name' 'number number' 'expiration expiration';
+      }
+      button {
+        padding: 5px !important;
+        width: 120px;
+        font-family: 'cogni-mont-regular' !important;
+        font-size: 12px !important;
+      }
+    }
     .form {
       label {
         font-family: 'cogni-mont-regular' !important;
@@ -131,6 +142,7 @@
         background: var(--modal_primary);
         padding: 5px;
         border-radius: 30px;
+        font-family: 'cogni-mont-regular' !important;
         font-size: 12px;
         cursor: pointer !important;
       }
@@ -268,16 +280,48 @@
       font-weight: bold;
       text-transform: uppercase;
     }
+    .right-dropdown {
+      position: relative;
+    }
     .right-title {
       color: var(--modal_primary_text);
       font-size: 14px;
       display: flex;
       align-items: center;
+      cursor: pointer;
       img {
         height: 5px;
         margin-left: 5px;
         cursor: pointer;
       }
+    }
+    .right-title-content {
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 60px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      margin-right: 5px;
+      top: 15px;
+      left: -10px;
+      display: none;
+
+      div {
+        padding: 5px;
+        cursor: pointer;
+        font-size: 12px;
+        text-align: center;
+      }
+      div:hover {
+        background-color: #f1f1f1;
+      }
+      div.active {
+        background-color: #ccc;
+      }
+    }
+
+    .right-dropdown:hover .right-title-content {
+      display: block;
     }
   }
   .close-container {

@@ -100,9 +100,33 @@ class ModalWidget extends React.Component {
                       />
                     </div>
                     <div className='title'>Chat - Awnic</div>
-                    <div className='right-title'>
-                      عربي
-                      <img src={arrowDown} />
+                    <div className='right-dropdown'>
+                      <div className='right-title'>
+                        عربي
+                        <img src={arrowDown} />
+                      </div>
+                      <div className='right-title-content'>
+                        <div
+                          className={`${
+                            this.props.lang === 'en' ? 'active' : ''
+                          }`}
+                          onClick={() => {
+                            this.props.changeLang('en');
+                          }}
+                        >
+                          En
+                        </div>
+                        <div
+                          className={`${
+                            this.props.lang === 'ar' ? 'active' : ''
+                          }`}
+                          onClick={() => {
+                            this.props.changeLang('ar');
+                          }}
+                        >
+                          Ar
+                        </div>
+                      </div>
                     </div>
                   </div>
                   {this.props.showBack && (
@@ -383,6 +407,7 @@ class ModalWidget extends React.Component {
               <div className='button-container'>
                 <button
                   onClick={() => {
+                    this.props.changeLang('en');
                     this.setState({ isConfirmed: true });
                   }}
                 >
@@ -390,6 +415,7 @@ class ModalWidget extends React.Component {
                 </button>
                 <button
                   onClick={() => {
+                    this.props.changeLang('ar');
                     this.setState({ isConfirmed: true });
                   }}
                 >
