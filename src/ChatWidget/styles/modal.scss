@@ -674,6 +674,10 @@
     margin: 10px;
     width: 95%;
     flex-direction: row;
+    .panel-body {
+      min-height: 400px;
+      max-height: 400px;
+    }
   }
   .modal-left-content.flex6 {
     flex: 6;
@@ -786,7 +790,7 @@
 @media (min-width: 1281px) {
   .modal-content {
     margin: 10px;
-    width: 95%;
+    width: 65%;
     flex-direction: row;
   }
   .modal-content.minwidth {
