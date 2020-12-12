@@ -186,6 +186,8 @@
     }
   }
   .panel-footer {
+    position: absolute !important;
+    bottom: 0;
     border-top: 0px !important;
     border-radius: 15px;
     .mic-chat {
@@ -367,6 +369,7 @@
   padding-right: 5px;
 }
 .modal-chat-content {
+  position: relative;
   height: 100%;
   overflow: auto;
   border-radius: 15px;
@@ -561,7 +564,7 @@
       display: flex;
     }
     .panel-footer {
-      margin-bottom: 20px !important;
+      margin-bottom: 0 !important;
       .composer textarea {
         height: 55px !important;
       }
@@ -675,8 +678,8 @@
     width: 95%;
     flex-direction: row;
     .panel-body {
-      min-height: 400px;
-      max-height: 400px;
+      min-height: 78%;
+      max-height: 78%;
     }
   }
   .modal-left-content.flex6 {
@@ -790,7 +793,8 @@
 @media (min-width: 1281px) {
   .modal-content {
     margin: 10px;
-    width: 65%;
+    width: 75%;
+    height: 75%;
     flex-direction: row;
   }
   .modal-content.minwidth {
