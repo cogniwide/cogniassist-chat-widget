@@ -124,6 +124,10 @@ class ChatBubble extends Component {
       });
     });
   }
+  getCurrentTime() {
+    let newDate = new Date().toLocaleString().split(', ');
+    return newDate[1];
+  }
   render() {
     if ('line' in this.props.message) {
       return (
@@ -520,13 +524,14 @@ class ChatBubble extends Component {
                   />
                 </div>
               )}
+              <div className='currenttime'>{this.getCurrentTime()}</div>
             </div>
           </div>
-          {this.props.message.lastmessage === true && (
+          {/* {this.props.message.lastmessage === true && (
             <div className='chatstimes'>
               <span className='timeStamp'>1:35 AM</span>
             </div>
-          )}
+          )} */}
         </li>
       );
   }
