@@ -24,6 +24,7 @@ class ChatBubble extends Component {
       },
       errors: {},
       ratingHover: 0,
+      ratingSelected: 0,
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleHover = this.handleHover.bind(this);
@@ -55,6 +56,7 @@ class ChatBubble extends Component {
   handleClick(reply) {
     const payload = reply.payload;
     const title = reply.title;
+    this.setState({ ratingSelected: payload });
 
     if (payload.startsWith('link:')) {
       const link = payload.split('link:')[1];
@@ -296,7 +298,7 @@ class ChatBubble extends Component {
                     <li
                       className={`star ${
                         this.state.ratingHover >= 1 ? 'hover' : ''
-                      }`}
+                      } ${this.state.ratingSelected >= 1 ? 'selected' : ''}`}
                       title='Poor'
                       data-value='1'
                       onMouseOver={(e) => {
@@ -305,16 +307,18 @@ class ChatBubble extends Component {
                       onMouseOut={() => {
                         this.setState({ ratingHover: 0 });
                       }}
-                      onClick={() =>
-                        this.handleClick({ title: '1 Rating', payload: '1' })
-                      }
+                      onClick={() => {
+                        this.setState({ ratingHover: 5 });
+                        this.setState({ ratingSelected: 5 });
+                        this.handleClick({ title: '1 Rating', payload: '1' });
+                      }}
                     >
                       <i className='fa fa-star fa-fw'></i>
                     </li>
                     <li
                       className={`star ${
                         this.state.ratingHover >= 2 ? 'hover' : ''
-                      }`}
+                      } ${this.state.ratingSelected >= 2 ? 'selected' : ''}`}
                       title='Fair'
                       data-value='2'
                       onMouseOver={(e) => {
@@ -332,7 +336,7 @@ class ChatBubble extends Component {
                     <li
                       className={`star ${
                         this.state.ratingHover >= 3 ? 'hover' : ''
-                      }`}
+                      } ${this.state.ratingSelected >= 3 ? 'selected' : ''}`}
                       title='Good'
                       data-value='3'
                       onMouseOver={(e) => {
@@ -350,7 +354,7 @@ class ChatBubble extends Component {
                     <li
                       className={`star ${
                         this.state.ratingHover >= 4 ? 'hover' : ''
-                      }`}
+                      } ${this.state.ratingSelected >= 4 ? 'selected' : ''}`}
                       title='Excellent'
                       onMouseOver={(e) => {
                         this.handleHover(4);
@@ -368,7 +372,7 @@ class ChatBubble extends Component {
                     <li
                       className={`star ${
                         this.state.ratingHover >= 5 ? 'hover' : ''
-                      }`}
+                      } ${this.state.ratingSelected >= 5 ? 'selected' : ''}`}
                       title='WOW!!!'
                       data-value='5'
                       onMouseOver={(e) => {
