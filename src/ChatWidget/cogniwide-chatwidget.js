@@ -969,6 +969,7 @@ class ChatWidget extends Component {
             }}
             chat={chat}
             quick_replies={this.state.quick_replies}
+            botIcon={this.props.botAvatar}
             userMessage={this.state.userMessage}
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}

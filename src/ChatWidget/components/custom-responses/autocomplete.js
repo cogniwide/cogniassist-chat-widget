@@ -47,9 +47,12 @@ function AutoComplete(props) {
         <img
           src={arrowDown}
           className='input-arrowdown'
-          onClick={() => {
+          onClick={(e) => {
             setOptions(allOptions);
             setShowOptions(true);
+            e.target.parentNode.parentNode.scrollIntoView({
+              behavior: 'smooth',
+            });
           }}
         />
       </div>

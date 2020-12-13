@@ -518,11 +518,11 @@ class ChatBubble extends Component {
               )}
             </div>
           </div>
-          {/* {this.props.message.lastmessage === true &&
-                        <div className="chatstimes">
-                            <span className="timeStamp">1:35 AM</span>
-                        </div>
-                    } */}
+          {this.props.message.lastmessage === true && (
+            <div className='chatstimes'>
+              <span className='timeStamp'>1:35 AM</span>
+            </div>
+          )}
         </li>
       );
   }

@@ -179,6 +179,15 @@ class ModalWidget extends React.Component {
                         }}
                       >
                         <div className='adminchatlist'>
+                          <span className='avatar_wrapper mr-2'>
+                            {this.props.botIcon && (
+                              <img
+                                src={this.props.botIcon}
+                                alt='User Avatar'
+                                className='img-circle avatar'
+                              />
+                            )}
+                          </span>
                           <div className='chat-body bubble clearfix'>
                             <img src='https://cogniwide.github.io/cogniassist-chat-widget/public/assets/tenor.gif' />
                           </div>
