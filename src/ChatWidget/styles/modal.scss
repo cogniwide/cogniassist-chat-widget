@@ -186,8 +186,8 @@
     }
   }
   .panel-footer {
-    position: absolute !important;
-    bottom: 0;
+    // position: absolute !important;
+    // bottom: 0;
     border-top: 0px !important;
     border-radius: 15px;
     .mic-chat {
@@ -251,6 +251,7 @@
 .modal-content.confirmWidth {
   width: 450px;
   min-height: 385px;
+  height: 385px !important;
 }
 .modal-left-content {
   display: flex;
@@ -714,6 +715,10 @@
   }
   .panel-footer.hide-body {
     display: block !important;
+  }
+  .panel-footer {
+    position: absolute !important;
+    bottom: 0;
   }
   .modal-right-content {
     padding: 15px;
