@@ -133,12 +133,76 @@
         font-size: 12px !important;
       }
     }
+    .carinsurance-form {
+      display: flex !important;
+      flex-direction: column;
+      .field-container {
+        margin-bottom: 10px;
+      }
+      .form-container {
+        grid-template-areas: 'name name' 'number number' 'expiration expiration' 'chase chase' 'engine engine' 'mortgage mortgage';
+      }
+      button {
+        padding: 5px !important;
+        width: 120px;
+        font-family: 'cogni-mont-regular' !important;
+        font-size: 12px !important;
+      }
+      .input-button {
+        display: flex;
+        flex-direction: row;
+        position: relative !important;
+        input {
+        }
+        button {
+          position: absolute;
+          right: 0px;
+          width: 50px;
+          background: #ccc;
+          border-radius: 0 30px 30px 0 !important;
+        }
+      }
+      .quote-card-container {
+        .quote-card {
+          display: flex;
+          flex-direction: column;
+          background: var(--modal_primary);
+          color: #fff;
+          font-family: 'cogni-mont-regular' !important;
+          width: 150px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          text-align: center;
+          align-content: center;
+          border-radius: 25px;
+          height: 140px;
+          margin-bottom: 25px;
+          .p-text {
+            font-size: 10px;
+            font-family: 'cogni-mont-regular' !important;
+          }
+          .bold-text {
+            font-size: 12px;
+            font-family: 'cogni-mont-medium' !important;
+          }
+        }
+      }
+    }
     .form {
       label {
         font-family: 'cogni-mont-regular' !important;
         font-size: 12px;
       }
       input {
+        padding: 5px !important;
+        font-family: 'cogni-mont-regular' !important;
+        font-size: 12px;
+        outline: none;
+        border-radius: 30px;
+      }
+      select {
         padding: 5px !important;
         font-family: 'cogni-mont-regular' !important;
         font-size: 12px;

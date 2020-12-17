@@ -1,20 +1,29 @@
 import React, { Component } from 'react';
-import  WelcomeForm from './welcome'
-import CreditCardForm from './creditcardform'
+import WelcomeForm from './welcome';
+import CreditCardForm from './creditcardform';
+import CarInsuranceForm from './carinsuranceform';
+import PersonalDetailsForm from './personaldetailsform';
+import AdditionalDetailsForm from './additionaldetailsform';
+import QuotationForm from './quotationform';
 
 class CustomComponentWrapper extends Component {
-    components = {
-        "WelcomeForm": WelcomeForm,
-        "CreditCardForm": CreditCardForm
-
-    };
-    render() {
-       const Component = this.components[this.props.customComponent.name];
-       return <Component                                
+  components = {
+    WelcomeForm: WelcomeForm,
+    CreditCardForm: CreditCardForm,
+    CarInsuranceForm: CarInsuranceForm,
+    PersonalDetailsForm: PersonalDetailsForm,
+    AdditionalDetailsForm: AdditionalDetailsForm,
+  };
+  render() {
+    //const Component = this.components[this.props.customComponent.name];
+    const Component = QuotationForm;
+    return (
+      <Component
         onChange={this.props.formSubmit}
-        values={this.props.customComponent.values} 
+        values={this.props.customComponent.values}
         intent={this.props.customComponent.intent}
-       />
-    }
+      />
+    );
+  }
 }
 export default CustomComponentWrapper;
