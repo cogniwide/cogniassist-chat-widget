@@ -16,7 +16,7 @@ class CustomComponentWrapper extends Component {
   };
   render() {
     //const Component = this.components[this.props.customComponent.name];
-    const Component = QuotationForm;
+    const Component = CarInsuranceForm;
     return (
       <Component
         onChange={this.props.formSubmit}
