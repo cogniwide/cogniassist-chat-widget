@@ -5,9 +5,9 @@ class PersonalDetailsForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      dob: '',
-      mobile: '',
+      full_name: '',
+      date_of_birth: '',
+      mobile_number: '',
       email: '',
       nationality: '',
     };
@@ -90,11 +90,13 @@ class PersonalDetailsForm extends Component {
               required
             >
               <option value=''>-</option>
-              <option value='test'>Test</option>
+              <option value='Indian'>Indian</option>
+              <option value='Emarati'>Emarati</option>
+
             </select>
           </div>
 
-          <button>Submit</button>
+          <button>Get Quote</button>
         </div>
       </form>
     );
