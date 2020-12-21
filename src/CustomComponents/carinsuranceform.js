@@ -5,12 +5,12 @@ class CarInsuranceForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      regNo: '',
-      regEmirates: '',
-      chasisNo: '',
-      engineNo: '',
-      color: '',
-      mortgage: '',
+      reg_no: '',
+      reg_emirates: '',
+      chassis_num: '',
+      engine_num: '',
+      car_color: '',
+      car_mortgage: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.stringifyForm = this.stringifyForm.bind(this);
@@ -31,9 +31,24 @@ class CarInsuranceForm extends Component {
     this.props.onChange('Form submited', trigger);
   }
 
+  
   render() {
+
+    const vehicle_colors = this.props.values.colors.masterData.map((option, i) => {
+      return (<option key={i} value={option.code}>{option.name}</option>);
+    });
+
+    const emirates = this.props.values.emirates.masterData.map((option, i) => {
+      return (<option key={i} value={option.code}>{option.name}</option>);
+    });
+
+    const mortgage = this.props.values.mortgage.masterData.map((option, i) => {
+      return (<option key={i} value={option.code}>{option.name}</option>);
+    });
+
+
     return (
-      <form onSubmit={this.handleSubmit} class='form carinsurance-form'>
+      <form onSubmit={this.handleSubmit} className='form carinsurance-form'>
         {/* <div className='form-header'>Contact Information</div> */}
         <div className='form-container carinsurance-form'>
           <div className='field-container'>
@@ -58,7 +73,7 @@ class CarInsuranceForm extends Component {
               required
             >
               <option value=''>-</option>
-              <option value='test'>Test</option>
+              {emirates}
             </select>
           </div>
 
@@ -94,9 +109,7 @@ class CarInsuranceForm extends Component {
               placeholder=''
             >
               <option value=''>-</option>
-              <option value='red'>Red</option>
-              <option value='green'>Green</option>
-              <option value='Yellow'>Yellow</option>
+              {vehicle_colors}
             </select>
           </div>
 
@@ -110,7 +123,7 @@ class CarInsuranceForm extends Component {
               placeholder=''
             >
               <option value=''>-</option>
-              <option value='loan'>loan</option>
+              {mortgage}
             </select>
           </div>
 

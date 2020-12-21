@@ -30,7 +30,7 @@ class WelcomeForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} class='form contact-form'>
+      <form onSubmit={this.handleSubmit} className='form contact-form'>
         {/* <div className='form-header'>Contact Information</div> */}
         <div className='form-container contact-form'>
           <div className='field-container'>

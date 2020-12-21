@@ -30,8 +30,13 @@ class AdditionalDetailsForm extends Component {
   }
 
   render() {
+
+    const license_authority = this.props.values.license_authority.masterData.map((option, i) => {
+      return (<option key={i} value={option.code}>{option.name}</option>);
+    });
+
     return (
-      <form onSubmit={this.handleSubmit} class='form carinsurance-form'>
+      <form onSubmit={this.handleSubmit} className='form carinsurance-form'>
         {/* <div className='form-header'>Contact Information</div> */}
         <div className='form-container carinsurance-form'>
           <div className='field-container'>
@@ -61,7 +66,7 @@ class AdditionalDetailsForm extends Component {
               required
             >
               <option value=''>-</option>
-              <option value='test'>Test</option>
+              {license_authority}
             </select>
           </div>
 
