@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './welcome.scss';
 
-class QuotaionForm extends Component {
+class QuotationForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,8 +29,13 @@ class QuotaionForm extends Component {
   }
 
   render() {
+
+    const airline_options = this.props.values.airline.masterData.map((option, i) => {
+      return (<option key={i} value={option.code}>{option.name}</option>);
+    });
+
     return (
-      <form onSubmit={this.handleSubmit} class='form carinsurance-form'>
+      <form onSubmit={this.handleSubmit} className='form carinsurance-form'>
         {/* <div className='form-header'>Contact Information</div> */}
         <div className='form-container carinsurance-form'>
           <div className='quote-card-container'>
@@ -68,7 +73,7 @@ class QuotaionForm extends Component {
               required
             >
               <option value=''>-</option>
-              <option value='test'>Test</option>
+              {airline_options}
             </select>
           </div>
 
@@ -84,10 +89,10 @@ class QuotaionForm extends Component {
             />
           </div>
 
-          <button>Buy</button>
+          <button>Proceed</button>
         </div>
       </form>
     );
   }
 }
-export default QuotaionForm;
+export default QuotationForm;

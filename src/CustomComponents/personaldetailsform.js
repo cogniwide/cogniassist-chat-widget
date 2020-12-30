@@ -5,9 +5,9 @@ class PersonalDetailsForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      dob: '',
-      mobile: '',
+      full_name: '',
+      date_of_birth: '',
+      mobile_number: '',
       email: '',
       nationality: '',
     };
@@ -31,8 +31,13 @@ class PersonalDetailsForm extends Component {
   }
 
   render() {
+    
+    const country_options = this.props.values.countries.masterData.map((option, i) => {
+      return (<option key={i} value={option.code}>{option.name}</option>);
+    });
+
     return (
-      <form onSubmit={this.handleSubmit} class='form carinsurance-form'>
+      <form onSubmit={this.handleSubmit} className='form carinsurance-form'>
         {/* <div className='form-header'>Contact Information</div> */}
         <div className='form-container carinsurance-form'>
           <div className='field-container'>
@@ -90,11 +95,12 @@ class PersonalDetailsForm extends Component {
               required
             >
               <option value=''>-</option>
-              <option value='test'>Test</option>
+              {country_options}
+
             </select>
           </div>
 
-          <button>Submit</button>
+          <button>Get Quote</button>
         </div>
       </form>
     );
