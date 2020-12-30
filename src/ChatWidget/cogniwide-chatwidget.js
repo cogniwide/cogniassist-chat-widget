@@ -37,6 +37,7 @@ class ChatWidget extends Component {
       delayFactor: 1,
       clearText: false,
       showBack: false,
+      isConfirmed: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -981,6 +982,10 @@ class ChatWidget extends Component {
             changeLang={(lang) => {
               this.setState({ lang: lang });
             }}
+            setConfirmStatus={(status) => {
+              this.setState({ isConfirmed: status });
+            }}
+            isConfirmed={this.state.isConfirmed}
           />
         )}
       </div>

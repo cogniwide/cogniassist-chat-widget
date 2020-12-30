@@ -22,7 +22,7 @@ class ModalWidget extends React.Component {
       isOpen: false,
       isSizeToggle: false,
       showFeedback: false,
-      isConfirmed: false,
+      isConfirmed: this.props.isConfirmed,
       rightPanelContents: [
         {
           title: 'Important Information',
@@ -46,8 +46,8 @@ class ModalWidget extends React.Component {
 
   componentDidMount() {}
   componentDidUpdate() {
-    console.log('Modal - this.props', this.props);
-    console.log('Modal - ClearText', this.props.clearText);
+    // console.log('Modal - this.props', this.props);
+    // console.log('Modal - ClearText', this.props.clearText);
 
     // this.setState({ userMessage: this.props.userMessage });
     this.scrollToBottom();
@@ -401,6 +401,7 @@ class ModalWidget extends React.Component {
                   onClick={() => {
                     this.props.changeLang('en');
                     this.setState({ isConfirmed: true });
+                    this.props.setConfirmStatus(true);
                   }}
                 >
                   Let's Start
