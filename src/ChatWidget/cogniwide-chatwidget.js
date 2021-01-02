@@ -573,15 +573,15 @@ class ChatWidget extends Component {
 
   handleMessageReceived(response) {
     this.loading(true);
-    for (let index = 0; index < response.length; index++) {
+    let length = response.length
+    for (let index = 0; index < length; index++) {
       let delayFactor =
-        this.props.communicationMethod == 'rest'
+      this.props.communicationMethod == 'rest'
           ? index
           : this.state.delayFactor;
-      setTimeout(() => {
-        this.loading(false);
-        this.renderResponse([response[index]]);
-      }, 2000);
+          setTimeout(() => {
+        this.renderResponse([response[index]], index+1, length);
+      }, (index+1)*600);
     }
   }
 
@@ -598,7 +598,7 @@ class ChatWidget extends Component {
     this.handleMessageReceived([botUtterance]);
   }
 
-  renderResponse(responses) {
+  renderResponse(responses, index, length) {
     console.log(responses);
     let messages = [];
     let quick_replies = [];
@@ -617,24 +617,29 @@ class ChatWidget extends Component {
         if (response && 'quick_replies' in response) {
           quick_replies.push(...response['quick_replies']);
         }
-
+  
         if (response && 'workflow_menu' in response) {
           this.setState({ showBack: true });
         }
         messages.push(msg);
       }
     });
-
+  
     this.setState((prevState) => ({
       conversation: [...prevState.conversation, ...messages],
       quick_replies: quick_replies,
       recommendations: recommendations,
       show_recommendation: true,
+      loading:true
     }));
-
-    this.scrollToBottom();
+    if(index == length){
+      this.loading(false);
+      this.scrollToBottom();
+    }else{
+      this.scrollToBottom();
+      }
   }
-
+ 
   toggleRecommendation(show = false) {
     this.setState({
       show_recommendation: show,
