@@ -228,7 +228,7 @@ class ChatWidget extends Component {
         setTimeout(this.sendText(e.results[0][0].transcript), 1000);
       };
 
-      recognition.onerror = function(e) {
+      recognition.onerror = function (e) {
         recognition.stop();
       };
     }
@@ -549,7 +549,7 @@ class ChatWidget extends Component {
 
   sendRequest(payload) {
     const { communicationMethod, socket } = this.props;
-
+    
     if (communicationMethod == 'socket') {
       this.setState({
         delayFactor: 0,
@@ -574,14 +574,24 @@ class ChatWidget extends Component {
   handleMessageReceived(response) {
     this.loading(true);
     let length = response.length
-    for (let index = 0; index < length; index++) {
-      let delayFactor =
+    let index = 0;
+    this.setState({
+      last_response_count: length,
+    });
+    let delayFactor =
       this.props.communicationMethod == 'rest'
-          ? index
-          : this.state.delayFactor;
-          setTimeout(() => {
-        this.renderResponse([response[index]], index+1, length);
-      }, (index+1)*600);
+        ? index
+        : this.state.delayFactor;
+    if (length = 1) {
+      setTimeout(() => {
+        this.renderResponse([response[index]], index + 1, length, delayFactor);
+      }, delayFactor * 600);
+    } else {
+      for (; index < length; index++) {
+        setTimeout(() => {
+          this.renderResponse([response[index]], index + 1, length, delayFactor);
+        }, (index + 1) * 600);
+      }
     }
   }
 
@@ -598,7 +608,7 @@ class ChatWidget extends Component {
     this.handleMessageReceived([botUtterance]);
   }
 
-  renderResponse(responses, index, length) {
+  renderResponse(responses, index, length, delayFactor) {
     console.log(responses);
     let messages = [];
     let quick_replies = [];
@@ -617,29 +627,34 @@ class ChatWidget extends Component {
         if (response && 'quick_replies' in response) {
           quick_replies.push(...response['quick_replies']);
         }
-  
+
         if (response && 'workflow_menu' in response) {
           this.setState({ showBack: true });
         }
         messages.push(msg);
       }
     });
-  
+
     this.setState((prevState) => ({
       conversation: [...prevState.conversation, ...messages],
       quick_replies: quick_replies,
       recommendations: recommendations,
       show_recommendation: true,
-      loading:true
+      loading: true
     }));
-    if(index == length){
+
+    if (length > 1 && index == length) {
       this.loading(false);
       this.scrollToBottom();
-    }else{
+    } else if (delayFactor == this.state.delayFactor) {
+      this.loading(false);
       this.scrollToBottom();
-      }
+    }
+    else {
+      this.scrollToBottom();
+    }
   }
- 
+
   toggleRecommendation(show = false) {
     this.setState({
       show_recommendation: show,
@@ -730,10 +745,10 @@ class ChatWidget extends Component {
               this.props.template === 'Base'
                 ? this.setState({ opened: true, unread: 0 })
                 : this.setState({
-                    opened: true,
-                    isModalOpen: true,
-                    unread: 0,
-                  });
+                  opened: true,
+                  isModalOpen: true,
+                  unread: 0,
+                });
             }}
           >
             <div className='chatbot-icon'>
@@ -795,9 +810,9 @@ class ChatWidget extends Component {
 
         {this.state.opened && this.props.template === 'Base' && (
           <div
-            className={`chat_box_container position-relative ${
-              this.state.opened ? 'chat_box_active' : ''
-            }`}
+          className={`chat_box_container position-relative ${
+            this.state.opened ? 'chat_box_active' : ''
+          }`}
           >
             <div className='_full_container_wrapper'>
               <div className='panel-heading bg-primary'>
@@ -858,10 +873,10 @@ class ChatWidget extends Component {
                     items={this.props.carouselItems}
                   />
                 ) : (
-                  <div className='banner' style={bannerStyle}>
-                    <h3>{this.props.bannerText}</h3>
-                  </div>
-                )}
+                    <div className='banner' style={bannerStyle}>
+                      <h3>{this.props.bannerText}</h3>
+                    </div>
+                  )}
 
                 {this.state.showFeedback == false && (
                   <ul className='chat'>
@@ -946,11 +961,11 @@ class ChatWidget extends Component {
                   ></button>
                   {(window.SpeechRecognition ||
                     window.webkitSpeechRecognition) && (
-                    <button
-                      className='mic-chat'
-                      onClick={this.startRecord}
-                    ></button>
-                  )}
+                      <button
+                        className='mic-chat'
+                        onClick={this.startRecord}
+                      ></button>
+                    )}
                 </div>
                 <div className='power-by'>
                   <span>
