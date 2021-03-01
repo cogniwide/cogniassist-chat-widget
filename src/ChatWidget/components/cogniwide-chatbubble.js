@@ -203,6 +203,12 @@ class ChatBubble extends Component {
                             {('datepicker' in this.props.message) &&
                                 <span className="mt-2 diplayalign">
                                     <Calendar
+                                        maxDate = {this.props.message.datepicker.maxDate ? new Date(this.props.message.datepicker.maxDate) : 
+                                        (
+                                            this.props.message.datepicker.disableFuture ? new Date(): undefined 
+                                        )
+                                        }
+                                        minDate={this.props.message.datepicker.minDate ? new Date(this.props.message.datepicker.minDate) : undefined}
                                         onChange={this.onChange}
                                         maxDetail={this.props.message.datepicker.defaultView ? this.props.message.datepicker.defaultView : undefined}
                                     />
