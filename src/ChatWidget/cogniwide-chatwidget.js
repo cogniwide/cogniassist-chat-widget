@@ -27,7 +27,7 @@ class ChatWidget extends Component {
       show_recommendation: false,
       loading: false,
       opened: false,
-      unread: 2,
+      unread: 0,
       last_response_count: 0,
       showFeedback: false,
       fullScreeen: false,
