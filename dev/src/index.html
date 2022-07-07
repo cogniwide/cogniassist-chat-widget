@@ -1,27 +1,30 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>CogniAssist Chatwidget 1.0</title>
   </head>
   <body>
     <div id="cogniassist"></div>
   </body>
-  <script src="index.js"  type="text/javascript"></script>
+  <script src="index.js" type="text/javascript"></script>
   <script>
     CogniAssistWidget.default.init({
-      selector: "#cogniassist",
-      initialPayload:"/default/welcome",
-      communicationMethod: "socket",
-      botURL:'https://dev-bots.cogniassist.com/5e9d50b997b47737ae6ff94c/default/',
-      socketURL: "https://dev-bots.cogniassist.com/",
-      socketPath: "/5e9d50b997b47737ae6ff94c/default/socket.io",
-      botName: 'Al Wathba Virtual Assistant',
-      botWelcomeMessage: "Hey there, I'm here to assist you with any doubts you migth have.",
-      bannerText:"AWNIC National Insurance is an insurance company that specialises in Motor, Home, Travel, UAE visit visa, Yacht & Jetski insurance plans..",
+      selector: '#cogniassist',
+      initialPayload: '/default/welcome',
+      communicationMethod: 'socket',
+      // botURL:'http://127.0.0.1:8080/',
+      // socketURL: "http://127.0.0.1:8080/",
+      // socketPath: "/socket.io",
+      botURL: 'https://bots.cogniassist.com/61126f22624f978214b20966/default/',
+      socketURL: 'https://bots.cogniassist.com/',
+      socketPath: '/61126f22624f978214b20966/default/socket.io',
+      botName: 'CogniAssist',
+      botWelcomeMessage:
+        "Hey there, I'm here to assist you with any doubts you migth have.",
       rememberUser: false,
-      widgetPosition:"right"
+      widgetPosition: 'right',
     });
   </script>
 </html>
