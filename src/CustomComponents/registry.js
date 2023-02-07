@@ -5,6 +5,9 @@ import CarInsuranceForm from './carinsuranceform';
 import PersonalDetailsForm from './personaldetailsform';
 import AdditionalDetailsForm from './additionaldetailsform';
 import QuotationForm from './quotationform';
+import VolumeSlider from './licensce-slider';
+import Quote from './Quote/Quote';
+import LicenseSlider from './LicenseSlider/LicenseSlider';
 
 class CustomComponentWrapper extends Component {
   components = {
@@ -13,8 +16,10 @@ class CustomComponentWrapper extends Component {
     CarInsuranceForm: CarInsuranceForm,
     PersonalDetailsForm: PersonalDetailsForm,
     AdditionalDetailsForm: AdditionalDetailsForm,
+    LicenseSlider: LicenseSlider,
     QuotationForm: QuotationForm,
-
+    VolumeSlider: VolumeSlider,
+    Quote: Quote,
   };
   render() {
     const Component = this.components[this.props.customComponent.name];

@@ -4,7 +4,7 @@ function RangeSlider(props) {
   const [rangeValue, setRangeValue] = useState(0);
   return (
     <div className='range-slider diplayalign'>
-      <div className='title'>Budget - {rangeValue}</div>
+      <div className='title'>Budget - {props.range.min}</div>
       <div className='range-wrapper'>
         <div className='minmax-wrapper'>
           <div>{props.range.min}</div>
@@ -22,7 +22,7 @@ function RangeSlider(props) {
       <div>
         <button
           onClick={() => {
-            props.rangeOnSubmit(rangeValue);
+            props.rangeOnSubmit(props.range.min);
           }}
           className='btn_trans_block '
         >

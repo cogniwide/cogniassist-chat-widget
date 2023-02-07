@@ -428,8 +428,6 @@
     position: relative;
     top: -30px;
     left: 30px;
-    // top: -15px;
-    // left: 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -488,6 +486,8 @@
   justify-content: flex-end;
 }
 .close-wrapper {
+  width: 60px;
+  height: 30px;
   background-color: var(--modal_primary_text);
   padding: 2px;
   border-radius: 15px;
@@ -496,7 +496,7 @@
   align-items: center;
   justify-content: space-around;
   img {
-    height: 15px;
+    height: 23px;
     padding: 5px;
     cursor: pointer;
   }

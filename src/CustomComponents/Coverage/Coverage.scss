@@ -1,0 +1,32 @@
+.coverage-list{
+  // width: 100%;
+  .coverage-item {
+    display: flex;
+    align-items: center;
+    padding: 0.2rem 0.8rem;
+    .icon-container {
+      .item-icon {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    .check-item-icon {
+      width: 12px;
+      height: 12px;
+    }
+    .item-name {
+      span {
+        font-size: 10px;
+        font-weight: 400;
+      }
+      width: 100%;
+      padding-left: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .limit {
+        color: #2e2b70;
+      }
+    }
+  }
+}

@@ -9,6 +9,7 @@ class AdditionalDetailsForm extends Component {
       authority: '',
       trafficNo: '',
       expiryDate: '',
+      emiratesID:''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.stringifyForm = this.stringifyForm.bind(this);
@@ -31,9 +32,9 @@ class AdditionalDetailsForm extends Component {
 
   render() {
 
-    const license_authority = this.props.values.license_authority.masterData.map((option, i) => {
-      return (<option key={i} value={option.code}>{option.name}</option>);
-    });
+    // const license_authority = this.props.values.license_authority.masterData.map((option, i) => {
+    //   return (<option key={i} value={option.code}>{option.name}</option>);
+    // });
 
     return (
       <form onSubmit={this.handleSubmit} className='form carinsurance-form'>
@@ -56,7 +57,7 @@ class AdditionalDetailsForm extends Component {
           </div>
 
           <div className='field-container'>
-            <label>License Issuing Authority</label>
+            <label>License Emirates</label>
             <select
               value={this.state.authority}
               onChange={(event) =>
@@ -66,7 +67,14 @@ class AdditionalDetailsForm extends Component {
               required
             >
               <option value=''>-</option>
-              {license_authority}
+              <option value='ABU DHABI'>ABU DHABI</option>
+              <option value='AJMAN'>AJMAN</option>
+              <option value='DUBAI'>DUBAI</option>
+              <option value='FUJARIAH'>FUJARIAH</option>
+              <option value='RAS AL KHAIMAH'>RAS AL KHAIMAH</option>
+              <option value='SHARJAH'>SHARJAH</option>
+              <option value='Umm AL QUWAIN'>Umm AL QUWAIN</option>
+              {/* {license_authority} */}
             </select>
           </div>
 
@@ -77,6 +85,18 @@ class AdditionalDetailsForm extends Component {
               value={this.state.trafficNo}
               onChange={(event) =>
                 this.setState({ trafficNo: event.target.value })
+              }
+              placeholder=''
+            />
+          </div>
+
+          <div className='field-container'>
+            <label>Emirates ID</label>
+            <input
+              type='text'
+              value={this.state.emiratesID}
+              onChange={(event) =>
+                this.setState({ emiratesID: event.target.value })
               }
               placeholder=''
             />
