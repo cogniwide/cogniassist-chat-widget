@@ -6,9 +6,10 @@
 @import './carousel.scss';
 @import './rangeslider.scss';
 
-._cog_chat p,
-._cog_chatbutton {
-  font-family: 'cogni-regular';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif;
 }
 
 ._cog_chat button:focus {
@@ -732,7 +733,7 @@
   font-size: 14px;
   line-height: 1;
   background-color: var(--white);
-  font-family: 'cogni-regular';
+  // font-family: 'cogni-regular';
 
   div {
     box-sizing: border-box;
@@ -838,7 +839,7 @@
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     overflow: hidden;
-    font-family: 'Poppins', sans-serif !important;
+    // font-family: 'Poppins', sans-serif !important;
   }
 
   .chat_box_container.chat_box_active {
@@ -1289,7 +1290,7 @@
       font-size: 14px;
       transition: none 0s ease 0s;
       background: white;
-      font-family: 'cogni-regular';
+      // font-family: 'cogni-regular';
       border: none;
       color: var(--black);
       padding: 14px 0;
@@ -1412,7 +1413,7 @@
     padding: 10px;
     cursor: pointer;
     font-weight: bold;
-    font-family: 'cogni-medium' !important;
+    // font-family: 'cogni-medium' !important;
     transition: ease-in-out 0.3s;
 
     &:hover {

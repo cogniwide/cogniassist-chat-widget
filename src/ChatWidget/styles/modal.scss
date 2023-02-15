@@ -11,9 +11,9 @@
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-  font-family: 'cogni-mont-regular' !important;
+  // font-family: 'cogni-mont-regular' !important;
   div p button label {
-    font-family: 'cogni-mont-regular' !important;
+    // font-family: 'cogni-mont-regular' !important;
   }
 }
 
@@ -46,7 +46,7 @@
         border-radius: 20px !important;
         #quick_reply_btn {
           text-align: left;
-          font-family: 'cogni-mont-regular' !important;
+          // font-family: 'cogni-mont-regular' !important;
           margin-left: 5px;
           background-color: var(--white) !important;
           color: var(--modal_primary_text);
@@ -84,7 +84,7 @@
         }
         .btn_trans_block {
           color: var(--modal_primary_text);
-          font-family: 'cogni-mont-regular' !important;
+          // font-family: 'cogni-mont-regular' !important;
           font-size: 12px;
           &:hover {
             background: var(--modal_primary);
@@ -129,7 +129,7 @@
       button {
         padding: 5px !important;
         width: 120px;
-        font-family: 'cogni-mont-regular' !important;
+        // font-family: 'cogni-mont-regular' !important;
         font-size: 12px !important;
       }
     }
@@ -145,7 +145,7 @@
       button {
         padding: 5px !important;
         width: 120px;
-        font-family: 'cogni-mont-regular' !important;
+        // font-family: 'cogni-mont-regular' !important;
         font-size: 12px !important;
       }
       .input-button {
@@ -168,7 +168,7 @@
           flex-direction: column;
           background: var(--modal_primary);
           color: #fff;
-          font-family: 'cogni-mont-regular' !important;
+          // font-family: 'cogni-mont-regular' !important;
           width: 150px;
           display: flex;
           align-items: center;
@@ -181,30 +181,30 @@
           margin-bottom: 25px;
           .p-text {
             font-size: 10px;
-            font-family: 'cogni-mont-regular' !important;
+            // font-family: 'cogni-mont-regular' !important;
           }
           .bold-text {
             font-size: 12px;
-            font-family: 'cogni-mont-medium' !important;
+            // font-family: 'cogni-mont-medium' !important;
           }
         }
       }
     }
     .form {
       label {
-        font-family: 'cogni-mont-regular' !important;
+        // font-family: 'cogni-mont-regular' !important;
         font-size: 12px;
       }
       input {
         padding: 5px !important;
-        font-family: 'cogni-mont-regular' !important;
+        // font-family: 'cogni-mont-regular' !important;
         font-size: 12px;
         outline: none;
         border-radius: 30px;
       }
       select {
         padding: 5px !important;
-        font-family: 'cogni-mont-regular' !important;
+        // font-family: 'cogni-mont-regular' !important;
         font-size: 12px;
         outline: none;
         border-radius: 30px;
@@ -214,7 +214,7 @@
         background: var(--modal_primary);
         padding: 5px;
         border-radius: 30px;
-        font-family: 'cogni-mont-regular' !important;
+        // font-family: 'cogni-mont-regular' !important;
         font-size: 12px;
         cursor: pointer !important;
       }
@@ -444,7 +444,7 @@
   height: 100%;
   overflow: auto;
   border-radius: 15px;
-  font-family: 'cogni-mont-regular' !important;
+  // font-family: 'cogni-mont-regular' !important;
 }
 .modal-content-header {
   display: flex;

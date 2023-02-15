@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import $ from 'jquery';
+import $ from 'jquery';
 import './styles/index.scss';
 import updateArrow from './cogniwide-assets/update-arrow.png';
 import minimize from './cogniwide-assets/minimize.png';
@@ -80,29 +80,44 @@ class ChatWidget extends Component {
           socket.emit('session_request', { session_id: this.state.sender_id });
         });
 
+        // Old code
+        // // When session_confirm is received from the server:
+        // socket.on('session_confirm', (sessionObject) => {
+        //   console.log('session confirmed');
+
+        //   const remoteId =
+        //     sessionObject && sessionObject.session_id
+        //       ? sessionObject.session_id
+        //       : sessionObject;
+
+        //   // eslint-disable-next-line no-console
+        //   console.log(
+        //     `session_confirm:${socket.socket.id} session_id:${remoteId}`
+        //   );
+
+        //   /*
+        //   Check if the session_id is consistent with the server
+        //   If the localId is null or different from the remote_id,
+        //   start a new session.
+        //   */
+        //   if (this.props.rememberUser) {
+        //     this.handleChatHistory();
+        //   } else {
+        //     this.trySendInitSocketPayload();
+        //   }
+        // });
+
+        // new code
         // When session_confirm is received from the server:
         socket.on('session_confirm', (sessionObject) => {
-          console.log('session confirmed');
-
-          const remoteId =
-            sessionObject && sessionObject.session_id
-              ? sessionObject.session_id
-              : sessionObject;
-
-          // eslint-disable-next-line no-console
-          console.log(
-            `session_confirm:${socket.socket.id} session_id:${remoteId}`
-          );
-
-          /*
-          Check if the session_id is consistent with the server
-          If the localId is null or different from the remote_id,
-          start a new session.
-          */
-          if (this.props.rememberUser) {
-            this.handleChatHistory();
-          } else {
-            this.trySendInitSocketPayload();
+          // console.log('session confirmed');
+          if (!this.state.initialized) {
+            if (this.props.rememberUser) {
+              this.handleChatHistory();
+            } else {
+              this.trySendInitSocketPayload();
+            }
+            this.setState({ initialized: true })
           }
         });
 
@@ -201,9 +216,11 @@ class ChatWidget extends Component {
       opened: false,
       showFeedback: false,
     });
+
+    window.location.reload();
   }
   startRecord() {
-    this.textInput.current.focus();
+    // this.textInput.current.focus();
     if (
       window.hasOwnProperty('webkitSpeechRecognition') ||
       window.hasOwnProperty('SpeechRecognition')
@@ -981,6 +998,8 @@ class ChatWidget extends Component {
             changeLang={(lang) => {
               this.setState({ lang: lang });
             }}
+            restartChat={this.restartChat}
+            startRecord={this.startRecord}
           />
         )}
       </div>
