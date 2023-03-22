@@ -108,7 +108,7 @@ class ModalWidget extends React.Component {
                     <div className='title'>Chat - Awnic</div>
                     <div className='right-dropdown'>
                       <div className='right-title'>
-                        عربي
+                        EN
                         <img src={arrowDown} />
                       </div>
                       <div className='right-title-content'>
@@ -122,7 +122,7 @@ class ModalWidget extends React.Component {
                         >
                           En
                         </div>
-                        <div
+                        {/* <div
                           className={`${
                             this.props.lang === 'ar' ? 'active' : ''
                           }`}
@@ -131,7 +131,7 @@ class ModalWidget extends React.Component {
                           }}
                         >
                           Ar
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                     <div className="cog_chat-restart-btn" title="Reset Chat">
