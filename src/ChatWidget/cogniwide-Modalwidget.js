@@ -412,7 +412,7 @@ class ModalWidget extends React.Component {
                 </p>
                 <hr />
                 <p>
-                  Hello! My name is "Chatbot name", Awnic Virtual assistant. I
+                  Hello! My name is Hazza!, Awnic Virtual assistant. I
                   am here to help answer your questions on AWNIC.
                 </p>
               </div>
