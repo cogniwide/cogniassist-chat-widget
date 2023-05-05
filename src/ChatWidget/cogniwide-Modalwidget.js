@@ -10,6 +10,7 @@ import smile from '../../public/assets/modal/smile.svg';
 import arrowDown from '../../public/assets/modal/arrow-down.svg';
 import closeCircleOutline from '../../public/assets/modal/close-circle-outline.svg';
 import recordingWave from '../../public/assets/modal/recording-wave.svg';
+import updateArrow from "../../public/assets/modal/update-arrow.png";
 
 import smileEmoji from './cogniwide-assets/smile.svg';
 import normalEmoji from './cogniwide-assets/normal.svg';
@@ -107,7 +108,7 @@ class ModalWidget extends React.Component {
                     <div className='title'>Chat - Awnic</div>
                     <div className='right-dropdown'>
                       <div className='right-title'>
-                        عربي
+                        EN
                         <img src={arrowDown} />
                       </div>
                       <div className='right-title-content'>
@@ -121,7 +122,7 @@ class ModalWidget extends React.Component {
                         >
                           En
                         </div>
-                        <div
+                        {/* <div
                           className={`${
                             this.props.lang === 'ar' ? 'active' : ''
                           }`}
@@ -130,9 +131,23 @@ class ModalWidget extends React.Component {
                           }}
                         >
                           Ar
-                        </div>
+                        </div> */}
                       </div>
                     </div>
+                    <div className="cog_chat-restart-btn" title="Reset Chat">
+                        <a
+                          className="cog_chat-restart"
+                          onClick={this.props.restartChat}
+                          style={{ width: "20px", cursor: "pointer" }}
+                        >
+                          <img
+                            src={updateArrow}
+                            alt="refresh"
+                            className="img-responsive"
+                            width="15"
+                          />
+                        </a>
+                      </div>
                   </div>
                   {this.props.showBack && (
                     <div className='back-container'>
@@ -288,7 +303,7 @@ class ModalWidget extends React.Component {
                         window.webkitSpeechRecognition) && (
                         <button
                           className='mic-chat'
-                          onClick={this.startRecord}
+                          onClick={this.props.startRecord}
                         ></button>
                       )}
                       <button
@@ -397,7 +412,7 @@ class ModalWidget extends React.Component {
                 </p>
                 <hr />
                 <p>
-                  Hello! My name is "Chatbot name", Awnic Virtual assistant. I
+                  Hello! My name is Hazza!, Awnic Virtual assistant. I
                   am here to help answer your questions on AWNIC.
                 </p>
               </div>

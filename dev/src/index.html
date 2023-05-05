@@ -15,17 +15,16 @@
   <script src="index.js" type="text/javascript"></script>
   <script>
 CogniAssistWidget.default.init({
-      selector: '#cogniassist',
-      initialPayload: '/default/welcome',
-      communicationMethod: 'socket',
-      botURL:'https://bots.cogniassist.com/6113ae78624f978214b20c2d/default/',
-      socketURL: 'https://bots.cogniassist.com/',
-      socketPath: '/6113ae78624f978214b20c2d/default/socket.io',
-      botName: 'CogniAssist',
-      botWelcomeMessage:
-        "Hey there, I'm here to assist you with any doubts you migth have.",
-      rememberUser: false,
-      widgetPosition: 'right',
+    botURL: "https://chatbot.awnic.com/63e61529c3cb9260758a479e/default/",
+    communicationMethod: "rest",
+    draggable: false,
+    headerType: "none",
+    initialPayload: "/default/welcome",
+    rememberUser: false,
+    selector: "#cogniassist",
+    socketPath: "/63e61529c3cb9260758a479e/default/socket.io",
+    socketURL: "https://192.168.210.12/",
+    widgetPosition: 'right',
     });
   </script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
