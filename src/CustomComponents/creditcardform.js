@@ -19,7 +19,7 @@ class CreditCardForm extends Component {
       slots: this.state,
     });
     const triggerString = '/' + this.props.intent + slotsString;
-    console.log(triggerString);
+    // console.log(triggerString);
     return triggerString;
   }
 
@@ -31,8 +31,8 @@ class CreditCardForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className='form'>
-        <div className='form-container'>
+      <form onSubmit={this.handleSubmit} className='cog_chat_form'>
+        <div className='cog_chat_form-container'>
           <div className='field-container'>
             <label htmlFor='name'>Name</label>
             <input

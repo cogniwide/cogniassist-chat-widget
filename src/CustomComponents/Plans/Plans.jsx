@@ -18,8 +18,6 @@ class Plans extends Component {
   }
 
   selectAndContinue(plan) {
-    console.log("Plan Name: ", plan.PLAN_NAME);
-    console.log(this.props);
     // this.props.parent.chooseReply(plan.PLAN_NAME, plan.PLAN_NAME);
   }
 

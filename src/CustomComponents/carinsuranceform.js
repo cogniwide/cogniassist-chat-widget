@@ -21,7 +21,7 @@ class CarInsuranceForm extends Component {
       slots: this.state,
     });
     const triggerString = '/' + this.props.intent + slotsString;
-    console.log(triggerString);
+    // console.log(triggerString);
     return triggerString;
   }
 
@@ -48,9 +48,9 @@ class CarInsuranceForm extends Component {
 
 
     return (
-      <form onSubmit={this.handleSubmit} className='form carinsurance-form'>
+      <form onSubmit={this.handleSubmit} className='cog_chat_form carinsurance-form'>
         {/* <div className='form-header'>Contact Information</div> */}
-        <div className='form-container carinsurance-form'>
+        <div className='cog_chat_form-container carinsurance-form'>
           <div className='field-container'>
             <label>Car Registration No</label>
             <input

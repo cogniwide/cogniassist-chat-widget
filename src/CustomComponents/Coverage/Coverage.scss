@@ -1,20 +1,20 @@
-.coverage-list{
+.cog_chat_coverage-list{
   // width: 100%;
-  .coverage-item {
+  .cog_chat_coverage-item {
     display: flex;
     align-items: center;
     padding: 0.2rem 0.8rem;
-    .icon-container {
-      .item-icon {
+    .cog_chat_icon-container {
+      .cog_chat_item-icon {
         width: 20px;
         height: 20px;
       }
     }
-    .check-item-icon {
+    .cog_chat_check-item-icon {
       width: 12px;
       height: 12px;
     }
-    .item-name {
+    .cog_chat_item-name {
       span {
         font-size: 10px;
         font-weight: 400;
@@ -24,7 +24,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      .limit {
+      .cog_chat_limit {
         color: #2e2b70;
       }
     }

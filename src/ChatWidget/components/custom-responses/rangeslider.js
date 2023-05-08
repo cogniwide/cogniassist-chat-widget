@@ -4,7 +4,7 @@ function RangeSlider(props) {
   const [rangeValue, setRangeValue] = useState(0);
   return (
     <div className='range-slider diplayalign'>
-      <div className='title'>Budget - {props.range.min}</div>
+      <div className='cog_chat_title'>Budget - {props.range.min}</div>
       <div className='range-wrapper'>
         <div className='minmax-wrapper'>
           <div>{props.range.min}</div>

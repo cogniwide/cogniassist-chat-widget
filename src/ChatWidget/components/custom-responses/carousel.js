@@ -20,7 +20,7 @@ function Carousel(props) {
                   setShowIndex(showIndex - 1);
                 }}
               >
-                <img src={righticon} className='swipe-left' />
+                <img src={righticon} className='swipe-left' alt='swipe-left' />
               </div>
               <div
                 className={`right-icon ${
@@ -30,10 +30,10 @@ function Carousel(props) {
                   setShowIndex(showIndex + 1);
                 }}
               >
-                <img src={righticon} className='swipe-right' />
+                <img src={righticon} className='swipe-right' alt='swipe-right' />
               </div>
               <div className='carousel-header'>
-                <div className='title'>{element.title}</div>
+                <div className='cog_chat_title'>{element.title}</div>
                 <div className='subtitle'>{element.subtitle}</div>
                 <div className='price-tag'>{element.data.amount}</div>
               </div>
@@ -47,7 +47,7 @@ function Carousel(props) {
                         <div className='c2'>{coverage.type}</div>
                         <div className='c3'>
                           {coverage.type === 'covered' ? (
-                            <img src={tick} />
+                            <img src={tick} alt='tick' />
                           ) : (
                             <input type='checkbox' />
                           )}

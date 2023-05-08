@@ -43,23 +43,23 @@ class Covers extends Component {
     const { plan, viewAllCovers } = this.state;
 
     return (
-      <div className="coverages">
+      <div className="cog_chat_coverages">
         <p>Coverages</p>
         {plan.length > 0 &&
           plan.map((cover) => (
             <Coverage key={cover.COVER_CODE} coverage={cover} />
           ))}
-        <div className="view-more-btn-cont">
+        <div className="cog_chat_view-more-btn-cont">
           {viewAllCovers ? (
             <button
-              className="view-more-btn"
+              className="cog_chat_view-more-btn"
               onClick={this.viewAllCovers.bind(this)}
             >
               view more coverages
             </button>
           ) : (
             <button
-              className="view-more-btn"
+              className="cog_chat_view-more-btn"
               onClick={this.hideMoreCovers.bind(this)}
             >
               hide more coverages

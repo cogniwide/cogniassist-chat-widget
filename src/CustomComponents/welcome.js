@@ -18,7 +18,6 @@ class WelcomeForm extends Component {
       slots: this.state,
     });
     const triggerString = '/' + this.props.intent + slotsString;
-    console.log(triggerString);
     return triggerString;
   }
 
@@ -30,9 +29,9 @@ class WelcomeForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className='form contact-form'>
+      <form onSubmit={this.handleSubmit} className='cog_chat_form contact-form'>
         {/* <div className='form-header'>Contact Information</div> */}
-        <div className='form-container contact-form'>
+        <div className='cog_chat_form-container contact-form'>
           <div className='field-container'>
             <label>Full Name</label>
             <input

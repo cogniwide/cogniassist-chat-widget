@@ -23,7 +23,7 @@ class CheckboxContainer extends Component {
     this.setState((prevState) => ({
       checkedItems: prevState.checkedItems.set(item, isChecked),
     }));
-    console.log(this.state);
+    // console.log(this.state);
   }
 
   findCheckboxItem(id) {

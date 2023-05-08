@@ -123,7 +123,7 @@ class ChatWidget extends Component {
 
         socket.on('disconnect', (reason) => {
           // eslint-disable-next-line no-console
-          console.log(reason);
+          // console.log(reason);
           if (reason !== 'io client disconnect') {
             console.log(reason);
           }
@@ -153,7 +153,7 @@ class ChatWidget extends Component {
 
       // check that session_id is confirmed
       if (!sessionId) return;
-      console.log('sending init payload', sessionId);
+      // console.log('sending init payload', sessionId);
       socket.emit('user_uttered', {
         message: initialPayload,
         lang: this.state.lang,
@@ -239,7 +239,7 @@ class ChatWidget extends Component {
       recognition.onresult = (e) => {
         recognition.stop();
         $('.mic-chat').css({ opacity: 0.6 });
-        console.log(e.results);
+        // console.log(e.results);
         // set text
         setTimeout(this.sendText(e.results[0][0].transcript), 1000);
       };
@@ -257,7 +257,7 @@ class ChatWidget extends Component {
 
     // $('.cwc-left').hide();
     // $('.cwc-right').hide();
-    // $('.panel-footer').show();
+    // $('.cog_chat_panel-footer').show();
     // $('.cwc-left.initial_show').show(450);
 
     // $('.close').click(() => {
@@ -285,7 +285,7 @@ class ChatWidget extends Component {
 
     // $('.see_all').click(function() {
     //   $('.cwc-left,.cwc-right').show(1000);
-    //   $('.panel-footer').show(2000);
+    //   $('.cog_chat_panel-footer').show(2000);
     // });
 
     // $('.panel-body').scroll(function() {
@@ -615,7 +615,7 @@ class ChatWidget extends Component {
   }
 
   renderResponse(responses) {
-    console.log(responses);
+    // console.log(responses);
     let messages = [];
     let quick_replies = [];
     let recommendations = [];
@@ -682,8 +682,8 @@ class ChatWidget extends Component {
         uiIndex = 0;
       }
       if (e.end) {
-        $('.panel-body .banner, .panel-body ul.chat, .panel-footer').hide();
-        $('.panel-body .feedback').show();
+        $('.cog_chat_panel-body .cog_chat_banner, .cog_chat_panel-body ul.cog_chat, .cog_chat_panel-footer').hide();
+        $('.cog_chat_panel-body .cog_chat_feedback').show();
       }
       let botIcon = this.props.botAvatar;
       let userIcon = this.props.userAvatar;
@@ -725,7 +725,7 @@ class ChatWidget extends Component {
     if (this.state.userMessage.length) {
       className += ' send-active';
     }
-    console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^', this.props.widgetPosition);
+    // console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^', this.props.widgetPosition);
     const widgetPosition =
       this.props.widgetPosition == 'right' ? '_right' : '_left';
     let parentClass = '_cog_chat ' + widgetPosition;
@@ -736,7 +736,7 @@ class ChatWidget extends Component {
       <div className={parentClass}>
         {this.state.opened == false && (
           <div
-            className='chat_btn_container'
+            className='cog_chat_btn_container'
             onClick={() => {
               this.props.template === 'Base'
                 ? this.setState({ opened: true, unread: 0 })
@@ -747,16 +747,16 @@ class ChatWidget extends Component {
                   });
             }}
           >
-            <div className='chatbot-icon'>
-              <img src={this.props.launcherIcon} className='launcher_icon' />
+            <div className='cog_chat_chatbot-icon'>
+              <img src={this.props.launcherIcon} className='cog_chat_launcher_icon' alt='launcher_icon' />
               {this.state.unread > 0 && (
-                <span className='badge-msg unreadCount'>
+                <span className='cog_chat_badge-msg unreadCount'>
                   {this.state.unread}
                 </span>
               )}
             </div>
             {this.props.template !== 'Modal' && this.state.opened == false && (
-              <div className='chat-heading arrow-bottom'>
+              <div className='cog_chat_chat-heading arrow-bottom'>
                 <h5>{this.props.botWelcomeMessage}</h5>
               </div>
             )}
@@ -766,12 +766,12 @@ class ChatWidget extends Component {
         {this.state.show_recommendation &&
           this.state.recommendations.length > 0 &&
           this.state.opened && (
-            <div className='recommendations_container'>
+            <div className='cog_chat_recommendations_container'>
               <div className='full_wrapper'>
-                <div className='recommendations_header'>
-                  <div className='title'>Related Information</div>
+                <div className='cog_chat_recommendations_header'>
+                  <div className='cog_chat_title'>Related Information</div>
                   <button
-                    className='_btn_close'
+                    className='cog_chat_btn_close'
                     onClick={() => {
                       this.toggleRecommendation(false);
                     }}
@@ -779,20 +779,20 @@ class ChatWidget extends Component {
                     X
                   </button>
                 </div>
-                <div className='recommendation_body'>
+                <div className='cog_chat_recommendation_body'>
                   {this.state.recommendations.map((recommendation, idx) => (
                     <div
-                      className={'recommendation_item ' + recommendation.type}
+                      className={'cog_chat_recommendation_item ' + recommendation.type}
                       key={idx}
                       onClick={() => {
                         this.recommendationClicked(recommendation);
                       }}
                     >
-                      <div className='_icon'>
+                      <div className='cog_chat_icon'>
                         <div className='_image'></div>
                       </div>
                       <p
-                        className='recom_text'
+                        className='cog_chat_recom_text'
                         dangerouslySetInnerHTML={{
                           __html: recommendation.title,
                         }}
@@ -810,11 +810,12 @@ class ChatWidget extends Component {
               this.state.opened ? 'chat_box_active' : ''
             }`}
           >
-            <div className='_full_container_wrapper'>
-              <div className='panel-heading bg-primary'>
-                <span className='text-white font-weight-bold'>
+            <div className='cog_chat_full_container_wrapper'>
+              <div className='cog_chat_panel-heading bg-primary'>
+                <span className='cog_chat_text-white font-weight-bold'>
                   <img
                     className='chat-logoheader'
+                    alt='chat-logoheader'
                     src={this.props.headerLogo}
                     width='33'
                   />{' '}
@@ -862,20 +863,20 @@ class ChatWidget extends Component {
                   </a>
                 </div>
               </div>
-              <div className='panel-body'>
+              <div className='cog_chat_panel-body'>
                 {this.props.carouselItems.length > 0 ? (
                   <CarouselWrapper
                     parent={this}
                     items={this.props.carouselItems}
                   />
                 ) : (
-                  <div className='banner' style={bannerStyle}>
+                  <div className='cog_chat_banner' style={bannerStyle}>
                     <h3>{this.props.bannerText}</h3>
                   </div>
                 )}
 
                 {this.state.showFeedback == false && (
-                  <ul className='chat'>
+                  <ul className='cog_chat'>
                     {chat}
                     <li
                       className='loading'
@@ -883,9 +884,9 @@ class ChatWidget extends Component {
                         display: this.state.loading ? 'block' : 'none',
                       }}
                     >
-                      <div className='adminchatlist'>
-                        <div className='chat-body bubble clearfix'>
-                          <img src='https://cogniwide.github.io/cogniassist-chat-widget/public/assets/tenor.gif' />
+                      <div className='cog_chat_adminchatlist'>
+                        <div className='cog_chat_chat-body bubble clearfix'>
+                          <img src='https://cogniwide.github.io/cogniassist-chat-widget/public/assets/tenor.gif' alt='tenor-gif' />
                         </div>
                       </div>
                     </li>
@@ -893,33 +894,33 @@ class ChatWidget extends Component {
                 )}
 
                 {this.state.showFeedback && (
-                  <div className='feedback'>
+                  <div className='cog_chat_feedback'>
                     Feedback
-                    <ul className='feedback-emoji' onClick={this.closeWindow}>
+                    <ul className='cog_chat_feedback-emoji' onClick={this.closeWindow}>
                       <li data-name='worst'>
-                        <img src={worstEmoji} />
+                        <img src={worstEmoji} alt='worst-emoji' />
                         <p> bad </p>
                       </li>
                       <li data-name='normal'>
-                        <img src={normalEmoji} />
+                        <img src={normalEmoji} alt='normal-emoji' />
                         <p> Satisfied </p>
                       </li>
                       <li data-name='smile'>
-                        <img src={smileEmoji} />
+                        <img src={smileEmoji} alt='smile-emoji'/>
                         <p> awesome </p>
                       </li>
                     </ul>
                   </div>
                 )}
 
-                <div className='suggestion_box'>
-                  <div className='quick-replies'>
+                <div className='cog_chat_suggestion_box'>
+                  <div className='cog_chat_quick-replies'>
                     {this.state.quick_replies.map((button, index) => (
                       <button
                         type='button'
                         id='quick_reply_btn'
                         key={index}
-                        className='cwc-borderbtn see_all'
+                        className='cog_chat_cwc-borderbtn see_all'
                         onClick={() =>
                           this.chooseReply(button.title, button.payload)
                         }
@@ -938,8 +939,8 @@ class ChatWidget extends Component {
                   {' '}
                 </div>
               </div>
-              <div className='panel-footer'>
-                <div id='composer' className='composer position-relative'>
+              <div className='cog_chat_panel-footer'>
+                <div id='composer' className='cog_chat_composer position-relative'>
                   <textarea
                     value={this.state.userMessage}
                     onKeyUp={this.handleSubmit}
@@ -963,7 +964,7 @@ class ChatWidget extends Component {
                     ></button>
                   )}
                 </div>
-                <div className='power-by'>
+                <div className='cog_chat_power-by'>
                   <span>
                     Powered by <a href='#'>Cogniwide</a>
                   </span>

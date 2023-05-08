@@ -96,7 +96,7 @@ class ChatBubble extends Component {
   }
 
   handleFiles() {
-    console.log(this.state);
+    // console.log(this.state);
     if (this.state.files.length > 0) {
       this.setState({
         uploading: true,
@@ -150,7 +150,7 @@ class ChatBubble extends Component {
                 />
               </span>
             )}
-            <div className='chat-body bubble clearfix'>
+            <div className='cog_chat_chat-body bubble clearfix'>
               <p>
                 {typeof this.props.message.text == 'string' &&
                 this.props.message.text.startsWith('/')
@@ -165,7 +165,7 @@ class ChatBubble extends Component {
     else if ('customComponent' in this.props.message) {
       return (
         <li className='cwc-left'>
-          <div className='adminchatlist'>
+          <div className='cog_chat_adminchatlist'>
             <span className='avatar_wrapper mr-2'>
               {this.props.avatar && (
                 <img
@@ -175,7 +175,7 @@ class ChatBubble extends Component {
                 />
               )}
             </span>
-            <div className='chat-body bubble clearfix flex-column'>
+            <div className='cog_chat_chat-body bubble clearfix flex-column'>
               <CustomComponentWrapper
                 formSubmit={this.formSubmit}
                 customComponent={this.props.message.customComponent}
@@ -187,7 +187,7 @@ class ChatBubble extends Component {
     } else
       return (
         <li className='cwc-left'>
-          <div className='adminchatlist'>
+          <div className='cog_chat_adminchatlist'>
             <span className='avatar_wrapper mr-2'>
               {this.props.avatar && (
                 <img
@@ -197,7 +197,7 @@ class ChatBubble extends Component {
                 />
               )}
             </span>
-            <div className='chat-body bubble clearfix flex-column'>
+            <div className='cog_chat_chat-body bubble clearfix flex-column'>
               {'text' in this.props.message && (
                 <div className='content'>
                   <p
@@ -265,7 +265,7 @@ class ChatBubble extends Component {
                   <img
                     src={this.props.message.image}
                     className='responseImg'
-                    alt=''
+                    alt='response-img'
                     width='250'
                     height='200'
                   />
@@ -287,7 +287,7 @@ class ChatBubble extends Component {
                       type='button'
                       key={index}
                       id='quick_reply_btn'
-                      className='cwc-borderbtn see_all'
+                      className='cog_chat_cwc-borderbtn see_all'
                       data={button.payload}
                     >
                       {button.title}

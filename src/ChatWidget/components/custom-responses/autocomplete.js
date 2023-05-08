@@ -9,7 +9,7 @@ function AutoComplete(props) {
   const [allOptions, setAllOptions] = useState((props && props.options) || []);
 
   function searchOption(val) {
-    console.log(val);
+    // console.log(val);
     if (val !== '') {
       let tempOpt = [...allOptions];
       tempOpt = tempOpt.filter((opt) => {
@@ -47,6 +47,7 @@ function AutoComplete(props) {
         <img
           src={arrowDown}
           className='input-arrowdown'
+          alt='input-arrowdown'
           onClick={(e) => {
             setOptions(allOptions);
             setShowOptions(true);

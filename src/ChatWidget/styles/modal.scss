@@ -1,5 +1,5 @@
 /* The Modal (background) */
-.modal {
+.cog_chat_modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -18,19 +18,22 @@
 }
 
 /* Modal Content */
-.modal-content {
+.cog_chat_modal-content {
   background-color: #fefefe;
   margin: auto;
   //padding: 10px;
   border: 1px solid #888;
-  width: 80%;
-
-  min-height: 550px;
+  // width: 80%;
+  // min-height: 550px;
+  // added to handle the height and width while resizing
+  width: 350px;
+  height: 550px;
+  // added to handle the height and width while resizing
   border-radius: 20px;
   display: flex;
   flex-direction: row;
   float: 10;
-  .panel-body {
+  .cog_chat_panel-body {
     background-color: #fff !important;
     max-height: 400px;
     // height: auto !important;
@@ -92,7 +95,7 @@
           }
         }
       }
-      .chat-body {
+      .cog_chat_chat-body {
         .responseImg {
           width: 220px;
           height: 180px;
@@ -119,11 +122,11 @@
         }
       }
     }
-    .cwc-borderbtn {
+    .cog_chat_cwc-borderbtn {
       font-size: 12px !important;
     }
     .contact-form {
-      .form-container {
+      .cog_chat_form-container {
         grid-template-areas: 'name name' 'number number' 'expiration expiration';
       }
       button {
@@ -139,7 +142,7 @@
       .field-container {
         margin-bottom: 10px;
       }
-      .form-container {
+      .cog_chat_form-container {
         grid-template-areas: 'name name' 'number number' 'expiration expiration' 'chase chase' 'engine engine' 'mortgage mortgage';
       }
       button {
@@ -190,7 +193,7 @@
         }
       }
     }
-    .form {
+    .cog_chat_form {
       label {
         // font-family: 'cogni-mont-regular' !important;
         font-size: 12px;
@@ -257,7 +260,7 @@
       color: var(--white) !important;
     }
   }
-  .panel-footer {
+  .cog_chat_panel-footer {
     // position: absolute !important;
     // bottom: 0;
     border-top: 0px !important;
@@ -268,7 +271,7 @@
       padding: 0 20px;
     }
   }
-  .quick-replies #quick_reply_btn {
+  .cog_chat_quick-replies #quick_reply_btn {
     background-color: var(--white) !important;
     color: var(--modal_primary_text);
     border: 1px solid var(--modal_primary_text) !important;
@@ -317,20 +320,20 @@
     padding: 8px !important;
   }
 }
-.modal-content.minwidth {
+.cog_chat_modal-content.minwidth {
   width: 65%;
 }
-.modal-content.confirmWidth {
+.cog_chat_modal-content.confirmWidth {
   width: 450px;
   min-height: 385px;
   height: 385px !important;
 }
-.modal-left-content {
+.cog_chat_modal-left-content {
   display: flex;
   flex-direction: column;
   flex: 6;
 
-  .header {
+  .cog_chat_header {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -338,7 +341,7 @@
     padding: 15px 0;
     border-bottom: 1px solid #ccc;
     margin: 0 15px;
-    .date-wrapper {
+    .cog_chat_date-wrapper {
       color: #212121;
       font-size: 10px;
       display: flex;
@@ -349,16 +352,16 @@
         cursor: pointer;
       }
     }
-    .title {
+    .cog_chat_title {
       color: var(--modal_primary_text);
       font-size: 12px;
       font-weight: bold;
       text-transform: uppercase;
     }
-    .right-dropdown {
+    .cog_chat_right-dropdown {
       position: relative;
     }
-    .right-title {
+    .cog_chat_right-title {
       color: var(--modal_primary_text);
       font-size: 14px;
       display: flex;
@@ -370,7 +373,7 @@
         cursor: pointer;
       }
     }
-    .right-title-content {
+    .cog_chat_right-title-content {
       position: absolute;
       background-color: #f9f9f9;
       min-width: 60px;
@@ -395,11 +398,11 @@
       }
     }
 
-    .right-dropdown:hover .right-title-content {
+    .cog_chat_right-dropdown:hover .cog_chat_right-title-content {
       display: block;
     }
   }
-  .close-container {
+  .cog_chat_close-container {
     position: relative;
     top: -15px;
     left: 5px;
@@ -409,7 +412,7 @@
     justify-content: flex-end;
   }
 }
-.modal-right-content {
+.cog_chat_modal-right-content {
   display: flex;
   flex-direction: column;
   flex: 4;
@@ -417,14 +420,14 @@
   border-left: 1px solid #ccc;
   background: #f4f2ff;
   border-radius: 0px 15px 15px 0px;
-  .header-text {
+  .cog_chat_header-text {
     color: #212121;
     text-transform: uppercase;
     font-size: 10px;
     font-weight: bold;
     margin-bottom: 10px;
   }
-  .close-container {
+  .cog_chat_close-container {
     position: relative;
     top: -30px;
     left: 30px;
@@ -434,12 +437,12 @@
     justify-content: flex-end;
   }
 }
-.modal-content-right {
+.cog_chat_modal-content-right {
   max-height: 400px;
   overflow: auto;
   padding-right: 5px;
 }
-.modal-chat-content {
+.cog_chat_modal-chat-content {
   position: relative;
   height: 100%;
   overflow: auto;
@@ -476,7 +479,7 @@
 }
 
 /* The Close Button */
-.close-container {
+.cog_chat_close-container {
   position: relative;
   top: 0px;
   left: 40px;
@@ -485,7 +488,7 @@
   align-items: center;
   justify-content: flex-end;
 }
-.close-wrapper {
+.cog_chat_close-wrapper {
   width: 60px;
   height: 30px;
   background-color: var(--modal_primary_text);
@@ -528,7 +531,7 @@
   align-items: center;
   width: 100%;
   padding: 0 40px;
-  .close-container {
+  .cog_chat_close-container {
     display: flex;
     justify-content: flex-end;
     width: 100%;
@@ -582,322 +585,322 @@
 
 //----------Nice scroll
 
-.modal-content-right::-webkit-scrollbar-track {
+.cog_chat_modal-content-right::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
 }
 
-.modal-content-right::-webkit-scrollbar {
+.cog_chat_modal-content-right::-webkit-scrollbar {
   width: 4px;
 }
 
-.modal-content-right::-webkit-scrollbar-thumb {
+.cog_chat_modal-content-right::-webkit-scrollbar-thumb {
   background-color: #b8b8b8;
 }
 
 @media (min-width: 320px) {
-  .modal-content {
+  .cog_chat_modal-content {
     margin: 10px;
     width: 350px;
     flex-direction: column;
-    .panel-body {
+    .cog_chat_panel-body {
       min-height: 350px;
       max-height: 350px;
     }
   }
-  .modal-left-content.flex6 {
+  .cog_chat_modal-left-content.flex6 {
     flex: 6;
   }
-  .modal-left-content.flex0 {
+  .cog_chat_modal-left-content.flex0 {
     flex: 0;
   }
-  .panel-body.hide-body {
+  .cog_chat_panel-body.hide-body {
     display: none !important;
   }
-  .panel-footer.hide-body {
+  .cog_chat_panel-footer.hide-body {
     display: none !important;
   }
-  .modal-content.minwidth {
+  .cog_chat_modal-content.minwidth {
     width: 100%;
   }
   .confirm-box {
     padding: 0 15px;
-    .close-container {
+    .cog_chat_close-container {
       width: 80%;
     }
   }
 
-  .modal-chat-content {
+  .cog_chat_modal-chat-content {
     height: 90%;
   }
-  .modal-left-content {
+  .cog_chat_modal-left-content {
     position: relative;
-    .close-container {
+    .cog_chat_close-container {
       position: absolute;
       right: 0;
       display: flex;
     }
-    .panel-footer {
+    .cog_chat_panel-footer {
       margin-bottom: 0 !important;
-      .composer textarea {
+      .cog_chat_composer textarea {
         height: 55px !important;
       }
     }
   }
-  .modal-right-content {
+  .cog_chat_modal-right-content {
     padding: 15px;
     border-radius: 0px 0px 15px 15px;
-    .close-container {
+    .cog_chat_close-container {
       display: none;
     }
   }
 }
 @media (min-width: 481px) {
-  .modal-content {
+  .cog_chat_modal-content {
     margin: 10px;
     width: 350px;
     flex-direction: column;
   }
-  .modal-left-content.flex6 {
+  .cog_chat_modal-left-content.flex6 {
     flex: 6;
   }
-  .modal-left-content.flex0 {
+  .cog_chat_modal-left-content.flex0 {
     flex: 0;
   }
-  .modal-content.minwidth {
+  .cog_chat_modal-content.minwidth {
     width: 100%;
   }
   .confirm-box {
     padding: 0 15px;
-    .close-container {
+    .cog_chat_close-container {
       width: 80%;
     }
   }
 
-  .modal-chat-content {
+  .cog_chat_modal-chat-content {
     height: 90%;
   }
-  .modal-left-content {
+  .cog_chat_modal-left-content {
     position: relative;
-    .close-container {
+    .cog_chat_close-container {
       position: absolute;
       right: 0;
       display: flex;
     }
   }
-  .panel-body.hide-body {
+  .cog_chat_panel-body.hide-body {
     display: none !important;
   }
-  .panel-footer.hide-body {
+  .cog_chat_panel-footer.hide-body {
     display: none !important;
   }
-  .modal-right-content {
+  .cog_chat_modal-right-content {
     padding: 15px;
     border-radius: 0px 0px 15px 15px;
-    .close-container {
+    .cog_chat_close-container {
       display: none;
     }
   }
 }
 @media (min-width: 641px) {
-  .modal-content {
+  .cog_chat_modal-content {
     margin: 10px;
     width: 350px;
     flex-direction: column;
   }
-  .modal-left-content.flex6 {
+  .cog_chat_modal-left-content.flex6 {
     flex: 6;
   }
-  .modal-left-content.flex0 {
+  .cog_chat_modal-left-content.flex0 {
     flex: 0;
   }
-  .modal-content.minwidth {
+  .cog_chat_modal-content.minwidth {
     width: 65%;
   }
   .confirm-box {
     padding: 0 15px;
-    .close-container {
+    .cog_chat_close-container {
       width: 80%;
     }
   }
 
-  .modal-chat-content {
+  .cog_chat_modal-chat-content {
     height: 90%;
   }
-  .modal-left-content {
+  .cog_chat_modal-left-content {
     position: relative;
-    .close-container {
+    .cog_chat_close-container {
       position: absolute;
       right: 0;
       display: flex;
     }
   }
-  .panel-body.hide-body {
+  .cog_chat_panel-body.hide-body {
     display: none !important;
   }
-  .panel-footer.hide-body {
+  .cog_chat_panel-footer.hide-body {
     display: none !important;
   }
-  .modal-right-content {
+  .cog_chat_modal-right-content {
     padding: 15px;
     border-radius: 0px 0px 15px 15px;
-    .close-container {
+    .cog_chat_close-container {
       display: none;
     }
   }
 }
 @media (min-width: 768px) {
-  .modal-content {
+  .cog_chat_modal-content {
     margin: 10px;
     width: 95%;
     flex-direction: row;
-    .panel-body {
+    .cog_chat_panel-body {
       min-height: 78%;
       max-height: 80%;
     }
   }
-  .modal-left-content.flex6 {
+  .cog_chat_modal-left-content.flex6 {
     flex: 6;
   }
-  .modal-left-content.flex0 {
+  .cog_chat_modal-left-content.flex0 {
     flex: 6;
   }
-  .modal-content.minwidth {
+  .cog_chat_modal-content.minwidth {
     width: 65%;
   }
   .confirm-box {
     padding: 0 15px;
-    .close-container {
+    .cog_chat_close-container {
       width: 80%;
     }
   }
 
-  .modal-chat-content {
+  .cog_chat_modal-chat-content {
     height: 100%;
   }
-  .modal-left-content {
+  .cog_chat_modal-left-content {
     position: relative;
-    .close-container {
+    .cog_chat_close-container {
       position: absolute;
       right: 0;
       display: none;
     }
   }
-  .panel-body.hide-body {
+  .cog_chat_panel-body.hide-body {
     display: flex !important;
   }
-  .panel-footer.hide-body {
+  .cog_chat_panel-footer.hide-body {
     display: block !important;
   }
-  .panel-footer {
+  .cog_chat_panel-footer {
     position: absolute !important;
     bottom: 0;
   }
-  .modal-right-content {
+  .cog_chat_modal-right-content {
     padding: 15px;
-    .close-container {
+    .cog_chat_close-container {
       display: flex;
     }
   }
 }
 @media (min-width: 961px) {
-  .modal-content {
+  .cog_chat_modal-content {
     margin: 10px;
     width: 95%;
     flex-direction: row;
   }
-  .modal-content.minwidth {
+  .cog_chat_modal-content.minwidth {
     width: 65%;
   }
   .confirm-box {
     padding: 0 15px;
-    .close-container {
+    .cog_chat_close-container {
       width: 80%;
     }
   }
 
-  .modal-chat-content {
+  .cog_chat_modal-chat-content {
     height: 100%;
   }
-  .modal-left-content {
+  .cog_chat_modal-left-content {
     position: relative;
-    .close-container {
+    .cog_chat_close-container {
       position: absolute;
       right: 0;
       display: none;
     }
   }
-  .modal-right-content {
+  .cog_chat_modal-right-content {
     padding: 15px;
-    .close-container {
+    .cog_chat_close-container {
       display: flex;
     }
   }
 }
 @media (min-width: 1025px) {
-  .modal-content {
+  .cog_chat_modal-content {
     margin: 10px;
     width: 95%;
     flex-direction: row;
   }
-  .modal-content.minwidth {
+  .cog_chat_modal-content.minwidth {
     width: 65%;
   }
   .confirm-box {
     padding: 0 15px;
-    .close-container {
+    .cog_chat_close-container {
       width: 80%;
     }
   }
 
-  .modal-chat-content {
+  .cog_chat_modal-chat-content {
     height: 100%;
   }
-  .modal-left-content {
+  .cog_chat_modal-left-content {
     position: relative;
-    .close-container {
+    .cog_chat_close-container {
       position: absolute;
       right: 0;
       display: none;
     }
   }
-  .modal-right-content {
+  .cog_chat_modal-right-content {
     padding: 15px;
-    .close-container {
+    .cog_chat_close-container {
       display: flex;
     }
   }
 }
 @media (min-width: 1281px) {
-  .modal-content {
+  .cog_chat_modal-content {
     margin: 10px;
     width: 75%;
     height: 75%;
     flex-direction: row;
   }
-  .modal-content.minwidth {
+  .cog_chat_modal-content.minwidth {
     width: 65%;
   }
   .confirm-box {
     padding: 0 15px;
-    .close-container {
+    .cog_chat_close-container {
       width: 80%;
     }
   }
 
-  .modal-chat-content {
+  .cog_chat_modal-chat-content {
     height: 100%;
   }
-  .modal-left-content {
+  .cog_chat_modal-left-content {
     position: relative;
-    .close-container {
+    .cog_chat_close-container {
       position: absolute;
       right: 0;
       display: none;
     }
   }
-  .modal-right-content {
+  .cog_chat_modal-right-content {
     padding: 15px;
-    .close-container {
+    .cog_chat_close-container {
       display: flex;
     }
   }

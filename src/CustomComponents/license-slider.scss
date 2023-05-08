@@ -1,4 +1,4 @@
-.slider {
+.cog_chat_slider {
     width: 480px;
     padding: 2rem;
     margin: 5rem auto;
@@ -8,13 +8,13 @@
     border-radius: 0.2rem;
   }
   
-  .range-label {
+  .cog_chat_range-label {
     font-weight: bold;
     font-size: 15px;
     display: block;
   }
   
-  .progress-bar {
+  .cog_chat_progress-bar {
     width: 100%;
     height: 12px;
     position: relative;
@@ -22,12 +22,12 @@
     border: none;
   }
   
-  .progress-bar::-webkit-progress-bar {
+  .cog_chat_progress-bar::-webkit-progress-bar {
     background-color: #cecece;
     border-radius: 1rem;
   }
   
-  .progress-bar::-webkit-progress-value {
+  .cog_chat_progress-bar::-webkit-progress-value {
     background-color: #2e2b70;
     border-radius: 1rem;  
     /* animation: progressBar 1.5s ease-in-out;
@@ -35,7 +35,7 @@
     animation-fill-mode: both; */
   }
   
-  .range {
+  .cog_chat_range {
     -webkit-appearance: none;
     appearance: none;
     background-color: #d6d6d600;
@@ -48,7 +48,7 @@
     top: 0.4rem;
   }
   
-  .range::-webkit-slider-thumb {
+  .cog_chat_range::-webkit-slider-thumb {
     -webkit-appearance: none;
     height: 12px;
     width: 12px;
@@ -63,19 +63,19 @@
     animation-fill-mode: both; */
   }
   
-  .range::-webkit-slider-runnable-track {
+  .cog_chat_range::-webkit-slider-runnable-track {
     -webkit-appearance: none;
     background: #c0c0c000;
     height: 10px;
     border-radius: 1rem;
   }
   
-  .range-tags {
+  .cog_chat_range-tags {
     display: flex;
     justify-content: space-between;
   }
   
-  .symbol {
+  .cog_chat_symbol {
     color: #cecece;
     font-weight: bold;
     padding: 0 2px;
@@ -84,25 +84,25 @@
     z-index: -10;
   }
   
-  .number {
+  .cog_chat_number {
     color: gray;
     font-weight: bold;
     font-weight: 10px;
   }
   
-  .text {
+  .cog_chat_text {
     font-weight: bold;
     padding-top: 0.6rem;
     font-size: 14px;
     color: black;
   }
   
-  .dynmic-blk {
+  .cog_chat_dynmic-blk {
     margin-top: 4rem;
     text-align: center;
   }
   
-  .without-accident {
+  .cog_chat_without-accident {
     display: block;
   }
   
@@ -120,7 +120,7 @@
     font-weight: bold;
   }
   
-  .btn {
+  .cog_chat_continue_btn {
     padding: 0.8rem 2rem;
     background-color: #2e2b70;
     color: white;

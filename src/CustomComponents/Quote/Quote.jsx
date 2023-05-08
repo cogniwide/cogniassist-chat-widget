@@ -14,15 +14,15 @@ class Quote extends Component {
   }
 
   componentDidMount() {
-    console.log("FROM QUOTE: ", this.props);
+    // console.log("FROM QUOTE: ", this.props);
   }
 
   render() {
     const { quote } = this.state;
 
     return (
-      <div className="quote">
-        <div className="heading">
+      <div className="cog_chat_quote">
+        <div className="cog_chat_heading">
           <p>We found the best plans for you</p>
           <p>{quote.plans.VEH_MODEL_NAME}</p>
           <p>Quote Reference No: {quote.quotation_no}</p>

@@ -73,7 +73,7 @@ class ChatWidget extends Component {
 
         // When session_confirm is received from the server:
         socket.on('session_confirm', (sessionObject) => {
-          console.log('session confirmed');
+          // console.log('session confirmed');
 
           const remoteId =
             sessionObject && sessionObject.session_id
@@ -81,9 +81,9 @@ class ChatWidget extends Component {
               : sessionObject;
 
           // eslint-disable-next-line no-console
-          console.log(
-            `session_confirm:${socket.socket.id} session_id:${remoteId}`
-          );
+          // console.log(
+          //   `session_confirm:${socket.socket.id} session_id:${remoteId}`
+          // );
 
           /*
           Check if the session_id is consistent with the server
@@ -99,9 +99,9 @@ class ChatWidget extends Component {
 
         socket.on('disconnect', (reason) => {
           // eslint-disable-next-line no-console
-          console.log(reason);
+          // console.log(reason);
           if (reason !== 'io client disconnect') {
-            console.log(reason);
+            // console.log(reason);
           }
         });
       }
@@ -128,7 +128,7 @@ class ChatWidget extends Component {
 
       // check that session_id is confirmed
       if (!sessionId) return;
-      console.log('sending init payload', sessionId);
+      // console.log('sending init payload', sessionId);
       socket.emit('user_uttered', {
         message: initialPayload,
         customData,
@@ -251,7 +251,7 @@ class ChatWidget extends Component {
         recognition.onresult = (e) => {
           recognition.stop();
           $('.mic-chat').css({ opacity: 0.6 });
-          console.log(e.results);
+          // console.log(e.results);
           // set text
           setTimeout(this.sendText(e.results[0][0].transcript), 1000);
         };
@@ -567,7 +567,7 @@ class ChatWidget extends Component {
   }
 
   renderResponse(responses) {
-    console.log(responses);
+    // console.log(responses);
     let messages = [];
     let quick_replies = [];
     let recommendations = [];
@@ -667,7 +667,7 @@ class ChatWidget extends Component {
     if (this.state.userMessage.length) {
       className += ' send-active';
     }
-    console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^', this.props.widgetPosition);
+    // console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^', this.props.widgetPosition);
     const widgetPosition =
       this.props.widgetPosition == 'right' ? '_right' : '_left';
     let parentClass = '_cog_chat ' + widgetPosition;
@@ -678,7 +678,7 @@ class ChatWidget extends Component {
       <div className={parentClass}>
         <div className='chat_btn_container'>
           <div className='chatbot-icon'>
-            <img src={this.props.launcherIcon} className='launcher_icon' />
+            <img src={this.props.launcherIcon} className='launcher_icon' alt='launcher_icon' />
             {this.state.unread > 0 && (
               <span className='badge-msg unreadCount'>{this.state.unread}</span>
             )}
@@ -696,7 +696,7 @@ class ChatWidget extends Component {
             <div className='recommendations_container'>
               <div className='full_wrapper'>
                 <div className='recommendations_header'>
-                  <div className='title'>Related Information</div>
+                  <div className='cog_chat_title'>Related Information</div>
                   <button
                     className='_btn_close'
                     onClick={() => {
@@ -737,6 +737,7 @@ class ChatWidget extends Component {
               <span className='text-white font-weight-bold'>
                 <img
                   className='chat-logoheader'
+                  alt='chat-logoheader'
                   src={this.props.headerLogo}
                   width='33'
                 />{' '}
@@ -800,7 +801,7 @@ class ChatWidget extends Component {
                   >
                     <div className='adminchatlist'>
                       <div className='chat-body bubble clearfix'>
-                        <img src='https://cogniwide.github.io/cogniassist-chat-widget/public/assets/tenor.gif' />
+                        <img src='https://cogniwide.github.io/cogniassist-chat-widget/public/assets/tenor.gif' alt='tenor.gif' />
                       </div>
                     </div>
                   </li>
@@ -812,15 +813,15 @@ class ChatWidget extends Component {
                   Feedback
                   <ul className='feedback-emoji'>
                     <li data-name='worst'>
-                      <img src={worstEmoji} />
+                      <img src={worstEmoji} alt='worst-emoji'/>
                       <p> bad </p>
                     </li>
                     <li data-name='normal'>
-                      <img src={normalEmoji} />
+                      <img src={normalEmoji} alt='normal-emoji' />
                       <p> Satisfied </p>
                     </li>
                     <li data-name='smile'>
-                      <img src={smileEmoji} />
+                      <img src={smileEmoji} alt='smile-emoji' />
                       <p> awesome </p>
                     </li>
                   </ul>

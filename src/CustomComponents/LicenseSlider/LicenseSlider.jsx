@@ -23,12 +23,12 @@ class LicenseSlider extends Component {
       slots: this.state,
     });
     const triggerString = '/' + this.props.intent + slotsString;
-    console.log(triggerString);
+    // console.log(triggerString);
     return triggerString;
   }
 
   handleSubmit(event) {
-    console.log("trigger - - - - ",trigger)
+    // console.log("trigger - - - - ",trigger)
     event.preventDefault();
     const trigger = this.stringifyForm();
     this.props.onChange('Form submited', trigger);

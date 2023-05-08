@@ -29,7 +29,7 @@ class CogniwideBaseChat extends React.Component {
     if (this.props.userMessage && this.props.userMessage.length) {
       className += ' send-active';
     }
-    console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^', this.props.widgetPosition);
+    // console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^', this.props.widgetPosition);
     const widgetPosition =
       this.props.widgetPosition == 'right' ? '_right' : '_left';
     let parentClass = '_cog_chat ' + widgetPosition;
@@ -48,6 +48,7 @@ class CogniwideBaseChat extends React.Component {
             <span className='text-white font-weight-bold'>
               <img
                 className='chat-logoheader'
+                alt='chat-logoheader'
                 src={this.props.headerLogo}
                 width='33'
               />{' '}
@@ -95,25 +96,25 @@ class CogniwideBaseChat extends React.Component {
               </a>
             </div>
           </div>
-          <div className='panel-body'>
+          <div className='cog_chat_panel-body'>
             {this.props.carouselItems.length > 0 ? (
               <CarouselWrapper parent={this} items={this.props.carouselItems} />
             ) : (
-              <div className='banner' style={bannerStyle}>
+              <div className='cog_chat_banner' style={bannerStyle}>
                 <h3>{this.props.bannerText}</h3>
               </div>
             )}
 
             {this.state.showFeedback == false && (
-              <ul className='chat'>
+              <ul className='cog_chat'>
                 // {chat}
                 <li
                   className='loading'
                   style={{ display: this.state.loading ? 'block' : 'none' }}
                 >
-                  <div className='adminchatlist'>
-                    <div className='chat-body bubble clearfix'>
-                      <img src='https://cogniwide.github.io/cogniassist-chat-widget/public/assets/tenor.gif' />
+                  <div className='cog_chat_adminchatlist'>
+                    <div className='cog_chat_chat-body bubble clearfix'>
+                      <img src='https://cogniwide.github.io/cogniassist-chat-widget/public/assets/tenor.gif' alt='tenor-gif' />
                     </div>
                   </div>
                 </li>
@@ -121,34 +122,34 @@ class CogniwideBaseChat extends React.Component {
             )}
 
             {this.state.showFeedback && (
-              <div className='feedback'>
+              <div className='cog_chat_feedback'>
                 Feedback
-                <ul className='feedback-emoji' onClick={this.closeWindow}>
+                <ul className='cog_chat_feedback-emoji' onClick={this.closeWindow}>
                   <li data-name='worst'>
-                    <img src={worstEmoji} />
+                    <img src={worstEmoji} alt='worst-emoji' />
                     <p> bad </p>
                   </li>
                   <li data-name='normal'>
-                    <img src={normalEmoji} />
+                    <img src={normalEmoji} alt='normal-emoji' />
                     <p> Satisfied </p>
                   </li>
                   <li data-name='smile'>
-                    <img src={smileEmoji} />
+                    <img src={smileEmoji} alt='smile-emoji' />
                     <p> awesome </p>
                   </li>
                 </ul>
               </div>
             )}
 
-            <div className='suggestion_box'>
-              <div className='quick-replies'>
+            <div className='cog_chat_suggestion_box'>
+              <div className='cog_chat_quick-replies'>
                 {this.props.quick_replies &&
                   this.props.quick_replies.map((button, index) => (
                     <button
                       type='button'
                       id='quick_reply_btn'
                       key={index}
-                      className='cwc-borderbtn see_all'
+                      className='cog_chat_cwc-borderbtn see_all'
                       onClick={() =>
                         this.chooseReply(button.title, button.payload)
                       }
@@ -167,8 +168,8 @@ class CogniwideBaseChat extends React.Component {
               {' '}
             </div>
           </div>
-          <div className='panel-footer'>
-            <div id='composer' className='composer position-relative'>
+          <div className='cog_chat_panel-footer'>
+            <div id='composer' className='cog_chat_composer position-relative'>
               <textarea
                 value={this.state.userMessage}
                 onKeyUp={this.handleSubmit}
@@ -191,7 +192,7 @@ class CogniwideBaseChat extends React.Component {
                 ></button>
               )}
             </div>
-            <div className='power-by'>
+            <div className='cog_chat_power-by'>
               <span>
                 Powered by <a href='#'>Cogniwide</a>
               </span>
