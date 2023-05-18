@@ -40,7 +40,7 @@ class PersonalDetailsForm extends Component {
       <form onSubmit={this.handleSubmit} className='cog_chat_form carinsurance-form'>
         {/* <div className='form-header'>Contact Information</div> */}
         <div className='cog_chat_form-container carinsurance-form'>
-          <div className='field-container'>
+          <div className='cog_chat_field-container'>
             <label htmlFor='name'>Policy Holder Name</label>
             <input
               id='name'
@@ -52,7 +52,7 @@ class PersonalDetailsForm extends Component {
             />
           </div>
 
-          <div className='field-container'>
+          <div className='cog_chat_field-container'>
             <label>Date of Birth</label>
             <input
               type='date'
@@ -61,7 +61,7 @@ class PersonalDetailsForm extends Component {
               placeholder=''
             />
           </div>
-          <div className='field-container'>
+          <div className='cog_chat_field-container'>
             <label>Mobile</label>
             <input
               type='phone'
@@ -74,7 +74,7 @@ class PersonalDetailsForm extends Component {
             />
           </div>
 
-          <div className='field-container'>
+          <div className='cog_chat_field-container'>
             <label>Email</label>
             <input
               type='email'
@@ -84,7 +84,7 @@ class PersonalDetailsForm extends Component {
             />
           </div>
 
-          <div className='field-container'>
+          <div className='cog_chat_field-container'>
             <label>Nationality</label>
             <select
               value={this.state.nationality}

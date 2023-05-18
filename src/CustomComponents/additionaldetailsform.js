@@ -40,7 +40,7 @@ class AdditionalDetailsForm extends Component {
       <form onSubmit={this.handleSubmit} className='cog_chat_form carinsurance-form'>
         {/* <div className='form-header'>Contact Information</div> */}
         <div className='cog_chat_form-container carinsurance-form'>
-          <div className='field-container'>
+          <div className='cog_chat_field-container'>
             <label>Gender</label>
             <select
               value={this.state.gender}
@@ -56,7 +56,7 @@ class AdditionalDetailsForm extends Component {
             </select>
           </div>
 
-          <div className='field-container'>
+          <div className='cog_chat_field-container'>
             <label>License Emirates</label>
             <select
               value={this.state.authority}
@@ -78,7 +78,7 @@ class AdditionalDetailsForm extends Component {
             </select>
           </div>
 
-          <div className='field-container'>
+          <div className='cog_chat_field-container'>
             <label>Traffic No Detail</label>
             <input
               type='text'
@@ -90,7 +90,7 @@ class AdditionalDetailsForm extends Component {
             />
           </div>
 
-          <div className='field-container'>
+          <div className='cog_chat_field-container'>
             <label>Emirates ID</label>
             <input
               type='text'
@@ -102,7 +102,7 @@ class AdditionalDetailsForm extends Component {
             />
           </div>
 
-          <div className='field-container'>
+          <div className='cog_chat_field-container'>
             <label>Previous Policy Expiry Date</label>
             <input
               type='date'

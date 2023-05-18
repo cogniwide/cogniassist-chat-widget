@@ -33,7 +33,7 @@ class CreditCardForm extends Component {
     return (
       <form onSubmit={this.handleSubmit} className='cog_chat_form'>
         <div className='cog_chat_form-container'>
-          <div className='field-container'>
+          <div className='cog_chat_field-container'>
             <label htmlFor='name'>Name</label>
             <input
               id='name'
@@ -44,7 +44,7 @@ class CreditCardForm extends Component {
               required
             />
           </div>
-          <div className='field-container'>
+          <div className='cog_chat_field-container'>
             <label htmlFor='cardnumber'>Card Number</label>
             <input
               id='cardnumber'
@@ -54,7 +54,7 @@ class CreditCardForm extends Component {
               required
             />
           </div>
-          <div className='field-container'>
+          <div className='cog_chat_field-container'>
             <label htmlFor='expirationdate'>Expiration</label>
             <input
               id='expirationdate'
@@ -65,7 +65,7 @@ class CreditCardForm extends Component {
               required
             />
           </div>
-          <div className='field-container'>
+          <div className='cog_chat_field-container'>
             <label htmlFor='securitycode'>Security Code</label>
             <input
               id='securitycode'

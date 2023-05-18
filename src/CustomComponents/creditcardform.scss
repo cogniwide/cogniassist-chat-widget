@@ -50,28 +50,28 @@
     background: var(--primary_clr);
   }
 
-  .field-container:first-of-type {
+  .cog_chat_field-container:first-of-type {
     grid-area: name;
   }
 
-  .field-container:nth-of-type(2) {
+  .cog_chat_field-container:nth-of-type(2) {
     grid-area: number;
   }
 
-  .field-container:nth-of-type(3) {
+  .cog_chat_field-container:nth-of-type(3) {
     grid-area: expiration;
   }
 
-  .field-container:nth-of-type(4) {
+  .cog_chat_field-container:nth-of-type(4) {
     grid-area: security;
   }
 
-  .field-container input {
+  .cog_chat_field-container input {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
   }
 
-  .field-container {
+  .cog_chat_field-container {
     position: relative;
   }
 }

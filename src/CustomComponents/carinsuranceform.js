@@ -51,7 +51,7 @@ class CarInsuranceForm extends Component {
       <form onSubmit={this.handleSubmit} className='cog_chat_form carinsurance-form'>
         {/* <div className='form-header'>Contact Information</div> */}
         <div className='cog_chat_form-container carinsurance-form'>
-          <div className='field-container'>
+          <div className='cog_chat_field-container'>
             <label>Car Registration No</label>
             <input
               type='text'
@@ -62,7 +62,7 @@ class CarInsuranceForm extends Component {
             />
           </div>
 
-          <div className='field-container'>
+          <div className='cog_chat_field-container'>
             <label>Registration Emirates</label>
             <select
               value={this.state.regEmirates}
@@ -77,7 +77,7 @@ class CarInsuranceForm extends Component {
             </select>
           </div>
 
-          <div className='field-container'>
+          <div className='cog_chat_field-container'>
             <label>Chasis No</label>
             <input
               type='text'
@@ -89,7 +89,7 @@ class CarInsuranceForm extends Component {
             />
           </div>
 
-          <div className='field-container'>
+          <div className='cog_chat_field-container'>
             <label>Engine No</label>
             <input
               type='text'
@@ -101,7 +101,7 @@ class CarInsuranceForm extends Component {
             />
           </div>
 
-          <div className='field-container'>
+          <div className='cog_chat_field-container'>
             <label>Car Color</label>
             <select
               value={this.state.color}
@@ -113,7 +113,7 @@ class CarInsuranceForm extends Component {
             </select>
           </div>
 
-          <div className='field-container'>
+          <div className='cog_chat_field-container'>
             <label>Mortgage Details</label>
             <select
               value={this.state.email}

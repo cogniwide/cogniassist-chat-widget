@@ -32,7 +32,7 @@ class WelcomeForm extends Component {
       <form onSubmit={this.handleSubmit} className='cog_chat_form contact-form'>
         {/* <div className='form-header'>Contact Information</div> */}
         <div className='cog_chat_form-container contact-form'>
-          <div className='field-container'>
+          <div className='cog_chat_field-container'>
             <label>Full Name</label>
             <input
               type='text'
@@ -43,7 +43,7 @@ class WelcomeForm extends Component {
             />
           </div>
 
-          <div className='field-container'>
+          <div className='cog_chat_field-container'>
             <label>Mobile</label>
             <input
               type='phone'
@@ -56,7 +56,7 @@ class WelcomeForm extends Component {
             />
           </div>
 
-          <div className='field-container'>
+          <div className='cog_chat_field-container'>
             <label>Email</label>
             <input
               type='email'

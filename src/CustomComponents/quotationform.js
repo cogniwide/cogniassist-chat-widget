@@ -45,7 +45,7 @@ class QuotationForm extends Component {
               <div className='bold-text'>Total AED 937.13</div>
             </div>
           </div>
-          <div className='field-container'>
+          <div className='cog_chat_field-container'>
             <label htmlFor='name'>Do you have Promotion Code?</label>
             <div className='input-button'>
               <input
@@ -62,7 +62,7 @@ class QuotationForm extends Component {
             </div>
           </div>
 
-          <div className='field-container'>
+          <div className='cog_chat_field-container'>
             <label>Share your Airline Miles</label>
             <select
               value={this.state.nationality}
@@ -77,7 +77,7 @@ class QuotationForm extends Component {
             </select>
           </div>
 
-          <div className='field-container'>
+          <div className='cog_chat_field-container'>
             <label htmlFor='name'>Share your Airline Guest No / Email</label>
             <input
               id='email'
