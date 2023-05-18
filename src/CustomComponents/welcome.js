@@ -29,9 +29,9 @@ class WelcomeForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className='cog_chat_form contact-form'>
+      <form onSubmit={this.handleSubmit} className='cog_chat_form cog_chat_contact-form'>
         {/* <div className='form-header'>Contact Information</div> */}
-        <div className='cog_chat_form-container contact-form'>
+        <div className='cog_chat_form-container cog_chat_contact-form'>
           <div className='cog_chat_field-container'>
             <label>Full Name</label>
             <input

@@ -125,7 +125,7 @@
     .cog_chat_cwc-borderbtn {
       font-size: 12px !important;
     }
-    .contact-form {
+    .cog_chat_contact-form {
       .cog_chat_form-container {
         grid-template-areas: 'name name' 'number number' 'expiration expiration';
       }
@@ -489,8 +489,8 @@
   justify-content: flex-end;
 }
 .cog_chat_close-wrapper {
-  width: 60px;
-  height: 30px;
+  // width: 60px;
+  // height: 30px;
   background-color: var(--modal_primary_text);
   padding: 2px;
   border-radius: 15px;
@@ -499,7 +499,7 @@
   align-items: center;
   justify-content: space-around;
   img {
-    height: 23px;
+    width: 23px;
     padding: 5px;
     cursor: pointer;
   }
