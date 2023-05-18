@@ -151,12 +151,10 @@
         // font-family: 'cogni-mont-regular' !important;
         font-size: 12px !important;
       }
-      .input-button {
+      .cog_chat_input-button {
         display: flex;
         flex-direction: row;
         position: relative !important;
-        input {
-        }
         button {
           position: absolute;
           right: 0px;

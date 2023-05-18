@@ -47,7 +47,7 @@ class QuotationForm extends Component {
           </div>
           <div className='cog_chat_field-container'>
             <label htmlFor='name'>Do you have Promotion Code?</label>
-            <div className='input-button'>
+            <div className='cog_chat_input-button'>
               <input
                 id='promocode'
                 maxLength='20'
