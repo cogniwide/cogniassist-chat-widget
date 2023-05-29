@@ -518,13 +518,33 @@ class ChatWidget extends Component {
   }
 
   addMessage(message, user) {
+    const timestamp = this.getCurrentTime();
     const msg = {
       text: message,
       user: user,
+      timestamp: timestamp
     };
     this.setState((prevState) => ({
       conversation: [...prevState.conversation, msg],
     }));
+  }
+
+  getCurrentTime() {
+    const time = new Date();
+    const hour = time
+      .getHours()
+      .toString()
+      .padStart(2, "0");
+    const minute = time
+      .getMinutes()
+      .toString()
+      .padStart(2, "0");
+    const second = time
+      .getSeconds()
+      .toString()
+      .padStart(2, "0");
+    const curTime = `${hour}:${minute}:${second}`;
+    return curTime.toString();
   }
 
   sendText(message = null) {
@@ -629,6 +649,7 @@ class ChatWidget extends Component {
         const msg = {
           ...response,
           user: 'ai',
+          timestamp: this.getCurrentTime(),
         };
         if (response && 'quick_replies' in response) {
           quick_replies.push(...response['quick_replies']);
@@ -707,6 +728,7 @@ class ChatWidget extends Component {
           aiIndex={aiIndex}
           avatar={aiIndex == 1}
           userAvatar={uiIndex == 1}
+          timestamp={e.timestamp}
         />
       );
     });

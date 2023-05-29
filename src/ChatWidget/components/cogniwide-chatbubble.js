@@ -157,6 +157,12 @@ class ChatBubble extends Component {
                   ? 'Event'
                   : this.props.message.text}
               </p>
+              <div
+                className="cog_chat-currenttime"
+                style={{ fontSize: "10px", color: "#ccc", margin: "0 10px" }}
+              >
+                {this.props.timestamp}
+              </div>
             </div>
           </div>
           {/* <span className="timeStamp">1:35 AM</span> */}
@@ -180,6 +186,7 @@ class ChatBubble extends Component {
                 formSubmit={this.formSubmit}
                 customComponent={this.props.message.customComponent}
               />
+              <div className="cog_chat-currenttime">{this.props.timestamp}</div>
             </div>
           </div>
         </li>
@@ -524,7 +531,7 @@ class ChatBubble extends Component {
                   />
                 </div>
               )}
-              <div className='currenttime'>{this.getCurrentTime()}</div>
+              <div className="cog_chat-currenttime">{this.props.timestamp}</div>
             </div>
           </div>
           {/* {this.props.message.lastmessage === true && (
