@@ -34,8 +34,8 @@ class CreditCardForm extends Component {
       <form onSubmit={this.handleSubmit} className='cog_chat_form'>
         <div className='cog_chat_form-container'>
           <div className='cog_chat_field-container'>
-            <label htmlFor='name'>Name</label>
-            <input
+            <label className='cog_chat-label' htmlFor='name'>Name</label>
+            <input className='cog_chat-input'
               id='name'
               maxLength='20'
               type='text'
@@ -45,8 +45,8 @@ class CreditCardForm extends Component {
             />
           </div>
           <div className='cog_chat_field-container'>
-            <label htmlFor='cardnumber'>Card Number</label>
-            <input
+            <label  className='cog_chat-label' htmlFor='cardnumber'>Card Number</label>
+            <input className='cog_chat-input'
               id='cardnumber'
               type='text'
               pattern='[0-9]*'
@@ -55,8 +55,8 @@ class CreditCardForm extends Component {
             />
           </div>
           <div className='cog_chat_field-container'>
-            <label htmlFor='expirationdate'>Expiration</label>
-            <input
+            <label  className='cog_chat-label' htmlFor='expirationdate'>Expiration</label>
+            <input className='cog_chat-input'
               id='expirationdate'
               type='text'
               placeholder='MM/YY'
@@ -66,8 +66,8 @@ class CreditCardForm extends Component {
             />
           </div>
           <div className='cog_chat_field-container'>
-            <label htmlFor='securitycode'>Security Code</label>
-            <input
+            <label className='cog_chat-label' htmlFor='securitycode'>Security Code</label>
+            <input className='cog_chat-input'
               id='securitycode'
               type='password'
               pattern='[0-9]*'
@@ -75,7 +75,7 @@ class CreditCardForm extends Component {
               required
             />
           </div>
-          <button>Pay</button>
+          <button className='cog_chat-button'>Pay</button>
         </div>
       </form>
     );

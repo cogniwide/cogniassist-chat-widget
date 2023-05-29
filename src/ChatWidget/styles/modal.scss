@@ -129,7 +129,8 @@
       .cog_chat_form-container {
         grid-template-areas: 'name name' 'number number' 'expiration expiration';
       }
-      button {
+      // button {
+      .cog_chat-button {
         padding: 5px !important;
         width: 120px;
         // font-family: 'cogni-mont-regular' !important;
@@ -145,7 +146,7 @@
       .cog_chat_form-container {
         grid-template-areas: 'name name' 'number number' 'expiration expiration' 'chase chase' 'engine engine' 'mortgage mortgage';
       }
-      button {
+      .cog_chat-button {
         padding: 5px !important;
         width: 120px;
         // font-family: 'cogni-mont-regular' !important;
@@ -192,25 +193,25 @@
       }
     }
     .cog_chat_form {
-      label {
+      .cog_chat-label {
         // font-family: 'cogni-mont-regular' !important;
         font-size: 12px;
       }
-      input {
+      .cog_chat-input {
         padding: 5px !important;
         // font-family: 'cogni-mont-regular' !important;
         font-size: 12px;
         outline: none;
         border-radius: 30px;
       }
-      select {
+      .cog_chat-select {
         padding: 5px !important;
         // font-family: 'cogni-mont-regular' !important;
         font-size: 12px;
         outline: none;
         border-radius: 30px;
       }
-      button {
+      .cog_chat-button {
         color: var(--white);
         background: var(--modal_primary);
         padding: 5px;

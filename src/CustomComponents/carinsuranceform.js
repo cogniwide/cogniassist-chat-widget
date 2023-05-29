@@ -52,8 +52,8 @@ class CarInsuranceForm extends Component {
         {/* <div className='form-header'>Contact Information</div> */}
         <div className='cog_chat_form-container carinsurance-form'>
           <div className='cog_chat_field-container'>
-            <label>Car Registration No</label>
-            <input
+            <label className='cog_chat-label'>Car Registration No</label>
+            <input className='cog_chat-input'
               type='text'
               value={this.state.name}
               onChange={(event) => this.setState({ regNo: event.target.value })}
@@ -63,8 +63,8 @@ class CarInsuranceForm extends Component {
           </div>
 
           <div className='cog_chat_field-container'>
-            <label>Registration Emirates</label>
-            <select
+            <label className='cog_chat-label'>Registration Emirates</label>
+            <select className='cog_chat-select'
               value={this.state.regEmirates}
               onChange={(event) =>
                 this.setState({ mobile: event.target.value })
@@ -78,8 +78,8 @@ class CarInsuranceForm extends Component {
           </div>
 
           <div className='cog_chat_field-container'>
-            <label>Chasis No</label>
-            <input
+            <label className='cog_chat-label'>Chasis No</label>
+            <input className='cog_chat-input'
               type='text'
               value={this.state.email}
               onChange={(event) =>
@@ -90,8 +90,8 @@ class CarInsuranceForm extends Component {
           </div>
 
           <div className='cog_chat_field-container'>
-            <label>Engine No</label>
-            <input
+            <label className='cog_chat-label'>Engine No</label>
+            <input className='cog_chat-input'
               type='text'
               value={this.state.email}
               onChange={(event) =>
@@ -102,8 +102,8 @@ class CarInsuranceForm extends Component {
           </div>
 
           <div className='cog_chat_field-container'>
-            <label>Car Color</label>
-            <select
+            <label className='cog_chat-label'>Car Color</label>
+            <select className='cog_chat-select'
               value={this.state.color}
               onChange={(event) => this.setState({ color: event.target.value })}
               placeholder=''
@@ -114,8 +114,8 @@ class CarInsuranceForm extends Component {
           </div>
 
           <div className='cog_chat_field-container'>
-            <label>Mortgage Details</label>
-            <select
+            <label className='cog_chat-label'>Mortgage Details</label>
+            <select className='cog_chat-select'
               value={this.state.email}
               onChange={(event) =>
                 this.setState({ mortgage: event.target.value })
@@ -127,7 +127,7 @@ class CarInsuranceForm extends Component {
             </select>
           </div>
 
-          <button>Submit</button>
+          <button className='cog_chat-button'>Submit</button>
         </div>
       </form>
     );

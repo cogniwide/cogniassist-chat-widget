@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import './welcome.scss';
+import React, { Component } from "react";
+import "./welcome.scss";
 
 class PersonalDetailsForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      full_name: '',
-      date_of_birth: '',
-      mobile_number: '',
-      email: '',
-      nationality: '',
+      full_name: "",
+      date_of_birth: "",
+      mobile_number: "",
+      email: "",
+      nationality: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.stringifyForm = this.stringifyForm.bind(this);
@@ -19,7 +19,7 @@ class PersonalDetailsForm extends Component {
     const slotsString = JSON.stringify({
       slots: this.state,
     });
-    const triggerString = '/' + this.props.intent + slotsString;
+    const triggerString = "/" + this.props.intent + slotsString;
     // console.log(triggerString);
     return triggerString;
   }
@@ -27,80 +27,94 @@ class PersonalDetailsForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const trigger = this.stringifyForm();
-    this.props.onChange('Form submited', trigger);
+    this.props.onChange("Form submited", trigger);
   }
 
   render() {
-    
-    const country_options = this.props.values.countries.masterData.map((option, i) => {
-      return (<option key={i} value={option.code}>{option.name}</option>);
-    });
+    const country_options = this.props.values.countries.masterData.map(
+      (option, i) => {
+        return (
+          <option key={i} value={option.code}>
+            {option.name}
+          </option>
+        );
+      }
+    );
 
     return (
-      <form onSubmit={this.handleSubmit} className='cog_chat_form carinsurance-form'>
+      <form
+        onSubmit={this.handleSubmit}
+        className="cog_chat_form carinsurance-form"
+      >
         {/* <div className='form-header'>Contact Information</div> */}
-        <div className='cog_chat_form-container carinsurance-form'>
-          <div className='cog_chat_field-container'>
-            <label htmlFor='name'>Policy Holder Name</label>
+        <div className="cog_chat_form-container carinsurance-form">
+          <div className="cog_chat_field-container">
+            <label className="cog_chat-label" htmlFor="name">
+              Policy Holder Name
+            </label>
             <input
-              id='name'
-              maxLength='20'
-              type='text'
+              className="cog_chat-input"
+              id="name"
+              maxLength="20"
+              type="text"
               value={this.state.name}
               onChange={(event) => this.setState({ name: event.target.value })}
               required
             />
           </div>
 
-          <div className='cog_chat_field-container'>
-            <label>Date of Birth</label>
+          <div className="cog_chat_field-container">
+            <label className="cog_chat-label">Date of Birth</label>
             <input
-              type='date'
+              className="cog_chat-input"
+              type="date"
               value={this.state.dob}
               onChange={(event) => this.setState({ dob: event.target.value })}
-              placeholder=''
+              placeholder=""
             />
           </div>
-          <div className='cog_chat_field-container'>
-            <label>Mobile</label>
+          <div className="cog_chat_field-container">
+            <label className="cog_chat-label">Mobile</label>
             <input
-              type='phone'
+              className="cog_chat-input"
+              type="phone"
               value={this.state.mobile}
               onChange={(event) =>
                 this.setState({ mobile: event.target.value })
               }
-              placeholder=''
+              placeholder=""
               required
             />
           </div>
 
-          <div className='cog_chat_field-container'>
-            <label>Email</label>
+          <div className="cog_chat_field-container">
+            <label className="cog_chat-label">Email</label>
             <input
-              type='email'
+              className="cog_chat-input"
+              type="email"
               value={this.state.email}
               onChange={(event) => this.setState({ email: event.target.value })}
-              placeholder=''
+              placeholder=""
             />
           </div>
 
-          <div className='cog_chat_field-container'>
-            <label>Nationality</label>
+          <div className="cog_chat_field-container">
+            <label className="cog_chat-label">Nationality</label>
             <select
+              className="cog_chat-select"
               value={this.state.nationality}
               onChange={(event) =>
                 this.setState({ nationality: event.target.value })
               }
-              placeholder=''
+              placeholder=""
               required
             >
-              <option value=''>-</option>
+              <option value="">-</option>
               {country_options}
-
             </select>
           </div>
 
-          <button>Get Quote</button>
+          <button className="cog_chat-button">Get Quote</button>
         </div>
       </form>
     );
