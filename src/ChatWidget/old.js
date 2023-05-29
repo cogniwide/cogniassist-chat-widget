@@ -694,7 +694,7 @@ class ChatWidget extends Component {
           this.state.recommendations.length > 0 &&
           this.state.opened && (
             <div className='recommendations_container'>
-              <div className='full_wrapper'>
+              <div className='cog_chat_full_wrapper'>
                 <div className='recommendations_header'>
                   <div className='cog_chat_title'>Related Information</div>
                   <button
