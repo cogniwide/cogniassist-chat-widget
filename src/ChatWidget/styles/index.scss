@@ -9,7 +9,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
 * {
-  font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 ._cog_chat button:focus {
@@ -1120,6 +1120,7 @@
           border-radius: 0 !important;
           color: var(--black);
           border-bottom: 1px solid #eeeeee !important;
+          text-align: left !important;
 
           &:last-child {
             border-bottom: transparent;
@@ -1441,7 +1442,7 @@
     height: auto;
     bottom: 20px;
     margin-right: -145px;
-    z-index: 2147483000;
+    z-index: 2147483000000;
     border-radius: 5px;
     // right: 440px;
     overflow: hidden;
@@ -1551,14 +1552,17 @@
     .cog_chat_btn_close {
       border: none;
       background: none;
-      height: 30px;
-      width: 30px;
-      border-radius: 100px;
-      transition: all ease-in-out 0.2s;
+      // height: 30px;
+      // width: 30px;
+      // border-radius: 100px;
+      // transition: all ease-in-out 0.2s;
       color: var(--primary_clr);
       opacity: 0.4;
-      background: rgba(0, 0, 0, 0.25);
+      // background: rgba(0, 0, 0, 0.25);
       cursor: pointer;
+      font-size: 20px;
+      font-weight: bolder;
+      // color: black;
 
       &:hover {
         opacity: 1;

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import "./welcome.scss";
+import "./welcome.scss";
 
 class WelcomeForm extends Component {
   constructor(props) {
@@ -29,15 +29,12 @@ class WelcomeForm extends Component {
 
   render() {
     return (
-      <form
-        onSubmit={this.handleSubmit}
-        className="cog_chat_form cog_chat_contact-form"
-      >
-        {/* <div className='form-header'>Contact Information</div> */}
-        <div className="cog_chat_form-container cog_chat_contact-form">
-          <div className="cog_chat_field-container">
-            <label className='cog_chat-label'>Full Name</label>
-            <input className='cog_chat-input'
+      <form onSubmit={this.handleSubmit} className="cog_chat-welcome-form">
+        <div className="cog_chat-form">
+          <div className="cog_chat-input-field">
+            <label className="cog_chat-label">Full Name</label>
+            <input
+              className="cog_chat-input"
               type="text"
               value={this.state.name}
               onChange={(event) => this.setState({ name: event.target.value })}
@@ -46,8 +43,8 @@ class WelcomeForm extends Component {
             />
           </div>
 
-          <div className="cog_chat_field-container">
-            <label className='cog_chat-label'>Mobile</label>
+          <div className="cog_chat-input-field">
+            <label className="cog_chat-label">Mobile</label>
             <input
               className="cog_chat-input"
               type="phone"
@@ -60,8 +57,8 @@ class WelcomeForm extends Component {
             />
           </div>
 
-          <div className="cog_chat_field-container">
-            <label className='cog_chat-label'>Email</label>
+          <div className="cog_chat-input-field">
+            <label className="cog_chat-label">Email</label>
             <input
               className="cog_chat-input"
               type="email"
