@@ -6,10 +6,10 @@
 @import './carousel.scss';
 @import './rangeslider.scss';
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-
-* {
+*, *::after, *::before {
     font-family: 'Poppins', sans-serif;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 ._cog_chat button:focus {
@@ -308,8 +308,6 @@
   list-style-type: none;
   padding: 0;
   margin: 0px auto auto auto;
-  -moz-user-select: none;
-  -webkit-user-select: none;
 }
 
 ._cog_chat .rating-stars ul > li.star {
@@ -722,9 +720,6 @@
   }
 }
 
-#cogniassist {
-}
-
 ._cog_chat {
   margin: 0;
   padding: 0;
@@ -1075,7 +1070,7 @@
         border-radius: 0 10px 10px 10px;
         margin-left: 10px;
         padding: 0;
-        max-width: 270px;
+        max-width: 600px;
         background: var(--white);
 
         p {

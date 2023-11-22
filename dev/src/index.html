@@ -3,24 +3,26 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>CogniAssist Chatwidget 1.0</title>
   </head>
   <body>
     <div id="cogniassist"></div>
   </body>
+  <script src="/path/to/your/bundle.js"></script>
   <script src="index.js" type="text/javascript"></script>
   <script>
     CogniAssistWidget.default.init({
-      botURL: "https://chatbot.awnic.com/63e61529c3cb9260758a479e/default/",
-      communicationMethod: "rest",
-      draggable: false,
-      headerType: "none",
-      initialPayload: "/default/welcome",
-      rememberUser: false,
       selector: "#cogniassist",
-      socketPath: "/63e61529c3cb9260758a479e/default/socket.io",
-      socketURL: "https://192.168.210.12/",
-      widgetPosition: 'right',
+      initialPayload: "/default/welcome",
+      communicationMethod: "rest",
+      // botURL: "https://bots.cogniassist.com/61126f22624f978214b20966/default/",
+      // socketURL: "https://bots.cogniassist.com/",
+      // socketPath: "/61126f22624f978214b20966/default/socket.io",
+      botName: "Chatbot",
+      botWelcomeMessage: "Hey there, How may I assist you.",
+      rememberUser: false,
+      widgetPosition: "right",
     });
   </script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>

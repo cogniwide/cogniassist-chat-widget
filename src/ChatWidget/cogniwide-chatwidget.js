@@ -9,6 +9,7 @@ import worstEmoji from './cogniwide-assets/worst.svg';
 import ChatBubble from './components/cogniwide-chatbubble';
 import CarouselWrapper from './components/carousel_wrapper';
 import ModalWidget from '../ChatWidget/cogniwide-Modalwidget';
+import Navbar from '../CustomComponents/Navbar/Navbar';
 
 export class Emotions {
   static SAD = 'sadness';
@@ -22,7 +23,7 @@ class ChatWidget extends Component {
     this.state = {
       sender_id: this.props.senderId || this.createOrRetriveSenderId(),
       userMessage: '',
-      conversation: [],
+      conversation: [{text: "Hello Nice Day! What you want to know about", user: "ai"}],
       quick_replies: [],
       recommendations: [],
       show_recommendation: false,
@@ -52,8 +53,20 @@ class ChatWidget extends Component {
     this.openWindow = this.openWindow.bind(this);
     this.closeWindow = this.closeWindow.bind(this);
     this.startRecord = this.startRecord.bind(this);
+    this.handleResponse = this.handleResponse.bind(this);
+  }
 
-    //-----refs---------
+  handleResponse(response) {
+    this.addMessage(response, 'ai');
+  }
+
+  handleSubmit(e) {
+    if (e.key === 'Enter') {
+      event.preventDefault();
+      event.stopPropagation();
+      if (!this.state.userMessage.trim()) return;
+      this.sendText();
+    }
   }
 
   setTheme() {
@@ -428,7 +441,7 @@ class ChatWidget extends Component {
   restartChat($event) {
     $event.preventDefault();
     this.setState({
-      conversation: [],
+      conversation: [{text: "Hello Nice Day! What you want to know about", user: "ai"}],
       quick_replies: [],
       recommendations: [],
     });
@@ -493,15 +506,6 @@ class ChatWidget extends Component {
 
   handleChange(event) {
     this.setState({ userMessage: event.target.value });
-  }
-
-  handleSubmit(e) {
-    if (e.key === 'Enter') {
-      event.preventDefault();
-      event.stopPropagation();
-      if (!this.state.userMessage.trim()) return;
-      this.sendText();
-    }
   }
 
   chooseReply(title, payload) {
@@ -756,6 +760,7 @@ class ChatWidget extends Component {
     }
     return (
       <div className={parentClass}>
+        <Navbar />
         {this.state.opened == false && (
           <div
             className='cog_chat_btn_container'
@@ -1023,6 +1028,7 @@ class ChatWidget extends Component {
             }}
             restartChat={this.restartChat}
             startRecord={this.startRecord}
+            getResponse={this.handleResponse}
           />
         )}
       </div>

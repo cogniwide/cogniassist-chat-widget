@@ -12,9 +12,6 @@
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
   // font-family: 'cogni-mont-regular' !important;
-  div p button label {
-    // font-family: 'cogni-mont-regular' !important;
-  }
 }
 
 /* Modal Content */
@@ -580,6 +577,12 @@
       cursor: pointer;
     }
   }
+}
+
+.cog_chat-close-restart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 //----------Nice scroll
