@@ -24,27 +24,10 @@ class ModalWidget extends React.Component {
       isSizeToggle: false,
       showFeedback: false,
       isConfirmed: false,
-      rightPanelContents: [
-        {
-          title: "Important Information",
-          content:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or",
-        },
-        {
-          title: "FAQs",
-          content:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or",
-        },
-        {
-          title: "Required Documents",
-          content:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or",
-        },
-      ],
+      rightPanelContents: [],
       openedAccordionIndex: "-1",
     };
     this.openWindow = this.openWindow.bind(this);
-    this.handleUserQuery = this.handleUserQuery.bind(this);
   }
 
   openWindow() {
@@ -52,24 +35,10 @@ class ModalWidget extends React.Component {
   }
 
   componentDidUpdate() {
-    // console.log('Modal - this.props', this.props);
-    // console.log('Modal - ClearText', this.props.clearText);
-
-    // this.setState({ userMessage: this.props.userMessage });
     this.scrollToBottom();
   }
   scrollToBottom() {
     this.el && this.el.scrollIntoView({ behavior: "smooth" });
-  }
-
-  handleUserQuery() {
-    fetch("https://dummyjson.com/products/1")
-      .then((res) => res.json())
-      .then((json) => {
-        // const { text } = json;
-        const text = "Got Response."
-        this.props.getResponse(text);
-      });
   }
 
   render() {
@@ -322,7 +291,6 @@ class ModalWidget extends React.Component {
                         className="send-button"
                         onClick={() => {
                           this.props.sendText();
-                          this.handleUserQuery();
                         }}
                       ></button>
                     </div>

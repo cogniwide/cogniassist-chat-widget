@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
-import $ from 'jquery';
-import './styles/index.scss';
-import updateArrow from './cogniwide-assets/update-arrow.png';
-import minimize from './cogniwide-assets/minimize.png';
-import smileEmoji from './cogniwide-assets/smile.svg';
-import normalEmoji from './cogniwide-assets/normal.svg';
-import worstEmoji from './cogniwide-assets/worst.svg';
-import ChatBubble from './components/cogniwide-chatbubble';
-import CarouselWrapper from './components/carousel_wrapper';
-import ModalWidget from '../ChatWidget/cogniwide-Modalwidget';
-import Navbar from '../CustomComponents/Navbar/Navbar';
+import React, { Component } from "react";
+import $ from "jquery";
+import "./styles/index.scss";
+import updateArrow from "./cogniwide-assets/update-arrow.png";
+import minimize from "./cogniwide-assets/minimize.png";
+import smileEmoji from "./cogniwide-assets/smile.svg";
+import normalEmoji from "./cogniwide-assets/normal.svg";
+import worstEmoji from "./cogniwide-assets/worst.svg";
+import ChatBubble from "./components/cogniwide-chatbubble";
+import CarouselWrapper from "./components/carousel_wrapper";
+import ModalWidget from "../ChatWidget/cogniwide-Modalwidget";
+import Navbar from "../CustomComponents/Navbar/Navbar";
 
 export class Emotions {
-  static SAD = 'sadness';
-  static NEUTRAL = 'neutral';
-  static HAPPY = 'happiness';
+  static SAD = "sadness";
+  static NEUTRAL = "neutral";
+  static HAPPY = "happiness";
 }
 
 class ChatWidget extends Component {
@@ -22,8 +22,14 @@ class ChatWidget extends Component {
     super(props);
     this.state = {
       sender_id: this.props.senderId || this.createOrRetriveSenderId(),
-      userMessage: '',
-      conversation: [{text: "Hello Nice Day! What you want to know about", user: "ai"}],
+      userMessage: "",
+      conversation: [
+        {
+          text: "Hello Nice Day! What you want to know about",
+          user: "ai",
+          timestamp: this.getCurrentTime(),
+        },
+      ],
       quick_replies: [],
       recommendations: [],
       show_recommendation: false,
@@ -53,19 +59,16 @@ class ChatWidget extends Component {
     this.openWindow = this.openWindow.bind(this);
     this.closeWindow = this.closeWindow.bind(this);
     this.startRecord = this.startRecord.bind(this);
-    this.handleResponse = this.handleResponse.bind(this);
-  }
-
-  handleResponse(response) {
-    this.addMessage(response, 'ai');
   }
 
   handleSubmit(e) {
-    if (e.key === 'Enter') {
-      event.preventDefault();
-      event.stopPropagation();
+    e.preventDefault();
+    e.stopPropagation();
+
+    const { value } = e.target;
+    if (value != "" && e.key === "Enter") {
       if (!this.state.userMessage.trim()) return;
-      this.sendText();
+      this.sendText(value);
     }
   }
 
@@ -80,17 +83,17 @@ class ChatWidget extends Component {
   setUpInitial() {
     const { socket, communicationMethod } = this.props;
 
-    if (communicationMethod == 'socket') {
+    if (communicationMethod == "socket") {
       if (!socket.isInitialized()) {
         socket.createSocket();
 
-        socket.on('bot_uttered', (botUttered) => {
+        socket.on("bot_uttered", (botUttered) => {
           this.handleBotUtterance(botUttered);
         });
 
         // Request a session from server
-        socket.on('connect', () => {
-          socket.emit('session_request', { session_id: this.state.sender_id });
+        socket.on("connect", () => {
+          socket.emit("session_request", { session_id: this.state.sender_id });
         });
 
         // Old code
@@ -122,7 +125,7 @@ class ChatWidget extends Component {
 
         // new code
         // When session_confirm is received from the server:
-        socket.on('session_confirm', (sessionObject) => {
+        socket.on("session_confirm", (sessionObject) => {
           // console.log('session confirmed');
           if (!this.state.initialized) {
             if (this.props.rememberUser) {
@@ -130,14 +133,14 @@ class ChatWidget extends Component {
             } else {
               this.trySendInitSocketPayload();
             }
-            this.setState({ initialized: true })
+            this.setState({ initialized: true });
           }
         });
 
-        socket.on('disconnect', (reason) => {
+        socket.on("disconnect", (reason) => {
           // eslint-disable-next-line no-console
           // console.log(reason);
-          if (reason !== 'io client disconnect') {
+          if (reason !== "io client disconnect") {
             console.log(reason);
           }
         });
@@ -167,7 +170,7 @@ class ChatWidget extends Component {
       // check that session_id is confirmed
       if (!sessionId) return;
       // console.log('sending init payload', sessionId);
-      socket.emit('user_uttered', {
+      socket.emit("user_uttered", {
         message: initialPayload,
         lang: this.state.lang,
         customData,
@@ -182,25 +185,25 @@ class ChatWidget extends Component {
       response.chats.forEach((resp) => {
         messages.push({
           text: resp.query,
-          user: 'human',
+          user: "human",
         });
         resp.response.forEach((message) => {
-          if ('custom' in message == false)
+          if ("custom" in message == false)
             messages.push({
               ...message,
-              user: 'ai',
+              user: "ai",
             });
         });
       });
 
-      if (response['difference'] == 0 || response['difference'] > 10) {
+      if (response["difference"] == 0 || response["difference"] > 10) {
         this.sendRequest({
           sender: this.state.sender_id,
           message: this.props.initialPayload,
         });
-        if (response['different'] > 10) {
+        if (response["different"] > 10) {
           messages.push({
-            user: 'human',
+            user: "human",
             line: true,
           });
         }
@@ -235,10 +238,10 @@ class ChatWidget extends Component {
   startRecord() {
     // this.textInput.current.focus();
     if (
-      window.hasOwnProperty('webkitSpeechRecognition') ||
-      window.hasOwnProperty('SpeechRecognition')
+      window.hasOwnProperty("webkitSpeechRecognition") ||
+      window.hasOwnProperty("SpeechRecognition")
     ) {
-      $('.mic-chat').css({ opacity: 1 });
+      $(".mic-chat").css({ opacity: 1 });
       var SpeechRecognition =
         window.SpeechRecognition || window.webkitSpeechRecognition;
       var recognition = new SpeechRecognition();
@@ -246,12 +249,12 @@ class ChatWidget extends Component {
       recognition.continuous = false;
       recognition.interimResults = false;
 
-      recognition.lang = 'en-IN';
+      recognition.lang = "en-IN";
       recognition.start();
 
       recognition.onresult = (e) => {
         recognition.stop();
-        $('.mic-chat').css({ opacity: 0.6 });
+        $(".mic-chat").css({ opacity: 0.6 });
         // console.log(e.results);
         // set text
         setTimeout(this.sendText(e.results[0][0].transcript), 1000);
@@ -264,7 +267,7 @@ class ChatWidget extends Component {
   }
   componentDidMount() {
     this.setTheme();
-    this.setUpInitial();
+    // this.setUpInitial();
 
     this.textInput = React.createRef();
 
@@ -387,7 +390,7 @@ class ChatWidget extends Component {
     // });
 
     this.audio = new Audio(
-      'https://cogniwide.github.io/cogniassist-chat-widget/public/assets/ding.mp3'
+      "https://cogniwide.github.io/cogniassist-chat-widget/public/assets/ding.mp3"
     );
     this.audio.load();
   }
@@ -418,13 +421,13 @@ class ChatWidget extends Component {
 
   createOrRetriveSenderId() {
     if (this.props.rememberUser) {
-      let user = localStorage.getItem('cogniassist-user');
+      let user = localStorage.getItem("cogniassist-user");
       if (user) {
-        console.info('Returning user', user);
+        console.info("Returning user", user);
         return user;
       } else {
         let user = this.guid();
-        localStorage.setItem('cogniassist-user', user);
+        localStorage.setItem("cogniassist-user", user);
         return user;
       }
     }
@@ -432,29 +435,36 @@ class ChatWidget extends Component {
   }
 
   loadChatHistory() {
-    return fetch(this.props.botURL + 'chats/' + this.state.sender_id, {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
+    return fetch(this.props.botURL + "chats/" + this.state.sender_id, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
     }).then((response) => response.json());
   }
 
   restartChat($event) {
     $event.preventDefault();
-    this.setState({
-      conversation: [{text: "Hello Nice Day! What you want to know about", user: "ai"}],
-      quick_replies: [],
-      recommendations: [],
-    });
-    this.sendRequest({
-      sender: this.state.sender_id,
-      message: '/default/restart',
-    });
+    this.setState({conversation: []});
+    this.loading(true);
+    setTimeout(() => {
+      this.loading(false);
+      this.setState({
+        conversation: [
+          {
+            text: "Hello Nice Day! What you want to know about",
+            user: "ai",
+            timestamp: this.getCurrentTime(),
+          },
+        ],
+        quick_replies: [],
+        recommendations: [],
+      });
+    }, 2000);
   }
   minimizeWindow($event) {
     $event.preventDefault();
-    $('.chat_box_container')
+    $(".chat_box_container")
       .hide(100)
-      .removeClass('chat_box_active');
+      .removeClass("chat_box_active");
     this.setState({
       opened: false,
     });
@@ -475,13 +485,13 @@ class ChatWidget extends Component {
     return (
       s4() +
       s4() +
-      '-' +
+      "-" +
       s4() +
-      '-' +
+      "-" +
       s4() +
-      '-' +
+      "-" +
       s4() +
-      '-' +
+      "-" +
       s4() +
       s4() +
       s4()
@@ -490,18 +500,18 @@ class ChatWidget extends Component {
 
   getFormattedDate(date) {
     let year = date.getFullYear();
-    let month = (1 + date.getMonth()).toString().padStart(2, '0');
+    let month = (1 + date.getMonth()).toString().padStart(2, "0");
     let day = date
       .getDate()
       .toString()
-      .padStart(2, '0');
-    return month + '/' + day + '/' + year;
+      .padStart(2, "0");
+    return month + "/" + day + "/" + year;
   }
 
   scrollToBottom() {
     this.state.opened &&
       this.el &&
-      this.el.scrollIntoView({ behavior: 'smooth' });
+      this.el.scrollIntoView({ behavior: "smooth" });
   }
 
   handleChange(event) {
@@ -512,7 +522,7 @@ class ChatWidget extends Component {
     this.setState({
       quick_replies: [],
     });
-    this.addMessage(title, 'human');
+    this.addMessage(title, "human");
     let reqJson = {
       message: payload,
       sender: this.state.sender_id,
@@ -526,7 +536,7 @@ class ChatWidget extends Component {
     const msg = {
       text: message,
       user: user,
-      timestamp: timestamp
+      timestamp: timestamp,
     };
     this.setState((prevState) => ({
       conversation: [...prevState.conversation, msg],
@@ -554,7 +564,7 @@ class ChatWidget extends Component {
   sendText(message = null) {
     message = message == null ? this.state.userMessage.trim() : message;
     if (!message) return;
-    this.addMessage(message, 'human');
+    this.addMessage(message, "human");
     this.setState({ clearText: true });
 
     let reqJson = {
@@ -563,7 +573,7 @@ class ChatWidget extends Component {
     };
 
     this.sendRequest(reqJson);
-    this.setState({ userMessage: '' });
+    this.setState({ userMessage: "" });
     //this.setState({ clearText: false });
     this.scrollToBottom();
   }
@@ -571,58 +581,78 @@ class ChatWidget extends Component {
   sendFile(file) {
     this.loading(true);
     const formData = new FormData();
-    formData.append('sender', this.state.sender_id);
-    formData.append('file', file, file.name);
-    formData.append('message', '/file_uploaded');
+    formData.append("sender", this.state.sender_id);
+    formData.append("file", file, file.name);
+    formData.append("message", "/file_uploaded");
 
-    return fetch(this.props.botURL + 'webhooks/rest/webhook/', {
-      method: 'POST',
+    return fetch(this.props.botURL + "webhooks/rest/webhook/", {
+      method: "POST",
       body: formData,
     })
       .then((response) => response.json())
       .then((response) => {
         this.loading(false);
-        this.addMessage('File uploaded', 'human');
+        this.addMessage("File uploaded", "human");
         this.handleMessageReceived(response);
       });
   }
 
-  sendRequest(payload) {
-    const { communicationMethod, socket } = this.props;
+  // sendRequest(payload) {
+  //   const { communicationMethod, socket } = this.props;
 
-    if (communicationMethod == 'socket') {
-      this.setState({
-        delayFactor: 0,
+  //   if (communicationMethod == 'socket') {
+  //     this.setState({
+  //       delayFactor: 0,
+  //     });
+  //     socket.emit('user_uttered', {
+  //       message: payload.message,
+  //       session_id: payload.sender,
+  //     });
+  //   } else {
+  //     fetch(this.props.botURL + 'webhooks/rest/webhook/', {
+  //       method: 'POST',
+  //       headers: { 'Content-Type': 'application/json' },
+  //       body: JSON.stringify(payload),
+  //     })
+  //       .then((response) => response.json())
+  //       .then((response) => {
+  //         this.handleMessageReceived(response);
+  //       });
+  //   }
+  // }
+
+  sendRequest(payload) {
+    fetch("https://discovery.cogniassist.com/instance/query", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        this.handleMessageReceived(response);
       });
-      socket.emit('user_uttered', {
-        message: payload.message,
-        session_id: payload.sender,
-      });
-    } else {
-      fetch(this.props.botURL + 'webhooks/rest/webhook/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      })
-        .then((response) => response.json())
-        .then((response) => {
-          this.handleMessageReceived(response);
-        });
-    }
   }
+
+  // handleMessageReceived(response) {
+  //   this.loading(true);
+  //   for (let index = 0; index < response.length; index++) {
+  //     let delayFactor =
+  //       this.props.communicationMethod == "rest"
+  //         ? index
+  //         : this.state.delayFactor;
+  //     setTimeout(() => {
+  //       this.loading(false);
+  //       this.renderResponse([response[index]]);
+  //     }, 2000);
+  //   }
+  // }
 
   handleMessageReceived(response) {
     this.loading(true);
-    for (let index = 0; index < response.length; index++) {
-      let delayFactor =
-        this.props.communicationMethod == 'rest'
-          ? index
-          : this.state.delayFactor;
-      setTimeout(() => {
-        this.loading(false);
-        this.renderResponse([response[index]]);
-      }, 2000);
-    }
+    setTimeout(() => {
+      this.loading(false);
+      this.renderResponse(response);
+    }, 2000);
   }
 
   handleBotUtterance(botUtterance) {
@@ -638,38 +668,48 @@ class ChatWidget extends Component {
     this.handleMessageReceived([botUtterance]);
   }
 
-  renderResponse(responses) {
-    // console.log(responses);
-    let messages = [];
-    let quick_replies = [];
-    let recommendations = [];
-    this.setState({
-      last_response_count: responses.length,
-    });
-    responses.forEach((response) => {
-      if (response && 'recommendations' in response) {
-        recommendations.push(...response['recommendations']);
-      } else {
-        const msg = {
-          ...response,
-          user: 'ai',
-          timestamp: this.getCurrentTime(),
-        };
-        if (response && 'quick_replies' in response) {
-          quick_replies.push(...response['quick_replies']);
-        }
+  renderResponse(response) {
+    // let messages = [];
+    // let quick_replies = [];
+    // let recommendations = [];
+    // this.setState({
+    //   last_response_count: responses.length,
+    // });
+    // responses.forEach((response) => {
+    //   if (response && "recommendations" in response) {
+    //     recommendations.push(...response["recommendations"]);
+    //   } else {
+    //     const msg = {
+    //       ...response,
+    //       user: "ai",
+    //       timestamp: this.getCurrentTime(),
+    //     };
+    //     if (response && "quick_replies" in response) {
+    //       quick_replies.push(...response["quick_replies"]);
+    //     }
 
-        if (response && 'workflow_menu' in response) {
-          this.setState({ showBack: true });
-        }
-        messages.push(msg);
-      }
-    });
+    //     if (response && "workflow_menu" in response) {
+    //       this.setState({ showBack: true });
+    //     }
+    //     messages.push(msg);
+    //   }
+    // });
+
+    // this.setState((prevState) => ({
+    //   conversation: [...prevState.conversation, ...messages],
+    //   quick_replies: quick_replies,
+    //   recommendations: recommendations,
+    //   show_recommendation: true,
+    // }));
+
+    const messages = {
+      ...response,
+      user: "ai",
+      timestamp: this.getCurrentTime(),
+    };
 
     this.setState((prevState) => ({
-      conversation: [...prevState.conversation, ...messages],
-      quick_replies: quick_replies,
-      recommendations: recommendations,
+      conversation: [...prevState.conversation, messages],
       show_recommendation: true,
     }));
 
@@ -683,7 +723,7 @@ class ChatWidget extends Component {
   }
 
   recommendationClicked(recommendation) {
-    if (['product', 'faq'].includes(recommendation['type'])) {
+    if (["product", "faq"].includes(recommendation["type"])) {
       this.chooseReply(recommendation.title, recommendation.payload);
     }
   }
@@ -699,7 +739,7 @@ class ChatWidget extends Component {
     var aiIndex = 0;
     var uiIndex = 0;
     const chat = this.state.conversation.map((e, index) => {
-      if (e.user === 'human') {
+      if (e.user === "human") {
         aiIndex = 0;
         uiIndex++;
       } else {
@@ -707,14 +747,16 @@ class ChatWidget extends Component {
         uiIndex = 0;
       }
       if (e.end) {
-        $('.cog_chat_panel-body .cog_chat_banner, .cog_chat_panel-body ul.cog_chat, .cog_chat_panel-footer').hide();
-        $('.cog_chat_panel-body .cog_chat_feedback').show();
+        $(
+          ".cog_chat_panel-body .cog_chat_banner, .cog_chat_panel-body ul.cog_chat, .cog_chat_panel-footer"
+        ).hide();
+        $(".cog_chat_panel-body .cog_chat_feedback").show();
       }
       let botIcon = this.props.botAvatar;
       let userIcon = this.props.userAvatar;
-      if (e['emotion'] == Emotions.HAPPY) {
+      if (e["emotion"] == Emotions.HAPPY) {
         botIcon = smileEmoji;
-      } else if (e['emotion'] == Emotions.SAD) {
+      } else if (e["emotion"] == Emotions.SAD) {
         botIcon = normalEmoji;
       }
       return (
@@ -738,34 +780,34 @@ class ChatWidget extends Component {
     });
 
     const restartStyle = {
-      width: '20px',
+      width: "20px",
     };
 
     const closeBtnStyle = {
-      width: '21px',
+      width: "21px",
     };
     const bannerStyle = {
-      backgroundImage: 'url(' + this.props.bannerURL + ')',
+      backgroundImage: "url(" + this.props.bannerURL + ")",
     };
-    let className = 'send-button';
+    let className = "send-button";
     if (this.state.userMessage.length) {
-      className += ' send-active';
+      className += " send-active";
     }
     // console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^', this.props.widgetPosition);
     const widgetPosition =
-      this.props.widgetPosition == 'right' ? '_right' : '_left';
-    let parentClass = '_cog_chat ' + widgetPosition;
+      this.props.widgetPosition == "right" ? "_right" : "_left";
+    let parentClass = "_cog_chat " + widgetPosition;
     if (this.state.fullScreeen) {
-      parentClass += ' full-screen';
+      parentClass += " full-screen";
     }
     return (
       <div className={parentClass}>
         <Navbar />
         {this.state.opened == false && (
           <div
-            className='cog_chat_btn_container'
+            className="cog_chat_btn_container"
             onClick={() => {
-              this.props.template === 'Base'
+              this.props.template === "Base"
                 ? this.setState({ opened: true, unread: 0 })
                 : this.setState({
                     opened: true,
@@ -774,16 +816,20 @@ class ChatWidget extends Component {
                   });
             }}
           >
-            <div className='cog_chat_chatbot-icon'>
-              <img src={this.props.launcherIcon} className='cog_chat_launcher_icon' alt='launcher_icon' />
+            <div className="cog_chat_chatbot-icon">
+              <img
+                src={this.props.launcherIcon}
+                className="cog_chat_launcher_icon"
+                alt="launcher_icon"
+              />
               {this.state.unread > 0 && (
-                <span className='cog_chat_badge-msg unreadCount'>
+                <span className="cog_chat_badge-msg unreadCount">
                   {this.state.unread}
                 </span>
               )}
             </div>
-            {this.props.template !== 'Modal' && this.state.opened == false && (
-              <div className='cog_chat_chat-heading arrow-bottom'>
+            {this.props.template !== "Modal" && this.state.opened == false && (
+              <div className="cog_chat_chat-heading arrow-bottom">
                 <h5>{this.props.botWelcomeMessage}</h5>
               </div>
             )}
@@ -793,12 +839,12 @@ class ChatWidget extends Component {
         {this.state.show_recommendation &&
           this.state.recommendations.length > 0 &&
           this.state.opened && (
-            <div className='cog_chat_recommendations_container'>
-              <div className='cog_chat_full_wrapper'>
-                <div className='cog_chat_recommendations_header'>
-                  <div className='cog_chat_title'>Related Information</div>
+            <div className="cog_chat_recommendations_container">
+              <div className="cog_chat_full_wrapper">
+                <div className="cog_chat_recommendations_header">
+                  <div className="cog_chat_title">Related Information</div>
                   <button
-                    className='cog_chat_btn_close'
+                    className="cog_chat_btn_close"
                     onClick={() => {
                       this.toggleRecommendation(false);
                     }}
@@ -806,20 +852,22 @@ class ChatWidget extends Component {
                     X
                   </button>
                 </div>
-                <div className='cog_chat_recommendation_body'>
+                <div className="cog_chat_recommendation_body">
                   {this.state.recommendations.map((recommendation, idx) => (
                     <div
-                      className={'cog_chat_recommendation_item ' + recommendation.type}
+                      className={
+                        "cog_chat_recommendation_item " + recommendation.type
+                      }
                       key={idx}
                       onClick={() => {
                         this.recommendationClicked(recommendation);
                       }}
                     >
-                      <div className='cog_chat_icon'>
-                        <div className='_image'></div>
+                      <div className="cog_chat_icon">
+                        <div className="_image"></div>
                       </div>
                       <p
-                        className='cog_chat_recom_text'
+                        className="cog_chat_recom_text"
                         dangerouslySetInnerHTML={{
                           __html: recommendation.title,
                         }}
@@ -831,34 +879,34 @@ class ChatWidget extends Component {
             </div>
           )}
 
-        {this.state.opened && this.props.template === 'Base' && (
+        {this.state.opened && this.props.template === "Base" && (
           <div
             className={`chat_box_container position-relative ${
-              this.state.opened ? 'chat_box_active' : ''
+              this.state.opened ? "chat_box_active" : ""
             }`}
           >
-            <div className='cog_chat_full_container_wrapper'>
-              <div className='cog_chat_panel-heading bg-primary'>
-                <span className='cog_chat_text-white font-weight-bold'>
+            <div className="cog_chat_full_container_wrapper">
+              <div className="cog_chat_panel-heading bg-primary">
+                <span className="cog_chat_text-white font-weight-bold">
                   <img
-                    className='chat-logoheader'
-                    alt='chat-logoheader'
+                    className="chat-logoheader"
+                    alt="chat-logoheader"
                     src={this.props.headerLogo}
-                    width='33'
-                  />{' '}
+                    width="33"
+                  />{" "}
                   {this.props.botName}
                 </span>
-                <div className='btn-group-head'>
+                <div className="btn-group-head">
                   <a
-                    className='restart'
+                    className="restart"
                     onClick={this.restartChat}
                     style={restartStyle}
                   >
                     <img
                       src={updateArrow}
-                      alt='refresh'
-                      className='img-responsive'
-                      width='15'
+                      alt="refresh"
+                      className="img-responsive"
+                      width="15"
                     />
                   </a>
                   {/* <a className="expand" onClick={this.fullScreeenChat} >
@@ -866,54 +914,57 @@ class ChatWidget extends Component {
                     <path d="m464 488h-416a24 24 0 0 1 -24-24v-416a24 24 0 0 1 24-24h176a24 24 0 0 1 0 48h-152v368h368v-152a24 24 0 0 1 48 0v176a24 24 0 0 1 -24 24zm-40-400h-33.941l-103.03 103.029a24 24 0 0 0 33.942 33.942l103.029-103.03zm64 88v-128a24 24 0 0 0 -24-24h-128a24 24 0 0 0 0 48h104v104a24 24 0 0 0 48 0z" />
                   </svg>
                 </a> */}
-                  <a className='minimize' onClick={this.minimizeWindow}>
+                  <a className="minimize" onClick={this.minimizeWindow}>
                     <img
                       src={minimize}
-                      alt='minimise'
-                      className='img-responsive'
-                      width='15'
+                      alt="minimise"
+                      className="img-responsive"
+                      width="15"
                     />
                   </a>
                   <a
-                    className='close'
-                    aria-label='Close'
+                    className="close"
+                    aria-label="Close"
                     style={closeBtnStyle}
                     onClick={this.onCloseClick}
                   >
                     <svg
-                      focusable='false'
-                      xmlns='http://www.w3.org/2000/svg'
-                      viewBox='0 0 24 24'
+                      focusable="false"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
                     >
-                      <path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'></path>
+                      <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
                     </svg>
                   </a>
                 </div>
               </div>
-              <div className='cog_chat_panel-body'>
+              <div className="cog_chat_panel-body">
                 {this.props.carouselItems.length > 0 ? (
                   <CarouselWrapper
                     parent={this}
                     items={this.props.carouselItems}
                   />
                 ) : (
-                  <div className='cog_chat_banner' style={bannerStyle}>
+                  <div className="cog_chat_banner" style={bannerStyle}>
                     <h3>{this.props.bannerText}</h3>
                   </div>
                 )}
 
                 {this.state.showFeedback == false && (
-                  <ul className='cog_chat'>
+                  <ul className="cog_chat">
                     {chat}
                     <li
-                      className='loading'
+                      className="loading"
                       style={{
-                        display: this.state.loading ? 'block' : 'none',
+                        display: this.state.loading ? "block" : "none",
                       }}
                     >
-                      <div className='cog_chat_adminchatlist'>
-                        <div className='cog_chat_chat-body bubble clearfix'>
-                          <img src='https://cogniwide.github.io/cogniassist-chat-widget/public/assets/tenor.gif' alt='tenor-gif' />
+                      <div className="cog_chat_adminchatlist">
+                        <div className="cog_chat_chat-body bubble clearfix">
+                          <img
+                            src="https://cogniwide.github.io/cogniassist-chat-widget/public/assets/tenor.gif"
+                            alt="tenor-gif"
+                          />
                         </div>
                       </div>
                     </li>
@@ -921,33 +972,36 @@ class ChatWidget extends Component {
                 )}
 
                 {this.state.showFeedback && (
-                  <div className='cog_chat_feedback'>
+                  <div className="cog_chat_feedback">
                     Feedback
-                    <ul className='cog_chat_feedback-emoji' onClick={this.closeWindow}>
-                      <li data-name='worst'>
-                        <img src={worstEmoji} alt='worst-emoji' />
+                    <ul
+                      className="cog_chat_feedback-emoji"
+                      onClick={this.closeWindow}
+                    >
+                      <li data-name="worst">
+                        <img src={worstEmoji} alt="worst-emoji" />
                         <p> bad </p>
                       </li>
-                      <li data-name='normal'>
-                        <img src={normalEmoji} alt='normal-emoji' />
+                      <li data-name="normal">
+                        <img src={normalEmoji} alt="normal-emoji" />
                         <p> Satisfied </p>
                       </li>
-                      <li data-name='smile'>
-                        <img src={smileEmoji} alt='smile-emoji'/>
+                      <li data-name="smile">
+                        <img src={smileEmoji} alt="smile-emoji" />
                         <p> awesome </p>
                       </li>
                     </ul>
                   </div>
                 )}
 
-                <div className='cog_chat_suggestion_box'>
-                  <div className='cog_chat_quick-replies'>
+                <div className="cog_chat_suggestion_box">
+                  <div className="cog_chat_quick-replies">
                     {this.state.quick_replies.map((button, index) => (
                       <button
-                        type='button'
-                        id='quick_reply_btn'
+                        type="button"
+                        id="quick_reply_btn"
                         key={index}
-                        className='cog_chat_cwc-borderbtn see_all'
+                        className="cog_chat_cwc-borderbtn see_all"
                         onClick={() =>
                           this.chooseReply(button.title, button.payload)
                         }
@@ -963,19 +1017,22 @@ class ChatWidget extends Component {
                     this.el = el;
                   }}
                 >
-                  {' '}
+                  {" "}
                 </div>
               </div>
-              <div className='cog_chat_panel-footer'>
-                <div id='composer' className='cog_chat_composer position-relative'>
+              <div className="cog_chat_panel-footer">
+                <div
+                  id="composer"
+                  className="cog_chat_composer position-relative"
+                >
                   <textarea
                     value={this.state.userMessage}
                     onKeyUp={this.handleSubmit}
                     onChange={this.handleChange}
-                    id='textInput'
-                    ref='textInput'
-                    className='textInput'
-                    placeholder='Type your query'
+                    id="textInput"
+                    ref="textInput"
+                    className="textInput"
+                    placeholder="Type your query"
                   ></textarea>
                   <button
                     className={className}
@@ -986,14 +1043,14 @@ class ChatWidget extends Component {
                   {(window.SpeechRecognition ||
                     window.webkitSpeechRecognition) && (
                     <button
-                      className='mic-chat'
+                      className="mic-chat"
                       onClick={this.startRecord}
                     ></button>
                   )}
                 </div>
-                <div className='cog_chat_power-by'>
+                <div className="cog_chat_power-by">
                   <span>
-                    Powered by <a href='#'>Cogniwide</a>
+                    Powered by <a href="#">Cogniwide</a>
                   </span>
                 </div>
               </div>
@@ -1001,7 +1058,7 @@ class ChatWidget extends Component {
           </div>
         )}
 
-        {this.state.opened && this.props.template === 'Modal' && (
+        {this.state.opened && this.props.template === "Modal" && (
           <ModalWidget
             loading={this.state.loading}
             isModalOpen={this.state.isModalOpen}
