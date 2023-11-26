@@ -10,6 +10,7 @@ import ChatBubble from "./components/cogniwide-chatbubble";
 import CarouselWrapper from "./components/carousel_wrapper";
 import ModalWidget from "../ChatWidget/cogniwide-Modalwidget";
 import Navbar from "../CustomComponents/Navbar/Navbar";
+import Banner from "../CustomComponents/Banner/Banner";
 
 export class Emotions {
   static SAD = "sadness";
@@ -44,6 +45,7 @@ class ChatWidget extends Component {
       delayFactor: 1,
       clearText: false,
       showBack: false,
+      dropdownOption: "points",
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -59,6 +61,7 @@ class ChatWidget extends Component {
     this.openWindow = this.openWindow.bind(this);
     this.closeWindow = this.closeWindow.bind(this);
     this.startRecord = this.startRecord.bind(this);
+    this.getDropdownValue = this.getDropdownValue.bind(this);
   }
 
   handleSubmit(e) {
@@ -70,6 +73,13 @@ class ChatWidget extends Component {
       if (!this.state.userMessage.trim()) return;
       this.sendText(value);
     }
+  }
+
+  getDropdownValue(option) {
+    this.setState((ps) => ({
+      ...ps,
+      dropdownOption: option,
+    }));
   }
 
   setTheme() {
@@ -443,7 +453,7 @@ class ChatWidget extends Component {
 
   restartChat($event) {
     $event.preventDefault();
-    this.setState({conversation: []});
+    this.setState({ conversation: [] });
     this.loading(true);
     setTimeout(() => {
       this.loading(false);
@@ -621,7 +631,11 @@ class ChatWidget extends Component {
   //   }
   // }
 
-  sendRequest(payload) {
+  sendRequest(value) {
+    const payload = {
+      ...value,
+      option: this.state.dropdownOption,
+    };
     fetch("https://discovery.cogniassist.com/instance/query", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -802,7 +816,7 @@ class ChatWidget extends Component {
     }
     return (
       <div className={parentClass}>
-        <Navbar />
+        <Banner />
         {this.state.opened == false && (
           <div
             className="cog_chat_btn_container"
@@ -1085,7 +1099,7 @@ class ChatWidget extends Component {
             }}
             restartChat={this.restartChat}
             startRecord={this.startRecord}
-            getResponse={this.handleResponse}
+            getDropdownValue={this.getDropdownValue}
           />
         )}
       </div>

@@ -520,6 +520,14 @@
   justify-content: center;
 }
 
+.cog_chat-main-input-dropdown {
+  outline: none;
+  padding: 0.3rem;
+  border: solid 0.5px lightgrey;
+  border-radius: 0.3rem;
+  margin-right: 1rem;
+}
+
 // ----------------confirm-box-----------
 .confirm-box {
   display: flex;

@@ -26,8 +26,10 @@ class ModalWidget extends React.Component {
       isConfirmed: false,
       rightPanelContents: [],
       openedAccordionIndex: "-1",
+      dropdownValue: "points",
     };
     this.openWindow = this.openWindow.bind(this);
+    this.handleDropdownValueChange = this.handleDropdownValueChange.bind(this);
   }
 
   openWindow() {
@@ -39,6 +41,17 @@ class ModalWidget extends React.Component {
   }
   scrollToBottom() {
     this.el && this.el.scrollIntoView({ behavior: "smooth" });
+  }
+
+  handleDropdownValueChange(e) {
+    const { value } = e.target;
+    this.setState(
+      (ps) => ({
+        ...ps,
+        dropdownValue: value,
+      }),
+      () => this.props.getDropdownValue(this.state.dropdownValue)
+    );
   }
 
   render() {
@@ -124,7 +137,6 @@ class ModalWidget extends React.Component {
                           style={{ width: "100%", height: "100%" }}
                         ></img>
                       </div>
-
                     </div>
                   </div>
                   {this.props.showBack && (
@@ -271,6 +283,14 @@ class ModalWidget extends React.Component {
                         borderRadius: "15px",
                       }}
                     >
+                      <select
+                        className="cog_chat-main-input-dropdown"
+                        value={this.state.dropdownValue}
+                        onChange={this.handleDropdownValueChange}
+                      >
+                        <option value="points">Points</option>
+                        <option value="executive">Executive</option>
+                      </select>
                       <textarea
                         value={this.props.userMessage}
                         onKeyUp={this.props.handleSubmit}
