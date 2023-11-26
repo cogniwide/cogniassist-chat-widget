@@ -574,6 +574,7 @@ class ChatWidget extends Component {
   sendText(message = null) {
     message = message == null ? this.state.userMessage.trim() : message;
     if (!message) return;
+    this.loading(true);
     this.addMessage(message, "human");
     this.setState({ clearText: true });
 
@@ -662,7 +663,6 @@ class ChatWidget extends Component {
   // }
 
   handleMessageReceived(response) {
-    this.loading(true);
     setTimeout(() => {
       this.loading(false);
       this.renderResponse(response);

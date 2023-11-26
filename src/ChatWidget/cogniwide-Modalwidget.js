@@ -78,7 +78,7 @@ class ModalWidget extends React.Component {
                   this.state.openedAccordionIndex === "-1" ? "flex6" : "flex0"
                 }`}
               >
-                <div className="cog_chat_close-container">
+                {/* <div className="cog_chat_close-container">
                   <div className="cog_chat_close-wrapper">
                     <img
                       src={closeIcon}
@@ -88,7 +88,7 @@ class ModalWidget extends React.Component {
                       }}
                     ></img>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="cog_chat_modal-chat-content">
                   <div className="cog_chat_header">
@@ -398,18 +398,17 @@ class ModalWidget extends React.Component {
             </React.Fragment>
           ) : (
             <div className="confirm-box">
-              <div className="cog_chat_close-container">
+              {/* <div className="cog_chat_close-container">
                 <img
                   src={closeCircleOutline}
                   alt="close-circle-outline"
                   onClick={this.props.closeModal}
                 ></img>
-              </div>
+              </div> */}
               <div
                 className="img-container"
                 style={{ backgroundImage: "url(" + recordingWave + ")" }}
               >
-                {/* <img src={recordingWave}></img> */}
                 <img
                   src={modalBotAvatar}
                   className="botImg"
@@ -417,11 +416,6 @@ class ModalWidget extends React.Component {
                 ></img>
               </div>
               <div className="text-container">
-                <p>
-                  مرحبا! اسمي "اسم Chatbot" ، مساعد Awnic الظاهري. أنا هنا
-                  للمساعدة في الإجابة على أسئلتك على AWNIC.
-                </p>
-                <hr />
                 <p>
                   Hello! My name is Hazza!, Awnic Virtual assistant. I am here
                   to help answer your questions on AWNIC.
@@ -435,14 +429,6 @@ class ModalWidget extends React.Component {
                   }}
                 >
                   Let's Start
-                </button>
-                <button
-                  onClick={() => {
-                    this.props.changeLang("ar");
-                    this.setState({ isConfirmed: true });
-                  }}
-                >
-                  لنبدأ!
                 </button>
               </div>
             </div>
