@@ -26,7 +26,7 @@ class ChatWidget extends Component {
       userMessage: "",
       conversation: [
         {
-          text: "Hello Nice Day! What you want to know about",
+          text: "Hello, Good Day! I'm here and delighted to assist you. Feel free to inquire about anything you'd like to know.",
           user: "ai",
           timestamp: this.getCurrentTime(),
         },
@@ -460,7 +460,7 @@ class ChatWidget extends Component {
       this.setState({
         conversation: [
           {
-            text: "Hello Nice Day! What you want to know about",
+            text: "Hello, Good Day! I'm here and delighted to assist you. Feel free to inquire about anything you'd like to know.",
             user: "ai",
             timestamp: this.getCurrentTime(),
           },
