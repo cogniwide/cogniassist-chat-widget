@@ -409,7 +409,8 @@ class ModalWidget extends React.Component {
               </div>
               <div className="text-container">
                 <p>
-                Hey! I'm an AI Assistant, here to assist you with any questions you have about Awnic, your go-to insurance service provider. How can I help you today?
+                Hey! I'm an AI Assistant, here to assist you with any questions you have about Awnic,
+                 your go-to insurance service provider. How can I help you today?
                 </p>
               </div>
               <div className="button-container">
