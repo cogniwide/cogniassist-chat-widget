@@ -283,14 +283,6 @@ class ModalWidget extends React.Component {
                         borderRadius: "15px",
                       }}
                     >
-                      <select
-                        className="cog_chat-main-input-dropdown"
-                        value={this.state.dropdownValue}
-                        onChange={this.handleDropdownValueChange}
-                      >
-                        <option value="points">Points</option>
-                        <option value="executive">Executive</option>
-                      </select>
                       <textarea
                         value={this.props.userMessage}
                         onKeyUp={this.props.handleSubmit}
@@ -417,8 +409,7 @@ class ModalWidget extends React.Component {
               </div>
               <div className="text-container">
                 <p>
-                  Hello! My name is Hazza!, Awnic Virtual assistant. I am here
-                  to help answer your questions on AWNIC.
+                Hey! I'm an AI Assistant, here to assist you with any questions you have about Awnic, your go-to insurance service provider. How can I help you today?
                 </p>
               </div>
               <div className="button-container">
