@@ -30,7 +30,7 @@ class ModalWidget extends React.Component {
       timer: null,
       rightPanelContents: [],
       openedAccordionIndex: "-1",
-      timeInms: 20000,
+      timeInms: 1800000,
     };
     this.openWindow = this.openWindow.bind(this);
     this.resumeChatbot = this.resumeChatbot.bind(this);
@@ -53,7 +53,7 @@ class ModalWidget extends React.Component {
     chatbotElement.addEventListener("keydown", this.startTimer);
   }
   startTimer = () => {
-    console.log("Timer start");
+    // console.log("Timer start");
     if (this.timer) {
       this.resetTimer();
     }
@@ -64,9 +64,9 @@ class ModalWidget extends React.Component {
           timeInms: ps.timeInms - 1000,
         }),
         () => {
-          console.log("Timer ", this.state.timeInms);
+          // console.log("Timer ", this.state.timeInms);
           if (this.state.timeInms == 0) {
-            console.log("Bot idle for 20 seconds");
+            // console.log("Bot idle for 20 seconds");
             this.setState(
               (ps) => ({
                 ...ps,
@@ -89,7 +89,7 @@ class ModalWidget extends React.Component {
     this.setState((ps) => ({
       ...ps,
       isIdle: false,
-      timeInms: 20000,
+      timeInms: 1800000,
     }));
   }
   resumeChatbot() {
