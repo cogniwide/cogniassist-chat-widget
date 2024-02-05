@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import 'react-calendar/dist/Calendar.css';
 import '../styles/cogniwide-chatbubble.scss';
 import Calendar from 'react-calendar';
-import Cloud from '../../../public/assets/modal/upload-cloud.svg';
-import Dropdown from './custom-responses/dropdown';
+import Cloud from './../../assets/modal/upload-cloud.svg';
 import Autocomplete from './custom-responses/autocomplete';
 import Carousel from './custom-responses/carousel';
 import RangeSlider from './custom-responses/rangeslider';
@@ -38,7 +37,7 @@ class ChatBubble extends Component {
   onChange = (date) => {
     let readable_date = date.toDateString();
     let formatted_date = this.getFormattedDate(date);
-    if (this.props.message.datepicker.defaultView == 'decade') {
+    if (this.props.message.datepicker.defaultView === 'decade') {
       readable_date = date.getFullYear();
     }
     this.props.parent.chooseReply(readable_date, formatted_date);
@@ -142,17 +141,17 @@ class ChatBubble extends Component {
         <li className='cwc-right'>
           <div className='clientchat'>
             {this.props.template === 'Modal' && this.props.userAvatar && (
-              <span className='user_avatar_wrapper mr-2'>
+              <a className='user_avatar_wrapper mr-2'>
                 <img
                   src={this.props.userIcon}
                   alt='User Avatar'
                   className='img-circle avatar'
                 />
-              </span>
+              </a>
             )}
             <div className='cog_chat_chat-body bubble clearfix'>
               <p>
-                {typeof this.props.message.text == 'string' &&
+                {typeof this.props.message.text === 'string' &&
                 this.props.message.text.startsWith('/')
                   ? 'Event'
                   : this.props.message.text}

@@ -9,8 +9,7 @@ import worstEmoji from "./cogniwide-assets/worst.svg";
 import ChatBubble from "./components/cogniwide-chatbubble";
 import CarouselWrapper from "./components/carousel_wrapper";
 import ModalWidget from "../ChatWidget/cogniwide-Modalwidget";
-import Navbar from "../CustomComponents/Navbar/Navbar";
-import Banner from "../CustomComponents/Banner/Banner";
+import chatbotBg from "./cogniwide-assets/bgImage.png";
 
 export class Emotions {
   static SAD = "sadness";
@@ -24,13 +23,7 @@ class ChatWidget extends Component {
     this.state = {
       sender_id: this.props.senderId || this.createOrRetriveSenderId(),
       userMessage: "",
-      conversation: [
-        {
-          text: "Hello, Good Day! I'm here and delighted to assist you. Feel free to inquire about anything you'd like to know.",
-          user: "ai",
-          timestamp: this.getCurrentTime(),
-        },
-      ],
+      conversation: [],
       quick_replies: [],
       recommendations: [],
       show_recommendation: false,
@@ -45,7 +38,6 @@ class ChatWidget extends Component {
       delayFactor: 1,
       clearText: false,
       showBack: false,
-      dropdownOption: "points",
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -61,25 +53,9 @@ class ChatWidget extends Component {
     this.openWindow = this.openWindow.bind(this);
     this.closeWindow = this.closeWindow.bind(this);
     this.startRecord = this.startRecord.bind(this);
-    this.getDropdownValue = this.getDropdownValue.bind(this);
-  }
+    this.mainmenu = this.mainmenu.bind(this);
 
-  handleSubmit(e) {
-    e.preventDefault();
-    e.stopPropagation();
-
-    const { value } = e.target;
-    if (value != "" && e.key === "Enter") {
-      if (!this.state.userMessage.trim()) return;
-      this.sendText(value);
-    }
-  }
-
-  getDropdownValue(option) {
-    this.setState((ps) => ({
-      ...ps,
-      dropdownOption: option,
-    }));
+    //-----refs---------
   }
 
   setTheme() {
@@ -93,7 +69,7 @@ class ChatWidget extends Component {
   setUpInitial() {
     const { socket, communicationMethod } = this.props;
 
-    if (communicationMethod == "socket") {
+    if (communicationMethod === "socket") {
       if (!socket.isInitialized()) {
         socket.createSocket();
 
@@ -105,33 +81,6 @@ class ChatWidget extends Component {
         socket.on("connect", () => {
           socket.emit("session_request", { session_id: this.state.sender_id });
         });
-
-        // Old code
-        // // When session_confirm is received from the server:
-        // socket.on('session_confirm', (sessionObject) => {
-        //   console.log('session confirmed');
-
-        //   const remoteId =
-        //     sessionObject && sessionObject.session_id
-        //       ? sessionObject.session_id
-        //       : sessionObject;
-
-        //   // eslint-disable-next-line no-console
-        //   console.log(
-        //     `session_confirm:${socket.socket.id} session_id:${remoteId}`
-        //   );
-
-        //   /*
-        //   Check if the session_id is consistent with the server
-        //   If the localId is null or different from the remote_id,
-        //   start a new session.
-        //   */
-        //   if (this.props.rememberUser) {
-        //     this.handleChatHistory();
-        //   } else {
-        //     this.trySendInitSocketPayload();
-        //   }
-        // });
 
         // new code
         // When session_confirm is received from the server:
@@ -198,7 +147,7 @@ class ChatWidget extends Component {
           user: "human",
         });
         resp.response.forEach((message) => {
-          if ("custom" in message == false)
+          if ("custom" in message === false)
             messages.push({
               ...message,
               user: "ai",
@@ -206,7 +155,7 @@ class ChatWidget extends Component {
         });
       });
 
-      if (response["difference"] == 0 || response["difference"] > 10) {
+      if (response["difference"] === 0 || response["difference"] > 10) {
         this.sendRequest({
           sender: this.state.sender_id,
           message: this.props.initialPayload,
@@ -270,139 +219,21 @@ class ChatWidget extends Component {
         setTimeout(this.sendText(e.results[0][0].transcript), 1000);
       };
 
-      recognition.onerror = function(e) {
+      recognition.onerror = function (e) {
         recognition.stop();
       };
     }
   }
   componentDidMount() {
     this.setTheme();
-    // this.setUpInitial();
+    this.setUpInitial();
 
     this.textInput = React.createRef();
 
-    // $('.cwc-left').hide();
-    // $('.cwc-right').hide();
-    // $('.cog_chat_panel-footer').show();
-    // $('.cwc-left.initial_show').show(450);
-
-    // $('.close').click(() => {
-    //   this.setState({
-    //     showFeedback: true,
-    //   });
-    // });
-
-    // $('.see_next').click(function() {
-    //   $('li:eq(1)').show(300);
-    //   setTimeout(function() {
-    //     $('li:eq(2)').show(2000);
-    //   }, 2000);
-    // });
-
-    // $('.chat_btn_container').click(() => {
-    //   $('.chat_box_container')
-    //     .show(100)
-    //     .addClass('chat_box_active');
-    //   this.setState((prevState) => ({
-    //     opened: true,
-    //     unread: 0,
-    //   }));
-    // });
-
-    // $('.see_all').click(function() {
-    //   $('.cwc-left,.cwc-right').show(1000);
-    //   $('.cog_chat_panel-footer').show(2000);
-    // });
-
-    // $('.panel-body').scroll(function() {
-    //   // declare variable
-    //   var topPos = $(this).scrollTop();
-    //   if (topPos > 50) {
-    //     $('.panel-heading ').addClass('shaddow');
-    //   } else {
-    //     $('.panel-heading').removeClass('shaddow');
-    //   }
-    // });
-
-    // $(document).on('click', '.feedback-emoji li', (e) => {
-    //   $('.chat_box_container')
-    //     .hide(100)
-    //     .removeClass('chat_box_active');
-    //   this.setState({
-    //     opened: false,
-    //     showFeedback: false,
-    //   });
-    // });
-
-    /* 1. Visualizing things on Hover - See next part for action on click */
-    // $(document)
-    //   .on('mouseover', '#stars li', function(e) {
-    //     var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
-
-    //     // Now highlight all the stars that's not after the current hovered star
-    //     $(this)
-    //       .parent()
-    //       .children('li.star')
-    //       .each(function(e) {
-    //         if (e < onStar) {
-    //           $(this).addClass('hover');
-    //         } else {
-    //           $(this).removeClass('hover');
-    //         }
-    //       });
-    //   })
-    //   .on('mouseout', function() {
-    //     $(this)
-    //       .parent()
-    //       .children('li.star')
-    //       .each(function(e) {
-    //         $(this).removeClass('hover');
-    //       });
-    //   });
-
-    /* 2. Action to perform on click */
-
-    // $(document).on('click', '#stars li', function(e) {
-    //   var onStar = parseInt($(this).data('value'), 10); // The star currently selected
-    //   var stars = $(this)
-    //     .parent()
-    //     .children('li.star');
-
-    //   for (let i = 0; i < stars.length; i++) {
-    //     $(stars[i]).removeClass('selected');
-    //   }
-
-    //   for (let i = 0; i < onStar; i++) {
-    //     $(stars[i]).addClass('selected');
-    //   }
-
-    //   // JUST RESPONSE (Not needed)
-    //   var ratingValue = parseInt(
-    //     $('#stars li.selected')
-    //       .last()
-    //       .data('value'),
-    //     10
-    //   );
-    //   var ratingMsg = '';
-    //   if (ratingValue > 2) {
-    //     ratingMsg = "Thanks! I'm glad we could help you";
-    //   } else {
-    //     ratingMsg = 'Sorry,We will improve ourselves.';
-    //   }
-    //   const msg = {
-    //     text: ratingMsg,
-    //     user: 'ai',
-    //   };
-
-    //   this.setState({
-    //     conversation: [...this.state.conversation, msg],
-    //   });
-    // });
-
-    this.audio = new Audio(
-      "https://cogniwide.github.io/cogniassist-chat-widget/public/assets/ding.mp3"
-    );
-    this.audio.load();
+    // this.audio = new Audio(
+    //   'https://cogniwide.github.io/cogniassist-chat-widget/public/assets/ding.mp3'
+    // );
+    // this.audio.load();
   }
 
   playAudio() {
@@ -453,28 +284,25 @@ class ChatWidget extends Component {
 
   restartChat($event) {
     $event.preventDefault();
-    this.setState({ conversation: [] });
-    this.loading(true);
-    setTimeout(() => {
-      this.loading(false);
-      this.setState({
-        conversation: [
-          {
-            text: "Hello, Good Day! I'm here and delighted to assist you. Feel free to inquire about anything you'd like to know.",
-            user: "ai",
-            timestamp: this.getCurrentTime(),
-          },
-        ],
-        quick_replies: [],
-        recommendations: [],
-      });
-    }, 2000);
+    this.setState({
+      conversation: [],
+      quick_replies: [],
+      recommendations: [],
+    });
+    this.sendRequest({
+      sender: this.state.sender_id,
+      message: "/default/restart",
+    });
+  }
+  mainmenu() {
+    this.sendRequest({
+      sender: this.state.sender_id,
+      message: "/default/menu",
+    });
   }
   minimizeWindow($event) {
     $event.preventDefault();
-    $(".chat_box_container")
-      .hide(100)
-      .removeClass("chat_box_active");
+    $(".chat_box_container").hide(100).removeClass("chat_box_active");
     this.setState({
       opened: false,
     });
@@ -511,10 +339,7 @@ class ChatWidget extends Component {
   getFormattedDate(date) {
     let year = date.getFullYear();
     let month = (1 + date.getMonth()).toString().padStart(2, "0");
-    let day = date
-      .getDate()
-      .toString()
-      .padStart(2, "0");
+    let day = date.getDate().toString().padStart(2, "0");
     return month + "/" + day + "/" + year;
   }
 
@@ -528,7 +353,18 @@ class ChatWidget extends Component {
     this.setState({ userMessage: event.target.value });
   }
 
+  handleSubmit(e) {
+    // this.loading(true);
+    if (e.key === "Enter") {
+      e.preventDefault();
+      e.stopPropagation();
+      if (!this.state.userMessage.trim()) return;
+      this.sendText();
+    }
+  }
+
   chooseReply(title, payload) {
+    this.loading(true);
     this.setState({
       quick_replies: [],
     });
@@ -555,26 +391,17 @@ class ChatWidget extends Component {
 
   getCurrentTime() {
     const time = new Date();
-    const hour = time
-      .getHours()
-      .toString()
-      .padStart(2, "0");
-    const minute = time
-      .getMinutes()
-      .toString()
-      .padStart(2, "0");
-    const second = time
-      .getSeconds()
-      .toString()
-      .padStart(2, "0");
+    const hour = time.getHours().toString().padStart(2, "0");
+    const minute = time.getMinutes().toString().padStart(2, "0");
+    const second = time.getSeconds().toString().padStart(2, "0");
     const curTime = `${hour}:${minute}:${second}`;
     return curTime.toString();
   }
 
   sendText(message = null) {
+    this.loading(true);
     message = message == null ? this.state.userMessage.trim() : message;
     if (!message) return;
-    this.loading(true);
     this.addMessage(message, "human");
     this.setState({ clearText: true });
 
@@ -608,65 +435,42 @@ class ChatWidget extends Component {
       });
   }
 
-  // sendRequest(payload) {
-  //   const { communicationMethod, socket } = this.props;
+  sendRequest(payload) {
+    const { communicationMethod, socket } = this.props;
 
-  //   if (communicationMethod == 'socket') {
-  //     this.setState({
-  //       delayFactor: 0,
-  //     });
-  //     socket.emit('user_uttered', {
-  //       message: payload.message,
-  //       session_id: payload.sender,
-  //     });
-  //   } else {
-  //     fetch(this.props.botURL + 'webhooks/rest/webhook/', {
-  //       method: 'POST',
-  //       headers: { 'Content-Type': 'application/json' },
-  //       body: JSON.stringify(payload),
-  //     })
-  //       .then((response) => response.json())
-  //       .then((response) => {
-  //         this.handleMessageReceived(response);
-  //       });
-  //   }
-  // }
-
-  sendRequest(value) {
-    const payload = {
-      ...value,
-      option: this.state.dropdownOption,
-    };
-    fetch("https://discovery.cogniassist.com/instance/query", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        this.handleMessageReceived(response);
+    if (communicationMethod === "socket") {
+      this.setState({
+        delayFactor: 0,
       });
+      socket.emit("user_uttered", {
+        message: payload.message,
+        session_id: payload.sender,
+      });
+    } else {
+      fetch(this.props.botURL + "webhooks/rest/webhook/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      })
+        .then((response) => response.json())
+        .then((response) => {
+          this.handleMessageReceived(response);
+        });
+    }
   }
 
-  // handleMessageReceived(response) {
-  //   this.loading(true);
-  //   for (let index = 0; index < response.length; index++) {
-  //     let delayFactor =
-  //       this.props.communicationMethod == "rest"
-  //         ? index
-  //         : this.state.delayFactor;
-  //     setTimeout(() => {
-  //       this.loading(false);
-  //       this.renderResponse([response[index]]);
-  //     }, 2000);
-  //   }
-  // }
-
   handleMessageReceived(response) {
-    setTimeout(() => {
-      this.loading(false);
-      this.renderResponse(response);
-    }, 2000);
+    this.loading(true);
+    for (let index = 0; index < response.length; index++) {
+      let delayFactor =
+        this.props.communicationMethod === "rest"
+          ? index
+          : this.state.delayFactor;
+      setTimeout(() => {
+        this.loading(false);
+        this.renderResponse([response[index]]);
+      }, 2000);
+    }
   }
 
   handleBotUtterance(botUtterance) {
@@ -682,48 +486,38 @@ class ChatWidget extends Component {
     this.handleMessageReceived([botUtterance]);
   }
 
-  renderResponse(response) {
-    // let messages = [];
-    // let quick_replies = [];
-    // let recommendations = [];
-    // this.setState({
-    //   last_response_count: responses.length,
-    // });
-    // responses.forEach((response) => {
-    //   if (response && "recommendations" in response) {
-    //     recommendations.push(...response["recommendations"]);
-    //   } else {
-    //     const msg = {
-    //       ...response,
-    //       user: "ai",
-    //       timestamp: this.getCurrentTime(),
-    //     };
-    //     if (response && "quick_replies" in response) {
-    //       quick_replies.push(...response["quick_replies"]);
-    //     }
+  renderResponse(responses) {
+    // console.log(responses);
+    let messages = [];
+    let quick_replies = [];
+    let recommendations = [];
+    this.setState({
+      last_response_count: responses.length,
+    });
+    responses.forEach((response) => {
+      if (response && "recommendations" in response) {
+        recommendations.push(...response["recommendations"]);
+      } else {
+        const msg = {
+          ...response,
+          user: "ai",
+          timestamp: this.getCurrentTime(),
+        };
+        if (response && "quick_replies" in response) {
+          quick_replies.push(...response["quick_replies"]);
+        }
 
-    //     if (response && "workflow_menu" in response) {
-    //       this.setState({ showBack: true });
-    //     }
-    //     messages.push(msg);
-    //   }
-    // });
-
-    // this.setState((prevState) => ({
-    //   conversation: [...prevState.conversation, ...messages],
-    //   quick_replies: quick_replies,
-    //   recommendations: recommendations,
-    //   show_recommendation: true,
-    // }));
-
-    const messages = {
-      ...response,
-      user: "ai",
-      timestamp: this.getCurrentTime(),
-    };
+        if (response && "workflow_menu" in response) {
+          this.setState({ showBack: true });
+        }
+        messages.push(msg);
+      }
+    });
 
     this.setState((prevState) => ({
-      conversation: [...prevState.conversation, messages],
+      conversation: [...prevState.conversation, ...messages],
+      quick_replies: quick_replies,
+      recommendations: recommendations,
       show_recommendation: true,
     }));
 
@@ -768,9 +562,9 @@ class ChatWidget extends Component {
       }
       let botIcon = this.props.botAvatar;
       let userIcon = this.props.userAvatar;
-      if (e["emotion"] == Emotions.HAPPY) {
+      if (e["emotion"] === Emotions.HAPPY) {
         botIcon = smileEmoji;
-      } else if (e["emotion"] == Emotions.SAD) {
+      } else if (e["emotion"] === Emotions.SAD) {
         botIcon = normalEmoji;
       }
       return (
@@ -786,8 +580,8 @@ class ChatWidget extends Component {
           user={e.user}
           last_response_count={this.state.last_response_count}
           aiIndex={aiIndex}
-          avatar={aiIndex == 1}
-          userAvatar={uiIndex == 1}
+          avatar={aiIndex === 1}
+          userAvatar={uiIndex === 1}
           timestamp={e.timestamp}
         />
       );
@@ -809,15 +603,14 @@ class ChatWidget extends Component {
     }
     // console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^', this.props.widgetPosition);
     const widgetPosition =
-      this.props.widgetPosition == "right" ? "_right" : "_left";
+      this.props.widgetPosition === "right" ? "_right" : "_left";
     let parentClass = "_cog_chat " + widgetPosition;
     if (this.state.fullScreeen) {
       parentClass += " full-screen";
     }
     return (
       <div className={parentClass}>
-        <Banner />
-        {this.state.opened == false && (
+        {this.state.opened === false && (
           <div
             className="cog_chat_btn_container"
             onClick={() => {
@@ -842,13 +635,18 @@ class ChatWidget extends Component {
                 </span>
               )}
             </div>
-            {this.props.template !== "Modal" && this.state.opened == false && (
+            {this.props.template !== "Modal" && this.state.opened === false && (
               <div className="cog_chat_chat-heading arrow-bottom">
                 <h5>{this.props.botWelcomeMessage}</h5>
               </div>
             )}
           </div>
         )}
+
+        <div
+          className="cog_chat-bg"
+          style={{ backgroundImage: `url(${chatbotBg})` }}
+        ></div>
 
         {this.state.show_recommendation &&
           this.state.recommendations.length > 0 &&
@@ -911,7 +709,7 @@ class ChatWidget extends Component {
                   {this.props.botName}
                 </span>
                 <div className="btn-group-head">
-                  <a
+                  <span
                     className="restart"
                     onClick={this.restartChat}
                     style={restartStyle}
@@ -922,21 +720,21 @@ class ChatWidget extends Component {
                       className="img-responsive"
                       width="15"
                     />
-                  </a>
+                  </span>
                   {/* <a className="expand" onClick={this.fullScreeenChat} >
                   <svg id="Solid" height="16" viewBox="0 0 512 512" width="16" xmlns="http://www.w3.org/2000/svg">
                     <path d="m464 488h-416a24 24 0 0 1 -24-24v-416a24 24 0 0 1 24-24h176a24 24 0 0 1 0 48h-152v368h368v-152a24 24 0 0 1 48 0v176a24 24 0 0 1 -24 24zm-40-400h-33.941l-103.03 103.029a24 24 0 0 0 33.942 33.942l103.029-103.03zm64 88v-128a24 24 0 0 0 -24-24h-128a24 24 0 0 0 0 48h104v104a24 24 0 0 0 48 0z" />
                   </svg>
                 </a> */}
-                  <a className="minimize" onClick={this.minimizeWindow}>
+                  <span className="minimize" onClick={this.minimizeWindow}>
                     <img
                       src={minimize}
                       alt="minimise"
                       className="img-responsive"
                       width="15"
                     />
-                  </a>
-                  <a
+                  </span>
+                  <span
                     className="close"
                     aria-label="Close"
                     style={closeBtnStyle}
@@ -949,7 +747,7 @@ class ChatWidget extends Component {
                     >
                       <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
                     </svg>
-                  </a>
+                  </span>
                 </div>
               </div>
               <div className="cog_chat_panel-body">
@@ -964,7 +762,7 @@ class ChatWidget extends Component {
                   </div>
                 )}
 
-                {this.state.showFeedback == false && (
+                {this.state.showFeedback === false && (
                   <ul className="cog_chat">
                     {chat}
                     <li
@@ -1099,7 +897,7 @@ class ChatWidget extends Component {
             }}
             restartChat={this.restartChat}
             startRecord={this.startRecord}
-            getDropdownValue={this.getDropdownValue}
+            mainmenu={this.mainmenu}
           />
         )}
       </div>

@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
-import tick from '../../../../public/assets/modal/right.svg';
-import righticon from '../../../../public/assets/modal/arrow-right.png';
+import tick from '../../../assets/modal/right.svg';
+import righticon from '../../../assets/modal/arrow-right.png';
 
 function Carousel(props) {
   const [showIndex, setShowIndex] = useState(0);

@@ -1,17 +1,15 @@
-@import "./variables.scss";
-@import "./custom.scss";
-@import "./modal-widget.scss";
-@import "./modal.scss";
-@import "./autocomplete.scss";
-@import "./carousel.scss";
-@import "./rangeslider.scss";
+@import './variables.scss';
+@import './custom.scss';
+@import './modal-widget.scss';
+@import './modal.scss';
+@import './autocomplete.scss';
+@import './carousel.scss';
+@import './rangeslider.scss';
 
-*,
-*::after,
-*::before {
-  font-family: "Poppins", sans-serif;
-  margin: 0;
-  box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
 }
 
 ._cog_chat button:focus {
@@ -70,7 +68,7 @@
   display: -ms-flexbox;
   /* TWEENER - IE 10 */
   display: -webkit-flex;
-  justify-content: start;
+  justify-content: flex-start;
 }
 
 ._cog_chat .cwc-right .clientchat {
@@ -82,7 +80,7 @@
   display: -ms-flexbox;
   /* TWEENER - IE 10 */
   display: -webkit-flex;
-  justify-content: end;
+  justify-content: flex-start;
   flex-flow: row-reverse;
 }
 
@@ -101,7 +99,7 @@
 }
 
 .datetimepicker .glyphicon.icon-arrow-left {
-  background-image: url("../cogniwide-assets/left-chevron.png");
+  background-image: url('../cogniwide-assets/left-chevron.png');
   background-repeat: no-repeat;
   background-size: 8px;
   background-position: center;
@@ -111,7 +109,7 @@
 }
 
 .datetimepicker .glyphicon.icon-arrow-right {
-  background-image: url("../cogniwide-assets/right-chevron.png");
+  background-image: url('../cogniwide-assets/right-chevron.png');
   background-repeat: no-repeat;
   background-size: 8px;
   background-position: center;
@@ -187,8 +185,8 @@
   td
   span.active.disabled:hover:active {
   background-color: #000 !important;
-  background-image: linear-gradient(top, #000, #0606);
-  background-image: -webkit-linear-gradient(top, #000, #0606);
+  background-image: linear-gradient(to top, #000, #0606);
+  background-image: -webkit-linear-gradient(to top, #000, #0606);
 }
 
 ._cog_chat .form_datetime_2 .datetimepicker table tr td.day:hover,
@@ -259,7 +257,7 @@
 }
 
 ._cog_chat .carousel-control-next-icon {
-  background: #00bbff url("../cogniwide-assets/right-chevron.png");
+  background: #00bbff url('../cogniwide-assets/right-chevron.png');
   background-repeat: no-repeat;
   background-size: 12px;
   background-position: center center;
@@ -267,7 +265,7 @@
 }
 
 ._cog_chat .carousel-control-prev-icon {
-  background: #00bbff url("../cogniwide-assets/left-chevron.png");
+  background: #00bbff url('../cogniwide-assets/left-chevron.png');
   background-repeat: no-repeat;
   background-size: 12px;
   background-position: center center;
@@ -310,6 +308,8 @@
   list-style-type: none;
   padding: 0;
   margin: 0px auto auto auto;
+  -moz-user-select: none;
+  -webkit-user-select: none;
 }
 
 ._cog_chat .rating-stars ul > li.star {
@@ -338,7 +338,7 @@
 }
 
 ._cog_chat li.star:before {
-  content: "★ ";
+  content: '★ ';
   font-size: 28px;
   color: #d3d3d3;
 }
@@ -359,6 +359,7 @@
 
 ._cog_chat .loading img {
   width: 50px;
+  margin-bottom: 20px;
 }
 
 ._cog_chat .loading .bubble {
@@ -509,7 +510,7 @@
 }
 
 ._cog_chat .qs-datepicker .qs-arrow:after {
-  content: "";
+  content: '';
   border: 0.5em solid rgba(0, 0, 0, 0);
 }
 
@@ -722,6 +723,9 @@
   }
 }
 
+#cogniassist {
+}
+
 ._cog_chat {
   margin: 0;
   padding: 0;
@@ -870,7 +874,7 @@
       }
     }
 
-    input[type="file"] {
+    input[type='file'] {
       // font-size: 100px;
       position: absolute;
       left: 0;
@@ -1072,7 +1076,7 @@
         border-radius: 0 10px 10px 10px;
         margin-left: 10px;
         padding: 0;
-        max-width: 620px;
+        max-width: 90%;
         background: var(--white);
 
         p {
@@ -1100,9 +1104,9 @@
       }
 
       .diplayalign {
-        border: 1px solid #ccc;
+        // border: 1px solid #ccc;
         margin: 10px;
-        border-radius: 0 10px 10px 10px;
+        // border-radius: 0 10px 10px 10px;
         padding: 0px;
         display: flex;
         overflow: hidden;
@@ -1117,7 +1121,8 @@
           border-radius: 0 !important;
           color: var(--black);
           border-bottom: 1px solid #eeeeee !important;
-          text-align: left !important;
+          text-align: center !important;
+          margin-bottom: 5px !important;
 
           &:last-child {
             border-bottom: transparent;
@@ -1232,8 +1237,8 @@
     }
 
     .avatar_wrapper {
-      width: 40px;
-      height: 40px;
+      width: 30px;
+      height: 30px;
 
       .avatar {
         width: 100%;
@@ -1245,8 +1250,8 @@
 
     .user_avatar_wrapper {
       width: 30px;
-      height: 35px;
-      margin-left: 5px;
+      height: 30px;
+      margin-left: 0.5rem;
 
       .avatar {
         width: 100%;
@@ -1303,14 +1308,14 @@
 
     .send-active {
       opacity: 1;
-      background-image: url("../cogniwide-assets/active-send.png");
+      background-image: url('../cogniwide-assets/active-send.png');
     }
 
     button {
       cursor: pointer;
       z-index: 999;
       background: none;
-      background-image: url("../cogniwide-assets/send.png");
+      background-image: url('../cogniwide-assets/send.png');
       background-repeat: no-repeat;
       background-position: center;
       background-size: 22px;
@@ -1324,7 +1329,7 @@
     }
 
     .mic-chat {
-      background-image: url("../cogniwide-assets/mic.png");
+      background-image: url('../cogniwide-assets/mic.png');
       background-repeat: no-repeat;
       background-position: center;
       background-size: 22px;
@@ -1393,7 +1398,7 @@
       cursor: pointer;
     }
 
-    input[type="checkbox"i] {
+    input[type='checkbox'i] {
       margin-right: 8px;
     }
   }
@@ -1529,19 +1534,19 @@
         }
 
         .recommendation_item.product .cog_chat_icon .cog_chat_image {
-          background-image: url("../cogniwide-assets/product.svg");
+          background-image: url('../cogniwide-assets/product.svg');
         }
 
         .recommendation_item.faq .cog_chat_icon .cog_chat_image {
-          background-image: url("../cogniwide-assets/faq.svg");
+          background-image: url('../cogniwide-assets/faq.svg');
         }
 
         .recommendation_item.announcement .cog_chat_icon .cog_chat_image {
-          background-image: url("../cogniwide-assets/marketing.svg");
+          background-image: url('../cogniwide-assets/marketing.svg');
         }
 
         .recommendation_item.link .cog_chat_icon .cog_chat_image {
-          background-image: url("../cogniwide-assets/link.svg");
+          background-image: url('../cogniwide-assets/link.svg');
         }
       }
     }
@@ -1622,20 +1627,10 @@
     // https://stackoverflow.com/questions/2989263/disable-auto-zoom-in-input-text-tag-safari-on-iphone
 
     textarea {
-      font-size: 16px;
+      font-size: 16px !important;
     }
     textarea:focus {
-      font-size: 16px;
+      font-size: 16px !important;
     }
-  }
-}
-
-@media (max-width: 400px) {
-  ._cog_chat .cog_chat_panel-body .cwc-left .bubble {
-    max-width: 250px;
-  }
-
-  ._cog_chat .cog_chat_panel-footer .cog_chat_composer #textarea {
-    font-size: 12px;
   }
 }

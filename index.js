@@ -1,10 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import CogniAssistWidget  from './src/index';
+import { createRoot } from 'react-dom/client';
+import CogniAssistWidget from './src/index';
 
 const plugin = {
   init: (args) => {
-    ReactDOM.render(
+    const root = createRoot(document.querySelector(args.selector));
+    root.render(
       <CogniAssistWidget
         initialPayload={args.initialPayload}
         communicationMethod={args.communicationMethod}
@@ -18,18 +19,14 @@ const plugin = {
         bannerText={args.bannerText}
         rememberUser={args.rememberUser}
         senderId={args.senderId}
-        socketURL= {args.socketURL}
-        socketPath= {args.socketPath}
+        socketURL={args.socketURL}
+        socketPath={args.socketPath}
         carouselItems={args.carouselItems}
         widgetPosition={args.widgetPosition}
         theme={args.theme}
-
-      />, document.querySelector(args.selector)
+      />
     );
-  }
+  },
 };
 
-export {
-  plugin as default,
-  CogniAssistWidget
-};
+export { plugin as default, CogniAssistWidget };

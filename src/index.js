@@ -1,15 +1,11 @@
 import React, { forwardRef, useRef } from 'react';
+import socket from './socket';
 import PropTypes from 'prop-types';
 import ChatWidget from './ChatWidget/cogniwide-chatwidget';
-import botAvatar from './ChatWidget/cogniwide-assets/bot-avator.png';
-import launcherIcon from './ChatWidget/cogniwide-assets/launcher-icon.png';
-import modalLauncherIcon from '../public/assets/modal/launcher.png';
+import modalLauncherIcon from './assets/modal/launcher.png';
 import headerLogo from './ChatWidget/cogniwide-assets/header-logo.png';
-
-import modalBotAvatar from '../public/assets/modal/robot.svg';
-import userAvatar from '../public/assets/modal/user-avatar.svg';
-
-import socket from './socket';
+import modalBotAvatar from './assets/modal/robot.svg';
+import userAvatar from './assets/modal/user-avatar.svg';
 
 const CogniAssistWidget = forwardRef((props, ref) => {
   class Socket {
@@ -86,7 +82,7 @@ const CogniAssistWidget = forwardRef((props, ref) => {
 
   const instanceSocket = useRef({});
 
-  if (!instanceSocket.current.url && props.communicationMethod == 'socket') {
+  if (!instanceSocket.current.url && props.communicationMethod === 'socket') {
     instanceSocket.current = new Socket(
       props.socketURL,
       props.customData,

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import arrowDown from '../../../../public/assets/modal/arrow-down.svg';
+import arrowDown from '../../../assets/modal/arrow-down.svg';
 
 function AutoComplete(props) {
   const { labelField, valueField } = props;

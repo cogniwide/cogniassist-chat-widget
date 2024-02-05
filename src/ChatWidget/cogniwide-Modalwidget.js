@@ -1,17 +1,19 @@
 import React from "react";
 
-import modalBotAvatar from "../../public/assets/modal/robot.svg";
-import closeIcon from "../../public/assets/modal/close.svg";
-import expandIcon from "../../public/assets/modal/expand.svg";
-import shrinkIcon from "../../public/assets/modal/shrink.png";
-import accordionPlus from "../../public/assets/modal/plus-circle.svg";
-import accordionMinus from "../../public/assets/modal/minus-circle.svg";
-import smile from "../../public/assets/modal/smile.svg";
-import arrowDown from "../../public/assets/modal/arrow-down.svg";
-import closeCircleOutline from "../../public/assets/modal/close-circle-outline.svg";
-import recordingWave from "../../public/assets/modal/recording-wave.svg";
-import updateArrow from "../../public/assets/modal/update-arrow.png";
-
+import modalBotAvatar from "./../assets/modal/robot.svg";
+import closeIcon from "./../assets/modal/close.png";
+import menuIcon from "./../assets/modal/menu.png";
+import updateArrow from "./../assets/modal/update-arrow.png";
+import expandIcon from "./../assets/modal/expand.svg";
+import shrinkIcon from "./../assets/modal/shrink.png";
+import accordionPlus from "./../assets/modal/plus-circle.svg";
+import accordionMinus from "./../assets/modal/minus-circle.svg";
+import smile from "./../assets/modal/smile.svg";
+import arrowDown from "./../assets/modal/arrow-down.svg";
+import closeCircleOutline from "./../assets/modal/close-circle-outline.svg";
+import recordingWave from "./../assets/modal/recording-wave.svg";
+import microPhone from "./../assets/modal/Icon awesome-microphone.svg";
+import sendIcon from "./../assets/modal/Icon material-send.svg";
 import smileEmoji from "./cogniwide-assets/smile.svg";
 import normalEmoji from "./cogniwide-assets/normal.svg";
 import worstEmoji from "./cogniwide-assets/worst.svg";
@@ -24,36 +26,90 @@ class ModalWidget extends React.Component {
       isSizeToggle: false,
       showFeedback: false,
       isConfirmed: false,
+      isIdle: false,
+      timer: null,
       rightPanelContents: [],
       openedAccordionIndex: "-1",
-      dropdownValue: "points",
+      timeInms: 1800000,
     };
     this.openWindow = this.openWindow.bind(this);
-    this.handleDropdownValueChange = this.handleDropdownValueChange.bind(this);
+    this.resumeChatbot = this.resumeChatbot.bind(this);
+    this.closeChatbot = this.closeChatbot.bind(this);
+    this.startTimer = this.startTimer.bind(this);
+    this.resetTimer = this.resetTimer.bind(this);
   }
-
   openWindow() {
     this.setState({ isOpen: true });
   }
-
   componentDidUpdate() {
     this.scrollToBottom();
   }
   scrollToBottom() {
     this.el && this.el.scrollIntoView({ behavior: "smooth" });
   }
-
-  handleDropdownValueChange(e) {
-    const { value } = e.target;
-    this.setState(
-      (ps) => ({
-        ...ps,
-        dropdownValue: value,
-      }),
-      () => this.props.getDropdownValue(this.state.dropdownValue)
-    );
+  componentDidMount() {
+    const chatbotElement = document.getElementById("myModal");
+    chatbotElement.addEventListener("click", this.startTimer);
+    chatbotElement.addEventListener("keydown", this.startTimer);
   }
+  startTimer = () => {
+//    console.log("Timer start");
+    if (this.timer) {
+      this.resetTimer();
+    }
+    this.timer = setInterval(() => {
+      this.setState(
+        (ps) => ({
+          ...ps,
+          timeInms: ps.timeInms - 1000,
+        }),
+        () => {
+//          console.log("Timer ", this.state.timeInms);
+          if (this.state.timeInms == 0) {
+//            console.log("Bot idle for 20 seconds");
+            this.setState(
+              (ps) => ({
+                ...ps,
+                isIdle: true,
+              }),
+              () => {
+                const chatbotElement = document.getElementById("myModal");
+                chatbotElement.removeEventListener("click", this.startTimer);
+                chatbotElement.removeEventListener("keydown", this.startTimer);
+                clearTimeout(this.timer);
+              }
+            );
+          }
+        }
+      );
+    }, 1000);
+  };
+  resetTimer() {
+    clearInterval(this.timer);
+    this.setState((ps) => ({
+      ...ps,
+      isIdle: false,
+      timeInms: 1800000,
+    }));
+  }
+  resumeChatbot() {
+    clearInterval(this.timer);
+    this.startTimer();
+    const chatbotElement = document.getElementById("myModal");
+    chatbotElement.addEventListener("click", this.startTimer);
+    chatbotElement.addEventListener("keydown", this.startTimer);
+    chatbotElement.addEventListener("dblclick", this.startTimer);
+    chatbotElement.addEventListener("touchstart", this.startTimer);
+    chatbotElement.addEventListener("mousemove", this.startTimer);
 
+  }
+  closeChatbot() {
+    this.props.closeModal();
+  }
+  componentWillUnmount() {
+    clearTimeout(this.timer);
+    clearInterval(this.timer);
+  }
   render() {
     return (
       <div
@@ -83,58 +139,105 @@ class ModalWidget extends React.Component {
                     <img
                       src={closeIcon}
                       alt="close-icon"
-                      onClick={() => {
-                        this.props.closeModal();
-                      }}
+                      onClick={this.props.closeModal}
                     ></img>
                   </div>
                 </div> */}
-
+                {this.state.isIdle && (
+                  <>
+                    <div className="cog_chat_popup-background"></div>
+                    <div className="cog_chat_popup">
+                      <p className="cog_chat-popup-info">
+                        We have not recieved any messages from you for some time.
+                        Would you like to continue the conversation?
+                      </p>
+                      <div className="cog_chat-popup-btn-wrapper">
+                        <button
+                          className="cog_chat-popup-btn"
+                          onClick={this.props.closeModal}
+                        >
+                          Close Chat
+                        </button>
+                        <button
+                          className="cog_chat-popup-btn"
+                          onClick={this.resumeChatbot}
+                        >
+                          Resume
+                        </button>
+                      </div>
+                    </div>
+                  </>
+                )}
                 <div className="cog_chat_modal-chat-content">
                   <div className="cog_chat_header">
-                    <div className="cog_chat_date-wrapper">
-                      <span>{new Date().toString().substr(4, 12)}</span>
-                      <img
-                        src={smile}
-                        alt="smile"
-                        onClick={() => {
-                          this.setState({ showFeedback: true });
-                        }}
-                      />
-                    </div>
-                    <div className="cog_chat_title">Chatbot</div>
-                    <div className="cog_chat-close-restart">
-                      <div className="cog_chat-restart-btn" title="Reset Chat">
-                        <a
-                          className="cog_chat-restart"
-                          onClick={this.props.restartChat}
-                          style={{ width: "20px", cursor: "pointer" }}
-                        >
-                          <img
-                            src={updateArrow}
-                            alt="refresh"
-                            className="img-responsive"
-                            width="18"
-                          />
-                        </a>
+                    <div className="cog_chat-mainmenu-wrapper">
+                      <div className="cog_chat_menu-wrapper">
+                        <img
+                          src={menuIcon}
+                          alt="menu"
+                          className="img-responsive"
+                          onClick={this.props.mainmenu}
+                          width="18"
+                        />
                       </div>
-                      <div
-                        style={{
-                          width: "20px",
-                          height: "20px",
-                          cursor: "pointer",
-                          background: "black",
-                          borderRadius: "50%",
-                          marginLeft: "1rem",
-                        }}
-                      >
+                      <span className="cog_chat-date">
+                        {new Date().toString().substr(4, 12)}
+                      </span>
+                      <div className="cog_chat_date-wrapper">
+                        <img
+                          src={smile}
+                          alt="smile"
+                          // onClick={() => {
+                          //   this.setState({ showFeedback: true });
+                          // }}
+                        />
+                      </div>
+                    </div>
+                    <div className="cog_chat_title">AI Assistant</div>
+                    {/* <div className="cog_chat_right-dropdown">
+                      <div className="cog_chat_right-title">
+                        EN
+                        <img src={arrowDown} alt="arrow-down" />
+                      </div>
+                      <div className="cog_chat_right-title-content">
+                        <div
+                          className={`${
+                            this.props.lang === "en" ? "active" : ""
+                          }`}
+                          onClick={() => {
+                            this.props.changeLang("en");
+                          }}
+                        >
+                          En
+                        </div>
+                        <div
+                          className={`${
+                            this.props.lang === 'ar' ? 'active' : ''
+                          }`}
+                          onClick={() => {
+                            this.props.changeLang('ar');
+                          }}
+                        >
+                          Ar
+                        </div>
+                      </div>
+                    </div> */}
+                    <div className="cog_chat-restart-close-container">
+                      <div className="cog_chat_restart-wrapper">
+                        <img
+                          src={updateArrow}
+                          alt="refresh"
+                          className="img-responsive"
+                          onClick={this.props.restartChat}
+                          width="18"
+                        />
+                      </div>
+                      <div className="cog_chat_close-wrapper">
                         <img
                           src={closeIcon}
                           alt="close-icon"
-                          onClick={() => {
-                            this.props.closeModal();
-                          }}
-                          style={{ width: "100%", height: "100%" }}
+                          onClick={this.props.closeModal}
+                          width="22"
                         ></img>
                       </div>
                     </div>
@@ -263,83 +366,105 @@ class ModalWidget extends React.Component {
                     </div>
                   </div>
 
-                  <div
-                    className={`cog_chat_panel-footer ${
-                      this.state.openedAccordionIndex === "-1"
-                        ? ""
-                        : "hide-body"
-                    }`}
-                  >
+                  {!this.state.isIdle && (
                     <div
-                      id="composers"
-                      className="cog_chat_composer position-relative"
-                      style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        margin: "0 15px",
-                        border: "1px solid #ccc",
-                        marginBottom: "15px",
-                        borderRadius: "15px",
-                      }}
+                      className={`cog_chat_panel-footer ${
+                        this.state.openedAccordionIndex === "-1"
+                          ? ""
+                          : "hide-body"
+                      }`}
                     >
-                      <textarea
-                        value={this.props.userMessage}
-                        onKeyUp={this.props.handleSubmit}
-                        onChange={this.props.handleChange}
-                        id="textInput"
-                        ref="textInput"
-                        className="textInput"
-                        placeholder="Type your query"
-                      ></textarea>
-                      {(window.SpeechRecognition ||
+                      <div
+                        id="composers"
+                        className="cog_chat_composer position-relative"
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          margin: "0 15px",
+                          border: "1px solid #ccc",
+                          marginBottom: "15px",
+                          borderRadius: "15px",
+                        }}
+                      >
+                        <textarea
+                          value={this.props.userMessage}
+                          onKeyUp={this.props.handleSubmit}
+                          onChange={this.props.handleChange}
+                          id="textInput"
+                          ref="textInput"
+                          className="textInput"
+                          placeholder="Type your query"
+                        ></textarea>
+                        {/* {(window.SpeechRecognition ||
                         window.webkitSpeechRecognition) && (
                         <button
                           className="mic-chat"
                           onClick={this.props.startRecord}
-                        ></button>
-                      )}
-                      <button
-                        className="send-button"
-                        onClick={() => {
-                          this.props.sendText();
-                        }}
-                      ></button>
+                        >
+                          <img
+                            src={microPhone}
+                            alt="mic-icon"
+                            width={20}
+                            height={20}
+                          />
+                        </button>
+                      )} */}
+                        <button
+                          className="send-button"
+                          onClick={() => {
+                            this.props.sendText();
+                          }}
+                        >
+                          <img
+                            src={sendIcon}
+                            alt="send-icon"
+                            width={20}
+                            height={20}
+                          />
+                        </button>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
-              {/* <div className='cog_chat_modal-right-content'>
-                <div className='cog_chat_close-container'>
-                  <div className='cog_chat_close-wrapper'>
+              {/* <div className="cog_chat_modal-right-content">
+                <div className="cog_chat_close-container">
+                  <div className="cog_chat_close-wrapper">
                     {!this.state.isSizeToggle ? (
                       <img
                         src={expandIcon}
-                        alt='expand-icon'
+                        alt="expand-icon"
                         onClick={() => {
                           this.setState({ isSizeToggle: true });
                         }}
+                        width={15}
+                        height={15}
                       ></img>
                     ) : (
                       <img
                         src={shrinkIcon}
-                        alt='shrink-icon'
+                        alt="shrink-icon"
                         onClick={() => {
                           this.setState({ isSizeToggle: false });
                         }}
+                        width={12}
+                        height={12}
                       ></img>
                     )}
                     <img
                       src={closeIcon}
-                      alt='close-icon'
+                      alt="close-icon"
                       onClick={() => {
                         this.props.closeModal();
                       }}
                     ></img>
                   </div>
                 </div>
-                <div className='cog_chat_header-text'>Awnic Information Panel</div>
-                <div className='cog_chat_modal-content-right'>
+                <div className="cog_chat_header-text">
+                  <h4>Related Information</h4>
+                </div>
+                <div className="cog_chat_modal-content-right">
                   {this.state.rightPanelContents.map(
                     (rightPanelContent, index) => {
                       return (
@@ -347,23 +472,23 @@ class ModalWidget extends React.Component {
                           <div
                             className={`modal-content-header ${
                               this.state.openedAccordionIndex === index
-                                ? 'bold'
-                                : ''
+                                ? "bold"
+                                : ""
                             }`}
                           >
                             <div>{rightPanelContent.title}</div>
                             {this.state.openedAccordionIndex === index ? (
                               <img
                                 src={accordionMinus}
-                                alt='accordion-minus'
+                                alt="accordion-minus"
                                 onClick={() => {
-                                  this.setState({ openedAccordionIndex: '-1' });
+                                  this.setState({ openedAccordionIndex: "-1" });
                                 }}
                               ></img>
                             ) : (
                               <img
                                 src={accordionPlus}
-                                alt='accordion-plus'
+                                alt="accordion-plus"
                                 onClick={() => {
                                   this.setState({
                                     openedAccordionIndex: index,
@@ -375,8 +500,8 @@ class ModalWidget extends React.Component {
                           <div
                             className={`modal-content-text ${
                               this.state.openedAccordionIndex === index
-                                ? 'showAccordion'
-                                : 'hideAccordion'
+                                ? "showAccordion"
+                                : "hideAccordion"
                             }`}
                           >
                             <p>{rightPanelContent.content}</p>
@@ -390,13 +515,14 @@ class ModalWidget extends React.Component {
             </React.Fragment>
           ) : (
             <div className="confirm-box">
-              {/* <div className="cog_chat_close-container">
+              <div className="cog_chat_close-container">
                 <img
-                  src={closeCircleOutline}
-                  alt="close-circle-outline"
+                  src={closeIcon}
+                  alt="close-icon"
                   onClick={this.props.closeModal}
+                  width={20}
                 ></img>
-              </div> */}
+              </div>
               <div
                 className="img-container"
                 style={{ backgroundImage: "url(" + recordingWave + ")" }}
@@ -408,9 +534,15 @@ class ModalWidget extends React.Component {
                 ></img>
               </div>
               <div className="text-container">
+                {/* <p>
+                  مرحبا! اسمي "اسم Chatbot" ، مساعد Awnic الظاهري. أنا هنا
+                  للمساعدة في الإجابة على أسئلتك على AWNIC.
+                </p>
+                <hr /> */}
                 <p>
-                Hey! I'm an AI Assistant, here to assist you with any questions you have about Awnic,
-                 your go-to insurance service provider. How can I help you today?
+                  Hey! I'm an AI Assistant, here to assist you with any
+                  questions you have about Awnic, your go-to insurance service
+                  provider. How can I help you today?
                 </p>
               </div>
               <div className="button-container">
@@ -422,6 +554,14 @@ class ModalWidget extends React.Component {
                 >
                   Let's Start
                 </button>
+                {/* <button
+                  onClick={() => {
+                    this.props.changeLang("ar");
+                    this.setState({ isConfirmed: true });
+                  }}
+                >
+                  لنبدأ!
+                </button> */}
               </div>
             </div>
           )}
