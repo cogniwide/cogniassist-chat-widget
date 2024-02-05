@@ -1,0 +1,70 @@
+.license-slider {
+  .license-slider-input-container,
+  .dynamic-slider-container {
+    // background-color: white;
+    .license-slider-input {
+      -webkit-appearance: none;
+      appearance: none;
+      background-color: #d6d6d600;
+      border-radius: 1rem;
+      width: 100%;
+      margin-top: 1rem;
+      position: relative;
+      z-index: 100;
+    }
+    .license-slider-input::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 12px;
+      width: 12px;
+      border-radius: 50%;
+      background: #2e2b70;
+      box-shadow: 0 0 0 9px #e9e9e9;
+      position: relative;
+      z-index: 100;
+      cursor: pointer;
+    }
+    
+    .license-slider-input::-webkit-slider-runnable-track {
+      -webkit-appearance: none;
+      background: #c0c0c000;
+      height: 10px;
+      border-radius: 1rem;
+    }
+    .progress-bar {
+      width: 100%;
+      height: 10px;
+      position: relative;
+      top: 1.8rem;
+      z-index: 100;
+    }
+    .progress-bar::-webkit-progress-bar {
+      background-color: #cecece;
+      // border-radius: 1rem;
+    }
+    .progress-bar::-webkit-progress-value {
+      background-color: #2e2b70;
+      // border-radius: 1rem;
+    }
+    .symbols,
+    .numbers,
+    .tags {
+      padding: 0;
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      top: -0.7rem;
+      & span {
+        padding: 0 0.3rem;
+      }
+    }
+    .zero-year {
+      width: 100%;
+      background-color: lightgray;
+      border: none;
+      padding: 0.5rem;
+      margin-top: 1rem;
+      border-radius: 0.2rem;
+      text-align: center;
+    }
+  }
+}

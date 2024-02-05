@@ -30,7 +30,7 @@ class ModalWidget extends React.Component {
       timer: null,
       rightPanelContents: [],
       openedAccordionIndex: "-1",
-      timeInms: 1800000,
+      timeInms: 20000,
     };
     this.openWindow = this.openWindow.bind(this);
     this.resumeChatbot = this.resumeChatbot.bind(this);
@@ -53,7 +53,7 @@ class ModalWidget extends React.Component {
     chatbotElement.addEventListener("keydown", this.startTimer);
   }
   startTimer = () => {
-//    console.log("Timer start");
+    console.log("Timer start");
     if (this.timer) {
       this.resetTimer();
     }
@@ -64,9 +64,9 @@ class ModalWidget extends React.Component {
           timeInms: ps.timeInms - 1000,
         }),
         () => {
-//          console.log("Timer ", this.state.timeInms);
+          console.log("Timer ", this.state.timeInms);
           if (this.state.timeInms == 0) {
-//            console.log("Bot idle for 20 seconds");
+            console.log("Bot idle for 20 seconds");
             this.setState(
               (ps) => ({
                 ...ps,
@@ -89,7 +89,7 @@ class ModalWidget extends React.Component {
     this.setState((ps) => ({
       ...ps,
       isIdle: false,
-      timeInms: 1800000,
+      timeInms: 20000,
     }));
   }
   resumeChatbot() {
@@ -98,10 +98,6 @@ class ModalWidget extends React.Component {
     const chatbotElement = document.getElementById("myModal");
     chatbotElement.addEventListener("click", this.startTimer);
     chatbotElement.addEventListener("keydown", this.startTimer);
-    chatbotElement.addEventListener("dblclick", this.startTimer);
-    chatbotElement.addEventListener("touchstart", this.startTimer);
-    chatbotElement.addEventListener("mousemove", this.startTimer);
-
   }
   closeChatbot() {
     this.props.closeModal();
@@ -148,15 +144,15 @@ class ModalWidget extends React.Component {
                     <div className="cog_chat_popup-background"></div>
                     <div className="cog_chat_popup">
                       <p className="cog_chat-popup-info">
-                        We have not recieved any messages from you for some time.
-                        Would you like to continue the conversation?
+                        Seems like you have not responded for sometime. Let me
+                        know if there is anything i can help you with
                       </p>
                       <div className="cog_chat-popup-btn-wrapper">
                         <button
                           className="cog_chat-popup-btn"
                           onClick={this.props.closeModal}
                         >
-                          Close Chat
+                          close chat bot
                         </button>
                         <button
                           className="cog_chat-popup-btn"
