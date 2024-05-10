@@ -1,6 +1,6 @@
 import React from "react";
 
-import modalBotAvatar from "./../assets/modal/robot.svg";
+import modalBotAvatar from "./../assets/modal/robot.png";
 import closeIcon from "./../assets/modal/close.png";
 import menuIcon from "./../assets/modal/menu.png";
 import updateArrow from "./../assets/modal/update-arrow.png";
@@ -8,7 +8,7 @@ import expandIcon from "./../assets/modal/expand.svg";
 import shrinkIcon from "./../assets/modal/shrink.png";
 import accordionPlus from "./../assets/modal/plus-circle.svg";
 import accordionMinus from "./../assets/modal/minus-circle.svg";
-import smile from "./../assets/modal/smile.svg";
+import smile from "./../assets/modal/smile.png";
 import arrowDown from "./../assets/modal/arrow-down.svg";
 import closeCircleOutline from "./../assets/modal/close-circle-outline.svg";
 import recordingWave from "./../assets/modal/recording-wave.svg";

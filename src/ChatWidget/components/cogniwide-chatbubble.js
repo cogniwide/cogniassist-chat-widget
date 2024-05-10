@@ -8,6 +8,8 @@ import Carousel from './custom-responses/carousel';
 import RangeSlider from './custom-responses/rangeslider';
 import CheckboxContainer from './custom-responses/checkbox-container';
 import CustomComponentWrapper from '../../CustomComponents/registry';
+import ReactMarkdown from 'react-markdown'
+
 
 class ChatBubble extends Component {
   constructor(props) {
@@ -33,6 +35,8 @@ class ChatBubble extends Component {
     this.checkboxSubmit = this.checkboxSubmit.bind(this);
     this.formSubmit = this.formSubmit.bind(this);
   }
+
+
 
   onChange = (date) => {
     let readable_date = date.toDateString();
@@ -206,7 +210,7 @@ class ChatBubble extends Component {
             <div className='cog_chat_chat-body bubble clearfix flex-column'>
               {'text' in this.props.message && (
                 <div className='content'>
-                  <p
+                    <p
                     dangerouslySetInnerHTML={{
                       __html: this.props.message.text,
                     }}

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import ChatWidget from './ChatWidget/cogniwide-chatwidget';
 import modalLauncherIcon from './assets/modal/launcher.png';
 import headerLogo from './ChatWidget/cogniwide-assets/header-logo.png';
-import modalBotAvatar from './assets/modal/robot.svg';
+import modalBotAvatar from './assets/modal/robot.png';
 import userAvatar from './assets/modal/user-avatar.svg';
 
 const CogniAssistWidget = forwardRef((props, ref) => {
@@ -182,7 +182,7 @@ CogniAssistWidget.defaultProps = {
   theme: {
     '--primary_clr': '#00BBFF',
     '--Secondary_clr': '#62acf1',
-    '--black': '#000000',
+    '--black': '#1976D2',
     '--white': '#fff',
     '--muted': '#666',
     '--light': '#eeeeee',
