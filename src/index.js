@@ -182,7 +182,7 @@ CogniAssistWidget.defaultProps = {
   theme: {
     '--primary_clr': '#00BBFF',
     '--Secondary_clr': '#62acf1',
-    '--black': '#1976D2',
+    '--black': '#000000',
     '--white': '#fff',
     '--muted': '#666',
     '--light': '#eeeeee',

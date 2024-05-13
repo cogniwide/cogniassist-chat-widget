@@ -10,6 +10,7 @@ import ChatBubble from "./components/cogniwide-chatbubble";
 import CarouselWrapper from "./components/carousel_wrapper";
 import ModalWidget from "../ChatWidget/cogniwide-Modalwidget";
 import chatbotBg from "./cogniwide-assets/bgImage.jpg";
+import closeIcon from "./cogniwide-assets/popup-close.png";
 
 export class Emotions {
   static SAD = "sadness";
@@ -38,6 +39,7 @@ class ChatWidget extends Component {
       delayFactor: 1,
       clearText: false,
       showBack: false,
+      text: true,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -54,6 +56,7 @@ class ChatWidget extends Component {
     this.closeWindow = this.closeWindow.bind(this);
     this.startRecord = this.startRecord.bind(this);
     this.mainmenu = this.mainmenu.bind(this);
+    this.closeText = this.closeText.bind(this);
 
     //-----refs---------
   }
@@ -183,6 +186,12 @@ class ChatWidget extends Component {
     this.setState({
       opened: true,
       unread: 0,
+    });
+  }
+
+   closeText() {
+    this.setState({
+      text: false,
     });
   }
 
@@ -613,8 +622,27 @@ class ChatWidget extends Component {
         {this.state.opened === false && (
           <div
             className="cog_chat_btn_container"
-            onClick={() => {
-              this.props.template === "Base"
+          >
+            <div className="cog_chat_chatbot-icon">
+              <div className="chatbot-icon">
+               {this.state.text && (
+                <div className="cog_chat_chat-heading arrow-bottom">
+                  <h5 className="chat-heading-msg">"Hey there, how may I assist you?"</h5>
+                  <img
+                    src={closeIcon}
+                    alt="close_icon"
+                    onClick={this.closeText}
+                    width={10}
+                    height={10}
+                  ></img>
+                </div>
+               )}
+                <img
+                src={this.props.launcherIcon}
+                className="cog_chat_launcher_icon"
+                alt="launcher_icon"
+                onClick={() => {
+                this.props.template === "Base"
                 ? this.setState({ opened: true, unread: 0 })
                 : this.setState({
                     opened: true,
@@ -622,18 +650,14 @@ class ChatWidget extends Component {
                     unread: 0,
                   });
             }}
-          >
-            <div className="cog_chat_chatbot-icon">
-              <img
-                src={this.props.launcherIcon}
-                className="cog_chat_launcher_icon"
-                alt="launcher_icon"
               />
               {this.state.unread > 0 && (
                 <span className="cog_chat_badge-msg unreadCount">
                   {this.state.unread}
                 </span>
               )}
+              </div>
+
             </div>
             {this.props.template !== "Modal" && this.state.opened === false && (
               <div className="cog_chat_chat-heading arrow-bottom">

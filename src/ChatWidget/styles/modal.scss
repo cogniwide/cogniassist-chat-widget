@@ -16,7 +16,18 @@
     // font-family: 'cogni-mont-regular' !important;
   }
 }
-
+.cog_chat_chatbot-icon {
+  .chatbot-icon {
+    .cog_chat_chat-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .cog_chat-chat-heading-msg {
+        margin-right: auto;
+      }
+    }
+  }
+}
 // background image
 .cog_chat-bg {
   width: 100%;
@@ -408,7 +419,7 @@
       color: #1976D2 !important;
     }
     .cog_chat_date-wrapper {
-      color: #1976D2;
+//       color: #1976D2;
       font-size: 12px;
       img {
         width: 20px;
