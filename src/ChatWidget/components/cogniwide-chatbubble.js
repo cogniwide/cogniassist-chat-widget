@@ -8,8 +8,7 @@ import Carousel from './custom-responses/carousel';
 import RangeSlider from './custom-responses/rangeslider';
 import CheckboxContainer from './custom-responses/checkbox-container';
 import CustomComponentWrapper from '../../CustomComponents/registry';
-import ReactMarkdown from 'react-markdown'
-
+import {marked} from 'marked'; // Import marked library
 
 class ChatBubble extends Component {
   constructor(props) {
@@ -99,7 +98,6 @@ class ChatBubble extends Component {
   }
 
   handleFiles() {
-    // console.log(this.state);
     if (this.state.files.length > 0) {
       this.setState({
         uploading: true,
@@ -132,6 +130,12 @@ class ChatBubble extends Component {
     return newDate[1];
   }
   render() {
+    // Convert Markdown to HTML
+    const { text } = this.props.message;
+    const inlineCodePattern = /(?<!`)(`([^`]+)`)(?!`)/g;
+    const styledText = text.replace(inlineCodePattern, '<span>$1</span>');
+    const htmlContent = marked(styledText)
+
     if ('line' in this.props.message) {
       return (
         <li className='cwc-right'>
@@ -210,11 +214,13 @@ class ChatBubble extends Component {
             <div className='cog_chat_chat-body bubble clearfix flex-column'>
               {'text' in this.props.message && (
                 <div className='content'>
+                  <div className='_cog_chat-markdown-content'>
                     <p
                     dangerouslySetInnerHTML={{
-                      __html: this.props.message.text,
+                      __html: htmlContent,
                     }}
                   ></p>
+                  </div>
                 </div>
               )}
 

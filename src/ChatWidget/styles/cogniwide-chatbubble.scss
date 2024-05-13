@@ -58,3 +58,35 @@
     display: none;
   }
 }
+
+/* In your CSS file */
+._cog_chat-markdown-content {
+  font-family: 'Courier New', Courier, monospace;
+  line-height: 1.5;
+  background: #bbd9f7 !important;
+}
+
+._cog_chat-markdown-content pre {
+  background-color: #193551;
+  color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+._cog_chat-markdown-content code {
+  font-family: 'Courier New', Courier, monospace;
+  color: inherit;
+}
+
+._cog_chat-markdown-content .language-java {
+  font-family: 'Courier New', Courier, monospace;
+  color: #ffe050; /* Java syntax color */}
+
+  ._cog_chat-markdown-content span{
+    // background-color: #193551;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #f10c0c;
+  }
