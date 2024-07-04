@@ -41,8 +41,13 @@ class ModalWidget extends React.Component {
   openWindow() {
     this.setState({ isOpen: true });
   }
-  componentDidUpdate() {
-    this.scrollToBottom();
+//  componentDidUpdate() {
+//    this.scrollToBottom();
+//  }
+ componentDidUpdate(prevProps, prevState) {
+    if (prevProps.chat.length !== this.props.chat.length) {
+        this.scrollToBottom();
+    }
   }
   scrollToBottom() {
     this.el && this.el.scrollIntoView({ behavior: "smooth" });
