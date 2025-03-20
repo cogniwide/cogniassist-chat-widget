@@ -792,9 +792,9 @@ class ChatWidget extends Component {
                   <button className="mic-chat"></button>
                 }
               </div>
-              <div className="power-by">
-                <span>Powered by <a href="#">Cogniwide</a></span>
-              </div>
+              // <div className="power-by">
+              //   <span>Powered by <a href="#">Cogniwide</a></span>
+              // </div>
             </div>
           </div>
         </div>
