@@ -180,11 +180,11 @@ CogniAssistWidget.defaultProps = {
   carouselItems: [],
   widgetPosition: 'right',
   theme: {
-    '--primary_clr': '#00BBFF',
+    '--primary_clr': '#00005a ', 
     '--Secondary_clr': '#62acf1',
     '--black': '#000000',
     '--white': '#fff',
-    '--muted': '#666',
+    '--muted': 'white',
     '--light': '#eeeeee',
   },
   template: 'Modal',

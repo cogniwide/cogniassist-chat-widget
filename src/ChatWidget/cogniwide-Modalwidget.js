@@ -194,7 +194,7 @@ class ModalWidget extends React.Component {
                         />
                       </div>
                     </div>
-                    <div className="cog_chat_title">AI Assistant</div>
+                    <div className="cog_chat_title">ESSITY AI Assistant</div>
                     {/* <div className="cog_chat_right-dropdown">
                       <div className="cog_chat_right-title">
                         EN
