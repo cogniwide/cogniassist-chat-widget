@@ -166,7 +166,7 @@ class ChatBubble extends Component {
               </p>
               <div
                 className="cog_chat-currenttime"
-                style={{ fontSize: "10px", color: "#ccc", margin: "0 10px" }}
+                style={{ fontSize: "10px", color: "white", margin: "0 10px" }}
               >
                 {this.props.timestamp}
               </div>

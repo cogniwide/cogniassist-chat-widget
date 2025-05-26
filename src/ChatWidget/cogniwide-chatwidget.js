@@ -9,7 +9,7 @@ import worstEmoji from "./cogniwide-assets/worst.svg";
 import ChatBubble from "./components/cogniwide-chatbubble";
 import CarouselWrapper from "./components/carousel_wrapper";
 import ModalWidget from "../ChatWidget/cogniwide-Modalwidget";
-import chatbotBg from "./cogniwide-assets/bgImage.jpg";
+import chatbotBg from "./cogniwide-assets/bgImage.png";
 import closeIcon from "./cogniwide-assets/popup-close.png";
 
 export class Emotions {
